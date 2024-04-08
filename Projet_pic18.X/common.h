@@ -84,6 +84,12 @@ extern "C" {
 #define FALSE 0 
    
 #include <stdint.h>
+    
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
+
 
 
 #ifdef	__cplusplus

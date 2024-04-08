@@ -14,7 +14,7 @@
 #include "hal_timer1.h"
 #include "hal_timer0.h"
 #include "temp_monitoring.h"
-
+#include "heater.h"
 
 
 uint8_t receive_usart_data;
@@ -22,7 +22,7 @@ uint8_t receive_usart_data;
 volatile uint32_t valid_usart_tx;
 volatile uint32_t valid_usart_rx;
 
-TemperatureData system_management;
+SystemData system_management;
 
 void putch(char c);
 void USART_FramingDefaultErrorHandler(void);
@@ -39,7 +39,12 @@ void main(void) {
     volatile uint16_t timer1_counter_val;
     usart_module_init();
     timer1_timer_init();
-    set_mode(NORMAL);
+    
+    system_management.error_type = TOO_COLD;
+    led_set_mode(&system_management);
+    heater_set_mode(ON);
+
+    
     read_address_in_eeprom();
 
     set_pwm_duty(0);
@@ -49,7 +54,6 @@ void main(void) {
 
     //Set_DS1307_RTC_Time(TwentyFourHoursMode,10,8,00);
     //Set_DS1307_RTC_Date(2,4,24,2);
-    //read_init_sd_card();
     //single_block_write();
     
     //single_block_read();
@@ -57,7 +61,7 @@ void main(void) {
     //multiple_block_write();
     
     //multiple_block_read();
-    read_init_sd_card();
+    //read_init_sd_card();
             
     while(1)
     {
@@ -93,7 +97,7 @@ void Timer1_DefaultInterruptHandler(void)
     {
         save_in_eeprom(&system_management);
         cpt_ms_eeprom=0;
-        save_address_in_eeprom();
+        extract_all_alarms();
 
 
     }

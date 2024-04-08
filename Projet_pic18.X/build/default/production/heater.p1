@@ -1,12 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"11 led.c
-[; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
-[c E2477 0 1 2 .. ]
-[n E2477 . NO_ERROR TOO_HOT TOO_COLD  ]
-"20 ./temp_monitoring.h
-[; ;./temp_monitoring.h: 20: typedef struct{
-[s S270 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E2477 1 ]
-[n S270 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
+"11 heater.c
+[; ;heater.c: 11: void heater_set_mode(BooleanState state)
+[c E2473 0 1 .. ]
+[n E2473 . OFF ON  ]
 "2057 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
 [s S76 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S76 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
@@ -375,105 +371,65 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 0FFEh ;# ">
 "6715
 [; <" TOSU equ 0FFFh ;# ">
-"11 led.c
-[; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
-[v _led_set_mode `(v ~T0 @X0 1 ef1`*S270 ]
+"11 heater.c
+[; ;heater.c: 11: void heater_set_mode(BooleanState state)
+[v _heater_set_mode `(v ~T0 @X0 1 ef1`E2473 ]
 "12
-[; ;led.c: 12: {
+[; ;heater.c: 12: {
 {
-[e :U _led_set_mode ]
+[e :U _heater_set_mode ]
 "11
-[; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
-[v _psystem_state `*S270 ~T0 @X0 1 r1 ]
+[; ;heater.c: 11: void heater_set_mode(BooleanState state)
+[v _state `E2473 ~T0 @X0 1 r1 ]
 "12
-[; ;led.c: 12: {
+[; ;heater.c: 12: {
 [f ]
 "13
-[; ;led.c: 13:     TRISDbits.TRISD3 = 0;
-[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
+[; ;heater.c: 13:     TRISDbits.TRISD4 = 0;
+[e = . . _TRISDbits 0 4 -> -> 0 `i `uc ]
 "14
-[; ;led.c: 14:     TRISDbits.TRISD2 = 0;
-[e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
-"15
-[; ;led.c: 15:     TRISDbits.TRISD5 = 0;
-[e = . . _TRISDbits 0 5 -> -> 0 `i `uc ]
-"16
-[; ;led.c: 16:     switch(psystem_state->error_type)
-[e $U 273  ]
-"17
-[; ;led.c: 17:     {
-{
-"18
-[; ;led.c: 18:         case NO_ERROR:
-[e :U 274 ]
-"19
-[; ;led.c: 19:             PORTDbits.RD2 = 1;
-[e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
-"20
-[; ;led.c: 20:             PORTDbits.RD3 = 0;
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
-"21
-[; ;led.c: 21:             PORTDbits.RD5 = 0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
-"22
-[; ;led.c: 22:             break;
+[; ;heater.c: 14:     switch(state)
 [e $U 272  ]
+"15
+[; ;heater.c: 15:     {
+{
+"16
+[; ;heater.c: 16:         case OFF:
+[e :U 273 ]
+"17
+[; ;heater.c: 17:             PORTDbits.RD4 = 1;
+[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
+"18
+[; ;heater.c: 18:             break;
+[e $U 271  ]
+"20
+[; ;heater.c: 20:         case ON:
+[e :U 274 ]
+"21
+[; ;heater.c: 21:             PORTDbits.RD4 = 0;
+[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
+"22
+[; ;heater.c: 22:             break;
+[e $U 271  ]
 "24
-[; ;led.c: 24:         case TOO_COLD:
+[; ;heater.c: 24:         default:
 [e :U 275 ]
 "25
-[; ;led.c: 25:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
+[; ;heater.c: 25:             PORTDbits.RD4 = 1;
+[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
 "26
-[; ;led.c: 26:             PORTDbits.RD3 = 0;
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+[; ;heater.c: 26:             break;
+[e $U 271  ]
 "27
-[; ;led.c: 27:             PORTDbits.RD5 = 1;
-[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-"28
-[; ;led.c: 28:             break;
-[e $U 272  ]
-"30
-[; ;led.c: 30:         case TOO_HOT:
-[e :U 276 ]
-"31
-[; ;led.c: 31:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
-"32
-[; ;led.c: 32:             PORTDbits.RD3 = 1;
-[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
-"33
-[; ;led.c: 33:             PORTDbits.RD5 = 0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
-"34
-[; ;led.c: 34:             break;
-[e $U 272  ]
-"36
-[; ;led.c: 36:         default:
-[e :U 277 ]
-"37
-[; ;led.c: 37:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
-"38
-[; ;led.c: 38:             PORTDbits.RD3 = 0;
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
-"39
-[; ;led.c: 39:             PORTDbits.RD5 = 0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
-"40
-[; ;led.c: 40:             break;
-[e $U 272  ]
-"41
-[; ;led.c: 41:     }
+[; ;heater.c: 27:     }
 }
-[e $U 272  ]
-[e :U 273 ]
-[e [\ -> . *U _psystem_state 13 `ui , $ -> . `E2477 0 `ui 274
- , $ -> . `E2477 2 `ui 275
- , $ -> . `E2477 1 `ui 276
- 277 ]
+[e $U 271  ]
 [e :U 272 ]
-"42
-[; ;led.c: 42: }
-[e :UE 271 ]
+[e [\ -> _state `ui , $ -> . `E2473 0 `ui 273
+ , $ -> . `E2473 1 `ui 274
+ 275 ]
+[e :U 271 ]
+"28
+[; ;heater.c: 28: }
+[e :UE 270 ]
 }

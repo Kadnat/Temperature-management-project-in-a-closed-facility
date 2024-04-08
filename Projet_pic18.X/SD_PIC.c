@@ -387,6 +387,7 @@ void initSD(void){
     
     // Set oscillator to frequency such that the SPI will clock between 100 kHz 
     // and 400 kHz for SD card initialization
+    
     OSCTUNEbits.TUN = 0b000000; // Run oscillator at calibrated frequency
     OSCCONbits.IRCF = 0b110; // Configure internal oscillator to 4 MHz
     OSCCONbits.SCS = 0b11; // Use internal oscillator

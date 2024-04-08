@@ -4545,10 +4545,19 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
 # 12 "./temp_monitoring.h" 2
 
 
-
+typedef enum {
+            NO_ERROR,
+            TOO_HOT,
+            TOO_COLD,
+} ErrorType;
 
 typedef struct{
     uint8_t day;
@@ -4564,15 +4573,18 @@ typedef struct{
     float temperature;
     unsigned char mode;
     unsigned char weekday;
+    ErrorType error_type;
 
-} TemperatureData;
+} SystemData;
 
-void save_in_eeprom(TemperatureData* pSystem_data);
-void update_system_data(TemperatureData* pSystem_data);
+void save_in_eeprom(SystemData* pSystem_data);
+void update_system_data(SystemData* pSystem_data);
 void read_address_in_eeprom(void);
 void save_address_in_eeprom(void);
 void extract_one_day_of_data(void);
 void SD_control(void);
+void reset_address_in_eeprom(void);
+void extract_all_alarms(void);
 # 8 "temp_monitoring.c" 2
 
 # 1 "./ds18b20.h" 1
@@ -5140,8 +5152,8 @@ unsigned char pRTCArray[4];
 unsigned char Temp;
 
 
-void DisplayDateOnLCD(TemperatureData *pDate);
-void DisplayTimeToLCD(TemperatureData *pTime);
+void DisplayDateOnLCD(SystemData *pDate);
+void DisplayTimeToLCD(SystemData *pTime);
 # 10 "temp_monitoring.c" 2
 
 # 1 "./AT24C32.h" 1
@@ -5155,9 +5167,10 @@ void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
 
 
 static uint16_t previous_address_eeprom=8;
+static uint8_t counter_alarm=0;
 
 
-void update_system_data(TemperatureData* pSystem_data)
+void update_system_data(SystemData* pSystem_data)
 {
    float temp = OneWireTemp();
    Date date = Get_DS1307_RTC_Date();
@@ -5185,33 +5198,44 @@ void update_system_data(TemperatureData* pSystem_data)
 }
 
 
-void save_in_eeprom(TemperatureData* pSystem_data)
+
+void save_in_eeprom(SystemData* pSystem_data)
 {
-   unsigned char tab[8]={0};
-   float temp = OneWireTemp();
-   Date date = Get_DS1307_RTC_Date();
-   Time time = Get_DS1307_RTC_Time();
+   unsigned char tab[16]={0};
 
+   tab[0] = pSystem_data->year;
+   tab[1] = pSystem_data->month;
+   tab[2] = pSystem_data->day;
+   tab[3] = pSystem_data->hour;
+   tab[4] = pSystem_data->minute;
+   tab[5] = pSystem_data->second;
+   tab[6] = pSystem_data->temp_decimal;
+   tab[7] = pSystem_data->temp_fraction;
+   tab[8] = pSystem_data->error_type;
+   tab[9] = 0;
+   tab[10] = 0;
+   tab[11] = 0;
+   tab[12] = 0;
+   tab[13] = 0;
+   tab[14] = 0;
+   tab[15] = 0;
 
-
-   uint8_t temp_int = (uint8_t)temp;
-   uint8_t temp_frac = (temp - (float)temp_int) * 100.0;
-
-
-   tab[0] = date.day;
-   tab[1] = time.hour;
-   tab[2] = time.minute;
-   tab[3] = time.second;
-   tab[4] = temp_int;
-   tab[5] = temp_frac;
-   tab[6] = 0;
-   tab[7] = 0;
+    printf("Tableau avant écriture dans l'EEPROM:\n");
+    for (int i = 0; i < 16; i++) {
+        printf("%02x ", tab[i]);
+    }
+    printf("\n");
 
 
    write_one_page_in_eeprom(tab, previous_address_eeprom);
+   _delay((unsigned long)((100)*(4000000/4000.0)));
+   write_one_page_in_eeprom(&tab[8], previous_address_eeprom+8);
+   _delay((unsigned long)((100)*(4000000/4000.0)));
 
-
-   previous_address_eeprom += 8;
+   previous_address_eeprom += 16;
+   counter_alarm++;
+   _delay((unsigned long)((100)*(4000000/4000.0)));
+   save_address_in_eeprom();
 }
 
 void save_address_in_eeprom(void)
@@ -5224,6 +5248,8 @@ void save_address_in_eeprom(void)
     write_one_byte_in_eeprom(addressH, 1);
     _delay((unsigned long)((100)*(4000000/4000.0)));
     write_one_byte_in_eeprom(addressL, 0);
+    _delay((unsigned long)((100)*(4000000/4000.0)));
+    write_one_byte_in_eeprom(counter_alarm, 2);
 
 
 }
@@ -5235,13 +5261,56 @@ void read_address_in_eeprom(void)
     addressH = read_one_byte_in_eeprom(1);
     _delay((unsigned long)((100)*(4000000/4000.0)));
     addressL = read_one_byte_in_eeprom(0);
+    _delay((unsigned long)((100)*(4000000/4000.0)));
+    counter_alarm = read_one_byte_in_eeprom(2);
 
     previous_address_eeprom = (addressH<<8) | addressL;
 
     printf("previous add read %u\r\n", previous_address_eeprom);
+    printf("counter alarm %u\r\n", counter_alarm);
 
 
 }
+
+void reset_address_in_eeprom(void)
+{
+    unsigned char addressH=0, addressL=0;
+
+    counter_alarm = 0;
+    previous_address_eeprom = 0;
+
+    write_one_byte_in_eeprom(addressH, 1);
+    _delay((unsigned long)((100)*(4000000/4000.0)));
+    write_one_byte_in_eeprom(addressL, 0);
+    _delay((unsigned long)((100)*(4000000/4000.0)));
+    write_one_byte_in_eeprom(counter_alarm, 2);
+}
+
+void extract_all_alarms(void)
+{
+    unsigned char tab2[16]={0};
+
+
+    uint16_t previous_address_counter = 8;
+
+
+
+    for(int j=0; j<counter_alarm; j++)
+    {
+        read_one_page_in_eeprom(previous_address_counter,tab2);
+        previous_address_counter += 8;
+        _delay((unsigned long)((10)*(4000000/4000.0)));
+        read_one_page_in_eeprom(previous_address_counter,&tab2[8]);
+        previous_address_counter += 8;
+        _delay((unsigned long)((10)*(4000000/4000.0)));
+
+
+        printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7], tab2[8], tab2[9], tab2[10], tab2[11], tab2[12], tab2[13], tab2[14], tab2[15]);
+    }
+
+}
+
+
 
 void extract_one_day_of_data(void)
 {

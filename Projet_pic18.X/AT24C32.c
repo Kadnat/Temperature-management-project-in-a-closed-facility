@@ -66,11 +66,11 @@ void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
     I2C_WriteByte(address_lower_byte);
   	I2C_Start();
   	I2C_ReadFromAddress(AT24C32_ADDRESS);
-    for(int i=0;i<8;i++)
+    for(int i=0;i<7;i++)
     {
         data[i] = I2C_ReadResult_withAck();
-        
   	}
+    data[7] = I2C_ReadResult();
     I2C_Stop();
 
 }

@@ -566,11 +566,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;AT24C32.c: 68:    I2C_ReadFromAddress(0x50);
 [e ( _I2C_ReadFromAddress (1 -> -> 80 `i `uc ]
 "69
-[; ;AT24C32.c: 69:     for(int i=0;i<8;i++)
+[; ;AT24C32.c: 69:     for(int i=0;i<7;i++)
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 277  ]
+[e $ < _i -> 7 `i 277  ]
 [e $U 278  ]
 [e :U 277 ]
 "70
@@ -579,13 +579,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "71
 [; ;AT24C32.c: 71:         data[i] = I2C_ReadResult_withAck();
 [e = *U + _data * -> _i `x -> -> # *U _data `i `x -> ( _I2C_ReadResult_withAck ..  `uc ]
-"73
-[; ;AT24C32.c: 73:    }
+"72
+[; ;AT24C32.c: 72:    }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 277  ]
+[e $ < _i -> 7 `i 277  ]
 [e :U 278 ]
 }
+"73
+[; ;AT24C32.c: 73:     data[7] = I2C_ReadResult();
+[e = *U + _data * -> -> 7 `i `x -> -> # *U _data `i `x -> ( _I2C_ReadResult ..  `uc ]
 "74
 [; ;AT24C32.c: 74:     I2C_Stop();
 [e ( _I2C_Stop ..  ]

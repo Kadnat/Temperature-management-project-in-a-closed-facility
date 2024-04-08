@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=RTC.c main.c lcd.c i2c_soft.c hal_usart.c ds18b20.c SD_PIC.c SPI_PIC.c AT24C32.c PWM.c buzzer.c led.c hal_timer0.c hal_timer1.c mcal_interrupt_manager.c temp_monitoring.c
+SOURCEFILES_QUOTED_IF_SPACED=RTC.c main.c lcd.c i2c_soft.c hal_usart.c ds18b20.c SD_PIC.c SPI_PIC.c AT24C32.c PWM.c buzzer.c led.c hal_timer0.c hal_timer1.c mcal_interrupt_manager.c temp_monitoring.c heater.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/RTC.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/i2c_soft.p1 ${OBJECTDIR}/hal_usart.p1 ${OBJECTDIR}/ds18b20.p1 ${OBJECTDIR}/SD_PIC.p1 ${OBJECTDIR}/SPI_PIC.p1 ${OBJECTDIR}/AT24C32.p1 ${OBJECTDIR}/PWM.p1 ${OBJECTDIR}/buzzer.p1 ${OBJECTDIR}/led.p1 ${OBJECTDIR}/hal_timer0.p1 ${OBJECTDIR}/hal_timer1.p1 ${OBJECTDIR}/mcal_interrupt_manager.p1 ${OBJECTDIR}/temp_monitoring.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/RTC.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/lcd.p1.d ${OBJECTDIR}/i2c_soft.p1.d ${OBJECTDIR}/hal_usart.p1.d ${OBJECTDIR}/ds18b20.p1.d ${OBJECTDIR}/SD_PIC.p1.d ${OBJECTDIR}/SPI_PIC.p1.d ${OBJECTDIR}/AT24C32.p1.d ${OBJECTDIR}/PWM.p1.d ${OBJECTDIR}/buzzer.p1.d ${OBJECTDIR}/led.p1.d ${OBJECTDIR}/hal_timer0.p1.d ${OBJECTDIR}/hal_timer1.p1.d ${OBJECTDIR}/mcal_interrupt_manager.p1.d ${OBJECTDIR}/temp_monitoring.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/RTC.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/i2c_soft.p1 ${OBJECTDIR}/hal_usart.p1 ${OBJECTDIR}/ds18b20.p1 ${OBJECTDIR}/SD_PIC.p1 ${OBJECTDIR}/SPI_PIC.p1 ${OBJECTDIR}/AT24C32.p1 ${OBJECTDIR}/PWM.p1 ${OBJECTDIR}/buzzer.p1 ${OBJECTDIR}/led.p1 ${OBJECTDIR}/hal_timer0.p1 ${OBJECTDIR}/hal_timer1.p1 ${OBJECTDIR}/mcal_interrupt_manager.p1 ${OBJECTDIR}/temp_monitoring.p1 ${OBJECTDIR}/heater.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/RTC.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/lcd.p1.d ${OBJECTDIR}/i2c_soft.p1.d ${OBJECTDIR}/hal_usart.p1.d ${OBJECTDIR}/ds18b20.p1.d ${OBJECTDIR}/SD_PIC.p1.d ${OBJECTDIR}/SPI_PIC.p1.d ${OBJECTDIR}/AT24C32.p1.d ${OBJECTDIR}/PWM.p1.d ${OBJECTDIR}/buzzer.p1.d ${OBJECTDIR}/led.p1.d ${OBJECTDIR}/hal_timer0.p1.d ${OBJECTDIR}/hal_timer1.p1.d ${OBJECTDIR}/mcal_interrupt_manager.p1.d ${OBJECTDIR}/temp_monitoring.p1.d ${OBJECTDIR}/heater.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/RTC.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/i2c_soft.p1 ${OBJECTDIR}/hal_usart.p1 ${OBJECTDIR}/ds18b20.p1 ${OBJECTDIR}/SD_PIC.p1 ${OBJECTDIR}/SPI_PIC.p1 ${OBJECTDIR}/AT24C32.p1 ${OBJECTDIR}/PWM.p1 ${OBJECTDIR}/buzzer.p1 ${OBJECTDIR}/led.p1 ${OBJECTDIR}/hal_timer0.p1 ${OBJECTDIR}/hal_timer1.p1 ${OBJECTDIR}/mcal_interrupt_manager.p1 ${OBJECTDIR}/temp_monitoring.p1
+OBJECTFILES=${OBJECTDIR}/RTC.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/i2c_soft.p1 ${OBJECTDIR}/hal_usart.p1 ${OBJECTDIR}/ds18b20.p1 ${OBJECTDIR}/SD_PIC.p1 ${OBJECTDIR}/SPI_PIC.p1 ${OBJECTDIR}/AT24C32.p1 ${OBJECTDIR}/PWM.p1 ${OBJECTDIR}/buzzer.p1 ${OBJECTDIR}/led.p1 ${OBJECTDIR}/hal_timer0.p1 ${OBJECTDIR}/hal_timer1.p1 ${OBJECTDIR}/mcal_interrupt_manager.p1 ${OBJECTDIR}/temp_monitoring.p1 ${OBJECTDIR}/heater.p1
 
 # Source Files
-SOURCEFILES=RTC.c main.c lcd.c i2c_soft.c hal_usart.c ds18b20.c SD_PIC.c SPI_PIC.c AT24C32.c PWM.c buzzer.c led.c hal_timer0.c hal_timer1.c mcal_interrupt_manager.c temp_monitoring.c
+SOURCEFILES=RTC.c main.c lcd.c i2c_soft.c hal_usart.c ds18b20.c SD_PIC.c SPI_PIC.c AT24C32.c PWM.c buzzer.c led.c hal_timer0.c hal_timer1.c mcal_interrupt_manager.c temp_monitoring.c heater.c
 
 
 
@@ -216,6 +216,14 @@ ${OBJECTDIR}/temp_monitoring.p1: temp_monitoring.c  nbproject/Makefile-${CND_CON
 	@-${MV} ${OBJECTDIR}/temp_monitoring.d ${OBJECTDIR}/temp_monitoring.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/temp_monitoring.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/heater.p1: heater.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/heater.p1.d 
+	@${RM} ${OBJECTDIR}/heater.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit3   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/heater.p1 heater.c 
+	@-${MV} ${OBJECTDIR}/heater.d ${OBJECTDIR}/heater.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/heater.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/RTC.p1: RTC.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
@@ -344,6 +352,14 @@ ${OBJECTDIR}/temp_monitoring.p1: temp_monitoring.c  nbproject/Makefile-${CND_CON
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/temp_monitoring.p1 temp_monitoring.c 
 	@-${MV} ${OBJECTDIR}/temp_monitoring.d ${OBJECTDIR}/temp_monitoring.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/temp_monitoring.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/heater.p1: heater.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/heater.p1.d 
+	@${RM} ${OBJECTDIR}/heater.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/heater.p1 heater.c 
+	@-${MV} ${OBJECTDIR}/heater.d ${OBJECTDIR}/heater.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/heater.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

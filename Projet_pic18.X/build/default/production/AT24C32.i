@@ -4573,6 +4573,11 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
 # 14 "./AT24C32.h" 2
 
 
@@ -4643,11 +4648,11 @@ void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
     I2C_WriteByte(address_lower_byte);
    I2C_Start();
    I2C_ReadFromAddress(0x50);
-    for(int i=0;i<8;i++)
+    for(int i=0;i<7;i++)
     {
         data[i] = I2C_ReadResult_withAck();
-
    }
+    data[7] = I2C_ReadResult();
     I2C_Stop();
 
 }

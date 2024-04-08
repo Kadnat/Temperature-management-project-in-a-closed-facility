@@ -15,4 +15,5 @@ PWM.h  \
 buzzer.h  \
 led.h  \
 hal_timer1.h  \
-hal_timer0.h 
+hal_timer0.h  \
+heater.h 

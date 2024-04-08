@@ -4548,39 +4548,82 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
 # 4 "./led.h" 2
 
+# 1 "./temp_monitoring.h" 1
+# 14 "./temp_monitoring.h"
+typedef enum {
+            NO_ERROR,
+            TOO_HOT,
+            TOO_COLD,
+} ErrorType;
 
+typedef struct{
+    uint8_t day;
+    uint8_t month;
+    uint8_t year;
+    uint8_t hour;
+    uint8_t minute;
+    uint8_t second;
+    uint8_t temp_decimal;
+    uint8_t temp_fraction;
+    uint8_t command_decimal;
+    uint8_t command_fraction;
+    float temperature;
+    unsigned char mode;
+    unsigned char weekday;
+    ErrorType error_type;
 
+} SystemData;
 
-
-
-
-enum System_state {ALARM, NORMAL};
-
-void set_mode(enum System_state system_state);
+void save_in_eeprom(SystemData* pSystem_data);
+void update_system_data(SystemData* pSystem_data);
+void read_address_in_eeprom(void);
+void save_address_in_eeprom(void);
+void extract_one_day_of_data(void);
+void SD_control(void);
+void reset_address_in_eeprom(void);
+void extract_all_alarms(void);
+# 5 "./led.h" 2
+# 15 "./led.h"
+void led_set_mode(SystemData *psystem_state);
 # 9 "led.c" 2
 
 
-void set_mode(enum System_state system_state)
+void led_set_mode(SystemData *psystem_state)
 {
     TRISDbits.TRISD3 = 0;
     TRISDbits.TRISD2 = 0;
-    switch(system_state)
+    TRISDbits.TRISD5 = 0;
+    switch(psystem_state->error_type)
     {
-        case ALARM:
-            PORTDbits.RD2 = 0;
-            PORTDbits.RD3 = 1;
-            break;
-
-        case NORMAL:
+        case NO_ERROR:
             PORTDbits.RD2 = 1;
             PORTDbits.RD3 = 0;
+            PORTDbits.RD5 = 0;
+            break;
+
+        case TOO_COLD:
+            PORTDbits.RD2 = 0;
+            PORTDbits.RD3 = 0;
+            PORTDbits.RD5 = 1;
+            break;
+
+        case TOO_HOT:
+            PORTDbits.RD2 = 0;
+            PORTDbits.RD3 = 1;
+            PORTDbits.RD5 = 0;
             break;
 
         default:
             PORTDbits.RD2 = 0;
             PORTDbits.RD3 = 0;
+            PORTDbits.RD5 = 0;
             break;
     }
 }

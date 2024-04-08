@@ -4563,6 +4563,11 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
 # 11 "mcal_interrupt_manager.c" 2
 # 45 "mcal_interrupt_manager.c"
 void __attribute__((picinterrupt(("")))) InterruptManager(void)

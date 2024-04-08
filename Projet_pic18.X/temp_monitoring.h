@@ -11,7 +11,11 @@
 
 #include "common.h" // include processor files - each processor file is guarded.  
 
-
+typedef enum {
+            NO_ERROR,
+            TOO_HOT,
+            TOO_COLD,
+} ErrorType;
 
 typedef struct{
     uint8_t day;
@@ -27,14 +31,17 @@ typedef struct{
     float temperature;
     unsigned char mode;
     unsigned char weekday;
+    ErrorType error_type;
     
-} TemperatureData;
+} SystemData;
 
-void save_in_eeprom(TemperatureData* pSystem_data);
-void update_system_data(TemperatureData* pSystem_data);
+void save_in_eeprom(SystemData* pSystem_data);
+void update_system_data(SystemData* pSystem_data);
 void read_address_in_eeprom(void);
 void save_address_in_eeprom(void);
 void extract_one_day_of_data(void);
 void SD_control(void);
+void reset_address_in_eeprom(void);
+void extract_all_alarms(void);
 #endif	/* XC_HEADER_TEMPLATE_H */
 

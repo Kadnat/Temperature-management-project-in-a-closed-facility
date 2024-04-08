@@ -1,14 +1,14 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2501 `(v ~T0 @X0 0 tf ]
-[v F2502 `(v ~T0 @X0 0 tf ]
-[v F2479 `(v ~T0 @X0 0 tf ]
+[v F2505 `(v ~T0 @X0 0 tf ]
+[v F2506 `(v ~T0 @X0 0 tf ]
+[v F2483 `(v ~T0 @X0 0 tf ]
 "40 hal_timer1.c
 [; ;hal_timer1.c: 40: uint8_t Timer1_Init(const timer1_t *_timer)
-[c E2473 0 1 .. ]
-[n E2473 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
+[c E2477 0 1 .. ]
+[n E2477 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
 "82 ./hal_timer1.h
 [; ;./hal_timer1.h: 82: {
-[s S270 `*F2479 1 `E2473 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
+[s S270 `*F2483 1 `E2477 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
 [n S270 . TMR1_InterruptHandler priority timer1_preload_value timer1_prescaler_value timer1_mode timer1_counter_mode timer1_osc_cfg timer1_reg_rw_mode timer1_reserved ]
 "5230 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [s S216 :2 `uc 1 :1 `uc 1 ]
@@ -27,10 +27,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S215 . . . . . ]
 "5257
 [v _T1CONbits `VS215 ~T0 @X0 0 e@4045 ]
-[v F2504 `(v ~T0 @X0 1 tf1`*CS270 ]
+[v F2508 `(v ~T0 @X0 1 tf1`*CS270 ]
 "29 hal_timer1.c
 [; ;hal_timer1.c: 29: static __attribute__((inline)) void Timer1_Mode_Selection(const timer1_t *_timer);
-[v _Timer1_Mode_Selection `TF2504 ~T0 @X0 0 s ]
+[v _Timer1_Mode_Selection `TF2508 ~T0 @X0 0 s ]
 "5341 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _TMR1H `Vuc ~T0 @X0 0 e@4047 ]
 "5334
@@ -71,7 +71,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S257 . . . . ]
 "6406
 [v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
-[v F2526 `(v ~T0 @X0 0 tf ]
+[v F2530 `(v ~T0 @X0 0 tf ]
 "54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; <" PORTA equ 0F80h ;# ">
 "191
@@ -420,9 +420,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "22
 [; ;hal_timer1.c: 22:     static void (*TMR1_InterruptHandler)(void) = ((void*)0);
-[v _TMR1_InterruptHandler `*F2501 ~T0 @X0 1 s ]
+[v _TMR1_InterruptHandler `*F2505 ~T0 @X0 1 s ]
 [i _TMR1_InterruptHandler
--> -> -> 0 `i `*v `*F2502
+-> -> -> 0 `i `*v `*F2506
 ]
 "40
 [; ;hal_timer1.c: 40: uint8_t Timer1_Init(const timer1_t *_timer)
@@ -714,7 +714,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _TMR1L -> _timer1_preload `uc ]
 "177
 [; ;hal_timer1.c: 177:     if(TMR1_InterruptHandler)
-[e $ ! != _TMR1_InterruptHandler -> -> 0 `i `*F2526 284  ]
+[e $ ! != _TMR1_InterruptHandler -> -> 0 `i `*F2530 284  ]
 "178
 [; ;hal_timer1.c: 178:     {
 {
@@ -735,10 +735,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_timer1.c: 182: }
 [e :UE 283 ]
 }
-[v F2528 `(v ~T0 @X0 1 tf1`*CS270 ]
+[v F2532 `(v ~T0 @X0 1 tf1`*CS270 ]
 "188
 [; ;hal_timer1.c: 188: static __attribute__((inline)) void Timer1_Mode_Selection(const timer1_t *_timer)
-[v _Timer1_Mode_Selection `TF2528 ~T0 @X0 1 s ]
+[v _Timer1_Mode_Selection `TF2532 ~T0 @X0 1 s ]
 "189
 [; ;hal_timer1.c: 189: {
 {

@@ -4536,6 +4536,11 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
 # 2 "main.c" 2
 # 1 "./lcd.h" 1
 # 47 "./lcd.h"
@@ -4582,7 +4587,13 @@ void I2C_Test();
 # 1 "./RTC.h" 1
 # 11 "./RTC.h"
 # 1 "./temp_monitoring.h" 1
-# 16 "./temp_monitoring.h"
+# 14 "./temp_monitoring.h"
+typedef enum {
+            NO_ERROR,
+            TOO_HOT,
+            TOO_COLD,
+} ErrorType;
+
 typedef struct{
     uint8_t day;
     uint8_t month;
@@ -4597,15 +4608,18 @@ typedef struct{
     float temperature;
     unsigned char mode;
     unsigned char weekday;
+    ErrorType error_type;
 
-} TemperatureData;
+} SystemData;
 
-void save_in_eeprom(TemperatureData* pSystem_data);
-void update_system_data(TemperatureData* pSystem_data);
+void save_in_eeprom(SystemData* pSystem_data);
+void update_system_data(SystemData* pSystem_data);
 void read_address_in_eeprom(void);
 void save_address_in_eeprom(void);
 void extract_one_day_of_data(void);
 void SD_control(void);
+void reset_address_in_eeprom(void);
+void extract_all_alarms(void);
 # 11 "./RTC.h" 2
 # 30 "./RTC.h"
 typedef struct {
@@ -4639,8 +4653,8 @@ unsigned char pRTCArray[4];
 unsigned char Temp;
 
 
-void DisplayDateOnLCD(TemperatureData *pDate);
-void DisplayTimeToLCD(TemperatureData *pTime);
+void DisplayDateOnLCD(SystemData *pDate);
+void DisplayTimeToLCD(SystemData *pTime);
 # 5 "main.c" 2
 # 1 "./hal_usart.h" 1
 # 17 "./hal_usart.h"
@@ -5481,10 +5495,8 @@ void set_pwm_duty(float duty);
 void buzzer(int second);
 # 13 "main.c" 2
 # 1 "./led.h" 1
-# 11 "./led.h"
-enum System_state {ALARM, NORMAL};
-
-void set_mode(enum System_state system_state);
+# 15 "./led.h"
+void led_set_mode(SystemData *psystem_state);
 # 14 "main.c" 2
 # 1 "./hal_timer1.h" 1
 # 81 "./hal_timer1.h"
@@ -5550,7 +5562,10 @@ uint8_t Timer0_Write_Value(const timer0_t *_timer, uint16_t _value);
 uint8_t Timer0_Read_Value(const timer0_t *_timer, uint16_t *_value);
 # 16 "main.c" 2
 
-
+# 1 "./heater.h" 1
+# 10 "./heater.h"
+void heater_set_mode(BooleanState state);
+# 18 "main.c" 2
 
 
 uint8_t receive_usart_data;
@@ -5558,7 +5573,7 @@ uint8_t receive_usart_data;
 volatile uint32_t valid_usart_tx;
 volatile uint32_t valid_usart_rx;
 
-TemperatureData system_management;
+SystemData system_management;
 
 void putch(char c);
 void USART_FramingDefaultErrorHandler(void);
@@ -5575,15 +5590,18 @@ void main(void) {
     volatile uint16_t timer1_counter_val;
     usart_module_init();
     timer1_timer_init();
-    set_mode(NORMAL);
+
+    system_management.error_type = TOO_COLD;
+    led_set_mode(&system_management);
+    heater_set_mode(ON);
+
+
     read_address_in_eeprom();
 
     set_pwm_duty(0);
     start_pwm();
     LCD_Init(0x27);
-# 60 "main.c"
-    read_init_sd_card();
-
+# 66 "main.c"
     while(1)
     {
         ;
@@ -5618,7 +5636,7 @@ void Timer1_DefaultInterruptHandler(void)
     {
         save_in_eeprom(&system_management);
         cpt_ms_eeprom=0;
-        save_address_in_eeprom();
+        extract_all_alarms();
 
 
     }

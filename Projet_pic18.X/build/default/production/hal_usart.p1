@@ -1,16 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2539 `(v ~T0 @X0 0 tf ]
-[v F2540 `(v ~T0 @X0 0 tf ]
-[v F2542 `(v ~T0 @X0 0 tf ]
 [v F2543 `(v ~T0 @X0 0 tf ]
-[v F2545 `(v ~T0 @X0 0 tf ]
+[v F2544 `(v ~T0 @X0 0 tf ]
 [v F2546 `(v ~T0 @X0 0 tf ]
-[v F2548 `(v ~T0 @X0 0 tf ]
+[v F2547 `(v ~T0 @X0 0 tf ]
 [v F2549 `(v ~T0 @X0 0 tf ]
+[v F2550 `(v ~T0 @X0 0 tf ]
+[v F2552 `(v ~T0 @X0 0 tf ]
+[v F2553 `(v ~T0 @X0 0 tf ]
 "57 hal_usart.c
 [; ;hal_usart.c: 57: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart)
-[c E2477 0 1 2 3 4 5 .. ]
-[n E2477 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
+[c E2481 0 1 2 3 4 5 .. ]
+[n E2481 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
 [c E2294 0 1 .. ]
 [n E2294 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
 "100 ./hal_usart.h
@@ -29,13 +29,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./hal_usart.h: 120: {
 [u S272 `S273 1 `uc 1 ]
 [n S272 . . status ]
-[v F2514 `(v ~T0 @X0 0 tf ]
-[v F2516 `(v ~T0 @X0 0 tf ]
 [v F2518 `(v ~T0 @X0 0 tf ]
 [v F2520 `(v ~T0 @X0 0 tf ]
+[v F2522 `(v ~T0 @X0 0 tf ]
+[v F2524 `(v ~T0 @X0 0 tf ]
 "132
 [; ;./hal_usart.h: 132: {
-[s S274 `ul 1 `E2477 1 `S270 1 `S271 1 `S272 1 `*F2514 1 `*F2516 1 `*F2518 1 `*F2520 1 ]
+[s S274 `ul 1 `E2481 1 `S270 1 `S271 1 `S272 1 `*F2518 1 `*F2520 1 `*F2522 1 `*F2524 1 ]
 [n S274 . baudrate baudrate_config usart_tx_cfg usart_rx_cfg eusart_error_status USART_TxDefaultInterruptHandler USART_RxDefaultInterruptHandler USART_FramingErrorHandler USART_OverrunErrorHandler ]
 "3031 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -155,10 +155,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S257 . . . . ]
 "6406
 [v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
-[v F2602 `(v ~T0 @X0 0 tf ]
-[v F2604 `(v ~T0 @X0 0 tf ]
-[v F2605 `(v ~T0 @X0 0 tf ]
 [v F2606 `(v ~T0 @X0 0 tf ]
+[v F2608 `(v ~T0 @X0 0 tf ]
+[v F2609 `(v ~T0 @X0 0 tf ]
+[v F2610 `(v ~T0 @X0 0 tf ]
 "54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; <" PORTA equ 0F80h ;# ">
 "191
@@ -501,27 +501,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTRB  =  OFF       ]
 "18 hal_usart.c
 [; ;hal_usart.c: 18:     static void (*USART_TxDefaultInterruptHandler)(void) = ((void*)0);
-[v _USART_TxDefaultInterruptHandler `*F2539 ~T0 @X0 1 s ]
+[v _USART_TxDefaultInterruptHandler `*F2543 ~T0 @X0 1 s ]
 [i _USART_TxDefaultInterruptHandler
--> -> -> 0 `i `*v `*F2540
+-> -> -> 0 `i `*v `*F2544
 ]
 "25
 [; ;hal_usart.c: 25:     static void (*USART_RxDefaultInterruptHandler)(void) = ((void*)0);
-[v _USART_RxDefaultInterruptHandler `*F2542 ~T0 @X0 1 s ]
+[v _USART_RxDefaultInterruptHandler `*F2546 ~T0 @X0 1 s ]
 [i _USART_RxDefaultInterruptHandler
--> -> -> 0 `i `*v `*F2543
+-> -> -> 0 `i `*v `*F2547
 ]
 "26
 [; ;hal_usart.c: 26:     static void (*USART_FramingErrorHandler)(void) = ((void*)0);
-[v _USART_FramingErrorHandler `*F2545 ~T0 @X0 1 s ]
+[v _USART_FramingErrorHandler `*F2549 ~T0 @X0 1 s ]
 [i _USART_FramingErrorHandler
--> -> -> 0 `i `*v `*F2546
+-> -> -> 0 `i `*v `*F2550
 ]
 "27
 [; ;hal_usart.c: 27:     static void (*USART_OverrunErrorHandler)(void) = ((void*)0);
-[v _USART_OverrunErrorHandler `*F2548 ~T0 @X0 1 s ]
+[v _USART_OverrunErrorHandler `*F2552 ~T0 @X0 1 s ]
 [i _USART_OverrunErrorHandler
--> -> -> 0 `i `*v `*F2549
+-> -> -> 0 `i `*v `*F2553
 ]
 "57
 [; ;hal_usart.c: 57: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart)
@@ -1046,12 +1046,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 302  ]
 [e :U 303 ]
-[e [\ -> . *U __usart 1 `ui , $ -> . `E2477 0 `ui 304
- , $ -> . `E2477 1 `ui 305
- , $ -> . `E2477 2 `ui 306
- , $ -> . `E2477 3 `ui 307
- , $ -> . `E2477 4 `ui 308
- , $ -> . `E2477 5 `ui 309
+[e [\ -> . *U __usart 1 `ui , $ -> . `E2481 0 `ui 304
+ , $ -> . `E2481 1 `ui 305
+ , $ -> . `E2481 2 `ui 306
+ , $ -> . `E2481 3 `ui 307
+ , $ -> . `E2481 4 `ui 308
+ , $ -> . `E2481 5 `ui 309
  310 ]
 [e :U 302 ]
 "276
@@ -1315,7 +1315,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
 "414
 [; ;hal_usart.c: 414:     if(USART_TxDefaultInterruptHandler)
-[e $ ! != _USART_TxDefaultInterruptHandler -> -> 0 `i `*F2602 334  ]
+[e $ ! != _USART_TxDefaultInterruptHandler -> -> 0 `i `*F2606 334  ]
 "415
 [; ;hal_usart.c: 415:     {
 {
@@ -1346,7 +1346,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "426
 [; ;hal_usart.c: 426:   if(USART_RxDefaultInterruptHandler)
-[e $ ! != _USART_RxDefaultInterruptHandler -> -> 0 `i `*F2604 337  ]
+[e $ ! != _USART_RxDefaultInterruptHandler -> -> 0 `i `*F2608 337  ]
 "427
 [; ;hal_usart.c: 427:     {
 {
@@ -1365,7 +1365,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 338 ]
 "432
 [; ;hal_usart.c: 432:   if(USART_FramingErrorHandler)
-[e $ ! != _USART_FramingErrorHandler -> -> 0 `i `*F2605 339  ]
+[e $ ! != _USART_FramingErrorHandler -> -> 0 `i `*F2609 339  ]
 "433
 [; ;hal_usart.c: 433:     {
 {
@@ -1384,7 +1384,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 340 ]
 "438
 [; ;hal_usart.c: 438:   if(USART_OverrunErrorHandler)
-[e $ ! != _USART_OverrunErrorHandler -> -> 0 `i `*F2606 341  ]
+[e $ ! != _USART_OverrunErrorHandler -> -> 0 `i `*F2610 341  ]
 "439
 [; ;hal_usart.c: 439:     {
 {

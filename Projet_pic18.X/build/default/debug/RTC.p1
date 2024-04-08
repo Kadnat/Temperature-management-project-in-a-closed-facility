@@ -28,10 +28,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./RTC.h: 30: typedef struct {
 [s S273 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S273 . day month year weekday ]
-"16 ./temp_monitoring.h
-[; ;./temp_monitoring.h: 16: typedef struct{
-[s S272 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 ]
-[n S272 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday ]
+"375 RTC.c
+[; ;RTC.c: 375: void DisplayDateOnLCD(SystemData *pDate) {
+[c E2838 0 1 2 .. ]
+[n E2838 . NO_ERROR TOO_HOT TOO_COLD  ]
+"20 ./temp_monitoring.h
+[; ;./temp_monitoring.h: 20: typedef struct{
+[s S272 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E2838 1 ]
+[n S272 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
 "51 ./lcd.h
 [; ;./lcd.h: 51:     void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
 [v _LCD_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
@@ -782,7 +786,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 299 ]
 }
 "375
-[; ;RTC.c: 375: void DisplayDateOnLCD(TemperatureData *pDate) {
+[; ;RTC.c: 375: void DisplayDateOnLCD(SystemData *pDate) {
 [v _DisplayDateOnLCD `(v ~T0 @X0 1 ef1`*S272 ]
 {
 [e :U _DisplayDateOnLCD ]
@@ -869,7 +873,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 300 ]
 }
 "453
-[; ;RTC.c: 453: void DisplayTimeToLCD(TemperatureData *pTime) {
+[; ;RTC.c: 453: void DisplayTimeToLCD(SystemData *pTime) {
 [v _DisplayTimeToLCD `(v ~T0 @X0 1 ef1`*S272 ]
 {
 [e :U _DisplayTimeToLCD ]

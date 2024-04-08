@@ -372,7 +372,7 @@ void DisplayDateOnLCD( unsigned char* pDateArray )   // Displays Date in DD:MM:Y
     }
 }*/
         
-void DisplayDateOnLCD(TemperatureData *pDate) {
+void DisplayDateOnLCD(SystemData *pDate) {
     // Déclaration des variables locales
     unsigned char tens, units;
 
@@ -450,7 +450,7 @@ void DisplayDateOnLCD(TemperatureData *pDate) {
     }*/
 }
 
-void DisplayTimeToLCD(TemperatureData *pTime) {
+void DisplayTimeToLCD(SystemData *pTime) {
     // Déclaration des variables locales
     unsigned char tens, units;
 

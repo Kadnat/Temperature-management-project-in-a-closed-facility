@@ -1,4 +1,4 @@
-# 1 "crc.c"
+# 1 "heater.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,20 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "crc.c" 2
-# 38 "crc.c"
+# 1 "heater.c" 2
+
+
+
+
+
+
+
+
+# 1 "./heater.h" 1
+
+
+
+
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = XT
@@ -4537,241 +4549,36 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
-# 39 "crc.c" 2
-# 1 "./crc.h" 1
-# 37 "./crc.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdbool.h" 1 3
-# 38 "./crc.h" 2
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
+# 5 "./heater.h" 2
 
 
 
 
 
+void heater_set_mode(BooleanState state);
+# 9 "heater.c" 2
 
 
-void CRC_Initialize(void);
-
-
-
-
-
-
-
-__attribute__((inline)) void CRC_StartCrc(void);
-# 62 "./crc.h"
-_Bool CRC_WriteData(uint32_t data);
-# 71 "./crc.h"
-uint32_t CRC_GetCalculatedResult(_Bool reverse, uint32_t xorValue);
-# 80 "./crc.h"
-__attribute__((inline)) _Bool CRC_IsCrcBusy(void);
-
-
-
-
-
-
-
-__attribute__((inline)) void CRC_StartScanner(void);
-
-
-
-
-
-
-
-__attribute__((inline)) void CRC_StopScanner(void);
-# 105 "./crc.h"
-void CRC_SetScannerAddressLimit(uint24_t startAddr, uint24_t endAddr);
-# 114 "./crc.h"
-__attribute__((inline)) _Bool CRC_IsScannerBusy(void);
-# 40 "crc.c" 2
-
-
-void CRC_Initialize(void)
+void heater_set_mode(BooleanState state)
 {
-    CRCCON0 = 0x00;
-
-
-    CRCCON1 = 0xF;
-
-    CRCCON2 = 0x7;
-
-
-    CRCCON0bits.SETUP = 0b10;
-
-    CRCXORT = 0x0;
-
-    CRCXORU = 0x0;
-
-    CRCXORH = 0x10;
-
-    CRCXORL = 0x21;
-
-
-    CRCCON0bits.SETUP = 0b00;
-
-    CRCOUTT = 0x0;
-
-    CRCOUTU = 0x0;
-
-    CRCOUTH = 0x0;
-
-    CRCOUTL = 0x0;
-
-
-    CRCDATAT = 0x0;
-
-    CRCDATAU = 0x0;
-
-    CRCDATAH = 0x0;
-
-    CRCDATAL = 0x0;
-
-
-
-    SCANHADRU = 0x3F;
-
-    SCANHADRH = 0xFF;
-
-    SCANHADRL = 0xFF;
-
-    SCANLADRU = 0x0;
-
-    SCANLADRH = 0x0;
-
-    SCANLADRL = 0x0;
-
-    SCANTRIG = 0x0;
-
-
-    PIR0bits.CRCIF = 0;
-
-    PIE0bits.CRCIE = 0;
-
-
-    PIR8bits.SCANIF = 0;
-
-    PIE8bits.SCANIE = 0;
-
-
-    CRCCON0 = 0x90;
-
-    SCANCON0 = 0x0;
-}
-
-__attribute__((inline)) void CRC_StartCrc(void)
-{
-    CRCCON0bits.CRCGO = 1;
-}
-
-_Bool CRC_WriteData(uint32_t data)
-{
-    if(!CRCCON0bits.FULL)
+    TRISDbits.TRISD4 = 0;
+    switch(state)
     {
-        CRCDATAT = (uint8_t)((data >> 24) & 0xFF);
-        CRCDATAU = (uint8_t)((data >> 16) & 0xFF);
-        CRCDATAH = (uint8_t)((data >> 8) & 0xFF);
-        CRCDATAL = (uint8_t)(data & 0xFF);
-        return 1;
+        case OFF:
+            PORTDbits.RD4 = 1;
+            break;
+
+        case ON:
+            PORTDbits.RD4 = 0;
+            break;
+
+        default:
+            PORTDbits.RD4 = 1;
+            break;
     }
-    else
-    {
-        return 0;
-    }
-}
-
-static uint32_t CRC_ReverseValue(uint32_t crc)
-{
-    uint32_t mask;
-    uint32_t reverse;
-
-    mask = 1;
-    mask <<= CRCCON1bits.PLEN;
-    reverse = 0;
-
-    while(crc)
-    {
-        if(crc & 0x01)
-        {
-            reverse |= mask;
-        }
-        mask >>= 1;
-        crc >>= 1;
-    }
-    return reverse;
-}
-
-uint32_t CRC_GetCalculatedResult(_Bool reverse, uint32_t xorValue)
-{
-    uint32_t result = 0x00;
-
-    CRCCON0bits.SETUP = 0b00;
-    result = (uint32_t)CRCOUTL;
-    result = result | ((uint32_t)CRCOUTH << 8);
-    result = result | ((uint32_t)CRCOUTU << 16);
-    result = result | ((uint32_t)CRCOUTT << 24);
-    if(reverse)
-    {
-        result = CRC_ReverseValue(result);
-    }
-    result ^= xorValue;
-    return (result & 0xFFFF);
-}
-
-__attribute__((inline)) _Bool CRC_IsCrcBusy(void)
-{
-    return(CRCCON0bits.CRCBUSY);
-}
-
-__attribute__((inline)) void CRC_StartScanner(void)
-{
-    uint8_t gIntFlagStatus = 0;
-    gIntFlagStatus = INTCON0bits.GIE;
-
-
-    INTCON0bits.GIE = 0;
-
-    PRLOCK = 0x55;
-    PRLOCK = 0xAA;
-    PRLOCKbits.PRLOCKED = 1;
-    INTCON0bits.GIE = gIntFlagStatus;
-
-
-    CRCCON0bits.CRCGO = 1;
-
-    SCANCON0bits.SGO = 1;
-}
-
-__attribute__((inline)) void CRC_StopScanner(void)
-{
-    uint8_t gIntFlagStatus = 0;
-    gIntFlagStatus = INTCON0bits.GIE;
-
-
-    INTCON0bits.GIE = 0;
-
-    PRLOCK = 0x55;
-    PRLOCK = 0xAA;
-    PRLOCKbits.PRLOCKED = 0;
-    INTCON0bits.GIE = gIntFlagStatus;
-
-
-    CRCCON0bits.CRCGO = 0;
-
-    SCANCON0bits.SGO = 0;
-}
-
-void CRC_SetScannerAddressLimit(uint24_t startAddr, uint24_t endAddr)
-{
-    SCANHADRU = (uint8_t)((endAddr >> 16) & 0xFF);
-    SCANHADRH = (uint8_t)((endAddr >> 8) & 0xFF);
-    SCANHADRL = (uint8_t)(endAddr & 0xFF);
-    SCANLADRU = (uint8_t)((startAddr >> 16) & 0xFF);
-    SCANLADRH = (uint8_t)((startAddr >> 8) & 0xFF);
-    SCANLADRL = (uint8_t)(startAddr & 0xFF);
-}
-
-__attribute__((inline)) _Bool CRC_IsScannerBusy(void)
-{
-    return(SCANCON0bits.BUSY);
 }

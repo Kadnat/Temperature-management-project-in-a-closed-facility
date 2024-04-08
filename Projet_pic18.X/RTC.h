@@ -58,8 +58,8 @@ unsigned char pRTCArray[4];
 unsigned char Temp;
 //void DisplayTimeToLCD(unsigned char*) ;
 //void DisplayDateOnLCD( unsigned char*);
-void DisplayDateOnLCD(TemperatureData *pDate);
-void DisplayTimeToLCD(TemperatureData *pTime);
+void DisplayDateOnLCD(SystemData *pDate);
+void DisplayTimeToLCD(SystemData *pTime);
 
 #endif	/* RTC_H */
 

@@ -5061,6 +5061,11 @@ float print_temperature(float temp);
 
 
 #pragma config EBTRB = OFF
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
 # 39 "ds18b20.c" 2
 
 # 1 "./ssd1306_unbuffered.h" 1

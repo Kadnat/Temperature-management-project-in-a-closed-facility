@@ -1610,8 +1610,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "446
 [; ;./ssd1306_unbuffered.h: 446:     uint8_t offs;
 [v _offs `uc ~T0 @X0 1 a ]
-[v F3301 `uc ~T0 @X0 -> 4 `i s ]
-[i F3301
+[v F3305 `uc ~T0 @X0 -> 4 `i s ]
+[i F3305
 :U ..
 "447
 [; ;./ssd1306_unbuffered.h: 447:     uint8_t b[4] = {0};
@@ -1619,7 +1619,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _b `uc ~T0 @X0 -> 4 `i a ]
-[e = _b F3301 ]
+[e = _b F3305 ]
 "449
 [; ;./ssd1306_unbuffered.h: 449:     if(c < 'S') {
 [e $ ! < -> _c `ui -> 83 `ui 318  ]

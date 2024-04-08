@@ -4696,6 +4696,11 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
 # 11 "RTC.c" 2
 
 # 1 "./i2c_soft.h" 1
@@ -4729,7 +4734,13 @@ void I2C_Test();
 # 1 "./RTC.h" 1
 # 11 "./RTC.h"
 # 1 "./temp_monitoring.h" 1
-# 16 "./temp_monitoring.h"
+# 14 "./temp_monitoring.h"
+typedef enum {
+            NO_ERROR,
+            TOO_HOT,
+            TOO_COLD,
+} ErrorType;
+
 typedef struct{
     uint8_t day;
     uint8_t month;
@@ -4744,15 +4755,18 @@ typedef struct{
     float temperature;
     unsigned char mode;
     unsigned char weekday;
+    ErrorType error_type;
 
-} TemperatureData;
+} SystemData;
 
-void save_in_eeprom(TemperatureData* pSystem_data);
-void update_system_data(TemperatureData* pSystem_data);
+void save_in_eeprom(SystemData* pSystem_data);
+void update_system_data(SystemData* pSystem_data);
 void read_address_in_eeprom(void);
 void save_address_in_eeprom(void);
 void extract_one_day_of_data(void);
 void SD_control(void);
+void reset_address_in_eeprom(void);
+void extract_all_alarms(void);
 # 11 "./RTC.h" 2
 # 30 "./RTC.h"
 typedef struct {
@@ -4786,8 +4800,8 @@ unsigned char pRTCArray[4];
 unsigned char Temp;
 
 
-void DisplayDateOnLCD(TemperatureData *pDate);
-void DisplayTimeToLCD(TemperatureData *pTime);
+void DisplayDateOnLCD(SystemData *pDate);
+void DisplayTimeToLCD(SystemData *pTime);
 # 13 "RTC.c" 2
 
 
@@ -4959,7 +4973,7 @@ Date Get_DS1307_RTC_Date(void) {
     return currentDate;
 }
 # 375 "RTC.c"
-void DisplayDateOnLCD(TemperatureData *pDate) {
+void DisplayDateOnLCD(SystemData *pDate) {
 
     unsigned char tens, units;
 
@@ -5009,7 +5023,7 @@ void DisplayDateOnLCD(TemperatureData *pDate) {
 # 451 "RTC.c"
 }
 
-void DisplayTimeToLCD(TemperatureData *pTime) {
+void DisplayTimeToLCD(SystemData *pTime) {
 
     unsigned char tens, units;
 

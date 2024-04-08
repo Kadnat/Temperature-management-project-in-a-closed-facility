@@ -23,6 +23,7 @@
       <itemPath>hal_timer1.h</itemPath>
       <itemPath>mcal_interrupt_manager.h</itemPath>
       <itemPath>temp_monitoring.h</itemPath>
+      <itemPath>heater.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -47,6 +48,7 @@
       <itemPath>hal_timer1.c</itemPath>
       <itemPath>mcal_interrupt_manager.c</itemPath>
       <itemPath>temp_monitoring.c</itemPath>
+      <itemPath>heater.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

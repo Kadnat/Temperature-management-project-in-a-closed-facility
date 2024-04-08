@@ -1,4 +1,4 @@
-# 1 "memoryCard.c"
+# 1 "heater.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "memoryCard.c" 2
-# 1 "./memoryCard.h" 1
+# 1 "heater.c" 2
 
 
 
@@ -15,262 +14,12 @@
 
 
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 1 3
 
+# 1 "./heater.h" 1
 
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 4 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 2 3
-# 22 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 127 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 142 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long intptr_t;
-# 158 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef signed char int8_t;
 
 
-
-
-typedef short int16_t;
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 188 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 229 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 22 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 2 3
-
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-typedef int24_t int_fast24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-typedef uint24_t uint_fast24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 144 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/stdint.h" 1 3
-typedef int16_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint16_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 144 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 2 3
-# 9 "./memoryCard.h" 2
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdbool.h" 1 3
-# 10 "./memoryCard.h" 2
-# 90 "./memoryCard.h"
-    typedef union
-    {
-        struct {
-            unsigned is_idle : 1;
-            unsigned erase_reset : 1;
-            unsigned illegal_cmd_error : 1;
-            unsigned crc_error : 1;
-            unsigned erase_seq_error : 1;
-            unsigned address_error : 1;
-            unsigned param_error : 1;
-            unsigned valid_header_n : 1;
-        };
-        uint8_t data;
-    } CommandStatus;
-
-        typedef union
-    {
-        struct {
-            unsigned error : 1;
-            unsigned cc_error : 1;
-            unsigned card_ecc_error : 1;
-            unsigned range_error : 1;
-            unsigned locked_error : 1;
-            unsigned valid_header_n : 3;
-        } ErrorToken;
-        struct {
-            unsigned one : 1;
-            unsigned status : 3;
-            unsigned zero : 1;
-            unsigned dnc : 3;
-        } DataToken;
-
-        uint8_t data;
-    } RespToken;
-
-
-    typedef union
-    {
-        struct {
-            unsigned is_locked : 1;
-            unsigned wp_erase_skip : 1;
-            unsigned unknown_error : 1;
-            unsigned cc_error : 1;
-            unsigned ecc_fail : 1;
-            unsigned wp_violation : 1;
-            unsigned erase_param : 1;
-            unsigned out_of_range : 1;
-            unsigned is_idle : 1;
-            unsigned erase_reset : 1;
-            unsigned illegal_cmd_error : 1;
-            unsigned crc_error : 1;
-            unsigned erase_seq_error : 1;
-            unsigned address_error : 1;
-            unsigned param_error : 1;
-            unsigned : 1;
-
-        };
-        uint8_t data[2];
-        uint16_t packet;
-    } CardStatus;
-
-    typedef enum {
-        CARD_NO_ERROR = 0, CARD_SPI_TIMEOUT, CARD_CRC_ERROR, CARD_RESPONSE_ERROR,
-        CARD_ILLEGAL_CMD, CARD_VOLTAGE_NOT_SUPPORTED, CARD_PATTERN_ERROR,
-        CARD_WRITE_IN_PROGRESS, CARD_WRITE_SIZE_ERROR, CARD_NOT_INIT
-    } CommandError;
-
-    typedef enum {
-        CCS_INVALID = -1, CCS_LOW_CAPACITY, CCS_HIGH_CAPACITY
-    } CardCapacityType;
-
-    typedef enum {
-        STATUS_CARD_NONE = 0, STATUS_CARD_NOT_INIT, STATUS_CARD_ERROR, STATUS_CARD_READY
-    } MemoryCardDriverStatus;
-
-
-    void memCard_initDriver(void);
-
-
-    _Bool memCard_initCard(void);
-
-
-    MemoryCardDriverStatus memCard_getCardStatus(void);
-
-
-    _Bool memCard_isCardReady(void);
-
-
-    _Bool memCard_setupFastSPI(void);
-
-
-    uint16_t memCard_calculateCRC16(uint8_t* data, uint16_t dLen);
-
-
-
-    void memCard_attach(void);
-
-
-    void memCard_detach(void);
-
-
-    CommandError memCard_configureCard(void);
-
-
-    uint8_t memCard_sendCMD_R1(uint8_t commandIndex, uint32_t data);
-
-
-    uint8_t memCard_sendACMD_R1(uint8_t commandIndex, uint32_t data);
-
-
-    CardCapacityType memCard_getCapacityType(void);
-
-
-    _Bool memCard_receiveResponse_R1(uint8_t* dst);
-
-
-    CommandError memCard_readOCR(uint8_t* data);
-
-
-    CommandError memCard_readCSD(uint8_t* data);
-
-
-    _Bool memCard_readFromDisk(uint32_t sect, uint16_t offset, uint8_t* data, uint16_t nBytes);
-
-
-
-    _Bool memCard_prepareWrite(uint32_t sector);
-
-
-
-    _Bool memCard_queueWrite(uint8_t* data, uint16_t dLen);
-
-
-    CommandError memCard_writeBlock(void);
-
-
-    CommandError memCard_readBlock(uint32_t sector);
-
-
-    CommandError memCard_receiveBlockData(uint8_t* data, uint16_t length);
-
-
-    uint8_t memCard_runCRC7(uint8_t* dataIn, uint8_t len);
-# 2 "memoryCard.c" 2
-# 1 "./SPI_PIC.h" 1
-# 16 "./SPI_PIC.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = XT
@@ -344,7 +93,17 @@ extern double __fpnormalize(double);
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 1 3
-# 10 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 3
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\musl_xc8.h" 1 3
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 2 3
+
+
+
+
+
+
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\features.h" 1 3
 # 10 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 2 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 3
@@ -353,6 +112,10 @@ extern double __fpnormalize(double);
 typedef long int wchar_t;
 # 122 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef unsigned size_t;
+# 168 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 204 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __uint24 uint24_t;
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 2 3
 
 
@@ -427,7 +190,92 @@ extern void __builtin_software_breakpoint(void);
 
 
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 127 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
 
+
+
+
+typedef short int16_t;
+# 173 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 22 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+typedef int24_t int_fast24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+typedef uint24_t uint_fast24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 144 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 144 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 2 3
+# 5 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\builtins.h" 2 3
 
 
 #pragma intrinsic(__nop)
@@ -4701,1180 +4549,36 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
-# 17 "./SPI_PIC.h" 2
-# 35 "./SPI_PIC.h"
-unsigned char spiTransfer(unsigned char byteToSend);
+# 88 "./common.h"
+typedef enum {
+    OFF = 0,
+    ON = 1,
+}BooleanState;
+# 5 "./heater.h" 2
 
 
 
 
 
-unsigned char spiReceive(void);
+void heater_set_mode(BooleanState state);
+# 9 "heater.c" 2
 
 
-
-
-
-void spiSend(unsigned char val);
-
-
-
-
-
-
-
-void spiInit(unsigned char divider);
-
-void SPI_sendResetSequence(void);
-
-void SPI_sendBytes(uint8_t* txData, uint16_t len);
-
-void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len);
-
-uint8_t SPI_exchangeByte(uint8_t data);
-
-void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len);
-# 3 "memoryCard.c" 2
-
-
-
-
-
-
-static volatile MemoryCardDriverStatus cardStatus = STATUS_CARD_NONE;
-static CardCapacityType memCapacity = CCS_INVALID;
-
-static volatile uint8_t cache[512];
-static uint32_t cacheBlockAddr;
-
-static uint16_t writeSize;
-static _Bool speedSwitchOK = 0;
-static uint8_t fastBaud = 79;
-
-void memCard_printData(uint8_t* data, uint8_t size)
+void heater_set_mode(BooleanState state)
 {
-    for (uint8_t index = 0; index < size; ++index)
+    TRISDbits.TRISD4 = 0;
+    switch(state)
     {
-        printf("%x%x ", (data[index] & 0xF0) >> 4, data[index] & 0x0F);
-    }
-
-    printf("\r\n");
-}
-
-
-void memCard_initDriver(void)
-{
-
-    cacheBlockAddr = 0xFFFFFFFF;
-    writeSize = 0xFFFF;
-
-
-    cardStatus = STATUS_CARD_NOT_INIT;
-
-}
-
-
-
-_Bool memCard_initCard(void)
-{
-
-    if (cardStatus == STATUS_CARD_READY)
-    {
-        return 1;
-    }
-
-    printf("Beginning memory card configuration...\r\n");
-
-
-    cacheBlockAddr = 0xFFFFFFFF;
-
-
-    writeSize = 0xFFFF;
-
-
-    spiInit(16);
-
-    _Bool good = 1;
-
-    for (uint8_t fullRetryCount = 0; fullRetryCount < 5; fullRetryCount++)
-    {
-        printf("Attempt %d of %d\r\n", (fullRetryCount + 1), 5);
-
-
-        SPI_sendResetSequence();
-
-
-        CommandStatus status;
-        status.data = memCard_sendCMD_R1(0x00, 0x00000000);
-
-
-
-        CommandError err = memCard_configureCard();
-        if (err != CARD_NO_ERROR)
-        {
-            printf("[ERROR] CMD8 failed to configure card ( ");
-            switch (err)
-            {
-                case CARD_NO_ERROR:
-                {
-                    printf("CARD_NO_ERROR");
-                    break;
-                }
-                case CARD_SPI_TIMEOUT:
-                {
-                    printf("CARD_SPI_TIMEOUT");
-                    break;
-                }
-                case CARD_CRC_ERROR:
-                {
-                    printf("CARD_CRC_ERROR");
-                    break;
-                }
-                case CARD_RESPONSE_ERROR:
-                {
-                    printf("CARD_RESPONSE_ERROR");
-                    break;
-                }
-                case CARD_ILLEGAL_CMD:
-                {
-                    printf("CARD_ILLEGAL_CMD");
-                    break;
-                }
-                case CARD_VOLTAGE_NOT_SUPPORTED:
-                {
-                    printf("CARD_VOLTAGE_NOT_SUPPORTED");
-                    break;
-                }
-                case CARD_PATTERN_ERROR:
-                {
-                    printf("CARD_PATTERN_ERROR");
-                    break;
-                }
-                default:
-                    printf("???");
-            }
-            printf(" )\r\n");
-            continue;
-        }
-
-        uint8_t count = 1;
-        uint32_t initParam = 0x40000000;
-
-
-        good = 1;
-
-
-        status.data = memCard_sendACMD_R1(41, initParam);
-
-
-        if (status.illegal_cmd_error)
-        {
-
-            while ((status.is_idle) && (good))
-            {
-
-                status.data = memCard_sendCMD_R1(1, 0x00000000);
-
-                if (count >= 100)
-                {
-                    printf("[ERROR] CMD1 failed to init card\r\n");
-                    good = 0;
-                }
-                else
-                {
-                    _delay((unsigned long)((1)*(4000000/4000.0)));
-                    count++;
-                }
-            }
-        }
-        else
-        {
-
-            while ((status.is_idle) && (good))
-            {
-
-
-
-                status.data = memCard_sendACMD_R1(41, initParam);
-
-                if (count >= 100)
-                {
-                    printf("[ERROR] ACMD41 failed to init card\r\n");
-                    good = 0;
-                }
-                else
-                {
-                    _delay((unsigned long)((1)*(4000000/4000.0)));
-                    count++;
-                }
-            }
-        }
-
-        if (!good)
-        {
-
-            continue;
-        }
-
-
-
-        memCapacity = memCard_getCapacityType();
-
-
-        switch (memCapacity)
-        {
-            case CCS_LOW_CAPACITY:
-                printf("[DEBUG] Memory Card is small - use byte-mode addressing\r\n");
-                break;
-            case CCS_HIGH_CAPACITY:
-                printf("[DEBUG] Memory Card is large - use LBA addressing\r\n");
-                break;
-            default:
-                printf("[WARN] CMD58 was unable to determine capacity support\r\n");
-        }
-
-
-
-
-        status.data = memCard_sendCMD_R1(16, 512);
-        if (status.data != 0x00)
-        {
-            printf("[WARN] Unable to set BLOCK SIZE\r\n");
-        }
-
-
-        cardStatus = STATUS_CARD_READY;
-        printf("Memory Card - READY\r\n");
-
-
-
-        if (!memCard_setupFastSPI())
-        {
-            printf("[WARN] Unable to detect max SPI clock speeds\r\n");
-        }
-
-
-
-        memCard_readBlock(0x00);
-
-        return 1;
-    }
-
-    printf("[!] Unable to initialize memory card\r\n");
-    cardStatus = STATUS_CARD_ERROR;
-    return 0;
-}
-
-
-MemoryCardDriverStatus memCard_getCardStatus(void)
-{
-    return cardStatus;
-}
-
-
-_Bool memCard_isCardReady(void)
-{
-    return (cardStatus == STATUS_CARD_READY);
-}
-
-
-_Bool memCard_setupFastSPI(void)
-{
-    uint8_t resp[16];
-    fastBaud = 79;
-
-
-    if (memCard_readCSD(&resp[0]) != CARD_NO_ERROR)
-    {
-        return 0;
-    }
-
-    uint8_t tSpeed = resp[3];
-
-
-    printf("[DEBUG] Transfer Speed Byte = 0x%x\r\n", tSpeed);
-
-
-
-
-
-
-    uint8_t tUnit = tSpeed & 0x07;
-
-    uint8_t multRef = (tSpeed & 0x78) >> 3;
-    if (multRef == 0)
-    {
-        return 0;
-    }
-
-    if (tUnit > 2)
-    {
-
-        fastBaud = (2);
-    }
-    else if (tUnit == 2)
-    {
-
-        if (multRef >= 2)
-        {
-
-            fastBaud = (2);
-        }
-        else
-        {
-            fastBaud = (3);
-        }
-    }
-    else if (tUnit == 1)
-    {
-
-        if (multRef == 0x0F)
-        {
-            fastBaud = (3);
-        }
-        else if (multRef == 0x0E)
-        {
-            fastBaud = (4);
-        }
-        else if (multRef >= 9)
-        {
-            fastBaud = (7);
-        }
-        else if (multRef == 8)
-        {
-            fastBaud = (9);
-        }
-        else if (multRef >= 5)
-        {
-            fastBaud = (15);
-        }
-        else
-        {
-            fastBaud = (31);
-        }
-    }
-    else
-    {
-
-        return 0;
-    }
-
-    speedSwitchOK = 1;
-
-    printf("Setting max SPI CLK to ");
-
-    switch(fastBaud)
-    {
-        case 2:
-            printf("10.6 MHz\r\n");
+        case OFF:
+            PORTDbits.RD4 = 1;
             break;
-        case 3:
-            printf("8 MHz\r\n");
+
+        case ON:
+            PORTDbits.RD4 = 0;
             break;
-        case 4:
-            printf("6.4 MHz\r\n");
-            break;
-        case 7:
-            printf("4 MHz\r\n");
-            break;
-        case 9:
-            printf("3.2 MHz\r\n");
-            break;
-        case 15:
-            printf("2 MHz\r\n");
-            break;
-        case 31:
-            printf("1 MHz\r\n");
+
+        default:
+            PORTDbits.RD4 = 1;
             break;
     }
-
-    return 1;
-}
-# 387 "memoryCard.c"
-void memCard_attach(void)
-{
-    cardStatus = STATUS_CARD_NOT_INIT;
-}
-
-
-void memCard_detach(void)
-{
-    cardStatus = STATUS_CARD_NONE;
-
-
-    cacheBlockAddr = 0xFFFFFFFF;
-
-
-    writeSize = 0xFFFF;
-}
-
-
-CommandError memCard_configureCard(void)
-{
-
-    spiSend(0xFF);
-
-    uint8_t memPoolTx[6];
-    uint8_t memPoolRx[6];
-
-
-
-    memPoolTx[0] = 0x40 | 8;
-
-
-    printf("[DEBUG] Sending CMD%d\r\n", 8);
-
-
-
-    memPoolTx[1] = 0x00;
-    memPoolTx[2] = 0x00;
-    memPoolTx[3] = 0b0001;
-    memPoolTx[4] = 0xA5;
-
-
-    memPoolTx[5] = memCard_runCRC7(&memPoolTx[0], 5);
-
-
-
-
-
-    SPI_sendBytes(&memPoolTx[0], 6);
-
-    CommandStatus stat;
-
-    if (!memCard_receiveResponse_R1(&stat.data))
-    {
-
-
-        return CARD_SPI_TIMEOUT;
-    }
-
-    if (stat.illegal_cmd_error)
-    {
-
-
-        return CARD_ILLEGAL_CMD;
-    }
-
-    if (stat.crc_error)
-    {
-
-
-        return CARD_CRC_ERROR;
-    }
-
-
-
-    memPoolTx[0] = 0xFF;
-    memPoolTx[1] = 0xFF;
-    memPoolTx[2] = 0xFF;
-    memPoolTx[3] = 0xFF;
-
-
-    SPI_exchangeBytes(&memPoolTx[0], &memPoolRx[0], 4);
-
-
-
-    if (stat.data != 0x01)
-    {
-        return CARD_RESPONSE_ERROR;
-    }
-
-
-    if ((memPoolRx[2] & 0x0F) != 0b0001)
-    {
-        return CARD_VOLTAGE_NOT_SUPPORTED;
-    }
-
-
-    if (memPoolRx[3] != 0xA5)
-    {
-        return CARD_PATTERN_ERROR;
-    }
-
-    return CARD_NO_ERROR;
-}
-
-
-
-uint8_t memCard_sendCMD_R1(uint8_t commandIndex, uint32_t data)
-{
-
-    spiSend(0xFF);
-
-    uint8_t memPool[6];
-
-
-    memPool[0] = 0x40;
-    memPool[0] |= commandIndex;
-
-
-    printf("[DEBUG] Sending CMD%d\r\n", commandIndex);
-
-
-
-    memPool[1] = (data & 0xFF000000) >> 24;
-    memPool[2] = (data & 0x00FF0000) >> 16;
-    memPool[3] = (data & 0x0000FF00) >> 8;
-    memPool[4] = (data & 0x000000FF);
-
-
-    memPool[5] = memCard_runCRC7(&memPool[0], 5);
-
-
-
-
-    SPI_sendBytes(&memPool[0], 6);
-
-    uint8_t rVal = 0xFF;
-
-    memCard_receiveResponse_R1(&rVal);
-
-
-    return rVal;
-}
-
-
-uint8_t memCard_sendACMD_R1(uint8_t commandIndex, uint32_t data)
-{
-    CommandStatus rVal;
-    rVal.data = memCard_sendCMD_R1(55, 0x00000000);
-
-    if (rVal.data != 0x01)
-    {
-        return 0xFF;
-    }
-
-    rVal.data = memCard_sendCMD_R1(commandIndex, data);
-
-    return rVal.data;
-}
-
-
-CardCapacityType memCard_getCapacityType(void)
-{
-    uint8_t memPoolRx[4];
-
-    if (memCard_readOCR(&memPoolRx[0]) != CARD_NO_ERROR)
-    {
-        return CCS_INVALID;
-    }
-
-
-    return ((memPoolRx[0] & 0x40) != 0x00) ? CCS_HIGH_CAPACITY : CCS_LOW_CAPACITY;
-}
-
-
-_Bool memCard_receiveResponse_R1(uint8_t* dst)
-{
-    _Bool done = 0;
-    uint8_t count = 0;
-    CommandStatus stat;
-
-    *dst = 0xFF;
-
-    while (!done)
-    {
-        stat.data = SPI_exchangeByte(0xFF);
-        count++;
-        if (!stat.valid_header_n)
-        {
-
-            done = 1;
-        }
-        else if (count == 10)
-        {
-            return 0;
-        }
-    }
-
-
-    *dst = stat.data;
-    return 1;
-}
-
-
-CommandError memCard_readOCR(uint8_t* data)
-{
-    if (cardStatus == STATUS_CARD_NONE)
-        return CARD_NOT_INIT;
-
-
-    spiSend(0xFF);
-
-    uint8_t memPoolTx[6];
-
-
-
-    memPoolTx[0] = 0x40 | 58;
-
-
-    printf("[DEBUG] Sending CMD%d\r\n", 58);
-
-
-
-    memPoolTx[1] = 0x00;
-    memPoolTx[2] = 0x00;
-    memPoolTx[3] = 0x00;
-    memPoolTx[4] = 0x00;
-
-
-    memPoolTx[5] = memCard_runCRC7(&memPoolTx[0], 5);
-
-
-
-
-    SPI_sendBytes(&memPoolTx[0], 6);
-
-    CommandStatus stat;
-
-    if (!memCard_receiveResponse_R1(&stat.data))
-    {
-
-
-        return CARD_SPI_TIMEOUT;
-    }
-
-
-    if ((stat.data & 0xF7) != 0x00)
-    {
-
-
-        return CARD_RESPONSE_ERROR;
-    }
-
-
-
-    memPoolTx[0] = 0xFF;
-    memPoolTx[1] = 0xFF;
-    memPoolTx[2] = 0xFF;
-    memPoolTx[3] = 0xFF;
-
-
-    SPI_exchangeBytes(&memPoolTx[0], &data[0], 4);
-
-
-
-    printf("[DEBUG] Printing OCR Register\r\n");
-    memCard_printData(&data[0], 4);
-
-
-    return CARD_NO_ERROR;
-}
-
-
-CommandError memCard_readCSD(uint8_t* data)
-{
-    if (cardStatus != STATUS_CARD_READY)
-        return CARD_NOT_INIT;
-
-
-
-
-    uint8_t txData[6];
-    uint8_t header;
-
-
-    txData[0] = 0x40 | 9;
-
-
-    txData[1] = 0x00;
-    txData[2] = 0x00;
-    txData[3] = 0x00;
-    txData[4] = 0x00;
-
-
-    txData[5] = memCard_runCRC7(&txData[0], 5);
-
-
-
-
-    SPI_sendBytes(&txData[0], 6);
-
-    if (!memCard_receiveResponse_R1(&header))
-    {
-
-        return CARD_SPI_TIMEOUT;
-    }
-
-    if (header != 0x00)
-    {
-
-
-        return CARD_RESPONSE_ERROR;
-    }
-
-    CommandError cmdError = memCard_receiveBlockData(&data[0], 16);
-
-
-
-    printf("[DEBUG] Printing CSD Register\r\n");
-    memCard_printData(&data[0], 16);
-
-
-    return cmdError;
-}
-
-
-_Bool memCard_readFromDisk(uint32_t sect, uint16_t offset, uint8_t* data, uint16_t nBytes)
-{
-
-    if (cardStatus != STATUS_CARD_READY)
-        return 0;
-
-
-    printf("[DEBUG FILE I/O] Requesting Sector %lu at offset %u for %u bytes\r\n", sect, offset, nBytes);
-# 731 "memoryCard.c"
-    if (sect != cacheBlockAddr)
-    {
-
-        if (memCard_readBlock(sect) != CARD_NO_ERROR)
-        {
-            return 0;
-        }
-    }
-
-
-    else
-    {
-        printf("[DEBUG FILE I/O] Sector cache hit\r\n");
-    }
-
-
-
-    uint16_t cachePos = offset;
-    for (uint16_t index = 0; index < nBytes; index++)
-    {
-        if (cachePos == 512)
-        {
-
-            if (memCard_readBlock(sect + 1) != CARD_NO_ERROR)
-            {
-                return 0;
-            }
-            cachePos = 0;
-        }
-
-
-
-        data[index] = cache[cachePos];
-        cachePos++;
-    }
-
-
-
-
-
-    return 1;
-}
-
-
-
-_Bool memCard_prepareWrite(uint32_t sector)
-{
-    if (cardStatus != STATUS_CARD_READY)
-    {
-        return 0;
-    }
-
-
-    printf("[DEBUG FILE I/O] Preparing for write on sector %lu\r\n", sector);
-
-
-
-    cacheBlockAddr = sector;
-
-
-    writeSize = 0;
-
-    for (uint16_t i = 0; i < 512; i++)
-    {
-        cache[i] = 0x00;
-    }
-
-    return 1;
-}
-
-
-
-_Bool memCard_queueWrite(uint8_t* data, uint16_t dLen)
-{
-
-    if (cardStatus != STATUS_CARD_READY)
-    {
-        return 0;
-    }
-
-
-    if ((writeSize == 0xFFFF) || (writeSize > 512))
-    {
-        return 0;
-    }
-
-    uint16_t count = 0;
-    while ((writeSize < 512) && (count < dLen))
-    {
-        cache[writeSize] = data[count];
-
-        writeSize++;
-        count++;
-    }
-
-
-    printf("[DEBUG FILE I/O] Queued %u bytes for write\r\n", count);
-
-
-    if (count != dLen)
-    {
-
-        return 0;
-    }
-
-    return 1;
-}
-
-
-CommandError memCard_writeBlock(void)
-{
-    if (cardStatus != STATUS_CARD_READY)
-    {
-        return CARD_NOT_INIT;
-    }
-
-    if ((writeSize == 0xFFFF) || (writeSize > 512))
-    {
-        return CARD_WRITE_SIZE_ERROR;
-    }
-
-
-    printf("[DEBUG FILE I/O] Writing %u bytes to sector %lu \r\n", writeSize, cacheBlockAddr);
-
-
-    uint32_t compBlockAddr = cacheBlockAddr;
-    if (memCapacity != CCS_HIGH_CAPACITY)
-    {
-
-        compBlockAddr <<= 9;
-    }
-
-
-    uint8_t cmdData[6];
-    cmdData[0] = 0x40 | 24;
-
-
-    printf("[DEBUG] Sending CMD%d\r\n", 24);
-
-
-
-    cmdData[1] = (compBlockAddr & 0xFF000000) >> 24;
-    cmdData[2] = (compBlockAddr & 0x00FF0000) >> 16;
-    cmdData[3] = (compBlockAddr & 0x0000FF00) >> 8;
-    cmdData[4] = (compBlockAddr & 0x000000FF);
-
-    cmdData[5] = memCard_runCRC7(&cmdData[0], 5);
-
-
-
-
-    SPI_sendBytes(&cmdData[0], 6);
-
-
-    CommandStatus header;
-    if (!memCard_receiveResponse_R1(&header.data))
-    {
-
-
-    printf("[ERROR] No response returned\r\n");
-
-
-        return CARD_SPI_TIMEOUT;
-    }
-
-    if (header.data != 0x00)
-    {
-
-
-    printf("[ERROR] Command response error\r\n");
-
-        return CARD_RESPONSE_ERROR;
-    }
-
-
-
-    if (speedSwitchOK)
-    {
-        ;
-
-    }
-# 921 "memoryCard.c"
-    spiSend(0xFE);
-
-
-    SPI_sendBytes(&cache[0], 512);
-# 933 "memoryCard.c"
-    RespToken eToken;
-    uint8_t rCount = 0;
-    _Bool good = 0;
-
-
-
-
-    do
-    {
-        eToken.data = SPI_exchangeByte(0xFF);
-
-
-        if (eToken.data != 0xFF)
-        {
-            good = 1;
-        }
-
-        rCount++;
-    } while ((rCount < 30) && (!good));
-
-    if (rCount >= 30)
-    {
-
-        return CARD_SPI_TIMEOUT;
-    }
-
-
-    if (eToken.ErrorToken.valid_header_n == 0b000)
-    {
-        if (eToken.data != 0x00)
-        {
-
-
-            return CARD_RESPONSE_ERROR;
-        }
-    }
-    else
-    {
-
-        if (eToken.DataToken.status != 0b010)
-        {
-
-
-            return CARD_RESPONSE_ERROR;
-        }
-    }
-
-
-    printf("[DEBUG] Waiting for busy to clear...\r\n");
-
-
-
-
-
-    uint8_t resp;
-    do
-    {
-        resp = SPI_exchangeByte(0xFF);
-    }while (resp == 0x00);
-
-
-
-
-    printf("[DEBUG] Busy bit has cleared - write done!\r\n");
-
-
-    writeSize = 0xFFFF;
-    cacheBlockAddr = 0xFFFFFFFF;
-
-    return CARD_NO_ERROR;
-}
-
-
-CommandError memCard_readBlock(uint32_t blockAddr)
-{
-    if (cardStatus != STATUS_CARD_READY)
-    {
-        return CARD_NOT_INIT;
-    }
-
-    if (writeSize != 0xFFFF)
-    {
-
-    printf("[DEBUG FILE I/O] Read failed due to write in progress\r\n");
-
-        return CARD_WRITE_IN_PROGRESS;
-    }
-
-
-    if (blockAddr == cacheBlockAddr)
-    {
-
-    printf("[DEBUG FILE I/O] Sector %lu fetch skipped due to cache\r\n", blockAddr);
-
-        return CARD_NO_ERROR;
-    }
-
-
-
-    printf("[DEBUG FILE I/O] Fetching Sector %lu\r\n", blockAddr);
-
-
-    uint32_t compBlockAddr = blockAddr;
-
-    if (memCapacity != CCS_HIGH_CAPACITY)
-    {
-
-        compBlockAddr <<= 9;
-    }
-
-
-    uint8_t cmdData[6];
-    cmdData[0] = 0x40 | 17;
-
-
-    printf("[DEBUG] Sending CMD%d\r\n", 17);
-
-
-
-    cmdData[1] = (compBlockAddr & 0xFF000000) >> 24;
-    cmdData[2] = (compBlockAddr & 0x00FF0000) >> 16;
-    cmdData[3] = (compBlockAddr & 0x0000FF00) >> 8;
-    cmdData[4] = (compBlockAddr & 0x000000FF);
-
-
-    cmdData[5] = memCard_runCRC7(&cmdData[0], 5);
-
-
-
-
-    SPI_sendBytes(&cmdData[0], 6);
-
-    uint8_t header;
-    if (!memCard_receiveResponse_R1(&header))
-    {
-
-
-    printf("[ERROR] No response returned\r\n");
-
-
-        return CARD_SPI_TIMEOUT;
-    }
-
-    if (header != 0x00)
-    {
-
-
-
-    printf("[ERROR] Command Error\r\n");
-
-
-
-        return CARD_RESPONSE_ERROR;
-    }
-
-
-    CommandError err = memCard_receiveBlockData(&cache[0], 512);
-
-
-
-
-    cacheBlockAddr = blockAddr;
-
-    return err;
-}
-
-
-CommandError memCard_receiveBlockData(uint8_t* data, uint16_t length)
-{
-
-    RespToken eToken;
-    eToken.data = 0xFF;
-    uint8_t rCount = 0;
-    _Bool good = 0;
-
-    do
-    {
-        eToken.data = SPI_exchangeByte(0xFF);
-
-
-        if (eToken.data != 0xFF)
-        {
-            good = 1;
-        }
-
-        rCount++;
-    } while ((rCount < 30) && (!good));
-
-    if (rCount >= 30)
-    {
-        return CARD_SPI_TIMEOUT;
-    }
-
-    if (eToken.data != 0xFE)
-    {
-
-        return CARD_RESPONSE_ERROR;
-    }
-
-
-
-    if (speedSwitchOK)
-    {
-        ;
-
-    }
-
-
-
-    SPI_receiveBytesTransmitFF(&data[0], length);
-# 1193 "memoryCard.c"
-    return CARD_NO_ERROR;
-}
-
-
-uint8_t memCard_runCRC7(uint8_t* dataIn, uint8_t len)
-{
-    uint8_t output = 0x00;
-    uint8_t mask;
-
-    for (uint8_t by = 0; by < len; by++)
-    {
-
-        mask = 0x80;
-        while (mask != 0x00)
-        {
-
-            _Bool input = ((dataIn[by] & mask) != 0x00) ? 1 : 0;
-
-
-            input ^= (output & 0x01);
-
-
-            output >>= 1;
-
-
-
-            output |= (input << 6);
-
-
-            uint8_t t = output & 0x08;
-            uint8_t t2 = (t >> 3) ^ input;
-            output = (output & 0xF7) | (t2 << 3);
-
-
-            mask >>= 1;
-        }
-    }
-
-
-
-    uint8_t tOut;
-    tOut = ((output & 0x40) >> 5);
-    tOut |= ((output & 0x20) >> 3);
-    tOut |= ((output & 0x10) >> 1);
-    tOut |= ((output & 0x08) << 1);
-    tOut |= ((output & 0x04) << 3);
-    tOut |= ((output & 0x02) << 5);
-    tOut |= ((output & 0x01) << 7);
-    output = tOut;
-
-
-    output |= 0b1;
-
-    return output;
 }

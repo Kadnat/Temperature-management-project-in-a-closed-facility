@@ -1,8 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"16 ./temp_monitoring.h
-[; ;./temp_monitoring.h: 16: typedef struct{
-[s S270 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 ]
-[n S270 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday ]
+"18 temp_monitoring.c
+[; ;temp_monitoring.c: 18: void update_system_data(SystemData* pSystem_data)
+[c E2477 0 1 2 .. ]
+[n E2477 . NO_ERROR TOO_HOT TOO_COLD  ]
+"20 ./temp_monitoring.h
+[; ;./temp_monitoring.h: 20: typedef struct{
+[s S270 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E2477 1 ]
+[n S270 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
 "55 ./ds18b20.h
 [; ;./ds18b20.h: 55: float OneWireTemp(void);
 [v _OneWireTemp `(f ~T0 @X0 0 ef ]
@@ -20,23 +24,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 "55
 [; ;./RTC.h: 55: Time Get_DS1307_RTC_Time(void);
 [v _Get_DS1307_RTC_Time `(S274 ~T0 @X0 0 ef ]
+"105 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h
+[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h: 105: int printf(const char *restrict, ...);
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "19 ./AT24C32.h
 [; ;./AT24C32.h: 19: void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address);
 [v _write_one_page_in_eeprom `(v ~T0 @X0 0 ef2`*uc`us ]
-"18
-[; ;./AT24C32.h: 18: void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address);
-[v _write_one_byte_in_eeprom `(v ~T0 @X0 0 ef2`uc`us ]
 [v F192 `(v ~T0 @X0 1 tf1`ul ]
 "12 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
 [v __delay `JF192 ~T0 @X0 0 e ]
 [p i __delay ]
-"20 ./AT24C32.h
+"41 ./temp_monitoring.h
+[; ;./temp_monitoring.h: 41: void save_address_in_eeprom(void);
+[v _save_address_in_eeprom `(v ~T0 @X0 0 ef ]
+"18 ./AT24C32.h
+[; ;./AT24C32.h: 18: void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address);
+[v _write_one_byte_in_eeprom `(v ~T0 @X0 0 ef2`uc`us ]
+"20
 [; ;./AT24C32.h: 20: unsigned char read_one_byte_in_eeprom(uint16_t register_address);
 [v _read_one_byte_in_eeprom `(uc ~T0 @X0 0 ef1`us ]
-"105 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h
-[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h: 105: int printf(const char *restrict, ...);
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"21 ./AT24C32.h
+"21
 [; ;./AT24C32.h: 21: void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
 [v _read_one_page_in_eeprom `(v ~T0 @X0 0 ef2`us`*uc ]
 "20 ./common.h
@@ -391,286 +398,463 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _previous_address_eeprom
 -> -> 8 `i `us
 ]
-"17
-[; ;temp_monitoring.c: 17: void update_system_data(TemperatureData* pSystem_data)
-[v _update_system_data `(v ~T0 @X0 1 ef1`*S270 ]
+"15
+[; ;temp_monitoring.c: 15: static uint8_t counter_alarm=0;
+[v _counter_alarm `uc ~T0 @X0 1 s ]
+[i _counter_alarm
+-> -> 0 `i `uc
+]
 "18
-[; ;temp_monitoring.c: 18: {
+[; ;temp_monitoring.c: 18: void update_system_data(SystemData* pSystem_data)
+[v _update_system_data `(v ~T0 @X0 1 ef1`*S270 ]
+"19
+[; ;temp_monitoring.c: 19: {
 {
 [e :U _update_system_data ]
-"17
-[; ;temp_monitoring.c: 17: void update_system_data(TemperatureData* pSystem_data)
-[v _pSystem_data `*S270 ~T0 @X0 1 r1 ]
 "18
-[; ;temp_monitoring.c: 18: {
-[f ]
+[; ;temp_monitoring.c: 18: void update_system_data(SystemData* pSystem_data)
+[v _pSystem_data `*S270 ~T0 @X0 1 r1 ]
 "19
-[; ;temp_monitoring.c: 19:    float temp = OneWireTemp();
+[; ;temp_monitoring.c: 19: {
+[f ]
+"20
+[; ;temp_monitoring.c: 20:    float temp = OneWireTemp();
 [v _temp `f ~T0 @X0 1 a ]
 [e = _temp ( _OneWireTemp ..  ]
-"20
-[; ;temp_monitoring.c: 20:    Date date = Get_DS1307_RTC_Date();
+"21
+[; ;temp_monitoring.c: 21:    Date date = Get_DS1307_RTC_Date();
 [v _date `S273 ~T0 @X0 1 a ]
 [e = _date ( _Get_DS1307_RTC_Date ..  ]
-"21
-[; ;temp_monitoring.c: 21:    Time time = Get_DS1307_RTC_Time();
+"22
+[; ;temp_monitoring.c: 22:    Time time = Get_DS1307_RTC_Time();
 [v _time `S274 ~T0 @X0 1 a ]
 [e = _time ( _Get_DS1307_RTC_Time ..  ]
-"23
-[; ;temp_monitoring.c: 23:     pSystem_data->year = date.year;
-[e = . *U _pSystem_data 2 . _date 2 ]
 "24
-[; ;temp_monitoring.c: 24:     pSystem_data->month = date.month;
-[e = . *U _pSystem_data 1 . _date 1 ]
+[; ;temp_monitoring.c: 24:     pSystem_data->year = date.year;
+[e = . *U _pSystem_data 2 . _date 2 ]
 "25
-[; ;temp_monitoring.c: 25:     pSystem_data->day = date.day;
+[; ;temp_monitoring.c: 25:     pSystem_data->month = date.month;
+[e = . *U _pSystem_data 1 . _date 1 ]
+"26
+[; ;temp_monitoring.c: 26:     pSystem_data->day = date.day;
 [e = . *U _pSystem_data 0 . _date 0 ]
-"27
-[; ;temp_monitoring.c: 27:     pSystem_data->hour = time.hour;
-[e = . *U _pSystem_data 3 . _time 0 ]
 "28
-[; ;temp_monitoring.c: 28:     pSystem_data->minute = time.minute;
-[e = . *U _pSystem_data 4 . _time 1 ]
+[; ;temp_monitoring.c: 28:     pSystem_data->hour = time.hour;
+[e = . *U _pSystem_data 3 . _time 0 ]
 "29
-[; ;temp_monitoring.c: 29:     pSystem_data->second = time.second;
+[; ;temp_monitoring.c: 29:     pSystem_data->minute = time.minute;
+[e = . *U _pSystem_data 4 . _time 1 ]
+"30
+[; ;temp_monitoring.c: 30:     pSystem_data->second = time.second;
 [e = . *U _pSystem_data 5 . _time 2 ]
-"31
-[; ;temp_monitoring.c: 31:     pSystem_data->temperature = temp;
+"32
+[; ;temp_monitoring.c: 32:     pSystem_data->temperature = temp;
 [e = . *U _pSystem_data 10 _temp ]
-"33
-[; ;temp_monitoring.c: 33:     uint8_t temp_int = (uint8_t)temp;
+"34
+[; ;temp_monitoring.c: 34:     uint8_t temp_int = (uint8_t)temp;
 [v _temp_int `uc ~T0 @X0 1 a ]
 [e = _temp_int -> _temp `uc ]
-"34
-[; ;temp_monitoring.c: 34:     uint8_t temp_frac = (temp - (float)temp_int) * 100.0;
+"35
+[; ;temp_monitoring.c: 35:     uint8_t temp_frac = (temp - (float)temp_int) * 100.0;
 [v _temp_frac `uc ~T0 @X0 1 a ]
 [e = _temp_frac -> * -> - _temp -> _temp_int `f `d .100.0 `uc ]
-"36
-[; ;temp_monitoring.c: 36:     pSystem_data->temp_decimal = temp_int;
-[e = . *U _pSystem_data 6 _temp_int ]
 "37
-[; ;temp_monitoring.c: 37:     pSystem_data->temp_fraction = temp_frac;
+[; ;temp_monitoring.c: 37:     pSystem_data->temp_decimal = temp_int;
+[e = . *U _pSystem_data 6 _temp_int ]
+"38
+[; ;temp_monitoring.c: 38:     pSystem_data->temp_fraction = temp_frac;
 [e = . *U _pSystem_data 7 _temp_frac ]
-"42
-[; ;temp_monitoring.c: 42: }
+"43
+[; ;temp_monitoring.c: 43: }
 [e :UE 275 ]
 }
-"45
-[; ;temp_monitoring.c: 45: void save_in_eeprom(TemperatureData* pSystem_data)
+"47
+[; ;temp_monitoring.c: 47: void save_in_eeprom(SystemData* pSystem_data)
 [v _save_in_eeprom `(v ~T0 @X0 1 ef1`*S270 ]
-"46
-[; ;temp_monitoring.c: 46: {
+"48
+[; ;temp_monitoring.c: 48: {
 {
 [e :U _save_in_eeprom ]
-"45
-[; ;temp_monitoring.c: 45: void save_in_eeprom(TemperatureData* pSystem_data)
-[v _pSystem_data `*S270 ~T0 @X0 1 r1 ]
-"46
-[; ;temp_monitoring.c: 46: {
-[f ]
-[v F3315 `uc ~T0 @X0 -> 8 `i s ]
-[i F3315
-:U ..
 "47
-[; ;temp_monitoring.c: 47:    unsigned char tab[8]={0};
+[; ;temp_monitoring.c: 47: void save_in_eeprom(SystemData* pSystem_data)
+[v _pSystem_data `*S270 ~T0 @X0 1 r1 ]
+"48
+[; ;temp_monitoring.c: 48: {
+[f ]
+[v F3328 `uc ~T0 @X0 -> 16 `i s ]
+[i F3328
+:U ..
+"49
+[; ;temp_monitoring.c: 49:    unsigned char tab[16]={0};
 -> -> 0 `i `uc
 ..
 ]
-[v _tab `uc ~T0 @X0 -> 8 `i a ]
-[e = _tab F3315 ]
-"48
-[; ;temp_monitoring.c: 48:    float temp = OneWireTemp();
-[v _temp `f ~T0 @X0 1 a ]
-[e = _temp ( _OneWireTemp ..  ]
-"49
-[; ;temp_monitoring.c: 49:    Date date = Get_DS1307_RTC_Date();
-[v _date `S273 ~T0 @X0 1 a ]
-[e = _date ( _Get_DS1307_RTC_Date ..  ]
-"50
-[; ;temp_monitoring.c: 50:    Time time = Get_DS1307_RTC_Time();
-[v _time `S274 ~T0 @X0 1 a ]
-[e = _time ( _Get_DS1307_RTC_Time ..  ]
+[v _tab `uc ~T0 @X0 -> 16 `i a ]
+[e = _tab F3328 ]
+"51
+[; ;temp_monitoring.c: 51:    tab[0] = pSystem_data->year;
+[e = *U + &U _tab * -> -> -> 0 `i `ui `ux -> -> # *U &U _tab `ui `ux . *U _pSystem_data 2 ]
+"52
+[; ;temp_monitoring.c: 52:    tab[1] = pSystem_data->month;
+[e = *U + &U _tab * -> -> -> 1 `i `ui `ux -> -> # *U &U _tab `ui `ux . *U _pSystem_data 1 ]
+"53
+[; ;temp_monitoring.c: 53:    tab[2] = pSystem_data->day;
+[e = *U + &U _tab * -> -> -> 2 `i `ui `ux -> -> # *U &U _tab `ui `ux . *U _pSystem_data 0 ]
 "54
-[; ;temp_monitoring.c: 54:    uint8_t temp_int = (uint8_t)temp;
-[v _temp_int `uc ~T0 @X0 1 a ]
-[e = _temp_int -> _temp `uc ]
+[; ;temp_monitoring.c: 54:    tab[3] = pSystem_data->hour;
+[e = *U + &U _tab * -> -> -> 3 `i `ui `ux -> -> # *U &U _tab `ui `ux . *U _pSystem_data 3 ]
 "55
-[; ;temp_monitoring.c: 55:    uint8_t temp_frac = (temp - (float)temp_int) * 100.0;
-[v _temp_frac `uc ~T0 @X0 1 a ]
-[e = _temp_frac -> * -> - _temp -> _temp_int `f `d .100.0 `uc ]
+[; ;temp_monitoring.c: 55:    tab[4] = pSystem_data->minute;
+[e = *U + &U _tab * -> -> -> 4 `i `ui `ux -> -> # *U &U _tab `ui `ux . *U _pSystem_data 4 ]
+"56
+[; ;temp_monitoring.c: 56:    tab[5] = pSystem_data->second;
+[e = *U + &U _tab * -> -> -> 5 `i `ui `ux -> -> # *U &U _tab `ui `ux . *U _pSystem_data 5 ]
+"57
+[; ;temp_monitoring.c: 57:    tab[6] = pSystem_data->temp_decimal;
+[e = *U + &U _tab * -> -> -> 6 `i `ui `ux -> -> # *U &U _tab `ui `ux . *U _pSystem_data 6 ]
 "58
-[; ;temp_monitoring.c: 58:    tab[0] = date.day;
-[e = *U + &U _tab * -> -> -> 0 `i `ui `ux -> -> # *U &U _tab `ui `ux . _date 0 ]
+[; ;temp_monitoring.c: 58:    tab[7] = pSystem_data->temp_fraction;
+[e = *U + &U _tab * -> -> -> 7 `i `ui `ux -> -> # *U &U _tab `ui `ux . *U _pSystem_data 7 ]
 "59
-[; ;temp_monitoring.c: 59:    tab[1] = time.hour;
-[e = *U + &U _tab * -> -> -> 1 `i `ui `ux -> -> # *U &U _tab `ui `ux . _time 0 ]
+[; ;temp_monitoring.c: 59:    tab[8] = pSystem_data->error_type;
+[e = *U + &U _tab * -> -> -> 8 `i `ui `ux -> -> # *U &U _tab `ui `ux -> . *U _pSystem_data 13 `uc ]
 "60
-[; ;temp_monitoring.c: 60:    tab[2] = time.minute;
-[e = *U + &U _tab * -> -> -> 2 `i `ui `ux -> -> # *U &U _tab `ui `ux . _time 1 ]
+[; ;temp_monitoring.c: 60:    tab[9] = 0;
+[e = *U + &U _tab * -> -> -> 9 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
 "61
-[; ;temp_monitoring.c: 61:    tab[3] = time.second;
-[e = *U + &U _tab * -> -> -> 3 `i `ui `ux -> -> # *U &U _tab `ui `ux . _time 2 ]
+[; ;temp_monitoring.c: 61:    tab[10] = 0;
+[e = *U + &U _tab * -> -> -> 10 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
 "62
-[; ;temp_monitoring.c: 62:    tab[4] = temp_int;
-[e = *U + &U _tab * -> -> -> 4 `i `ui `ux -> -> # *U &U _tab `ui `ux _temp_int ]
+[; ;temp_monitoring.c: 62:    tab[11] = 0;
+[e = *U + &U _tab * -> -> -> 11 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
 "63
-[; ;temp_monitoring.c: 63:    tab[5] = temp_frac;
-[e = *U + &U _tab * -> -> -> 5 `i `ui `ux -> -> # *U &U _tab `ui `ux _temp_frac ]
+[; ;temp_monitoring.c: 63:    tab[12] = 0;
+[e = *U + &U _tab * -> -> -> 12 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
 "64
-[; ;temp_monitoring.c: 64:    tab[6] = 0;
-[e = *U + &U _tab * -> -> -> 6 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
+[; ;temp_monitoring.c: 64:    tab[13] = 0;
+[e = *U + &U _tab * -> -> -> 13 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
 "65
-[; ;temp_monitoring.c: 65:    tab[7] = 0;
-[e = *U + &U _tab * -> -> -> 7 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
+[; ;temp_monitoring.c: 65:    tab[14] = 0;
+[e = *U + &U _tab * -> -> -> 14 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
+"66
+[; ;temp_monitoring.c: 66:    tab[15] = 0;
+[e = *U + &U _tab * -> -> -> 15 `i `ui `ux -> -> # *U &U _tab `ui `ux -> -> 0 `i `uc ]
 "68
-[; ;temp_monitoring.c: 68:    write_one_page_in_eeprom(tab, previous_address_eeprom);
-[e ( _write_one_page_in_eeprom (2 , &U _tab _previous_address_eeprom ]
+[; ;temp_monitoring.c: 68:     printf("Tableau avant écriture dans l'EEPROM:\n");
+[e ( _printf :s 1C ]
+"69
+[; ;temp_monitoring.c: 69:     for (int i = 0; i < 16; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 16 `i 277  ]
+[e $U 278  ]
+[e :U 277 ]
+{
+"70
+[; ;temp_monitoring.c: 70:         printf("%02x ", tab[i]);
+[e ( _printf , (. :s 2C -> *U + &U _tab * -> -> _i `ui `ux -> -> # *U &U _tab `ui `ux `i ]
 "71
-[; ;temp_monitoring.c: 71:    previous_address_eeprom += 8;
-[e =+ _previous_address_eeprom -> -> 8 `i `us ]
+[; ;temp_monitoring.c: 71:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 16 `i 277  ]
+[e :U 278 ]
+}
 "72
-[; ;temp_monitoring.c: 72: }
+[; ;temp_monitoring.c: 72:     printf("\n");
+[e ( _printf :s 3C ]
+"75
+[; ;temp_monitoring.c: 75:    write_one_page_in_eeprom(tab, previous_address_eeprom);
+[e ( _write_one_page_in_eeprom (2 , &U _tab _previous_address_eeprom ]
+"76
+[; ;temp_monitoring.c: 76:    _delay((unsigned long)((100)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"77
+[; ;temp_monitoring.c: 77:    write_one_page_in_eeprom(&tab[8], previous_address_eeprom+8);
+[e ( _write_one_page_in_eeprom (2 , &U *U + &U _tab * -> -> -> 8 `i `ui `ux -> -> # *U &U _tab `ui `ux -> + -> _previous_address_eeprom `ui -> -> 8 `i `ui `us ]
+"78
+[; ;temp_monitoring.c: 78:    _delay((unsigned long)((100)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"80
+[; ;temp_monitoring.c: 80:    previous_address_eeprom += 16;
+[e =+ _previous_address_eeprom -> -> 16 `i `us ]
+"81
+[; ;temp_monitoring.c: 81:    counter_alarm++;
+[e ++ _counter_alarm -> -> 1 `i `uc ]
+"82
+[; ;temp_monitoring.c: 82:    _delay((unsigned long)((100)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"83
+[; ;temp_monitoring.c: 83:    save_address_in_eeprom();
+[e ( _save_address_in_eeprom ..  ]
+"84
+[; ;temp_monitoring.c: 84: }
 [e :UE 276 ]
 }
-"74
-[; ;temp_monitoring.c: 74: void save_address_in_eeprom(void)
+"86
+[; ;temp_monitoring.c: 86: void save_address_in_eeprom(void)
 [v _save_address_in_eeprom `(v ~T0 @X0 1 ef ]
-"75
-[; ;temp_monitoring.c: 75: {
+"87
+[; ;temp_monitoring.c: 87: {
 {
 [e :U _save_address_in_eeprom ]
 [f ]
-"76
-[; ;temp_monitoring.c: 76:     unsigned char addressH=0, addressL=0;
+"88
+[; ;temp_monitoring.c: 88:     unsigned char addressH=0, addressL=0;
 [v _addressH `uc ~T0 @X0 1 a ]
 [e = _addressH -> -> 0 `i `uc ]
 [v _addressL `uc ~T0 @X0 1 a ]
 [e = _addressL -> -> 0 `i `uc ]
-"78
-[; ;temp_monitoring.c: 78:     addressH = (previous_address_eeprom & 0xF00)>>8;
+"90
+[; ;temp_monitoring.c: 90:     addressH = (previous_address_eeprom & 0xF00)>>8;
 [e = _addressH -> >> & -> _previous_address_eeprom `ui -> -> 3840 `i `ui -> 8 `i `uc ]
-"79
-[; ;temp_monitoring.c: 79:     addressL = (previous_address_eeprom & 0xFF);
+"91
+[; ;temp_monitoring.c: 91:     addressL = (previous_address_eeprom & 0xFF);
 [e = _addressL -> & -> _previous_address_eeprom `ui -> -> 255 `i `ui `uc ]
-"81
-[; ;temp_monitoring.c: 81:     write_one_byte_in_eeprom(addressH, 1);
+"93
+[; ;temp_monitoring.c: 93:     write_one_byte_in_eeprom(addressH, 1);
 [e ( _write_one_byte_in_eeprom (2 , _addressH -> -> 1 `i `us ]
-"82
-[; ;temp_monitoring.c: 82:     _delay((unsigned long)((100)*(4000000/4000.0)));
+"94
+[; ;temp_monitoring.c: 94:     _delay((unsigned long)((100)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"83
-[; ;temp_monitoring.c: 83:     write_one_byte_in_eeprom(addressL, 0);
+"95
+[; ;temp_monitoring.c: 95:     write_one_byte_in_eeprom(addressL, 0);
 [e ( _write_one_byte_in_eeprom (2 , _addressL -> -> 0 `i `us ]
-"86
-[; ;temp_monitoring.c: 86: }
-[e :UE 277 ]
+"96
+[; ;temp_monitoring.c: 96:     _delay((unsigned long)((100)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"97
+[; ;temp_monitoring.c: 97:     write_one_byte_in_eeprom(counter_alarm, 2);
+[e ( _write_one_byte_in_eeprom (2 , _counter_alarm -> -> 2 `i `us ]
+"100
+[; ;temp_monitoring.c: 100: }
+[e :UE 280 ]
 }
-"88
-[; ;temp_monitoring.c: 88: void read_address_in_eeprom(void)
+"102
+[; ;temp_monitoring.c: 102: void read_address_in_eeprom(void)
 [v _read_address_in_eeprom `(v ~T0 @X0 1 ef ]
-"89
-[; ;temp_monitoring.c: 89: {
+"103
+[; ;temp_monitoring.c: 103: {
 {
 [e :U _read_address_in_eeprom ]
 [f ]
-"90
-[; ;temp_monitoring.c: 90:     unsigned char addressH=0, addressL=0;
+"104
+[; ;temp_monitoring.c: 104:     unsigned char addressH=0, addressL=0;
 [v _addressH `uc ~T0 @X0 1 a ]
 [e = _addressH -> -> 0 `i `uc ]
 [v _addressL `uc ~T0 @X0 1 a ]
 [e = _addressL -> -> 0 `i `uc ]
-"92
-[; ;temp_monitoring.c: 92:     addressH = read_one_byte_in_eeprom(1);
+"106
+[; ;temp_monitoring.c: 106:     addressH = read_one_byte_in_eeprom(1);
 [e = _addressH ( _read_one_byte_in_eeprom (1 -> -> 1 `i `us ]
-"93
-[; ;temp_monitoring.c: 93:     _delay((unsigned long)((100)*(4000000/4000.0)));
+"107
+[; ;temp_monitoring.c: 107:     _delay((unsigned long)((100)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"94
-[; ;temp_monitoring.c: 94:     addressL = read_one_byte_in_eeprom(0);
+"108
+[; ;temp_monitoring.c: 108:     addressL = read_one_byte_in_eeprom(0);
 [e = _addressL ( _read_one_byte_in_eeprom (1 -> -> 0 `i `us ]
-"96
-[; ;temp_monitoring.c: 96:     previous_address_eeprom = (addressH<<8) | addressL;
+"109
+[; ;temp_monitoring.c: 109:     _delay((unsigned long)((100)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"110
+[; ;temp_monitoring.c: 110:     counter_alarm = read_one_byte_in_eeprom(2);
+[e = _counter_alarm ( _read_one_byte_in_eeprom (1 -> -> 2 `i `us ]
+"112
+[; ;temp_monitoring.c: 112:     previous_address_eeprom = (addressH<<8) | addressL;
 [e = _previous_address_eeprom -> | << -> _addressH `i -> 8 `i -> _addressL `i `us ]
-"98
-[; ;temp_monitoring.c: 98:     printf("previous add read %u\r\n", previous_address_eeprom);
-[e ( _printf , (. :s 1C -> _previous_address_eeprom `ui ]
-"101
-[; ;temp_monitoring.c: 101: }
-[e :UE 278 ]
+"114
+[; ;temp_monitoring.c: 114:     printf("previous add read %u\r\n", previous_address_eeprom);
+[e ( _printf , (. :s 4C -> _previous_address_eeprom `ui ]
+"115
+[; ;temp_monitoring.c: 115:     printf("counter alarm %u\r\n", counter_alarm);
+[e ( _printf , (. :s 5C -> _counter_alarm `i ]
+"118
+[; ;temp_monitoring.c: 118: }
+[e :UE 281 ]
 }
-"103
-[; ;temp_monitoring.c: 103: void extract_one_day_of_data(void)
+"120
+[; ;temp_monitoring.c: 120: void reset_address_in_eeprom(void)
+[v _reset_address_in_eeprom `(v ~T0 @X0 1 ef ]
+"121
+[; ;temp_monitoring.c: 121: {
+{
+[e :U _reset_address_in_eeprom ]
+[f ]
+"122
+[; ;temp_monitoring.c: 122:     unsigned char addressH=0, addressL=0;
+[v _addressH `uc ~T0 @X0 1 a ]
+[e = _addressH -> -> 0 `i `uc ]
+[v _addressL `uc ~T0 @X0 1 a ]
+[e = _addressL -> -> 0 `i `uc ]
+"124
+[; ;temp_monitoring.c: 124:     counter_alarm = 0;
+[e = _counter_alarm -> -> 0 `i `uc ]
+"125
+[; ;temp_monitoring.c: 125:     previous_address_eeprom = 0;
+[e = _previous_address_eeprom -> -> 0 `i `us ]
+"127
+[; ;temp_monitoring.c: 127:     write_one_byte_in_eeprom(addressH, 1);
+[e ( _write_one_byte_in_eeprom (2 , _addressH -> -> 1 `i `us ]
+"128
+[; ;temp_monitoring.c: 128:     _delay((unsigned long)((100)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"129
+[; ;temp_monitoring.c: 129:     write_one_byte_in_eeprom(addressL, 0);
+[e ( _write_one_byte_in_eeprom (2 , _addressL -> -> 0 `i `us ]
+"130
+[; ;temp_monitoring.c: 130:     _delay((unsigned long)((100)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"131
+[; ;temp_monitoring.c: 131:     write_one_byte_in_eeprom(counter_alarm, 2);
+[e ( _write_one_byte_in_eeprom (2 , _counter_alarm -> -> 2 `i `us ]
+"132
+[; ;temp_monitoring.c: 132: }
+[e :UE 282 ]
+}
+"134
+[; ;temp_monitoring.c: 134: void extract_all_alarms(void)
+[v _extract_all_alarms `(v ~T0 @X0 1 ef ]
+"135
+[; ;temp_monitoring.c: 135: {
+{
+[e :U _extract_all_alarms ]
+[f ]
+[v F3341 `uc ~T0 @X0 -> 16 `i s ]
+[i F3341
+:U ..
+"136
+[; ;temp_monitoring.c: 136:     unsigned char tab2[16]={0};
+-> -> 0 `i `uc
+..
+]
+[v _tab2 `uc ~T0 @X0 -> 16 `i a ]
+[e = _tab2 F3341 ]
+"139
+[; ;temp_monitoring.c: 139:     uint16_t previous_address_counter = 8;
+[v _previous_address_counter `us ~T0 @X0 1 a ]
+[e = _previous_address_counter -> -> 8 `i `us ]
+"143
+[; ;temp_monitoring.c: 143:     for(int j=0; j<counter_alarm; j++)
+{
+[v _j `i ~T0 @X0 1 a ]
+[e = _j -> 0 `i ]
+[e $U 287  ]
+[e :U 284 ]
+"144
+[; ;temp_monitoring.c: 144:     {
+{
+"145
+[; ;temp_monitoring.c: 145:         read_one_page_in_eeprom(previous_address_counter,tab2);
+[e ( _read_one_page_in_eeprom (2 , _previous_address_counter &U _tab2 ]
+"146
+[; ;temp_monitoring.c: 146:         previous_address_counter += 8;
+[e =+ _previous_address_counter -> -> 8 `i `us ]
+"147
+[; ;temp_monitoring.c: 147:         _delay((unsigned long)((10)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"148
+[; ;temp_monitoring.c: 148:         read_one_page_in_eeprom(previous_address_counter,&tab2[8]);
+[e ( _read_one_page_in_eeprom (2 , _previous_address_counter &U *U + &U _tab2 * -> -> -> 8 `i `ui `ux -> -> # *U &U _tab2 `ui `ux ]
+"149
+[; ;temp_monitoring.c: 149:         previous_address_counter += 8;
+[e =+ _previous_address_counter -> -> 8 `i `us ]
+"150
+[; ;temp_monitoring.c: 150:         _delay((unsigned long)((10)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"153
+[; ;temp_monitoring.c: 153:         printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7], tab2[8], tab2[9], tab2[10], tab2[11], tab2[12], tab2[13], tab2[14], tab2[15]);
+[e ( _printf , , , , , , , , , , , , , , , , (. :s 6C -> *U + &U _tab2 * -> -> -> 0 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 1 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 2 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 3 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 4 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 5 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 6 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 7 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 8 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 9 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 10 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 11 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 12 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 13 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 14 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 15 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i ]
+"154
+[; ;temp_monitoring.c: 154:     }
+}
+[e ++ _j -> 1 `i ]
+[e :U 287 ]
+[e $ < _j -> _counter_alarm `i 284  ]
+[e :U 285 ]
+}
+"156
+[; ;temp_monitoring.c: 156: }
+[e :UE 283 ]
+}
+"160
+[; ;temp_monitoring.c: 160: void extract_one_day_of_data(void)
 [v _extract_one_day_of_data `(v ~T0 @X0 1 ef ]
-"104
-[; ;temp_monitoring.c: 104: {
+"161
+[; ;temp_monitoring.c: 161: {
 {
 [e :U _extract_one_day_of_data ]
 [f ]
-[v F3329 `uc ~T0 @X0 -> 8 `i s ]
-[i F3329
+[v F3346 `uc ~T0 @X0 -> 8 `i s ]
+[i F3346
 :U ..
-"105
-[; ;temp_monitoring.c: 105:     unsigned char tab2[8]={0};
+"162
+[; ;temp_monitoring.c: 162:     unsigned char tab2[8]={0};
 -> -> 0 `i `uc
 ..
 ]
 [v _tab2 `uc ~T0 @X0 -> 8 `i a ]
-[e = _tab2 F3329 ]
-"108
-[; ;temp_monitoring.c: 108:     static uint16_t previous_address_counter = 8;
-[v F3331 `us ~T0 @X0 1 s previous_address_counter ]
-[i F3331
+[e = _tab2 F3346 ]
+"165
+[; ;temp_monitoring.c: 165:     static uint16_t previous_address_counter = 8;
+[v F3348 `us ~T0 @X0 1 s previous_address_counter ]
+[i F3348
 -> -> 8 `i `us
 ]
-"111
-[; ;temp_monitoring.c: 111:     for(int j=0; j<1440; j++)
+"168
+[; ;temp_monitoring.c: 168:     for(int j=0; j<1440; j++)
 {
 [v _j `i ~T0 @X0 1 a ]
 [e = _j -> 0 `i ]
-[e $ < _j -> 1440 `i 280  ]
-[e $U 281  ]
-[e :U 280 ]
-"112
-[; ;temp_monitoring.c: 112:     {
+[e $ < _j -> 1440 `i 289  ]
+[e $U 290  ]
+[e :U 289 ]
+"169
+[; ;temp_monitoring.c: 169:     {
 {
-"113
-[; ;temp_monitoring.c: 113:         read_one_page_in_eeprom(previous_address_counter,tab2);
-[e ( _read_one_page_in_eeprom (2 , F3331 &U _tab2 ]
-"114
-[; ;temp_monitoring.c: 114:         previous_address_counter += 8;
-[e =+ F3331 -> -> 8 `i `us ]
-"115
-[; ;temp_monitoring.c: 115:         _delay((unsigned long)((10)*(4000000/4000.0)));
+"170
+[; ;temp_monitoring.c: 170:         read_one_page_in_eeprom(previous_address_counter,tab2);
+[e ( _read_one_page_in_eeprom (2 , F3348 &U _tab2 ]
+"171
+[; ;temp_monitoring.c: 171:         previous_address_counter += 8;
+[e =+ F3348 -> -> 8 `i `us ]
+"172
+[; ;temp_monitoring.c: 172:         _delay((unsigned long)((10)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"118
-[; ;temp_monitoring.c: 118:         printf("{%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7]);
-[e ( _printf , , , , , , , , (. :s 2C -> *U + &U _tab2 * -> -> -> 0 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 1 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 2 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 3 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 4 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 5 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 6 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 7 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i ]
-"119
-[; ;temp_monitoring.c: 119:     }
+"175
+[; ;temp_monitoring.c: 175:         printf("{%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7]);
+[e ( _printf , , , , , , , , (. :s 7C -> *U + &U _tab2 * -> -> -> 0 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 1 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 2 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 3 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 4 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 5 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 6 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i -> *U + &U _tab2 * -> -> -> 7 `i `ui `ux -> -> # *U &U _tab2 `ui `ux `i ]
+"176
+[; ;temp_monitoring.c: 176:     }
 }
 [e ++ _j -> 1 `i ]
-[e $ < _j -> 1440 `i 280  ]
-[e :U 281 ]
+[e $ < _j -> 1440 `i 289  ]
+[e :U 290 ]
 }
-"122
-[; ;temp_monitoring.c: 122:     previous_address_counter = 8;
-[e = F3331 -> -> 8 `i `us ]
-"123
-[; ;temp_monitoring.c: 123: }
-[e :UE 279 ]
+"179
+[; ;temp_monitoring.c: 179:     previous_address_counter = 8;
+[e = F3348 -> -> 8 `i `us ]
+"180
+[; ;temp_monitoring.c: 180: }
+[e :UE 288 ]
 }
-"126
-[; ;temp_monitoring.c: 126: void SD_control(void)
+"183
+[; ;temp_monitoring.c: 183: void SD_control(void)
 [v _SD_control `(v ~T0 @X0 1 ef ]
-"127
-[; ;temp_monitoring.c: 127: {
+"184
+[; ;temp_monitoring.c: 184: {
 {
 [e :U _SD_control ]
 [f ]
-"129
-[; ;temp_monitoring.c: 129: }
-[e :UE 283 ]
+"186
+[; ;temp_monitoring.c: 186: }
+[e :UE 292 ]
 }
 [p f _printf 12616708 ]
-[a 2C 123 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 125 13 10 0 ]
-[a 1C 112 114 101 118 105 111 117 115 32 97 100 100 32 114 101 97 100 32 37 117 13 10 0 ]
+[a 2C 37 48 50 120 32 0 ]
+[a 1C 84 97 98 108 101 97 117 32 97 118 97 110 116 32 18446744073709551593 99 114 105 116 117 114 101 32 100 97 110 115 32 108 39 69 69 80 82 79 77 58 10 0 ]
+[a 7C 123 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 125 13 10 0 ]
+[a 6C 123 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 37 48 50 120 125 13 10 0 ]
+[a 5C 99 111 117 110 116 101 114 32 97 108 97 114 109 32 37 117 13 10 0 ]
+[a 4C 112 114 101 118 105 111 117 115 32 97 100 100 32 114 101 97 100 32 37 117 13 10 0 ]
+[a 3C 10 0 ]
