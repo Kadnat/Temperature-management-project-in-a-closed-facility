@@ -1,0 +1,770 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"5029 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
+[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
+"4807
+[s S193 :2 `uc 1 :1 `uc 1 ]
+[n S193 . . R_NOT_W ]
+"4811
+[s S194 :5 `uc 1 :1 `uc 1 ]
+[n S194 . . D_NOT_A ]
+"4815
+[s S195 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S195 . BF UA R_nW S P D_nA CKE SMP ]
+"4825
+[s S196 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S196 . . R . D ]
+"4831
+[s S197 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S197 . . W . A ]
+"4837
+[s S198 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S198 . . nW . nA ]
+"4843
+[s S199 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S199 . . R_W . D_A ]
+"4849
+[s S200 :2 `uc 1 :1 `uc 1 ]
+[n S200 . . NOT_WRITE ]
+"4853
+[s S201 :5 `uc 1 :1 `uc 1 ]
+[n S201 . . NOT_ADDRESS ]
+"4857
+[s S202 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S202 . . nWRITE . nADDRESS ]
+"4863
+[s S203 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S203 . . RW START STOP DA ]
+"4870
+[s S204 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S204 . . NOT_W . NOT_A ]
+"4806
+[u S192 `S193 1 `S194 1 `S195 1 `S196 1 `S197 1 `S198 1 `S199 1 `S200 1 `S201 1 `S202 1 `S203 1 `S204 1 ]
+[n S192 . . . . . . . . . . . . . ]
+"4877
+[v _SSPSTATbits `VS192 ~T0 @X0 0 e@4039 ]
+"8014
+[v _SSPIF `Vb ~T0 @X0 0 e@31987 ]
+"4737
+[s S190 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S190 . SSPM CKP SSPEN SSPOV WCOL ]
+"4744
+[s S191 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S191 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"4736
+[u S189 `S190 1 `S191 1 ]
+[n S189 . . . ]
+"4751
+[v _SSPCON1bits `VS189 ~T0 @X0 0 e@4038 ]
+"4801
+[v _SSPSTAT `Vuc ~T0 @X0 0 e@4039 ]
+"4731
+[v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
+"1835
+[s S70 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S70 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1845
+[s S71 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S71 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"1834
+[u S69 `S70 1 `S71 1 ]
+[n S69 . . . ]
+"1856
+[v _TRISCbits `VS69 ~T0 @X0 0 e@3988 ]
+"20 ./common.h
+[p x OSC  =  XT          ]
+"21
+[p x FCMEN  =  OFF       ]
+"22
+[p x IESO  =  OFF        ]
+"25
+[p x PWRT  =  OFF        ]
+"26
+[p x BOREN  =  SBORDIS   ]
+"27
+[p x BORV  =  3          ]
+"30
+[p x WDT  =  OFF          ]
+"31
+[p x WDTPS  =  32768     ]
+"34
+[p x CCP2MX  =  PORTC    ]
+"35
+[p x PBADEN  =  ON       ]
+"36
+[p x LPT1OSC  =  OFF     ]
+"37
+[p x MCLRE  =  ON        ]
+"40
+[p x STVREN  =  ON       ]
+"41
+[p x LVP  =  ON          ]
+"42
+[p x XINST  =  OFF       ]
+"45
+[p x CP0  =  OFF         ]
+"46
+[p x CP1  =  OFF         ]
+"47
+[p x CP2  =  OFF         ]
+"48
+[p x CP3  =  OFF         ]
+"51
+[p x CPB  =  OFF         ]
+"52
+[p x CPD  =  OFF         ]
+"55
+[p x WRT0  =  OFF        ]
+"56
+[p x WRT1  =  OFF        ]
+"57
+[p x WRT2  =  OFF        ]
+"58
+[p x WRT3  =  OFF        ]
+"61
+[p x WRTC  =  OFF        ]
+"62
+[p x WRTB  =  OFF        ]
+"63
+[p x WRTD  =  OFF        ]
+"66
+[p x EBTR0  =  OFF       ]
+"67
+[p x EBTR1  =  OFF       ]
+"68
+[p x EBTR2  =  OFF       ]
+"69
+[p x EBTR3  =  OFF       ]
+"72
+[p x EBTRB  =  OFF       ]
+"54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
+[; <" PORTA equ 0F80h ;# ">
+"191
+[; <" PORTB equ 0F81h ;# ">
+"362
+[; <" PORTC equ 0F82h ;# ">
+"537
+[; <" PORTD equ 0F83h ;# ">
+"679
+[; <" PORTE equ 0F84h ;# ">
+"882
+[; <" LATA equ 0F89h ;# ">
+"994
+[; <" LATB equ 0F8Ah ;# ">
+"1106
+[; <" LATC equ 0F8Bh ;# ">
+"1218
+[; <" LATD equ 0F8Ch ;# ">
+"1330
+[; <" LATE equ 0F8Dh ;# ">
+"1382
+[; <" TRISA equ 0F92h ;# ">
+"1387
+[; <" DDRA equ 0F92h ;# ">
+"1604
+[; <" TRISB equ 0F93h ;# ">
+"1609
+[; <" DDRB equ 0F93h ;# ">
+"1826
+[; <" TRISC equ 0F94h ;# ">
+"1831
+[; <" DDRC equ 0F94h ;# ">
+"2048
+[; <" TRISD equ 0F95h ;# ">
+"2053
+[; <" DDRD equ 0F95h ;# ">
+"2270
+[; <" TRISE equ 0F96h ;# ">
+"2275
+[; <" DDRE equ 0F96h ;# ">
+"2434
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2499
+[; <" PIE1 equ 0F9Dh ;# ">
+"2576
+[; <" PIR1 equ 0F9Eh ;# ">
+"2653
+[; <" IPR1 equ 0F9Fh ;# ">
+"2730
+[; <" PIE2 equ 0FA0h ;# ">
+"2796
+[; <" PIR2 equ 0FA1h ;# ">
+"2862
+[; <" IPR2 equ 0FA2h ;# ">
+"2928
+[; <" EECON1 equ 0FA6h ;# ">
+"2994
+[; <" EECON2 equ 0FA7h ;# ">
+"3001
+[; <" EEDATA equ 0FA8h ;# ">
+"3008
+[; <" EEADR equ 0FA9h ;# ">
+"3015
+[; <" EEADRH equ 0FAAh ;# ">
+"3022
+[; <" RCSTA equ 0FABh ;# ">
+"3027
+[; <" RCSTA1 equ 0FABh ;# ">
+"3232
+[; <" TXSTA equ 0FACh ;# ">
+"3237
+[; <" TXSTA1 equ 0FACh ;# ">
+"3488
+[; <" TXREG equ 0FADh ;# ">
+"3493
+[; <" TXREG1 equ 0FADh ;# ">
+"3500
+[; <" RCREG equ 0FAEh ;# ">
+"3505
+[; <" RCREG1 equ 0FAEh ;# ">
+"3512
+[; <" SPBRG equ 0FAFh ;# ">
+"3517
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3524
+[; <" SPBRGH equ 0FB0h ;# ">
+"3531
+[; <" T3CON equ 0FB1h ;# ">
+"3643
+[; <" TMR3 equ 0FB2h ;# ">
+"3650
+[; <" TMR3L equ 0FB2h ;# ">
+"3657
+[; <" TMR3H equ 0FB3h ;# ">
+"3664
+[; <" CMCON equ 0FB4h ;# ">
+"3754
+[; <" CVRCON equ 0FB5h ;# ">
+"3833
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3915
+[; <" PWM1CON equ 0FB7h ;# ">
+"3985
+[; <" BAUDCON equ 0FB8h ;# ">
+"3990
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4157
+[; <" CCP2CON equ 0FBAh ;# ">
+"4236
+[; <" CCPR2 equ 0FBBh ;# ">
+"4243
+[; <" CCPR2L equ 0FBBh ;# ">
+"4250
+[; <" CCPR2H equ 0FBCh ;# ">
+"4257
+[; <" CCP1CON equ 0FBDh ;# ">
+"4354
+[; <" CCPR1 equ 0FBEh ;# ">
+"4361
+[; <" CCPR1L equ 0FBEh ;# ">
+"4368
+[; <" CCPR1H equ 0FBFh ;# ">
+"4375
+[; <" ADCON2 equ 0FC0h ;# ">
+"4446
+[; <" ADCON1 equ 0FC1h ;# ">
+"4531
+[; <" ADCON0 equ 0FC2h ;# ">
+"4650
+[; <" ADRES equ 0FC3h ;# ">
+"4657
+[; <" ADRESL equ 0FC3h ;# ">
+"4664
+[; <" ADRESH equ 0FC4h ;# ">
+"4671
+[; <" SSPCON2 equ 0FC5h ;# ">
+"4733
+[; <" SSPCON1 equ 0FC6h ;# ">
+"4803
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5024
+[; <" SSPADD equ 0FC8h ;# ">
+"5031
+[; <" SSPBUF equ 0FC9h ;# ">
+"5038
+[; <" T2CON equ 0FCAh ;# ">
+"5109
+[; <" PR2 equ 0FCBh ;# ">
+"5114
+[; <" MEMCON equ 0FCBh ;# ">
+"5219
+[; <" TMR2 equ 0FCCh ;# ">
+"5226
+[; <" T1CON equ 0FCDh ;# ">
+"5329
+[; <" TMR1 equ 0FCEh ;# ">
+"5336
+[; <" TMR1L equ 0FCEh ;# ">
+"5343
+[; <" TMR1H equ 0FCFh ;# ">
+"5350
+[; <" RCON equ 0FD0h ;# ">
+"5483
+[; <" WDTCON equ 0FD1h ;# ">
+"5511
+[; <" HLVDCON equ 0FD2h ;# ">
+"5516
+[; <" LVDCON equ 0FD2h ;# ">
+"5781
+[; <" OSCCON equ 0FD3h ;# ">
+"5858
+[; <" T0CON equ 0FD5h ;# ">
+"5935
+[; <" TMR0 equ 0FD6h ;# ">
+"5942
+[; <" TMR0L equ 0FD6h ;# ">
+"5949
+[; <" TMR0H equ 0FD7h ;# ">
+"5956
+[; <" STATUS equ 0FD8h ;# ">
+"6027
+[; <" FSR2 equ 0FD9h ;# ">
+"6034
+[; <" FSR2L equ 0FD9h ;# ">
+"6041
+[; <" FSR2H equ 0FDAh ;# ">
+"6048
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6055
+[; <" PREINC2 equ 0FDCh ;# ">
+"6062
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6069
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6076
+[; <" INDF2 equ 0FDFh ;# ">
+"6083
+[; <" BSR equ 0FE0h ;# ">
+"6090
+[; <" FSR1 equ 0FE1h ;# ">
+"6097
+[; <" FSR1L equ 0FE1h ;# ">
+"6104
+[; <" FSR1H equ 0FE2h ;# ">
+"6111
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6118
+[; <" PREINC1 equ 0FE4h ;# ">
+"6125
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6132
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6139
+[; <" INDF1 equ 0FE7h ;# ">
+"6146
+[; <" WREG equ 0FE8h ;# ">
+"6158
+[; <" FSR0 equ 0FE9h ;# ">
+"6165
+[; <" FSR0L equ 0FE9h ;# ">
+"6172
+[; <" FSR0H equ 0FEAh ;# ">
+"6179
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6186
+[; <" PREINC0 equ 0FECh ;# ">
+"6193
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6200
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6207
+[; <" INDF0 equ 0FEFh ;# ">
+"6214
+[; <" INTCON3 equ 0FF0h ;# ">
+"6306
+[; <" INTCON2 equ 0FF1h ;# ">
+"6376
+[; <" INTCON equ 0FF2h ;# ">
+"6493
+[; <" PROD equ 0FF3h ;# ">
+"6500
+[; <" PRODL equ 0FF3h ;# ">
+"6507
+[; <" PRODH equ 0FF4h ;# ">
+"6514
+[; <" TABLAT equ 0FF5h ;# ">
+"6523
+[; <" TBLPTR equ 0FF6h ;# ">
+"6530
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6537
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6544
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6553
+[; <" PCLAT equ 0FF9h ;# ">
+"6560
+[; <" PC equ 0FF9h ;# ">
+"6567
+[; <" PCL equ 0FF9h ;# ">
+"6574
+[; <" PCLATH equ 0FFAh ;# ">
+"6581
+[; <" PCLATU equ 0FFBh ;# ">
+"6588
+[; <" STKPTR equ 0FFCh ;# ">
+"6694
+[; <" TOS equ 0FFDh ;# ">
+"6701
+[; <" TOSL equ 0FFDh ;# ">
+"6708
+[; <" TOSH equ 0FFEh ;# ">
+"6715
+[; <" TOSU equ 0FFFh ;# ">
+"14 SPI_PIC.c
+[; ;SPI_PIC.c: 14: unsigned char spiTransfer(unsigned char byteToTransfer){
+[v _spiTransfer `(uc ~T0 @X0 1 ef1`uc ]
+{
+[e :U _spiTransfer ]
+[v _byteToTransfer `uc ~T0 @X0 1 r1 ]
+[f ]
+"18
+[; ;SPI_PIC.c: 18:     SSPBUF = byteToTransfer;
+[e = _SSPBUF _byteToTransfer ]
+"22
+[; ;SPI_PIC.c: 22:     while(!SSPSTATbits.BF | !SSPIF){
+[e $U 271  ]
+[e :U 272 ]
+{
+"23
+[; ;SPI_PIC.c: 23:         continue;
+[e $U 271  ]
+"24
+[; ;SPI_PIC.c: 24:     }
+}
+[e :U 271 ]
+"22
+[; ;SPI_PIC.c: 22:     while(!SSPSTATbits.BF | !SSPIF){
+[e $ | ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i ! _SSPIF 272  ]
+[e :U 273 ]
+"26
+[; ;SPI_PIC.c: 26:     return SSPBUF;
+[e ) _SSPBUF ]
+[e $UE 270  ]
+"27
+[; ;SPI_PIC.c: 27: }
+[e :UE 270 ]
+}
+"29
+[; ;SPI_PIC.c: 29: void spiSend(unsigned char val){
+[v _spiSend `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _spiSend ]
+[v _val `uc ~T0 @X0 1 r1 ]
+[f ]
+"30
+[; ;SPI_PIC.c: 30:     spiTransfer(val);
+[e ( _spiTransfer (1 _val ]
+"31
+[; ;SPI_PIC.c: 31: }
+[e :UE 274 ]
+}
+"33
+[; ;SPI_PIC.c: 33: unsigned char spiReceive(void){
+[v _spiReceive `(uc ~T0 @X0 1 ef ]
+{
+[e :U _spiReceive ]
+[f ]
+"34
+[; ;SPI_PIC.c: 34:     return spiTransfer(0xFF);
+[e ) ( _spiTransfer (1 -> -> 255 `i `uc ]
+[e $UE 275  ]
+"35
+[; ;SPI_PIC.c: 35: }
+[e :UE 275 ]
+}
+"37
+[; ;SPI_PIC.c: 37: void spiInit(unsigned char divider){
+[v _spiInit `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _spiInit ]
+[v _divider `uc ~T0 @X0 1 r1 ]
+[f ]
+"38
+[; ;SPI_PIC.c: 38:     SSPCON1bits.SSPEN = 0;
+[e = . . _SSPCON1bits 0 2 -> -> 0 `i `uc ]
+"39
+[; ;SPI_PIC.c: 39:     SSPSTAT = 0x00;
+[e = _SSPSTAT -> -> 0 `i `uc ]
+"44
+[; ;SPI_PIC.c: 44:     switch(divider){
+[e $U 278  ]
+{
+"45
+[; ;SPI_PIC.c: 45:         case 4:
+[e :U 279 ]
+"46
+[; ;SPI_PIC.c: 46:             SSPCON1 = 0b00010000;
+[e = _SSPCON1 -> -> 16 `i `uc ]
+"47
+[; ;SPI_PIC.c: 47:             break;
+[e $U 277  ]
+"48
+[; ;SPI_PIC.c: 48:         case 16:
+[e :U 280 ]
+"49
+[; ;SPI_PIC.c: 49:             SSPCON1 = 0b00010001;
+[e = _SSPCON1 -> -> 17 `i `uc ]
+"50
+[; ;SPI_PIC.c: 50:             break;
+[e $U 277  ]
+"51
+[; ;SPI_PIC.c: 51:         case 64:
+[e :U 281 ]
+"52
+[; ;SPI_PIC.c: 52:             SSPCON1 = 0b00010010;
+[e = _SSPCON1 -> -> 18 `i `uc ]
+"53
+[; ;SPI_PIC.c: 53:             break;
+[e $U 277  ]
+"54
+[; ;SPI_PIC.c: 54:         default:
+[e :U 282 ]
+"55
+[; ;SPI_PIC.c: 55:             SSPCON1 = 0b00010001;
+[e = _SSPCON1 -> -> 17 `i `uc ]
+"56
+[; ;SPI_PIC.c: 56:     }
+}
+[e $U 277  ]
+[e :U 278 ]
+[e [\ -> _divider `i , $ -> 4 `i 279
+ , $ -> 16 `i 280
+ , $ -> 64 `i 281
+ 282 ]
+[e :U 277 ]
+"59
+[; ;SPI_PIC.c: 59:     TRISCbits.TRISC5 = 0;
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+"60
+[; ;SPI_PIC.c: 60:     TRISCbits.TRISC4 = 1;
+[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
+"61
+[; ;SPI_PIC.c: 61:     TRISCbits.TRISC3 = 0;
+[e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
+"63
+[; ;SPI_PIC.c: 63:     SSPCON1bits.SSPEN = 1;
+[e = . . _SSPCON1bits 0 2 -> -> 1 `i `uc ]
+"64
+[; ;SPI_PIC.c: 64: }
+[e :UE 276 ]
+}
+"66
+[; ;SPI_PIC.c: 66: void SPI_sendResetSequence(void)
+[v _SPI_sendResetSequence `(v ~T0 @X0 1 ef ]
+"67
+[; ;SPI_PIC.c: 67: {
+{
+[e :U _SPI_sendResetSequence ]
+[f ]
+"69
+[; ;SPI_PIC.c: 69:     SSPCON1bits.SSPEN = 0;
+[e = . . _SSPCON1bits 0 2 -> -> 0 `i `uc ]
+"70
+[; ;SPI_PIC.c: 70:     SSPCON1bits.SSPEN = 1;
+[e = . . _SSPCON1bits 0 2 -> -> 1 `i `uc ]
+"79
+[; ;SPI_PIC.c: 79:     SSPBUF = 0xFF;
+[e = _SSPBUF -> -> 255 `i `uc ]
+"85
+[; ;SPI_PIC.c: 85:     uint8_t wIndex = 1;
+[v _wIndex `uc ~T0 @X0 1 a ]
+[e = _wIndex -> -> 1 `i `uc ]
+"88
+[; ;SPI_PIC.c: 88:     while (wIndex < 10)
+[e $U 284  ]
+[e :U 285 ]
+"89
+[; ;SPI_PIC.c: 89:     {
+{
+"90
+[; ;SPI_PIC.c: 90:         if (!SSPSTATbits.BF)
+[e $ ! ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i 287  ]
+"91
+[; ;SPI_PIC.c: 91:         {
+{
+"93
+[; ;SPI_PIC.c: 93:             SSPBUF = 0xFF;
+[e = _SSPBUF -> -> 255 `i `uc ]
+"94
+[; ;SPI_PIC.c: 94:             wIndex++;
+[e ++ _wIndex -> -> 1 `i `uc ]
+"95
+[; ;SPI_PIC.c: 95:         }
+}
+[e :U 287 ]
+"96
+[; ;SPI_PIC.c: 96:     }
+}
+[e :U 284 ]
+"88
+[; ;SPI_PIC.c: 88:     while (wIndex < 10)
+[e $ < -> _wIndex `i -> 10 `i 285  ]
+[e :U 286 ]
+"97
+[; ;SPI_PIC.c: 97: }
+[e :UE 283 ]
+}
+"99
+[; ;SPI_PIC.c: 99: void SPI_sendBytes(uint8_t* txData, uint16_t len)
+[v _SPI_sendBytes `(v ~T0 @X0 1 ef2`*uc`us ]
+"100
+[; ;SPI_PIC.c: 100: {
+{
+[e :U _SPI_sendBytes ]
+"99
+[; ;SPI_PIC.c: 99: void SPI_sendBytes(uint8_t* txData, uint16_t len)
+[v _txData `*uc ~T0 @X0 1 r1 ]
+[v _len `us ~T0 @X0 1 r2 ]
+"100
+[; ;SPI_PIC.c: 100: {
+[f ]
+"102
+[; ;SPI_PIC.c: 102:     uint16_t wIndex = 0;
+[v _wIndex `us ~T0 @X0 1 a ]
+[e = _wIndex -> -> 0 `i `us ]
+"105
+[; ;SPI_PIC.c: 105:     while (wIndex < len)
+[e $U 289  ]
+[e :U 290 ]
+"106
+[; ;SPI_PIC.c: 106:     {
+{
+"108
+[; ;SPI_PIC.c: 108:         spiSend(txData[wIndex]);
+[e ( _spiSend (1 *U + _txData * -> _wIndex `ux -> -> # *U _txData `ui `ux ]
+"109
+[; ;SPI_PIC.c: 109:         wIndex++;
+[e ++ _wIndex -> -> 1 `i `us ]
+"110
+[; ;SPI_PIC.c: 110:     }
+}
+[e :U 289 ]
+"105
+[; ;SPI_PIC.c: 105:     while (wIndex < len)
+[e $ < -> _wIndex `ui -> _len `ui 290  ]
+[e :U 291 ]
+"111
+[; ;SPI_PIC.c: 111: }
+[e :UE 288 ]
+}
+"113
+[; ;SPI_PIC.c: 113: void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len)
+[v _SPI_exchangeBytes `(v ~T0 @X0 1 ef3`*uc`*uc`uc ]
+"114
+[; ;SPI_PIC.c: 114: {
+{
+[e :U _SPI_exchangeBytes ]
+"113
+[; ;SPI_PIC.c: 113: void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len)
+[v _txData `*uc ~T0 @X0 1 r1 ]
+[v _rxData `*uc ~T0 @X0 1 r2 ]
+[v _len `uc ~T0 @X0 1 r3 ]
+"114
+[; ;SPI_PIC.c: 114: {
+[f ]
+"116
+[; ;SPI_PIC.c: 116:     uint8_t index = 0;
+[v _index `uc ~T0 @X0 1 a ]
+[e = _index -> -> 0 `i `uc ]
+"119
+[; ;SPI_PIC.c: 119:     while (index < len)
+[e $U 293  ]
+[e :U 294 ]
+"120
+[; ;SPI_PIC.c: 120:     {
+{
+"122
+[; ;SPI_PIC.c: 122:         spiSend(txData[index]);
+[e ( _spiSend (1 *U + _txData * -> _index `ux -> -> # *U _txData `ui `ux ]
+"125
+[; ;SPI_PIC.c: 125:         rxData[index] = spiReceive();
+[e = *U + _rxData * -> _index `ux -> -> # *U _rxData `ui `ux ( _spiReceive ..  ]
+"127
+[; ;SPI_PIC.c: 127:         index++;
+[e ++ _index -> -> 1 `i `uc ]
+"128
+[; ;SPI_PIC.c: 128:     }
+}
+[e :U 293 ]
+"119
+[; ;SPI_PIC.c: 119:     while (index < len)
+[e $ < -> _index `i -> _len `i 294  ]
+[e :U 295 ]
+"129
+[; ;SPI_PIC.c: 129: }
+[e :UE 292 ]
+}
+"132
+[; ;SPI_PIC.c: 132: uint8_t SPI_exchangeByte(uint8_t data)
+[v _SPI_exchangeByte `(uc ~T0 @X0 1 ef1`uc ]
+"133
+[; ;SPI_PIC.c: 133: {
+{
+[e :U _SPI_exchangeByte ]
+"132
+[; ;SPI_PIC.c: 132: uint8_t SPI_exchangeByte(uint8_t data)
+[v _data `uc ~T0 @X0 1 r1 ]
+"133
+[; ;SPI_PIC.c: 133: {
+[f ]
+"134
+[; ;SPI_PIC.c: 134:     uint8_t output = data;
+[v _output `uc ~T0 @X0 1 a ]
+[e = _output _data ]
+"135
+[; ;SPI_PIC.c: 135:     SPI_exchangeBytes(&output, &output, 1);
+[e ( _SPI_exchangeBytes (3 , , &U _output &U _output -> -> 1 `i `uc ]
+"136
+[; ;SPI_PIC.c: 136:     return output;
+[e ) _output ]
+[e $UE 296  ]
+"137
+[; ;SPI_PIC.c: 137: }
+[e :UE 296 ]
+}
+"139
+[; ;SPI_PIC.c: 139: void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len)
+[v _SPI_receiveBytesTransmitFF `(v ~T0 @X0 1 ef2`*uc`us ]
+"140
+[; ;SPI_PIC.c: 140: {
+{
+[e :U _SPI_receiveBytesTransmitFF ]
+"139
+[; ;SPI_PIC.c: 139: void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len)
+[v _rxData `*uc ~T0 @X0 1 r1 ]
+[v _len `us ~T0 @X0 1 r2 ]
+"140
+[; ;SPI_PIC.c: 140: {
+[f ]
+"142
+[; ;SPI_PIC.c: 142:     uint16_t index = 0;
+[v _index `us ~T0 @X0 1 a ]
+[e = _index -> -> 0 `i `us ]
+"145
+[; ;SPI_PIC.c: 145:     while (index < len)
+[e $U 298  ]
+[e :U 299 ]
+"146
+[; ;SPI_PIC.c: 146:     {
+{
+"148
+[; ;SPI_PIC.c: 148:         spiSend(0xFF);
+[e ( _spiSend (1 -> -> 255 `i `uc ]
+"151
+[; ;SPI_PIC.c: 151:         rxData[index] = spiReceive();
+[e = *U + _rxData * -> _index `ux -> -> # *U _rxData `ui `ux ( _spiReceive ..  ]
+"153
+[; ;SPI_PIC.c: 153:         index++;
+[e ++ _index -> -> 1 `i `us ]
+"154
+[; ;SPI_PIC.c: 154:     }
+}
+[e :U 298 ]
+"145
+[; ;SPI_PIC.c: 145:     while (index < len)
+[e $ < -> _index `ui -> _len `ui 299  ]
+[e :U 300 ]
+"155
+[; ;SPI_PIC.c: 155: }
+[e :UE 297 ]
+}

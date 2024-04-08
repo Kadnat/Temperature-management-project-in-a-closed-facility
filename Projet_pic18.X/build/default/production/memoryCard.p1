@@ -1,0 +1,2972 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"9 memoryCard.c
+[; ;memoryCard.c: 9: static volatile MemoryCardDriverStatus cardStatus = STATUS_CARD_NONE;
+[c E105 0 1 2 3 .. ]
+[n E105 . STATUS_CARD_NONE STATUS_CARD_NOT_INIT STATUS_CARD_ERROR STATUS_CARD_READY  ]
+"10
+[; ;memoryCard.c: 10: static CardCapacityType memCapacity = CCS_INVALID;
+[c E100 -1 0 1 .. ]
+[n E100 . CCS_INVALID CCS_LOW_CAPACITY CCS_HIGH_CAPACITY  ]
+"23
+[; ;memoryCard.c: 23:         printf("%x%x ", (data[index] & 0xF0) >> 4, data[index] & 0x0F);
+[v _printf `(i ~T0 @X0 0 e? ]
+"55 ./SPI_PIC.h
+[; ;./SPI_PIC.h: 55: void spiInit(unsigned char divider);
+[v _spiInit `(v ~T0 @X0 0 ef1`uc ]
+"57
+[; ;./SPI_PIC.h: 57: void SPI_sendResetSequence(void);
+[v _SPI_sendResetSequence `(v ~T0 @X0 0 ef ]
+"92 ./memoryCard.h
+[; ;./memoryCard.h: 92:         struct {
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . is_idle erase_reset illegal_cmd_error crc_error erase_seq_error address_error param_error valid_header_n ]
+"91
+[; ;./memoryCard.h: 91:     {
+[u S1 `S2 1 `uc 1 ]
+[n S1 . . data ]
+"194
+[; ;./memoryCard.h: 194:     uint8_t memCard_sendCMD_R1(uint8_t commandIndex, uint32_t data);
+[v _memCard_sendCMD_R1 `(uc ~T0 @X0 0 ef2`uc`ul ]
+"77 memoryCard.c
+[; ;memoryCard.c: 77:         CommandError err = memCard_configureCard();
+[c E88 0 1 2 3 4 5 6 7 8 9 .. ]
+[n E88 . CARD_NO_ERROR CARD_SPI_TIMEOUT CARD_CRC_ERROR CARD_RESPONSE_ERROR CARD_ILLEGAL_CMD CARD_VOLTAGE_NOT_SUPPORTED CARD_PATTERN_ERROR CARD_WRITE_IN_PROGRESS CARD_WRITE_SIZE_ERROR CARD_NOT_INIT  ]
+"191 ./memoryCard.h
+[; ;./memoryCard.h: 191:     CommandError memCard_configureCard(void);
+[v _memCard_configureCard `(E88 ~T0 @X0 0 ef ]
+"197
+[; ;./memoryCard.h: 197:     uint8_t memCard_sendACMD_R1(uint8_t commandIndex, uint32_t data);
+[v _memCard_sendACMD_R1 `(uc ~T0 @X0 0 ef2`uc`ul ]
+[v F310 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
+[v __delay `JF310 ~T0 @X0 0 e ]
+[p i __delay ]
+"200 ./memoryCard.h
+[; ;./memoryCard.h: 200:     CardCapacityType memCard_getCapacityType(void);
+[v _memCard_getCapacityType `(E100 ~T0 @X0 0 ef ]
+"178
+[; ;./memoryCard.h: 178:     _Bool memCard_setupFastSPI(void);
+[v _memCard_setupFastSPI `(a ~T0 @X0 0 ef ]
+"226
+[; ;./memoryCard.h: 226:     CommandError memCard_readBlock(uint32_t sector);
+[v _memCard_readBlock `(E88 ~T0 @X0 0 ef1`ul ]
+"209
+[; ;./memoryCard.h: 209:     CommandError memCard_readCSD(uint8_t* data);
+[v _memCard_readCSD `(E88 ~T0 @X0 0 ef1`*uc ]
+"47 ./SPI_PIC.h
+[; ;./SPI_PIC.h: 47: void spiSend(unsigned char val);
+[v _spiSend `(v ~T0 @X0 0 ef1`uc ]
+"232 ./memoryCard.h
+[; ;./memoryCard.h: 232:     uint8_t memCard_runCRC7(uint8_t* dataIn, uint8_t len);
+[v _memCard_runCRC7 `(uc ~T0 @X0 0 ef2`*uc`uc ]
+"59 ./SPI_PIC.h
+[; ;./SPI_PIC.h: 59: void SPI_sendBytes(uint8_t* txData, uint16_t len);
+[v _SPI_sendBytes `(v ~T0 @X0 0 ef2`*uc`us ]
+"203 ./memoryCard.h
+[; ;./memoryCard.h: 203:     _Bool memCard_receiveResponse_R1(uint8_t* dst);
+[v _memCard_receiveResponse_R1 `(a ~T0 @X0 0 ef1`*uc ]
+"61 ./SPI_PIC.h
+[; ;./SPI_PIC.h: 61: void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len);
+[v _SPI_exchangeBytes `(v ~T0 @X0 0 ef3`*uc`*uc`uc ]
+"206 ./memoryCard.h
+[; ;./memoryCard.h: 206:     CommandError memCard_readOCR(uint8_t* data);
+[v _memCard_readOCR `(E88 ~T0 @X0 0 ef1`*uc ]
+"63 ./SPI_PIC.h
+[; ;./SPI_PIC.h: 63: uint8_t SPI_exchangeByte(uint8_t data);
+[v _SPI_exchangeByte `(uc ~T0 @X0 0 ef1`uc ]
+"229 ./memoryCard.h
+[; ;./memoryCard.h: 229:     CommandError memCard_receiveBlockData(uint8_t* data, uint16_t length);
+[v _memCard_receiveBlockData `(E88 ~T0 @X0 0 ef2`*uc`us ]
+"107
+[; ;./memoryCard.h: 107:         struct {
+[s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 ]
+[n S4 . error cc_error card_ecc_error range_error locked_error valid_header_n ]
+"115
+[; ;./memoryCard.h: 115:         struct {
+[s S5 :1 `uc 1 :3 `uc 1 :1 `uc 1 :3 `uc 1 ]
+[n S5 . one status zero dnc ]
+"106
+[; ;./memoryCard.h: 106:     {
+[u S3 `S4 1 `S5 1 `uc 1 ]
+[n S3 . ErrorToken DataToken data ]
+"65 ./SPI_PIC.h
+[; ;./SPI_PIC.h: 65: void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len);
+[v _SPI_receiveBytesTransmitFF `(v ~T0 @X0 0 ef2`*uc`us ]
+"20 ./common.h
+[p x OSC  =  XT          ]
+"21
+[p x FCMEN  =  OFF       ]
+"22
+[p x IESO  =  OFF        ]
+"25
+[p x PWRT  =  OFF        ]
+"26
+[p x BOREN  =  SBORDIS   ]
+"27
+[p x BORV  =  3          ]
+"30
+[p x WDT  =  OFF          ]
+"31
+[p x WDTPS  =  32768     ]
+"34
+[p x CCP2MX  =  PORTC    ]
+"35
+[p x PBADEN  =  ON       ]
+"36
+[p x LPT1OSC  =  OFF     ]
+"37
+[p x MCLRE  =  ON        ]
+"40
+[p x STVREN  =  ON       ]
+"41
+[p x LVP  =  ON          ]
+"42
+[p x XINST  =  OFF       ]
+"45
+[p x CP0  =  OFF         ]
+"46
+[p x CP1  =  OFF         ]
+"47
+[p x CP2  =  OFF         ]
+"48
+[p x CP3  =  OFF         ]
+"51
+[p x CPB  =  OFF         ]
+"52
+[p x CPD  =  OFF         ]
+"55
+[p x WRT0  =  OFF        ]
+"56
+[p x WRT1  =  OFF        ]
+"57
+[p x WRT2  =  OFF        ]
+"58
+[p x WRT3  =  OFF        ]
+"61
+[p x WRTC  =  OFF        ]
+"62
+[p x WRTB  =  OFF        ]
+"63
+[p x WRTD  =  OFF        ]
+"66
+[p x EBTR0  =  OFF       ]
+"67
+[p x EBTR1  =  OFF       ]
+"68
+[p x EBTR2  =  OFF       ]
+"69
+[p x EBTR3  =  OFF       ]
+"72
+[p x EBTRB  =  OFF       ]
+"54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
+[; <" PORTA equ 0F80h ;# ">
+"191
+[; <" PORTB equ 0F81h ;# ">
+"362
+[; <" PORTC equ 0F82h ;# ">
+"537
+[; <" PORTD equ 0F83h ;# ">
+"679
+[; <" PORTE equ 0F84h ;# ">
+"882
+[; <" LATA equ 0F89h ;# ">
+"994
+[; <" LATB equ 0F8Ah ;# ">
+"1106
+[; <" LATC equ 0F8Bh ;# ">
+"1218
+[; <" LATD equ 0F8Ch ;# ">
+"1330
+[; <" LATE equ 0F8Dh ;# ">
+"1382
+[; <" TRISA equ 0F92h ;# ">
+"1387
+[; <" DDRA equ 0F92h ;# ">
+"1604
+[; <" TRISB equ 0F93h ;# ">
+"1609
+[; <" DDRB equ 0F93h ;# ">
+"1826
+[; <" TRISC equ 0F94h ;# ">
+"1831
+[; <" DDRC equ 0F94h ;# ">
+"2048
+[; <" TRISD equ 0F95h ;# ">
+"2053
+[; <" DDRD equ 0F95h ;# ">
+"2270
+[; <" TRISE equ 0F96h ;# ">
+"2275
+[; <" DDRE equ 0F96h ;# ">
+"2434
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2499
+[; <" PIE1 equ 0F9Dh ;# ">
+"2576
+[; <" PIR1 equ 0F9Eh ;# ">
+"2653
+[; <" IPR1 equ 0F9Fh ;# ">
+"2730
+[; <" PIE2 equ 0FA0h ;# ">
+"2796
+[; <" PIR2 equ 0FA1h ;# ">
+"2862
+[; <" IPR2 equ 0FA2h ;# ">
+"2928
+[; <" EECON1 equ 0FA6h ;# ">
+"2994
+[; <" EECON2 equ 0FA7h ;# ">
+"3001
+[; <" EEDATA equ 0FA8h ;# ">
+"3008
+[; <" EEADR equ 0FA9h ;# ">
+"3015
+[; <" EEADRH equ 0FAAh ;# ">
+"3022
+[; <" RCSTA equ 0FABh ;# ">
+"3027
+[; <" RCSTA1 equ 0FABh ;# ">
+"3232
+[; <" TXSTA equ 0FACh ;# ">
+"3237
+[; <" TXSTA1 equ 0FACh ;# ">
+"3488
+[; <" TXREG equ 0FADh ;# ">
+"3493
+[; <" TXREG1 equ 0FADh ;# ">
+"3500
+[; <" RCREG equ 0FAEh ;# ">
+"3505
+[; <" RCREG1 equ 0FAEh ;# ">
+"3512
+[; <" SPBRG equ 0FAFh ;# ">
+"3517
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3524
+[; <" SPBRGH equ 0FB0h ;# ">
+"3531
+[; <" T3CON equ 0FB1h ;# ">
+"3643
+[; <" TMR3 equ 0FB2h ;# ">
+"3650
+[; <" TMR3L equ 0FB2h ;# ">
+"3657
+[; <" TMR3H equ 0FB3h ;# ">
+"3664
+[; <" CMCON equ 0FB4h ;# ">
+"3754
+[; <" CVRCON equ 0FB5h ;# ">
+"3833
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3915
+[; <" PWM1CON equ 0FB7h ;# ">
+"3985
+[; <" BAUDCON equ 0FB8h ;# ">
+"3990
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4157
+[; <" CCP2CON equ 0FBAh ;# ">
+"4236
+[; <" CCPR2 equ 0FBBh ;# ">
+"4243
+[; <" CCPR2L equ 0FBBh ;# ">
+"4250
+[; <" CCPR2H equ 0FBCh ;# ">
+"4257
+[; <" CCP1CON equ 0FBDh ;# ">
+"4354
+[; <" CCPR1 equ 0FBEh ;# ">
+"4361
+[; <" CCPR1L equ 0FBEh ;# ">
+"4368
+[; <" CCPR1H equ 0FBFh ;# ">
+"4375
+[; <" ADCON2 equ 0FC0h ;# ">
+"4446
+[; <" ADCON1 equ 0FC1h ;# ">
+"4531
+[; <" ADCON0 equ 0FC2h ;# ">
+"4650
+[; <" ADRES equ 0FC3h ;# ">
+"4657
+[; <" ADRESL equ 0FC3h ;# ">
+"4664
+[; <" ADRESH equ 0FC4h ;# ">
+"4671
+[; <" SSPCON2 equ 0FC5h ;# ">
+"4733
+[; <" SSPCON1 equ 0FC6h ;# ">
+"4803
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5024
+[; <" SSPADD equ 0FC8h ;# ">
+"5031
+[; <" SSPBUF equ 0FC9h ;# ">
+"5038
+[; <" T2CON equ 0FCAh ;# ">
+"5109
+[; <" PR2 equ 0FCBh ;# ">
+"5114
+[; <" MEMCON equ 0FCBh ;# ">
+"5219
+[; <" TMR2 equ 0FCCh ;# ">
+"5226
+[; <" T1CON equ 0FCDh ;# ">
+"5329
+[; <" TMR1 equ 0FCEh ;# ">
+"5336
+[; <" TMR1L equ 0FCEh ;# ">
+"5343
+[; <" TMR1H equ 0FCFh ;# ">
+"5350
+[; <" RCON equ 0FD0h ;# ">
+"5483
+[; <" WDTCON equ 0FD1h ;# ">
+"5511
+[; <" HLVDCON equ 0FD2h ;# ">
+"5516
+[; <" LVDCON equ 0FD2h ;# ">
+"5781
+[; <" OSCCON equ 0FD3h ;# ">
+"5858
+[; <" T0CON equ 0FD5h ;# ">
+"5935
+[; <" TMR0 equ 0FD6h ;# ">
+"5942
+[; <" TMR0L equ 0FD6h ;# ">
+"5949
+[; <" TMR0H equ 0FD7h ;# ">
+"5956
+[; <" STATUS equ 0FD8h ;# ">
+"6027
+[; <" FSR2 equ 0FD9h ;# ">
+"6034
+[; <" FSR2L equ 0FD9h ;# ">
+"6041
+[; <" FSR2H equ 0FDAh ;# ">
+"6048
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6055
+[; <" PREINC2 equ 0FDCh ;# ">
+"6062
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6069
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6076
+[; <" INDF2 equ 0FDFh ;# ">
+"6083
+[; <" BSR equ 0FE0h ;# ">
+"6090
+[; <" FSR1 equ 0FE1h ;# ">
+"6097
+[; <" FSR1L equ 0FE1h ;# ">
+"6104
+[; <" FSR1H equ 0FE2h ;# ">
+"6111
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6118
+[; <" PREINC1 equ 0FE4h ;# ">
+"6125
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6132
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6139
+[; <" INDF1 equ 0FE7h ;# ">
+"6146
+[; <" WREG equ 0FE8h ;# ">
+"6158
+[; <" FSR0 equ 0FE9h ;# ">
+"6165
+[; <" FSR0L equ 0FE9h ;# ">
+"6172
+[; <" FSR0H equ 0FEAh ;# ">
+"6179
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6186
+[; <" PREINC0 equ 0FECh ;# ">
+"6193
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6200
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6207
+[; <" INDF0 equ 0FEFh ;# ">
+"6214
+[; <" INTCON3 equ 0FF0h ;# ">
+"6306
+[; <" INTCON2 equ 0FF1h ;# ">
+"6376
+[; <" INTCON equ 0FF2h ;# ">
+"6493
+[; <" PROD equ 0FF3h ;# ">
+"6500
+[; <" PRODL equ 0FF3h ;# ">
+"6507
+[; <" PRODH equ 0FF4h ;# ">
+"6514
+[; <" TABLAT equ 0FF5h ;# ">
+"6523
+[; <" TBLPTR equ 0FF6h ;# ">
+"6530
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6537
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6544
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6553
+[; <" PCLAT equ 0FF9h ;# ">
+"6560
+[; <" PC equ 0FF9h ;# ">
+"6567
+[; <" PCL equ 0FF9h ;# ">
+"6574
+[; <" PCLATH equ 0FFAh ;# ">
+"6581
+[; <" PCLATU equ 0FFBh ;# ">
+"6588
+[; <" STKPTR equ 0FFCh ;# ">
+"6694
+[; <" TOS equ 0FFDh ;# ">
+"6701
+[; <" TOSL equ 0FFDh ;# ">
+"6708
+[; <" TOSH equ 0FFEh ;# ">
+"6715
+[; <" TOSU equ 0FFFh ;# ">
+"9 memoryCard.c
+[; ;memoryCard.c: 9: static volatile MemoryCardDriverStatus cardStatus = STATUS_CARD_NONE;
+[v _cardStatus `VE105 ~T0 @X0 1 s ]
+[i _cardStatus
+. `E105 0
+]
+"10
+[; ;memoryCard.c: 10: static CardCapacityType memCapacity = CCS_INVALID;
+[v _memCapacity `E100 ~T0 @X0 1 s ]
+[i _memCapacity
+. `E100 0
+]
+"12
+[; ;memoryCard.c: 12: static volatile uint8_t cache[512];
+[v _cache `Vuc ~T0 @X0 -> 512 `i s ]
+"13
+[; ;memoryCard.c: 13: static uint32_t cacheBlockAddr;
+[v _cacheBlockAddr `ul ~T0 @X0 1 s ]
+"15
+[; ;memoryCard.c: 15: static uint16_t writeSize;
+[v _writeSize `us ~T0 @X0 1 s ]
+"16
+[; ;memoryCard.c: 16: static _Bool speedSwitchOK = 0;
+[v _speedSwitchOK `a ~T0 @X0 1 s ]
+[i _speedSwitchOK
+-> -> 0 `i `a
+]
+"17
+[; ;memoryCard.c: 17: static uint8_t fastBaud = 79;
+[v _fastBaud `uc ~T0 @X0 1 s ]
+[i _fastBaud
+-> -> 79 `i `uc
+]
+"19
+[; ;memoryCard.c: 19: void memCard_printData(uint8_t* data, uint8_t size)
+[v _memCard_printData `(v ~T0 @X0 1 ef2`*uc`uc ]
+"20
+[; ;memoryCard.c: 20: {
+{
+[e :U _memCard_printData ]
+"19
+[; ;memoryCard.c: 19: void memCard_printData(uint8_t* data, uint8_t size)
+[v _data `*uc ~T0 @X0 1 r1 ]
+[v _size `uc ~T0 @X0 1 r2 ]
+"20
+[; ;memoryCard.c: 20: {
+[f ]
+"21
+[; ;memoryCard.c: 21:     for (uint8_t index = 0; index < size; ++index)
+{
+[v _index `uc ~T0 @X0 1 a ]
+[e = _index -> -> 0 `i `uc ]
+[e $U 281  ]
+[e :U 278 ]
+"22
+[; ;memoryCard.c: 22:     {
+{
+"23
+[; ;memoryCard.c: 23:         printf("%x%x ", (data[index] & 0xF0) >> 4, data[index] & 0x0F);
+[e ( _printf , , :s 1C >> & -> *U + _data * -> _index `ux -> -> # *U _data `ui `ux `i -> 240 `i -> 4 `i & -> *U + _data * -> _index `ux -> -> # *U _data `ui `ux `i -> 15 `i ]
+"24
+[; ;memoryCard.c: 24:     }
+}
+[e =+ _index -> -> 1 `i `uc ]
+[e :U 281 ]
+[e $ < -> _index `i -> _size `i 278  ]
+[e :U 279 ]
+}
+"26
+[; ;memoryCard.c: 26:     printf("\r\n");
+[e ( _printf :s 2C ]
+"27
+[; ;memoryCard.c: 27: }
+[e :UE 277 ]
+}
+"30
+[; ;memoryCard.c: 30: void memCard_initDriver(void)
+[v _memCard_initDriver `(v ~T0 @X0 1 ef ]
+"31
+[; ;memoryCard.c: 31: {
+{
+[e :U _memCard_initDriver ]
+[f ]
+"33
+[; ;memoryCard.c: 33:     cacheBlockAddr = 0xFFFFFFFF;
+[e = _cacheBlockAddr -> 4294967295 `ul ]
+"34
+[; ;memoryCard.c: 34:     writeSize = 0xFFFF;
+[e = _writeSize -> -> 65535 `ui `us ]
+"37
+[; ;memoryCard.c: 37:     cardStatus = STATUS_CARD_NOT_INIT;
+[e = _cardStatus . `E105 1 ]
+"39
+[; ;memoryCard.c: 39: }
+[e :UE 282 ]
+}
+"43
+[; ;memoryCard.c: 43: _Bool memCard_initCard(void)
+[v _memCard_initCard `(a ~T0 @X0 1 ef ]
+"44
+[; ;memoryCard.c: 44: {
+{
+[e :U _memCard_initCard ]
+[f ]
+"46
+[; ;memoryCard.c: 46:     if (cardStatus == STATUS_CARD_READY)
+[e $ ! == -> _cardStatus `ui -> . `E105 3 `ui 284  ]
+"47
+[; ;memoryCard.c: 47:     {
+{
+"48
+[; ;memoryCard.c: 48:         return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 283  ]
+"49
+[; ;memoryCard.c: 49:     }
+}
+[e :U 284 ]
+"51
+[; ;memoryCard.c: 51:     printf("Beginning memory card configuration...\r\n");
+[e ( _printf :s 3C ]
+"54
+[; ;memoryCard.c: 54:     cacheBlockAddr = 0xFFFFFFFF;
+[e = _cacheBlockAddr -> 4294967295 `ul ]
+"57
+[; ;memoryCard.c: 57:     writeSize = 0xFFFF;
+[e = _writeSize -> -> 65535 `ui `us ]
+"60
+[; ;memoryCard.c: 60:     spiInit(16);
+[e ( _spiInit (1 -> -> 16 `i `uc ]
+"62
+[; ;memoryCard.c: 62:     _Bool good = 1;
+[v _good `a ~T0 @X0 1 a ]
+[e = _good -> -> 1 `i `a ]
+"64
+[; ;memoryCard.c: 64:     for (uint8_t fullRetryCount = 0; fullRetryCount < 5; fullRetryCount++)
+{
+[v _fullRetryCount `uc ~T0 @X0 1 a ]
+[e = _fullRetryCount -> -> 0 `i `uc ]
+[e $ < -> _fullRetryCount `i -> 5 `i 285  ]
+[e $U 286  ]
+[e :U 285 ]
+"65
+[; ;memoryCard.c: 65:     {
+{
+"66
+[; ;memoryCard.c: 66:         printf("Attempt %d of %d\r\n", (fullRetryCount + 1), 5);
+[e ( _printf , , :s 4C + -> _fullRetryCount `i -> 1 `i -> 5 `i ]
+"69
+[; ;memoryCard.c: 69:         SPI_sendResetSequence();
+[e ( _SPI_sendResetSequence ..  ]
+"72
+[; ;memoryCard.c: 72:         CommandStatus status;
+[v _status `S1 ~T0 @X0 1 a ]
+"73
+[; ;memoryCard.c: 73:         status.data = memCard_sendCMD_R1(0x00, 0x00000000);
+[e = . _status 1 ( _memCard_sendCMD_R1 (2 , -> -> 0 `i `uc -> -> -> 0 `i `l `ul ]
+"77
+[; ;memoryCard.c: 77:         CommandError err = memCard_configureCard();
+[v _err `E88 ~T0 @X0 1 a ]
+[e = _err ( _memCard_configureCard ..  ]
+"78
+[; ;memoryCard.c: 78:         if (err != CARD_NO_ERROR)
+[e $ ! != -> _err `ui -> . `E88 0 `ui 288  ]
+"79
+[; ;memoryCard.c: 79:         {
+{
+"80
+[; ;memoryCard.c: 80:             printf("[ERROR] CMD8 failed to configure card ( ");
+[e ( _printf :s 5C ]
+"81
+[; ;memoryCard.c: 81:             switch (err)
+[e $U 290  ]
+"82
+[; ;memoryCard.c: 82:             {
+{
+"83
+[; ;memoryCard.c: 83:                 case CARD_NO_ERROR:
+[e :U 291 ]
+"84
+[; ;memoryCard.c: 84:                 {
+{
+"85
+[; ;memoryCard.c: 85:                     printf("CARD_NO_ERROR");
+[e ( _printf :s 6C ]
+"86
+[; ;memoryCard.c: 86:                     break;
+[e $U 289  ]
+"87
+[; ;memoryCard.c: 87:                 }
+}
+"88
+[; ;memoryCard.c: 88:                 case CARD_SPI_TIMEOUT:
+[e :U 292 ]
+"89
+[; ;memoryCard.c: 89:                 {
+{
+"90
+[; ;memoryCard.c: 90:                     printf("CARD_SPI_TIMEOUT");
+[e ( _printf :s 7C ]
+"91
+[; ;memoryCard.c: 91:                     break;
+[e $U 289  ]
+"92
+[; ;memoryCard.c: 92:                 }
+}
+"93
+[; ;memoryCard.c: 93:                 case CARD_CRC_ERROR:
+[e :U 293 ]
+"94
+[; ;memoryCard.c: 94:                 {
+{
+"95
+[; ;memoryCard.c: 95:                     printf("CARD_CRC_ERROR");
+[e ( _printf :s 8C ]
+"96
+[; ;memoryCard.c: 96:                     break;
+[e $U 289  ]
+"97
+[; ;memoryCard.c: 97:                 }
+}
+"98
+[; ;memoryCard.c: 98:                 case CARD_RESPONSE_ERROR:
+[e :U 294 ]
+"99
+[; ;memoryCard.c: 99:                 {
+{
+"100
+[; ;memoryCard.c: 100:                     printf("CARD_RESPONSE_ERROR");
+[e ( _printf :s 9C ]
+"101
+[; ;memoryCard.c: 101:                     break;
+[e $U 289  ]
+"102
+[; ;memoryCard.c: 102:                 }
+}
+"103
+[; ;memoryCard.c: 103:                 case CARD_ILLEGAL_CMD:
+[e :U 295 ]
+"104
+[; ;memoryCard.c: 104:                 {
+{
+"105
+[; ;memoryCard.c: 105:                     printf("CARD_ILLEGAL_CMD");
+[e ( _printf :s 10C ]
+"106
+[; ;memoryCard.c: 106:                     break;
+[e $U 289  ]
+"107
+[; ;memoryCard.c: 107:                 }
+}
+"108
+[; ;memoryCard.c: 108:                 case CARD_VOLTAGE_NOT_SUPPORTED:
+[e :U 296 ]
+"109
+[; ;memoryCard.c: 109:                 {
+{
+"110
+[; ;memoryCard.c: 110:                     printf("CARD_VOLTAGE_NOT_SUPPORTED");
+[e ( _printf :s 11C ]
+"111
+[; ;memoryCard.c: 111:                     break;
+[e $U 289  ]
+"112
+[; ;memoryCard.c: 112:                 }
+}
+"113
+[; ;memoryCard.c: 113:                 case CARD_PATTERN_ERROR:
+[e :U 297 ]
+"114
+[; ;memoryCard.c: 114:                 {
+{
+"115
+[; ;memoryCard.c: 115:                     printf("CARD_PATTERN_ERROR");
+[e ( _printf :s 12C ]
+"116
+[; ;memoryCard.c: 116:                     break;
+[e $U 289  ]
+"117
+[; ;memoryCard.c: 117:                 }
+}
+"118
+[; ;memoryCard.c: 118:                 default:
+[e :U 298 ]
+"119
+[; ;memoryCard.c: 119:                     printf("???");
+[e ( _printf :s 13C ]
+"120
+[; ;memoryCard.c: 120:             }
+}
+[e $U 289  ]
+[e :U 290 ]
+[e [\ -> _err `ui , $ -> . `E88 0 `ui 291
+ , $ -> . `E88 1 `ui 292
+ , $ -> . `E88 2 `ui 293
+ , $ -> . `E88 3 `ui 294
+ , $ -> . `E88 4 `ui 295
+ , $ -> . `E88 5 `ui 296
+ , $ -> . `E88 6 `ui 297
+ 298 ]
+[e :U 289 ]
+"121
+[; ;memoryCard.c: 121:             printf(" )\r\n");
+[e ( _printf :s 14C ]
+"122
+[; ;memoryCard.c: 122:             continue;
+[e $U 287  ]
+"123
+[; ;memoryCard.c: 123:         }
+}
+[e :U 288 ]
+"125
+[; ;memoryCard.c: 125:         uint8_t count = 1;
+[v _count `uc ~T0 @X0 1 a ]
+[e = _count -> -> 1 `i `uc ]
+"126
+[; ;memoryCard.c: 126:         uint32_t initParam = 0x40000000;
+[v _initParam `ul ~T0 @X0 1 a ]
+[e = _initParam -> -> 1073741824 `l `ul ]
+"129
+[; ;memoryCard.c: 129:         good = 1;
+[e = _good -> -> 1 `i `a ]
+"132
+[; ;memoryCard.c: 132:         status.data = memCard_sendACMD_R1(41, initParam);
+[e = . _status 1 ( _memCard_sendACMD_R1 (2 , -> -> 41 `i `uc _initParam ]
+"135
+[; ;memoryCard.c: 135:         if (status.illegal_cmd_error)
+[e $ ! != -> . . _status 0 2 `i -> 0 `i 299  ]
+"136
+[; ;memoryCard.c: 136:         {
+{
+"138
+[; ;memoryCard.c: 138:             while ((status.is_idle) && (good))
+[e $U 300  ]
+[e :U 301 ]
+"139
+[; ;memoryCard.c: 139:             {
+{
+"141
+[; ;memoryCard.c: 141:                 status.data = memCard_sendCMD_R1(1, 0x00000000);
+[e = . _status 1 ( _memCard_sendCMD_R1 (2 , -> -> 1 `i `uc -> -> -> 0 `i `l `ul ]
+"143
+[; ;memoryCard.c: 143:                 if (count >= 100)
+[e $ ! >= -> _count `i -> 100 `i 303  ]
+"144
+[; ;memoryCard.c: 144:                 {
+{
+"145
+[; ;memoryCard.c: 145:                     printf("[ERROR] CMD1 failed to init card\r\n");
+[e ( _printf :s 15C ]
+"146
+[; ;memoryCard.c: 146:                     good = 0;
+[e = _good -> -> 0 `i `a ]
+"147
+[; ;memoryCard.c: 147:                 }
+}
+[e $U 304  ]
+"148
+[; ;memoryCard.c: 148:                 else
+[e :U 303 ]
+"149
+[; ;memoryCard.c: 149:                 {
+{
+"150
+[; ;memoryCard.c: 150:                     _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"151
+[; ;memoryCard.c: 151:                     count++;
+[e ++ _count -> -> 1 `i `uc ]
+"152
+[; ;memoryCard.c: 152:                 }
+}
+[e :U 304 ]
+"153
+[; ;memoryCard.c: 153:             }
+}
+[e :U 300 ]
+"138
+[; ;memoryCard.c: 138:             while ((status.is_idle) && (good))
+[e $ && != -> . . _status 0 0 `i -> 0 `i != -> _good `i -> 0 `i 301  ]
+[e :U 302 ]
+"154
+[; ;memoryCard.c: 154:         }
+}
+[e $U 305  ]
+"155
+[; ;memoryCard.c: 155:         else
+[e :U 299 ]
+"156
+[; ;memoryCard.c: 156:         {
+{
+"158
+[; ;memoryCard.c: 158:             while ((status.is_idle) && (good))
+[e $U 306  ]
+[e :U 307 ]
+"159
+[; ;memoryCard.c: 159:             {
+{
+"163
+[; ;memoryCard.c: 163:                 status.data = memCard_sendACMD_R1(41, initParam);
+[e = . _status 1 ( _memCard_sendACMD_R1 (2 , -> -> 41 `i `uc _initParam ]
+"165
+[; ;memoryCard.c: 165:                 if (count >= 100)
+[e $ ! >= -> _count `i -> 100 `i 309  ]
+"166
+[; ;memoryCard.c: 166:                 {
+{
+"167
+[; ;memoryCard.c: 167:                     printf("[ERROR] ACMD41 failed to init card\r\n");
+[e ( _printf :s 16C ]
+"168
+[; ;memoryCard.c: 168:                     good = 0;
+[e = _good -> -> 0 `i `a ]
+"169
+[; ;memoryCard.c: 169:                 }
+}
+[e $U 310  ]
+"170
+[; ;memoryCard.c: 170:                 else
+[e :U 309 ]
+"171
+[; ;memoryCard.c: 171:                 {
+{
+"172
+[; ;memoryCard.c: 172:                     _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"173
+[; ;memoryCard.c: 173:                     count++;
+[e ++ _count -> -> 1 `i `uc ]
+"174
+[; ;memoryCard.c: 174:                 }
+}
+[e :U 310 ]
+"175
+[; ;memoryCard.c: 175:             }
+}
+[e :U 306 ]
+"158
+[; ;memoryCard.c: 158:             while ((status.is_idle) && (good))
+[e $ && != -> . . _status 0 0 `i -> 0 `i != -> _good `i -> 0 `i 307  ]
+[e :U 308 ]
+"176
+[; ;memoryCard.c: 176:         }
+}
+[e :U 305 ]
+"178
+[; ;memoryCard.c: 178:         if (!good)
+[e $ ! ! != -> _good `i -> 0 `i 311  ]
+"179
+[; ;memoryCard.c: 179:         {
+{
+"181
+[; ;memoryCard.c: 181:             continue;
+[e $U 287  ]
+"182
+[; ;memoryCard.c: 182:         }
+}
+[e :U 311 ]
+"186
+[; ;memoryCard.c: 186:         memCapacity = memCard_getCapacityType();
+[e = _memCapacity ( _memCard_getCapacityType ..  ]
+"189
+[; ;memoryCard.c: 189:         switch (memCapacity)
+[e $U 313  ]
+"190
+[; ;memoryCard.c: 190:         {
+{
+"191
+[; ;memoryCard.c: 191:             case CCS_LOW_CAPACITY:
+[e :U 314 ]
+"192
+[; ;memoryCard.c: 192:                 printf("[DEBUG] Memory Card is small - use byte-mode addressing\r\n");
+[e ( _printf :s 17C ]
+"193
+[; ;memoryCard.c: 193:                 break;
+[e $U 312  ]
+"194
+[; ;memoryCard.c: 194:             case CCS_HIGH_CAPACITY:
+[e :U 315 ]
+"195
+[; ;memoryCard.c: 195:                 printf("[DEBUG] Memory Card is large - use LBA addressing\r\n");
+[e ( _printf :s 18C ]
+"196
+[; ;memoryCard.c: 196:                 break;
+[e $U 312  ]
+"197
+[; ;memoryCard.c: 197:             default:
+[e :U 316 ]
+"198
+[; ;memoryCard.c: 198:                 printf("[WARN] CMD58 was unable to determine capacity support\r\n");
+[e ( _printf :s 19C ]
+"199
+[; ;memoryCard.c: 199:         }
+}
+[e $U 312  ]
+[e :U 313 ]
+[e [\ -> _memCapacity `i , $ . `E100 1 314
+ , $ . `E100 2 315
+ 316 ]
+[e :U 312 ]
+"204
+[; ;memoryCard.c: 204:         status.data = memCard_sendCMD_R1(16, 512);
+[e = . _status 1 ( _memCard_sendCMD_R1 (2 , -> -> 16 `i `uc -> -> -> 512 `i `l `ul ]
+"205
+[; ;memoryCard.c: 205:         if (status.data != 0x00)
+[e $ ! != -> . _status 1 `i -> 0 `i 317  ]
+"206
+[; ;memoryCard.c: 206:         {
+{
+"207
+[; ;memoryCard.c: 207:             printf("[WARN] Unable to set BLOCK SIZE\r\n");
+[e ( _printf :s 20C ]
+"208
+[; ;memoryCard.c: 208:         }
+}
+[e :U 317 ]
+"211
+[; ;memoryCard.c: 211:         cardStatus = STATUS_CARD_READY;
+[e = _cardStatus . `E105 3 ]
+"212
+[; ;memoryCard.c: 212:         printf("Memory Card - READY\r\n");
+[e ( _printf :s 21C ]
+"216
+[; ;memoryCard.c: 216:         if (!memCard_setupFastSPI())
+[e $ ! ! != -> ( _memCard_setupFastSPI ..  `i -> 0 `i 318  ]
+"217
+[; ;memoryCard.c: 217:         {
+{
+"218
+[; ;memoryCard.c: 218:             printf("[WARN] Unable to detect max SPI clock speeds\r\n");
+[e ( _printf :s 22C ]
+"219
+[; ;memoryCard.c: 219:         }
+}
+[e :U 318 ]
+"223
+[; ;memoryCard.c: 223:         memCard_readBlock(0x00);
+[e ( _memCard_readBlock (1 -> -> -> 0 `i `l `ul ]
+"225
+[; ;memoryCard.c: 225:         return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 283  ]
+"226
+[; ;memoryCard.c: 226:     }
+}
+[e :U 287 ]
+[e ++ _fullRetryCount -> -> 1 `i `uc ]
+[e $ < -> _fullRetryCount `i -> 5 `i 285  ]
+[e :U 286 ]
+}
+"228
+[; ;memoryCard.c: 228:     printf("[!] Unable to initialize memory card\r\n");
+[e ( _printf :s 23C ]
+"229
+[; ;memoryCard.c: 229:     cardStatus = STATUS_CARD_ERROR;
+[e = _cardStatus . `E105 2 ]
+"230
+[; ;memoryCard.c: 230:     return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 283  ]
+"231
+[; ;memoryCard.c: 231: }
+[e :UE 283 ]
+}
+"234
+[; ;memoryCard.c: 234: MemoryCardDriverStatus memCard_getCardStatus(void)
+[v _memCard_getCardStatus `(E105 ~T0 @X0 1 ef ]
+"235
+[; ;memoryCard.c: 235: {
+{
+[e :U _memCard_getCardStatus ]
+[f ]
+"236
+[; ;memoryCard.c: 236:     return cardStatus;
+[e ) _cardStatus ]
+[e $UE 319  ]
+"237
+[; ;memoryCard.c: 237: }
+[e :UE 319 ]
+}
+"240
+[; ;memoryCard.c: 240: _Bool memCard_isCardReady(void)
+[v _memCard_isCardReady `(a ~T0 @X0 1 ef ]
+"241
+[; ;memoryCard.c: 241: {
+{
+[e :U _memCard_isCardReady ]
+[f ]
+"242
+[; ;memoryCard.c: 242:     return (cardStatus == STATUS_CARD_READY);
+[e ) -> -> == -> _cardStatus `ui -> . `E105 3 `ui `i `a ]
+[e $UE 320  ]
+"243
+[; ;memoryCard.c: 243: }
+[e :UE 320 ]
+}
+"246
+[; ;memoryCard.c: 246: _Bool memCard_setupFastSPI(void)
+[v _memCard_setupFastSPI `(a ~T0 @X0 1 ef ]
+"247
+[; ;memoryCard.c: 247: {
+{
+[e :U _memCard_setupFastSPI ]
+[f ]
+"248
+[; ;memoryCard.c: 248:     uint8_t resp[16];
+[v _resp `uc ~T0 @X0 -> 16 `i a ]
+"249
+[; ;memoryCard.c: 249:     fastBaud = 79;
+[e = _fastBaud -> -> 79 `i `uc ]
+"252
+[; ;memoryCard.c: 252:     if (memCard_readCSD(&resp[0]) != CARD_NO_ERROR)
+[e $ ! != -> ( _memCard_readCSD (1 &U *U + &U _resp * -> -> -> 0 `i `ui `ux -> -> # *U &U _resp `ui `ux `ui -> . `E88 0 `ui 322  ]
+"253
+[; ;memoryCard.c: 253:     {
+{
+"254
+[; ;memoryCard.c: 254:         return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 321  ]
+"255
+[; ;memoryCard.c: 255:     }
+}
+[e :U 322 ]
+"257
+[; ;memoryCard.c: 257:     uint8_t tSpeed = resp[3];
+[v _tSpeed `uc ~T0 @X0 1 a ]
+[e = _tSpeed *U + &U _resp * -> -> -> 3 `i `ui `ux -> -> # *U &U _resp `ui `ux ]
+"260
+[; ;memoryCard.c: 260:     printf("[DEBUG] Transfer Speed Byte = 0x%x\r\n", tSpeed);
+[e ( _printf , :s 24C -> _tSpeed `i ]
+"267
+[; ;memoryCard.c: 267:     uint8_t tUnit = tSpeed & 0x07;
+[v _tUnit `uc ~T0 @X0 1 a ]
+[e = _tUnit -> & -> _tSpeed `i -> 7 `i `uc ]
+"269
+[; ;memoryCard.c: 269:     uint8_t multRef = (tSpeed & 0x78) >> 3;
+[v _multRef `uc ~T0 @X0 1 a ]
+[e = _multRef -> >> & -> _tSpeed `i -> 120 `i -> 3 `i `uc ]
+"270
+[; ;memoryCard.c: 270:     if (multRef == 0)
+[e $ ! == -> _multRef `i -> 0 `i 323  ]
+"271
+[; ;memoryCard.c: 271:     {
+{
+"272
+[; ;memoryCard.c: 272:         return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 321  ]
+"273
+[; ;memoryCard.c: 273:     }
+}
+[e :U 323 ]
+"275
+[; ;memoryCard.c: 275:     if (tUnit > 2)
+[e $ ! > -> _tUnit `i -> 2 `i 324  ]
+"276
+[; ;memoryCard.c: 276:     {
+{
+"278
+[; ;memoryCard.c: 278:         fastBaud = (2);
+[e = _fastBaud -> -> 2 `i `uc ]
+"279
+[; ;memoryCard.c: 279:     }
+}
+[e $U 325  ]
+"280
+[; ;memoryCard.c: 280:     else if (tUnit == 2)
+[e :U 324 ]
+[e $ ! == -> _tUnit `i -> 2 `i 326  ]
+"281
+[; ;memoryCard.c: 281:     {
+{
+"283
+[; ;memoryCard.c: 283:         if (multRef >= 2)
+[e $ ! >= -> _multRef `i -> 2 `i 327  ]
+"284
+[; ;memoryCard.c: 284:         {
+{
+"286
+[; ;memoryCard.c: 286:             fastBaud = (2);
+[e = _fastBaud -> -> 2 `i `uc ]
+"287
+[; ;memoryCard.c: 287:         }
+}
+[e $U 328  ]
+"288
+[; ;memoryCard.c: 288:         else
+[e :U 327 ]
+"289
+[; ;memoryCard.c: 289:         {
+{
+"290
+[; ;memoryCard.c: 290:             fastBaud = (3);
+[e = _fastBaud -> -> 3 `i `uc ]
+"291
+[; ;memoryCard.c: 291:         }
+}
+[e :U 328 ]
+"292
+[; ;memoryCard.c: 292:     }
+}
+[e $U 329  ]
+"293
+[; ;memoryCard.c: 293:     else if (tUnit == 1)
+[e :U 326 ]
+[e $ ! == -> _tUnit `i -> 1 `i 330  ]
+"294
+[; ;memoryCard.c: 294:     {
+{
+"296
+[; ;memoryCard.c: 296:         if (multRef == 0x0F)
+[e $ ! == -> _multRef `i -> 15 `i 331  ]
+"297
+[; ;memoryCard.c: 297:         {
+{
+"298
+[; ;memoryCard.c: 298:             fastBaud = (3);
+[e = _fastBaud -> -> 3 `i `uc ]
+"299
+[; ;memoryCard.c: 299:         }
+}
+[e $U 332  ]
+"300
+[; ;memoryCard.c: 300:         else if (multRef == 0x0E)
+[e :U 331 ]
+[e $ ! == -> _multRef `i -> 14 `i 333  ]
+"301
+[; ;memoryCard.c: 301:         {
+{
+"302
+[; ;memoryCard.c: 302:             fastBaud = (4);
+[e = _fastBaud -> -> 4 `i `uc ]
+"303
+[; ;memoryCard.c: 303:         }
+}
+[e $U 334  ]
+"304
+[; ;memoryCard.c: 304:         else if (multRef >= 9)
+[e :U 333 ]
+[e $ ! >= -> _multRef `i -> 9 `i 335  ]
+"305
+[; ;memoryCard.c: 305:         {
+{
+"306
+[; ;memoryCard.c: 306:             fastBaud = (7);
+[e = _fastBaud -> -> 7 `i `uc ]
+"307
+[; ;memoryCard.c: 307:         }
+}
+[e $U 336  ]
+"308
+[; ;memoryCard.c: 308:         else if (multRef == 8)
+[e :U 335 ]
+[e $ ! == -> _multRef `i -> 8 `i 337  ]
+"309
+[; ;memoryCard.c: 309:         {
+{
+"310
+[; ;memoryCard.c: 310:             fastBaud = (9);
+[e = _fastBaud -> -> 9 `i `uc ]
+"311
+[; ;memoryCard.c: 311:         }
+}
+[e $U 338  ]
+"312
+[; ;memoryCard.c: 312:         else if (multRef >= 5)
+[e :U 337 ]
+[e $ ! >= -> _multRef `i -> 5 `i 339  ]
+"313
+[; ;memoryCard.c: 313:         {
+{
+"314
+[; ;memoryCard.c: 314:             fastBaud = (15);
+[e = _fastBaud -> -> 15 `i `uc ]
+"315
+[; ;memoryCard.c: 315:         }
+}
+[e $U 340  ]
+"316
+[; ;memoryCard.c: 316:         else
+[e :U 339 ]
+"317
+[; ;memoryCard.c: 317:         {
+{
+"318
+[; ;memoryCard.c: 318:             fastBaud = (31);
+[e = _fastBaud -> -> 31 `i `uc ]
+"319
+[; ;memoryCard.c: 319:         }
+}
+[e :U 340 ]
+[e :U 338 ]
+[e :U 336 ]
+[e :U 334 ]
+[e :U 332 ]
+"320
+[; ;memoryCard.c: 320:     }
+}
+[e $U 341  ]
+"321
+[; ;memoryCard.c: 321:     else
+[e :U 330 ]
+"322
+[; ;memoryCard.c: 322:     {
+{
+"324
+[; ;memoryCard.c: 324:         return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 321  ]
+"325
+[; ;memoryCard.c: 325:     }
+}
+[e :U 341 ]
+[e :U 329 ]
+[e :U 325 ]
+"327
+[; ;memoryCard.c: 327:     speedSwitchOK = 1;
+[e = _speedSwitchOK -> -> 1 `i `a ]
+"329
+[; ;memoryCard.c: 329:     printf("Setting max SPI CLK to ");
+[e ( _printf :s 25C ]
+"331
+[; ;memoryCard.c: 331:     switch(fastBaud)
+[e $U 343  ]
+"332
+[; ;memoryCard.c: 332:     {
+{
+"333
+[; ;memoryCard.c: 333:         case 2:
+[e :U 344 ]
+"334
+[; ;memoryCard.c: 334:             printf("10.6 MHz\r\n");
+[e ( _printf :s 26C ]
+"335
+[; ;memoryCard.c: 335:             break;
+[e $U 342  ]
+"336
+[; ;memoryCard.c: 336:         case 3:
+[e :U 345 ]
+"337
+[; ;memoryCard.c: 337:             printf("8 MHz\r\n");
+[e ( _printf :s 27C ]
+"338
+[; ;memoryCard.c: 338:             break;
+[e $U 342  ]
+"339
+[; ;memoryCard.c: 339:         case 4:
+[e :U 346 ]
+"340
+[; ;memoryCard.c: 340:             printf("6.4 MHz\r\n");
+[e ( _printf :s 28C ]
+"341
+[; ;memoryCard.c: 341:             break;
+[e $U 342  ]
+"342
+[; ;memoryCard.c: 342:         case 7:
+[e :U 347 ]
+"343
+[; ;memoryCard.c: 343:             printf("4 MHz\r\n");
+[e ( _printf :s 29C ]
+"344
+[; ;memoryCard.c: 344:             break;
+[e $U 342  ]
+"345
+[; ;memoryCard.c: 345:         case 9:
+[e :U 348 ]
+"346
+[; ;memoryCard.c: 346:             printf("3.2 MHz\r\n");
+[e ( _printf :s 30C ]
+"347
+[; ;memoryCard.c: 347:             break;
+[e $U 342  ]
+"348
+[; ;memoryCard.c: 348:         case 15:
+[e :U 349 ]
+"349
+[; ;memoryCard.c: 349:             printf("2 MHz\r\n");
+[e ( _printf :s 31C ]
+"350
+[; ;memoryCard.c: 350:             break;
+[e $U 342  ]
+"351
+[; ;memoryCard.c: 351:         case 31:
+[e :U 350 ]
+"352
+[; ;memoryCard.c: 352:             printf("1 MHz\r\n");
+[e ( _printf :s 32C ]
+"353
+[; ;memoryCard.c: 353:             break;
+[e $U 342  ]
+"354
+[; ;memoryCard.c: 354:     }
+}
+[e $U 342  ]
+[e :U 343 ]
+[e [\ -> _fastBaud `i , $ -> 2 `i 344
+ , $ -> 3 `i 345
+ , $ -> 4 `i 346
+ , $ -> 7 `i 347
+ , $ -> 9 `i 348
+ , $ -> 15 `i 349
+ , $ -> 31 `i 350
+ 342 ]
+[e :U 342 ]
+"356
+[; ;memoryCard.c: 356:     return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 321  ]
+"357
+[; ;memoryCard.c: 357: }
+[e :UE 321 ]
+}
+"387
+[; ;memoryCard.c: 387: void memCard_attach(void)
+[v _memCard_attach `(v ~T0 @X0 1 ef ]
+"388
+[; ;memoryCard.c: 388: {
+{
+[e :U _memCard_attach ]
+[f ]
+"389
+[; ;memoryCard.c: 389:     cardStatus = STATUS_CARD_NOT_INIT;
+[e = _cardStatus . `E105 1 ]
+"390
+[; ;memoryCard.c: 390: }
+[e :UE 351 ]
+}
+"393
+[; ;memoryCard.c: 393: void memCard_detach(void)
+[v _memCard_detach `(v ~T0 @X0 1 ef ]
+"394
+[; ;memoryCard.c: 394: {
+{
+[e :U _memCard_detach ]
+[f ]
+"395
+[; ;memoryCard.c: 395:     cardStatus = STATUS_CARD_NONE;
+[e = _cardStatus . `E105 0 ]
+"398
+[; ;memoryCard.c: 398:     cacheBlockAddr = 0xFFFFFFFF;
+[e = _cacheBlockAddr -> 4294967295 `ul ]
+"401
+[; ;memoryCard.c: 401:     writeSize = 0xFFFF;
+[e = _writeSize -> -> 65535 `ui `us ]
+"402
+[; ;memoryCard.c: 402: }
+[e :UE 352 ]
+}
+"405
+[; ;memoryCard.c: 405: CommandError memCard_configureCard(void)
+[v _memCard_configureCard `(E88 ~T0 @X0 1 ef ]
+"406
+[; ;memoryCard.c: 406: {
+{
+[e :U _memCard_configureCard ]
+[f ]
+"408
+[; ;memoryCard.c: 408:     spiSend(0xFF);
+[e ( _spiSend (1 -> -> 255 `i `uc ]
+"410
+[; ;memoryCard.c: 410:     uint8_t memPoolTx[6];
+[v _memPoolTx `uc ~T0 @X0 -> 6 `i a ]
+"411
+[; ;memoryCard.c: 411:     uint8_t memPoolRx[6];
+[v _memPoolRx `uc ~T0 @X0 -> 6 `i a ]
+"415
+[; ;memoryCard.c: 415:     memPoolTx[0] = 0x40 | 8;
+[e = *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> | -> 64 `i -> 8 `i `uc ]
+"418
+[; ;memoryCard.c: 418:     printf("[DEBUG] Sending CMD%d\r\n", 8);
+[e ( _printf , :s 33C -> 8 `i ]
+"422
+[; ;memoryCard.c: 422:     memPoolTx[1] = 0x00;
+[e = *U + &U _memPoolTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 0 `i `uc ]
+"423
+[; ;memoryCard.c: 423:     memPoolTx[2] = 0x00;
+[e = *U + &U _memPoolTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 0 `i `uc ]
+"424
+[; ;memoryCard.c: 424:     memPoolTx[3] = 0b0001;
+[e = *U + &U _memPoolTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 1 `i `uc ]
+"425
+[; ;memoryCard.c: 425:     memPoolTx[4] = 0xA5;
+[e = *U + &U _memPoolTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 165 `i `uc ]
+"428
+[; ;memoryCard.c: 428:     memPoolTx[5] = memCard_runCRC7(&memPoolTx[0], 5);
+[e = *U + &U _memPoolTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux ( _memCard_runCRC7 (2 , &U *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 5 `i `uc ]
+"434
+[; ;memoryCard.c: 434:     SPI_sendBytes(&memPoolTx[0], 6);
+[e ( _SPI_sendBytes (2 , &U *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 6 `i `us ]
+"436
+[; ;memoryCard.c: 436:     CommandStatus stat;
+[v _stat `S1 ~T0 @X0 1 a ]
+"438
+[; ;memoryCard.c: 438:     if (!memCard_receiveResponse_R1(&stat.data))
+[e $ ! ! != -> ( _memCard_receiveResponse_R1 (1 &U . _stat 1 `i -> 0 `i 354  ]
+"439
+[; ;memoryCard.c: 439:     {
+{
+"442
+[; ;memoryCard.c: 442:         return CARD_SPI_TIMEOUT;
+[e ) . `E88 1 ]
+[e $UE 353  ]
+"443
+[; ;memoryCard.c: 443:     }
+}
+[e :U 354 ]
+"445
+[; ;memoryCard.c: 445:     if (stat.illegal_cmd_error)
+[e $ ! != -> . . _stat 0 2 `i -> 0 `i 355  ]
+"446
+[; ;memoryCard.c: 446:     {
+{
+"449
+[; ;memoryCard.c: 449:         return CARD_ILLEGAL_CMD;
+[e ) . `E88 4 ]
+[e $UE 353  ]
+"450
+[; ;memoryCard.c: 450:     }
+}
+[e :U 355 ]
+"452
+[; ;memoryCard.c: 452:     if (stat.crc_error)
+[e $ ! != -> . . _stat 0 3 `i -> 0 `i 356  ]
+"453
+[; ;memoryCard.c: 453:     {
+{
+"456
+[; ;memoryCard.c: 456:         return CARD_CRC_ERROR;
+[e ) . `E88 2 ]
+[e $UE 353  ]
+"457
+[; ;memoryCard.c: 457:     }
+}
+[e :U 356 ]
+"461
+[; ;memoryCard.c: 461:     memPoolTx[0] = 0xFF;
+[e = *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 255 `i `uc ]
+"462
+[; ;memoryCard.c: 462:     memPoolTx[1] = 0xFF;
+[e = *U + &U _memPoolTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 255 `i `uc ]
+"463
+[; ;memoryCard.c: 463:     memPoolTx[2] = 0xFF;
+[e = *U + &U _memPoolTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 255 `i `uc ]
+"464
+[; ;memoryCard.c: 464:     memPoolTx[3] = 0xFF;
+[e = *U + &U _memPoolTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 255 `i `uc ]
+"467
+[; ;memoryCard.c: 467:     SPI_exchangeBytes(&memPoolTx[0], &memPoolRx[0], 4);
+[e ( _SPI_exchangeBytes (3 , , &U *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux &U *U + &U _memPoolRx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolRx `ui `ux -> -> 4 `i `uc ]
+"471
+[; ;memoryCard.c: 471:     if (stat.data != 0x01)
+[e $ ! != -> . _stat 1 `i -> 1 `i 357  ]
+"472
+[; ;memoryCard.c: 472:     {
+{
+"473
+[; ;memoryCard.c: 473:         return CARD_RESPONSE_ERROR;
+[e ) . `E88 3 ]
+[e $UE 353  ]
+"474
+[; ;memoryCard.c: 474:     }
+}
+[e :U 357 ]
+"477
+[; ;memoryCard.c: 477:     if ((memPoolRx[2] & 0x0F) != 0b0001)
+[e $ ! != & -> *U + &U _memPoolRx * -> -> -> 2 `i `ui `ux -> -> # *U &U _memPoolRx `ui `ux `i -> 15 `i -> 1 `i 358  ]
+"478
+[; ;memoryCard.c: 478:     {
+{
+"479
+[; ;memoryCard.c: 479:         return CARD_VOLTAGE_NOT_SUPPORTED;
+[e ) . `E88 5 ]
+[e $UE 353  ]
+"480
+[; ;memoryCard.c: 480:     }
+}
+[e :U 358 ]
+"483
+[; ;memoryCard.c: 483:     if (memPoolRx[3] != 0xA5)
+[e $ ! != -> *U + &U _memPoolRx * -> -> -> 3 `i `ui `ux -> -> # *U &U _memPoolRx `ui `ux `i -> 165 `i 359  ]
+"484
+[; ;memoryCard.c: 484:     {
+{
+"485
+[; ;memoryCard.c: 485:         return CARD_PATTERN_ERROR;
+[e ) . `E88 6 ]
+[e $UE 353  ]
+"486
+[; ;memoryCard.c: 486:     }
+}
+[e :U 359 ]
+"488
+[; ;memoryCard.c: 488:     return CARD_NO_ERROR;
+[e ) . `E88 0 ]
+[e $UE 353  ]
+"489
+[; ;memoryCard.c: 489: }
+[e :UE 353 ]
+}
+"493
+[; ;memoryCard.c: 493: uint8_t memCard_sendCMD_R1(uint8_t commandIndex, uint32_t data)
+[v _memCard_sendCMD_R1 `(uc ~T0 @X0 1 ef2`uc`ul ]
+"494
+[; ;memoryCard.c: 494: {
+{
+[e :U _memCard_sendCMD_R1 ]
+"493
+[; ;memoryCard.c: 493: uint8_t memCard_sendCMD_R1(uint8_t commandIndex, uint32_t data)
+[v _commandIndex `uc ~T0 @X0 1 r1 ]
+[v _data `ul ~T0 @X0 1 r2 ]
+"494
+[; ;memoryCard.c: 494: {
+[f ]
+"496
+[; ;memoryCard.c: 496:     spiSend(0xFF);
+[e ( _spiSend (1 -> -> 255 `i `uc ]
+"498
+[; ;memoryCard.c: 498:     uint8_t memPool[6];
+[v _memPool `uc ~T0 @X0 -> 6 `i a ]
+"501
+[; ;memoryCard.c: 501:     memPool[0] = 0x40;
+[e = *U + &U _memPool * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPool `ui `ux -> -> 64 `i `uc ]
+"502
+[; ;memoryCard.c: 502:     memPool[0] |= commandIndex;
+[e =| *U + &U _memPool * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPool `ui `ux -> _commandIndex `uc ]
+"505
+[; ;memoryCard.c: 505:     printf("[DEBUG] Sending CMD%d\r\n", commandIndex);
+[e ( _printf , :s 34C -> _commandIndex `i ]
+"509
+[; ;memoryCard.c: 509:     memPool[1] = (data & 0xFF000000) >> 24;
+[e = *U + &U _memPool * -> -> -> 1 `i `ui `ux -> -> # *U &U _memPool `ui `ux -> >> & _data -> 4278190080 `ul -> 24 `i `uc ]
+"510
+[; ;memoryCard.c: 510:     memPool[2] = (data & 0x00FF0000) >> 16;
+[e = *U + &U _memPool * -> -> -> 2 `i `ui `ux -> -> # *U &U _memPool `ui `ux -> >> & _data -> -> 16711680 `l `ul -> 16 `i `uc ]
+"511
+[; ;memoryCard.c: 511:     memPool[3] = (data & 0x0000FF00) >> 8;
+[e = *U + &U _memPool * -> -> -> 3 `i `ui `ux -> -> # *U &U _memPool `ui `ux -> >> & _data -> -> 65280 `ui `ul -> 8 `i `uc ]
+"512
+[; ;memoryCard.c: 512:     memPool[4] = (data & 0x000000FF);
+[e = *U + &U _memPool * -> -> -> 4 `i `ui `ux -> -> # *U &U _memPool `ui `ux -> & _data -> -> -> 255 `i `l `ul `uc ]
+"515
+[; ;memoryCard.c: 515:     memPool[5] = memCard_runCRC7(&memPool[0], 5);
+[e = *U + &U _memPool * -> -> -> 5 `i `ui `ux -> -> # *U &U _memPool `ui `ux ( _memCard_runCRC7 (2 , &U *U + &U _memPool * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPool `ui `ux -> -> 5 `i `uc ]
+"520
+[; ;memoryCard.c: 520:     SPI_sendBytes(&memPool[0], 6);
+[e ( _SPI_sendBytes (2 , &U *U + &U _memPool * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPool `ui `ux -> -> 6 `i `us ]
+"522
+[; ;memoryCard.c: 522:     uint8_t rVal = 0xFF;
+[v _rVal `uc ~T0 @X0 1 a ]
+[e = _rVal -> -> 255 `i `uc ]
+"524
+[; ;memoryCard.c: 524:     memCard_receiveResponse_R1(&rVal);
+[e ( _memCard_receiveResponse_R1 (1 &U _rVal ]
+"527
+[; ;memoryCard.c: 527:     return rVal;
+[e ) _rVal ]
+[e $UE 360  ]
+"528
+[; ;memoryCard.c: 528: }
+[e :UE 360 ]
+}
+"531
+[; ;memoryCard.c: 531: uint8_t memCard_sendACMD_R1(uint8_t commandIndex, uint32_t data)
+[v _memCard_sendACMD_R1 `(uc ~T0 @X0 1 ef2`uc`ul ]
+"532
+[; ;memoryCard.c: 532: {
+{
+[e :U _memCard_sendACMD_R1 ]
+"531
+[; ;memoryCard.c: 531: uint8_t memCard_sendACMD_R1(uint8_t commandIndex, uint32_t data)
+[v _commandIndex `uc ~T0 @X0 1 r1 ]
+[v _data `ul ~T0 @X0 1 r2 ]
+"532
+[; ;memoryCard.c: 532: {
+[f ]
+"533
+[; ;memoryCard.c: 533:     CommandStatus rVal;
+[v _rVal `S1 ~T0 @X0 1 a ]
+"534
+[; ;memoryCard.c: 534:     rVal.data = memCard_sendCMD_R1(55, 0x00000000);
+[e = . _rVal 1 ( _memCard_sendCMD_R1 (2 , -> -> 55 `i `uc -> -> -> 0 `i `l `ul ]
+"536
+[; ;memoryCard.c: 536:     if (rVal.data != 0x01)
+[e $ ! != -> . _rVal 1 `i -> 1 `i 362  ]
+"537
+[; ;memoryCard.c: 537:     {
+{
+"538
+[; ;memoryCard.c: 538:         return 0xFF;
+[e ) -> -> 255 `i `uc ]
+[e $UE 361  ]
+"539
+[; ;memoryCard.c: 539:     }
+}
+[e :U 362 ]
+"541
+[; ;memoryCard.c: 541:     rVal.data = memCard_sendCMD_R1(commandIndex, data);
+[e = . _rVal 1 ( _memCard_sendCMD_R1 (2 , _commandIndex _data ]
+"543
+[; ;memoryCard.c: 543:     return rVal.data;
+[e ) . _rVal 1 ]
+[e $UE 361  ]
+"544
+[; ;memoryCard.c: 544: }
+[e :UE 361 ]
+}
+"547
+[; ;memoryCard.c: 547: CardCapacityType memCard_getCapacityType(void)
+[v _memCard_getCapacityType `(E100 ~T0 @X0 1 ef ]
+"548
+[; ;memoryCard.c: 548: {
+{
+[e :U _memCard_getCapacityType ]
+[f ]
+"549
+[; ;memoryCard.c: 549:     uint8_t memPoolRx[4];
+[v _memPoolRx `uc ~T0 @X0 -> 4 `i a ]
+"551
+[; ;memoryCard.c: 551:     if (memCard_readOCR(&memPoolRx[0]) != CARD_NO_ERROR)
+[e $ ! != -> ( _memCard_readOCR (1 &U *U + &U _memPoolRx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolRx `ui `ux `ui -> . `E88 0 `ui 364  ]
+"552
+[; ;memoryCard.c: 552:     {
+{
+"553
+[; ;memoryCard.c: 553:         return CCS_INVALID;
+[e ) . `E100 0 ]
+[e $UE 363  ]
+"554
+[; ;memoryCard.c: 554:     }
+}
+[e :U 364 ]
+"557
+[; ;memoryCard.c: 557:     return ((memPoolRx[0] & 0x40) != 0x00) ? CCS_HIGH_CAPACITY : CCS_LOW_CAPACITY;
+[e ) -> ? != & -> *U + &U _memPoolRx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolRx `ui `ux `i -> 64 `i -> 0 `i : . `E100 2 . `E100 1 `E100 ]
+[e $UE 363  ]
+"558
+[; ;memoryCard.c: 558: }
+[e :UE 363 ]
+}
+"561
+[; ;memoryCard.c: 561: _Bool memCard_receiveResponse_R1(uint8_t* dst)
+[v _memCard_receiveResponse_R1 `(a ~T0 @X0 1 ef1`*uc ]
+"562
+[; ;memoryCard.c: 562: {
+{
+[e :U _memCard_receiveResponse_R1 ]
+"561
+[; ;memoryCard.c: 561: _Bool memCard_receiveResponse_R1(uint8_t* dst)
+[v _dst `*uc ~T0 @X0 1 r1 ]
+"562
+[; ;memoryCard.c: 562: {
+[f ]
+"563
+[; ;memoryCard.c: 563:     _Bool done = 0;
+[v _done `a ~T0 @X0 1 a ]
+[e = _done -> -> 0 `i `a ]
+"564
+[; ;memoryCard.c: 564:     uint8_t count = 0;
+[v _count `uc ~T0 @X0 1 a ]
+[e = _count -> -> 0 `i `uc ]
+"565
+[; ;memoryCard.c: 565:     CommandStatus stat;
+[v _stat `S1 ~T0 @X0 1 a ]
+"567
+[; ;memoryCard.c: 567:     *dst = 0xFF;
+[e = *U _dst -> -> 255 `i `uc ]
+"569
+[; ;memoryCard.c: 569:     while (!done)
+[e $U 366  ]
+[e :U 367 ]
+"570
+[; ;memoryCard.c: 570:     {
+{
+"571
+[; ;memoryCard.c: 571:         stat.data = SPI_exchangeByte(0xFF);
+[e = . _stat 1 ( _SPI_exchangeByte (1 -> -> 255 `i `uc ]
+"572
+[; ;memoryCard.c: 572:         count++;
+[e ++ _count -> -> 1 `i `uc ]
+"573
+[; ;memoryCard.c: 573:         if (!stat.valid_header_n)
+[e $ ! ! != -> . . _stat 0 7 `i -> 0 `i 369  ]
+"574
+[; ;memoryCard.c: 574:         {
+{
+"576
+[; ;memoryCard.c: 576:             done = 1;
+[e = _done -> -> 1 `i `a ]
+"577
+[; ;memoryCard.c: 577:         }
+}
+[e $U 370  ]
+"578
+[; ;memoryCard.c: 578:         else if (count == 10)
+[e :U 369 ]
+[e $ ! == -> _count `i -> 10 `i 371  ]
+"579
+[; ;memoryCard.c: 579:         {
+{
+"580
+[; ;memoryCard.c: 580:             return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 365  ]
+"581
+[; ;memoryCard.c: 581:         }
+}
+[e :U 371 ]
+[e :U 370 ]
+"582
+[; ;memoryCard.c: 582:     }
+}
+[e :U 366 ]
+"569
+[; ;memoryCard.c: 569:     while (!done)
+[e $ ! != -> _done `i -> 0 `i 367  ]
+[e :U 368 ]
+"585
+[; ;memoryCard.c: 585:     *dst = stat.data;
+[e = *U _dst . _stat 1 ]
+"586
+[; ;memoryCard.c: 586:     return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 365  ]
+"587
+[; ;memoryCard.c: 587: }
+[e :UE 365 ]
+}
+"590
+[; ;memoryCard.c: 590: CommandError memCard_readOCR(uint8_t* data)
+[v _memCard_readOCR `(E88 ~T0 @X0 1 ef1`*uc ]
+"591
+[; ;memoryCard.c: 591: {
+{
+[e :U _memCard_readOCR ]
+"590
+[; ;memoryCard.c: 590: CommandError memCard_readOCR(uint8_t* data)
+[v _data `*uc ~T0 @X0 1 r1 ]
+"591
+[; ;memoryCard.c: 591: {
+[f ]
+"592
+[; ;memoryCard.c: 592:     if (cardStatus == STATUS_CARD_NONE)
+[e $ ! == -> _cardStatus `ui -> . `E105 0 `ui 373  ]
+"593
+[; ;memoryCard.c: 593:         return CARD_NOT_INIT;
+[e ) . `E88 9 ]
+[e $UE 372  ]
+[e :U 373 ]
+"596
+[; ;memoryCard.c: 596:     spiSend(0xFF);
+[e ( _spiSend (1 -> -> 255 `i `uc ]
+"598
+[; ;memoryCard.c: 598:     uint8_t memPoolTx[6];
+[v _memPoolTx `uc ~T0 @X0 -> 6 `i a ]
+"602
+[; ;memoryCard.c: 602:     memPoolTx[0] = 0x40 | 58;
+[e = *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> | -> 64 `i -> 58 `i `uc ]
+"605
+[; ;memoryCard.c: 605:     printf("[DEBUG] Sending CMD%d\r\n", 58);
+[e ( _printf , :s 35C -> 58 `i ]
+"609
+[; ;memoryCard.c: 609:     memPoolTx[1] = 0x00;
+[e = *U + &U _memPoolTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 0 `i `uc ]
+"610
+[; ;memoryCard.c: 610:     memPoolTx[2] = 0x00;
+[e = *U + &U _memPoolTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 0 `i `uc ]
+"611
+[; ;memoryCard.c: 611:     memPoolTx[3] = 0x00;
+[e = *U + &U _memPoolTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 0 `i `uc ]
+"612
+[; ;memoryCard.c: 612:     memPoolTx[4] = 0x00;
+[e = *U + &U _memPoolTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 0 `i `uc ]
+"615
+[; ;memoryCard.c: 615:     memPoolTx[5] = memCard_runCRC7(&memPoolTx[0], 5);
+[e = *U + &U _memPoolTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux ( _memCard_runCRC7 (2 , &U *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 5 `i `uc ]
+"620
+[; ;memoryCard.c: 620:     SPI_sendBytes(&memPoolTx[0], 6);
+[e ( _SPI_sendBytes (2 , &U *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 6 `i `us ]
+"622
+[; ;memoryCard.c: 622:     CommandStatus stat;
+[v _stat `S1 ~T0 @X0 1 a ]
+"624
+[; ;memoryCard.c: 624:     if (!memCard_receiveResponse_R1(&stat.data))
+[e $ ! ! != -> ( _memCard_receiveResponse_R1 (1 &U . _stat 1 `i -> 0 `i 374  ]
+"625
+[; ;memoryCard.c: 625:     {
+{
+"628
+[; ;memoryCard.c: 628:         return CARD_SPI_TIMEOUT;
+[e ) . `E88 1 ]
+[e $UE 372  ]
+"629
+[; ;memoryCard.c: 629:     }
+}
+[e :U 374 ]
+"632
+[; ;memoryCard.c: 632:     if ((stat.data & 0xF7) != 0x00)
+[e $ ! != & -> . _stat 1 `i -> 247 `i -> 0 `i 375  ]
+"633
+[; ;memoryCard.c: 633:     {
+{
+"636
+[; ;memoryCard.c: 636:         return CARD_RESPONSE_ERROR;
+[e ) . `E88 3 ]
+[e $UE 372  ]
+"637
+[; ;memoryCard.c: 637:     }
+}
+[e :U 375 ]
+"641
+[; ;memoryCard.c: 641:     memPoolTx[0] = 0xFF;
+[e = *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 255 `i `uc ]
+"642
+[; ;memoryCard.c: 642:     memPoolTx[1] = 0xFF;
+[e = *U + &U _memPoolTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 255 `i `uc ]
+"643
+[; ;memoryCard.c: 643:     memPoolTx[2] = 0xFF;
+[e = *U + &U _memPoolTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 255 `i `uc ]
+"644
+[; ;memoryCard.c: 644:     memPoolTx[3] = 0xFF;
+[e = *U + &U _memPoolTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux -> -> 255 `i `uc ]
+"647
+[; ;memoryCard.c: 647:     SPI_exchangeBytes(&memPoolTx[0], &data[0], 4);
+[e ( _SPI_exchangeBytes (3 , , &U *U + &U _memPoolTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _memPoolTx `ui `ux &U *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x -> -> 4 `i `uc ]
+"651
+[; ;memoryCard.c: 651:     printf("[DEBUG] Printing OCR Register\r\n");
+[e ( _printf :s 36C ]
+"652
+[; ;memoryCard.c: 652:     memCard_printData(&data[0], 4);
+[e ( _memCard_printData (2 , &U *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x -> -> 4 `i `uc ]
+"655
+[; ;memoryCard.c: 655:     return CARD_NO_ERROR;
+[e ) . `E88 0 ]
+[e $UE 372  ]
+"656
+[; ;memoryCard.c: 656: }
+[e :UE 372 ]
+}
+"659
+[; ;memoryCard.c: 659: CommandError memCard_readCSD(uint8_t* data)
+[v _memCard_readCSD `(E88 ~T0 @X0 1 ef1`*uc ]
+"660
+[; ;memoryCard.c: 660: {
+{
+[e :U _memCard_readCSD ]
+"659
+[; ;memoryCard.c: 659: CommandError memCard_readCSD(uint8_t* data)
+[v _data `*uc ~T0 @X0 1 r1 ]
+"660
+[; ;memoryCard.c: 660: {
+[f ]
+"661
+[; ;memoryCard.c: 661:     if (cardStatus != STATUS_CARD_READY)
+[e $ ! != -> _cardStatus `ui -> . `E105 3 `ui 377  ]
+"662
+[; ;memoryCard.c: 662:         return CARD_NOT_INIT;
+[e ) . `E88 9 ]
+[e $UE 376  ]
+[e :U 377 ]
+"667
+[; ;memoryCard.c: 667:     uint8_t txData[6];
+[v _txData `uc ~T0 @X0 -> 6 `i a ]
+"668
+[; ;memoryCard.c: 668:     uint8_t header;
+[v _header `uc ~T0 @X0 1 a ]
+"671
+[; ;memoryCard.c: 671:     txData[0] = 0x40 | 9;
+[e = *U + &U _txData * -> -> -> 0 `i `ui `ux -> -> # *U &U _txData `ui `ux -> | -> 64 `i -> 9 `i `uc ]
+"674
+[; ;memoryCard.c: 674:     txData[1] = 0x00;
+[e = *U + &U _txData * -> -> -> 1 `i `ui `ux -> -> # *U &U _txData `ui `ux -> -> 0 `i `uc ]
+"675
+[; ;memoryCard.c: 675:     txData[2] = 0x00;
+[e = *U + &U _txData * -> -> -> 2 `i `ui `ux -> -> # *U &U _txData `ui `ux -> -> 0 `i `uc ]
+"676
+[; ;memoryCard.c: 676:     txData[3] = 0x00;
+[e = *U + &U _txData * -> -> -> 3 `i `ui `ux -> -> # *U &U _txData `ui `ux -> -> 0 `i `uc ]
+"677
+[; ;memoryCard.c: 677:     txData[4] = 0x00;
+[e = *U + &U _txData * -> -> -> 4 `i `ui `ux -> -> # *U &U _txData `ui `ux -> -> 0 `i `uc ]
+"680
+[; ;memoryCard.c: 680:     txData[5] = memCard_runCRC7(&txData[0], 5);
+[e = *U + &U _txData * -> -> -> 5 `i `ui `ux -> -> # *U &U _txData `ui `ux ( _memCard_runCRC7 (2 , &U *U + &U _txData * -> -> -> 0 `i `ui `ux -> -> # *U &U _txData `ui `ux -> -> 5 `i `uc ]
+"685
+[; ;memoryCard.c: 685:     SPI_sendBytes(&txData[0], 6);
+[e ( _SPI_sendBytes (2 , &U *U + &U _txData * -> -> -> 0 `i `ui `ux -> -> # *U &U _txData `ui `ux -> -> 6 `i `us ]
+"687
+[; ;memoryCard.c: 687:     if (!memCard_receiveResponse_R1(&header))
+[e $ ! ! != -> ( _memCard_receiveResponse_R1 (1 &U _header `i -> 0 `i 378  ]
+"688
+[; ;memoryCard.c: 688:     {
+{
+"690
+[; ;memoryCard.c: 690:         return CARD_SPI_TIMEOUT;
+[e ) . `E88 1 ]
+[e $UE 376  ]
+"691
+[; ;memoryCard.c: 691:     }
+}
+[e :U 378 ]
+"693
+[; ;memoryCard.c: 693:     if (header != 0x00)
+[e $ ! != -> _header `i -> 0 `i 379  ]
+"694
+[; ;memoryCard.c: 694:     {
+{
+"697
+[; ;memoryCard.c: 697:         return CARD_RESPONSE_ERROR;
+[e ) . `E88 3 ]
+[e $UE 376  ]
+"698
+[; ;memoryCard.c: 698:     }
+}
+[e :U 379 ]
+"700
+[; ;memoryCard.c: 700:     CommandError cmdError = memCard_receiveBlockData(&data[0], 16);
+[v _cmdError `E88 ~T0 @X0 1 a ]
+[e = _cmdError ( _memCard_receiveBlockData (2 , &U *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x -> -> 16 `i `us ]
+"704
+[; ;memoryCard.c: 704:     printf("[DEBUG] Printing CSD Register\r\n");
+[e ( _printf :s 37C ]
+"705
+[; ;memoryCard.c: 705:     memCard_printData(&data[0], 16);
+[e ( _memCard_printData (2 , &U *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x -> -> 16 `i `uc ]
+"708
+[; ;memoryCard.c: 708:     return cmdError;
+[e ) _cmdError ]
+[e $UE 376  ]
+"709
+[; ;memoryCard.c: 709: }
+[e :UE 376 ]
+}
+"712
+[; ;memoryCard.c: 712: _Bool memCard_readFromDisk(uint32_t sect, uint16_t offset, uint8_t* data, uint16_t nBytes)
+[v _memCard_readFromDisk `(a ~T0 @X0 1 ef4`ul`us`*uc`us ]
+"713
+[; ;memoryCard.c: 713: {
+{
+[e :U _memCard_readFromDisk ]
+"712
+[; ;memoryCard.c: 712: _Bool memCard_readFromDisk(uint32_t sect, uint16_t offset, uint8_t* data, uint16_t nBytes)
+[v _sect `ul ~T0 @X0 1 r1 ]
+[v _offset `us ~T0 @X0 1 r2 ]
+[v _data `*uc ~T0 @X0 1 r3 ]
+[v _nBytes `us ~T0 @X0 1 r4 ]
+"713
+[; ;memoryCard.c: 713: {
+[f ]
+"715
+[; ;memoryCard.c: 715:     if (cardStatus != STATUS_CARD_READY)
+[e $ ! != -> _cardStatus `ui -> . `E105 3 `ui 381  ]
+"716
+[; ;memoryCard.c: 716:         return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 380  ]
+[e :U 381 ]
+"719
+[; ;memoryCard.c: 719:     printf("[DEBUG FILE I/O] Requesting Sector %lu at offset %u for %u bytes\r\n", sect, offset, nBytes);
+[e ( _printf , , , :s 38C _sect -> _offset `ui -> _nBytes `ui ]
+"731
+[; ;memoryCard.c: 731:     if (sect != cacheBlockAddr)
+[e $ ! != _sect _cacheBlockAddr 382  ]
+"732
+[; ;memoryCard.c: 732:     {
+{
+"734
+[; ;memoryCard.c: 734:         if (memCard_readBlock(sect) != CARD_NO_ERROR)
+[e $ ! != -> ( _memCard_readBlock (1 _sect `ui -> . `E88 0 `ui 383  ]
+"735
+[; ;memoryCard.c: 735:         {
+{
+"736
+[; ;memoryCard.c: 736:             return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 380  ]
+"737
+[; ;memoryCard.c: 737:         }
+}
+[e :U 383 ]
+"738
+[; ;memoryCard.c: 738:     }
+}
+[e $U 384  ]
+"741
+[; ;memoryCard.c: 741:     else
+[e :U 382 ]
+"742
+[; ;memoryCard.c: 742:     {
+{
+"743
+[; ;memoryCard.c: 743:         printf("[DEBUG FILE I/O] Sector cache hit\r\n");
+[e ( _printf :s 39C ]
+"744
+[; ;memoryCard.c: 744:     }
+}
+[e :U 384 ]
+"748
+[; ;memoryCard.c: 748:     uint16_t cachePos = offset;
+[v _cachePos `us ~T0 @X0 1 a ]
+[e = _cachePos _offset ]
+"749
+[; ;memoryCard.c: 749:     for (uint16_t index = 0; index < nBytes; index++)
+{
+[v _index `us ~T0 @X0 1 a ]
+[e = _index -> -> 0 `i `us ]
+[e $U 388  ]
+[e :U 385 ]
+"750
+[; ;memoryCard.c: 750:     {
+{
+"751
+[; ;memoryCard.c: 751:         if (cachePos == 512)
+[e $ ! == -> _cachePos `ui -> -> 512 `i `ui 389  ]
+"752
+[; ;memoryCard.c: 752:         {
+{
+"754
+[; ;memoryCard.c: 754:             if (memCard_readBlock(sect + 1) != CARD_NO_ERROR)
+[e $ ! != -> ( _memCard_readBlock (1 + _sect -> -> -> 1 `i `l `ul `ui -> . `E88 0 `ui 390  ]
+"755
+[; ;memoryCard.c: 755:             {
+{
+"756
+[; ;memoryCard.c: 756:                 return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 380  ]
+"757
+[; ;memoryCard.c: 757:             }
+}
+[e :U 390 ]
+"758
+[; ;memoryCard.c: 758:             cachePos = 0;
+[e = _cachePos -> -> 0 `i `us ]
+"759
+[; ;memoryCard.c: 759:         }
+}
+[e :U 389 ]
+"763
+[; ;memoryCard.c: 763:         data[index] = cache[cachePos];
+[e = *U + _data * -> _index `ux -> -> # *U _data `ui `ux *U + &U _cache * -> _cachePos `ux -> -> # *U &U _cache `ui `ux ]
+"764
+[; ;memoryCard.c: 764:         cachePos++;
+[e ++ _cachePos -> -> 1 `i `us ]
+"765
+[; ;memoryCard.c: 765:     }
+}
+[e ++ _index -> -> 1 `i `us ]
+[e :U 388 ]
+[e $ < -> _index `ui -> _nBytes `ui 385  ]
+[e :U 386 ]
+}
+"771
+[; ;memoryCard.c: 771:     return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 380  ]
+"772
+[; ;memoryCard.c: 772: }
+[e :UE 380 ]
+}
+"776
+[; ;memoryCard.c: 776: _Bool memCard_prepareWrite(uint32_t sector)
+[v _memCard_prepareWrite `(a ~T0 @X0 1 ef1`ul ]
+"777
+[; ;memoryCard.c: 777: {
+{
+[e :U _memCard_prepareWrite ]
+"776
+[; ;memoryCard.c: 776: _Bool memCard_prepareWrite(uint32_t sector)
+[v _sector `ul ~T0 @X0 1 r1 ]
+"777
+[; ;memoryCard.c: 777: {
+[f ]
+"778
+[; ;memoryCard.c: 778:     if (cardStatus != STATUS_CARD_READY)
+[e $ ! != -> _cardStatus `ui -> . `E105 3 `ui 392  ]
+"779
+[; ;memoryCard.c: 779:     {
+{
+"780
+[; ;memoryCard.c: 780:         return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 391  ]
+"781
+[; ;memoryCard.c: 781:     }
+}
+[e :U 392 ]
+"784
+[; ;memoryCard.c: 784:     printf("[DEBUG FILE I/O] Preparing for write on sector %lu\r\n", sector);
+[e ( _printf , :s 40C _sector ]
+"788
+[; ;memoryCard.c: 788:     cacheBlockAddr = sector;
+[e = _cacheBlockAddr _sector ]
+"791
+[; ;memoryCard.c: 791:     writeSize = 0;
+[e = _writeSize -> -> 0 `i `us ]
+"793
+[; ;memoryCard.c: 793:     for (uint16_t i = 0; i < 512; i++)
+{
+[v _i `us ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `us ]
+[e $ < -> _i `ui -> -> 512 `i `ui 393  ]
+[e $U 394  ]
+[e :U 393 ]
+"794
+[; ;memoryCard.c: 794:     {
+{
+"795
+[; ;memoryCard.c: 795:         cache[i] = 0x00;
+[e = *U + &U _cache * -> _i `ux -> -> # *U &U _cache `ui `ux -> -> 0 `i `uc ]
+"796
+[; ;memoryCard.c: 796:     }
+}
+[e ++ _i -> -> 1 `i `us ]
+[e $ < -> _i `ui -> -> 512 `i `ui 393  ]
+[e :U 394 ]
+}
+"798
+[; ;memoryCard.c: 798:     return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 391  ]
+"799
+[; ;memoryCard.c: 799: }
+[e :UE 391 ]
+}
+"803
+[; ;memoryCard.c: 803: _Bool memCard_queueWrite(uint8_t* data, uint16_t dLen)
+[v _memCard_queueWrite `(a ~T0 @X0 1 ef2`*uc`us ]
+"804
+[; ;memoryCard.c: 804: {
+{
+[e :U _memCard_queueWrite ]
+"803
+[; ;memoryCard.c: 803: _Bool memCard_queueWrite(uint8_t* data, uint16_t dLen)
+[v _data `*uc ~T0 @X0 1 r1 ]
+[v _dLen `us ~T0 @X0 1 r2 ]
+"804
+[; ;memoryCard.c: 804: {
+[f ]
+"806
+[; ;memoryCard.c: 806:     if (cardStatus != STATUS_CARD_READY)
+[e $ ! != -> _cardStatus `ui -> . `E105 3 `ui 397  ]
+"807
+[; ;memoryCard.c: 807:     {
+{
+"808
+[; ;memoryCard.c: 808:         return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 396  ]
+"809
+[; ;memoryCard.c: 809:     }
+}
+[e :U 397 ]
+"812
+[; ;memoryCard.c: 812:     if ((writeSize == 0xFFFF) || (writeSize > 512))
+[e $ ! || == -> _writeSize `ui -> 65535 `ui > -> _writeSize `ui -> -> 512 `i `ui 398  ]
+"813
+[; ;memoryCard.c: 813:     {
+{
+"814
+[; ;memoryCard.c: 814:         return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 396  ]
+"815
+[; ;memoryCard.c: 815:     }
+}
+[e :U 398 ]
+"817
+[; ;memoryCard.c: 817:     uint16_t count = 0;
+[v _count `us ~T0 @X0 1 a ]
+[e = _count -> -> 0 `i `us ]
+"818
+[; ;memoryCard.c: 818:     while ((writeSize < 512) && (count < dLen))
+[e $U 399  ]
+[e :U 400 ]
+"819
+[; ;memoryCard.c: 819:     {
+{
+"820
+[; ;memoryCard.c: 820:         cache[writeSize] = data[count];
+[e = *U + &U _cache * -> _writeSize `ux -> -> # *U &U _cache `ui `ux *U + _data * -> _count `ux -> -> # *U _data `ui `ux ]
+"822
+[; ;memoryCard.c: 822:         writeSize++;
+[e ++ _writeSize -> -> 1 `i `us ]
+"823
+[; ;memoryCard.c: 823:         count++;
+[e ++ _count -> -> 1 `i `us ]
+"824
+[; ;memoryCard.c: 824:     }
+}
+[e :U 399 ]
+"818
+[; ;memoryCard.c: 818:     while ((writeSize < 512) && (count < dLen))
+[e $ && < -> _writeSize `ui -> -> 512 `i `ui < -> _count `ui -> _dLen `ui 400  ]
+[e :U 401 ]
+"827
+[; ;memoryCard.c: 827:     printf("[DEBUG FILE I/O] Queued %u bytes for write\r\n", count);
+[e ( _printf , :s 41C -> _count `ui ]
+"830
+[; ;memoryCard.c: 830:     if (count != dLen)
+[e $ ! != -> _count `ui -> _dLen `ui 402  ]
+"831
+[; ;memoryCard.c: 831:     {
+{
+"833
+[; ;memoryCard.c: 833:         return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 396  ]
+"834
+[; ;memoryCard.c: 834:     }
+}
+[e :U 402 ]
+"836
+[; ;memoryCard.c: 836:     return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 396  ]
+"837
+[; ;memoryCard.c: 837: }
+[e :UE 396 ]
+}
+"840
+[; ;memoryCard.c: 840: CommandError memCard_writeBlock(void)
+[v _memCard_writeBlock `(E88 ~T0 @X0 1 ef ]
+"841
+[; ;memoryCard.c: 841: {
+{
+[e :U _memCard_writeBlock ]
+[f ]
+"842
+[; ;memoryCard.c: 842:     if (cardStatus != STATUS_CARD_READY)
+[e $ ! != -> _cardStatus `ui -> . `E105 3 `ui 404  ]
+"843
+[; ;memoryCard.c: 843:     {
+{
+"844
+[; ;memoryCard.c: 844:         return CARD_NOT_INIT;
+[e ) . `E88 9 ]
+[e $UE 403  ]
+"845
+[; ;memoryCard.c: 845:     }
+}
+[e :U 404 ]
+"847
+[; ;memoryCard.c: 847:     if ((writeSize == 0xFFFF) || (writeSize > 512))
+[e $ ! || == -> _writeSize `ui -> 65535 `ui > -> _writeSize `ui -> -> 512 `i `ui 405  ]
+"848
+[; ;memoryCard.c: 848:     {
+{
+"849
+[; ;memoryCard.c: 849:         return CARD_WRITE_SIZE_ERROR;
+[e ) . `E88 8 ]
+[e $UE 403  ]
+"850
+[; ;memoryCard.c: 850:     }
+}
+[e :U 405 ]
+"853
+[; ;memoryCard.c: 853:     printf("[DEBUG FILE I/O] Writing %u bytes to sector %lu \r\n", writeSize, cacheBlockAddr);
+[e ( _printf , , :s 42C -> _writeSize `ui _cacheBlockAddr ]
+"856
+[; ;memoryCard.c: 856:     uint32_t compBlockAddr = cacheBlockAddr;
+[v _compBlockAddr `ul ~T0 @X0 1 a ]
+[e = _compBlockAddr _cacheBlockAddr ]
+"857
+[; ;memoryCard.c: 857:     if (memCapacity != CCS_HIGH_CAPACITY)
+[e $ ! != -> _memCapacity `i -> . `E100 2 `i 406  ]
+"858
+[; ;memoryCard.c: 858:     {
+{
+"860
+[; ;memoryCard.c: 860:         compBlockAddr <<= 9;
+[e =<< _compBlockAddr -> -> 9 `i `ul ]
+"861
+[; ;memoryCard.c: 861:     }
+}
+[e :U 406 ]
+"864
+[; ;memoryCard.c: 864:     uint8_t cmdData[6];
+[v _cmdData `uc ~T0 @X0 -> 6 `i a ]
+"865
+[; ;memoryCard.c: 865:     cmdData[0] = 0x40 | 24;
+[e = *U + &U _cmdData * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> | -> 64 `i -> 24 `i `uc ]
+"868
+[; ;memoryCard.c: 868:     printf("[DEBUG] Sending CMD%d\r\n", 24);
+[e ( _printf , :s 43C -> 24 `i ]
+"872
+[; ;memoryCard.c: 872:     cmdData[1] = (compBlockAddr & 0xFF000000) >> 24;
+[e = *U + &U _cmdData * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> >> & _compBlockAddr -> 4278190080 `ul -> 24 `i `uc ]
+"873
+[; ;memoryCard.c: 873:     cmdData[2] = (compBlockAddr & 0x00FF0000) >> 16;
+[e = *U + &U _cmdData * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> >> & _compBlockAddr -> -> 16711680 `l `ul -> 16 `i `uc ]
+"874
+[; ;memoryCard.c: 874:     cmdData[3] = (compBlockAddr & 0x0000FF00) >> 8;
+[e = *U + &U _cmdData * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> >> & _compBlockAddr -> -> 65280 `ui `ul -> 8 `i `uc ]
+"875
+[; ;memoryCard.c: 875:     cmdData[4] = (compBlockAddr & 0x000000FF);
+[e = *U + &U _cmdData * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> & _compBlockAddr -> -> -> 255 `i `l `ul `uc ]
+"877
+[; ;memoryCard.c: 877:     cmdData[5] = memCard_runCRC7(&cmdData[0], 5);
+[e = *U + &U _cmdData * -> -> -> 5 `i `ui `ux -> -> # *U &U _cmdData `ui `ux ( _memCard_runCRC7 (2 , &U *U + &U _cmdData * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> -> 5 `i `uc ]
+"882
+[; ;memoryCard.c: 882:     SPI_sendBytes(&cmdData[0], 6);
+[e ( _SPI_sendBytes (2 , &U *U + &U _cmdData * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> -> 6 `i `us ]
+"885
+[; ;memoryCard.c: 885:     CommandStatus header;
+[v _header `S1 ~T0 @X0 1 a ]
+"886
+[; ;memoryCard.c: 886:     if (!memCard_receiveResponse_R1(&header.data))
+[e $ ! ! != -> ( _memCard_receiveResponse_R1 (1 &U . _header 1 `i -> 0 `i 407  ]
+"887
+[; ;memoryCard.c: 887:     {
+{
+"890
+[; ;memoryCard.c: 890:     printf("[ERROR] No response returned\r\n");
+[e ( _printf :s 44C ]
+"893
+[; ;memoryCard.c: 893:         return CARD_SPI_TIMEOUT;
+[e ) . `E88 1 ]
+[e $UE 403  ]
+"894
+[; ;memoryCard.c: 894:     }
+}
+[e :U 407 ]
+"896
+[; ;memoryCard.c: 896:     if (header.data != 0x00)
+[e $ ! != -> . _header 1 `i -> 0 `i 408  ]
+"897
+[; ;memoryCard.c: 897:     {
+{
+"900
+[; ;memoryCard.c: 900:     printf("[ERROR] Command response error\r\n");
+[e ( _printf :s 45C ]
+"902
+[; ;memoryCard.c: 902:         return CARD_RESPONSE_ERROR;
+[e ) . `E88 3 ]
+[e $UE 403  ]
+"903
+[; ;memoryCard.c: 903:     }
+}
+[e :U 408 ]
+"907
+[; ;memoryCard.c: 907:     if (speedSwitchOK)
+[e $ ! != -> _speedSwitchOK `i -> 0 `i 409  ]
+"908
+[; ;memoryCard.c: 908:     {
+{
+"911
+[; ;memoryCard.c: 911:     }
+}
+[e :U 409 ]
+"921
+[; ;memoryCard.c: 921:     spiSend(0xFE);
+[e ( _spiSend (1 -> -> 254 `i `uc ]
+"924
+[; ;memoryCard.c: 924:     SPI_sendBytes(&cache[0], 512);
+[e ( _SPI_sendBytes (2 , -> &U *U + &U _cache * -> -> -> 0 `i `ui `ux -> -> # *U &U _cache `ui `ux `*uc -> -> 512 `i `us ]
+"933
+[; ;memoryCard.c: 933:     RespToken eToken;
+[v _eToken `S3 ~T0 @X0 1 a ]
+"934
+[; ;memoryCard.c: 934:     uint8_t rCount = 0;
+[v _rCount `uc ~T0 @X0 1 a ]
+[e = _rCount -> -> 0 `i `uc ]
+"935
+[; ;memoryCard.c: 935:     _Bool good = 0;
+[v _good `a ~T0 @X0 1 a ]
+[e = _good -> -> 0 `i `a ]
+"940
+[; ;memoryCard.c: 940:     do
+[e :U 412 ]
+"941
+[; ;memoryCard.c: 941:     {
+{
+"942
+[; ;memoryCard.c: 942:         eToken.data = SPI_exchangeByte(0xFF);
+[e = . _eToken 2 ( _SPI_exchangeByte (1 -> -> 255 `i `uc ]
+"945
+[; ;memoryCard.c: 945:         if (eToken.data != 0xFF)
+[e $ ! != -> . _eToken 2 `i -> 255 `i 413  ]
+"946
+[; ;memoryCard.c: 946:         {
+{
+"947
+[; ;memoryCard.c: 947:             good = 1;
+[e = _good -> -> 1 `i `a ]
+"948
+[; ;memoryCard.c: 948:         }
+}
+[e :U 413 ]
+"950
+[; ;memoryCard.c: 950:         rCount++;
+[e ++ _rCount -> -> 1 `i `uc ]
+"951
+[; ;memoryCard.c: 951:     } while ((rCount < 30) && (!good));
+}
+[e $ && < -> _rCount `i -> 30 `i ! != -> _good `i -> 0 `i 412  ]
+[e :U 411 ]
+"953
+[; ;memoryCard.c: 953:     if (rCount >= 30)
+[e $ ! >= -> _rCount `i -> 30 `i 414  ]
+"954
+[; ;memoryCard.c: 954:     {
+{
+"956
+[; ;memoryCard.c: 956:         return CARD_SPI_TIMEOUT;
+[e ) . `E88 1 ]
+[e $UE 403  ]
+"957
+[; ;memoryCard.c: 957:     }
+}
+[e :U 414 ]
+"960
+[; ;memoryCard.c: 960:     if (eToken.ErrorToken.valid_header_n == 0b000)
+[e $ ! == -> . . _eToken 0 5 `i -> 0 `i 415  ]
+"961
+[; ;memoryCard.c: 961:     {
+{
+"962
+[; ;memoryCard.c: 962:         if (eToken.data != 0x00)
+[e $ ! != -> . _eToken 2 `i -> 0 `i 416  ]
+"963
+[; ;memoryCard.c: 963:         {
+{
+"966
+[; ;memoryCard.c: 966:             return CARD_RESPONSE_ERROR;
+[e ) . `E88 3 ]
+[e $UE 403  ]
+"967
+[; ;memoryCard.c: 967:         }
+}
+[e :U 416 ]
+"968
+[; ;memoryCard.c: 968:     }
+}
+[e $U 417  ]
+"969
+[; ;memoryCard.c: 969:     else
+[e :U 415 ]
+"970
+[; ;memoryCard.c: 970:     {
+{
+"972
+[; ;memoryCard.c: 972:         if (eToken.DataToken.status != 0b010)
+[e $ ! != -> . . _eToken 1 1 `i -> 2 `i 418  ]
+"973
+[; ;memoryCard.c: 973:         {
+{
+"976
+[; ;memoryCard.c: 976:             return CARD_RESPONSE_ERROR;
+[e ) . `E88 3 ]
+[e $UE 403  ]
+"977
+[; ;memoryCard.c: 977:         }
+}
+[e :U 418 ]
+"978
+[; ;memoryCard.c: 978:     }
+}
+[e :U 417 ]
+"981
+[; ;memoryCard.c: 981:     printf("[DEBUG] Waiting for busy to clear...\r\n");
+[e ( _printf :s 46C ]
+"987
+[; ;memoryCard.c: 987:     uint8_t resp;
+[v _resp `uc ~T0 @X0 1 a ]
+"988
+[; ;memoryCard.c: 988:     do
+[e :U 421 ]
+"989
+[; ;memoryCard.c: 989:     {
+{
+"990
+[; ;memoryCard.c: 990:         resp = SPI_exchangeByte(0xFF);
+[e = _resp ( _SPI_exchangeByte (1 -> -> 255 `i `uc ]
+"991
+[; ;memoryCard.c: 991:     }while (resp == 0x00);
+}
+[e $ == -> _resp `i -> 0 `i 421  ]
+[e :U 420 ]
+"996
+[; ;memoryCard.c: 996:     printf("[DEBUG] Busy bit has cleared - write done!\r\n");
+[e ( _printf :s 47C ]
+"999
+[; ;memoryCard.c: 999:     writeSize = 0xFFFF;
+[e = _writeSize -> -> 65535 `ui `us ]
+"1000
+[; ;memoryCard.c: 1000:     cacheBlockAddr = 0xFFFFFFFF;
+[e = _cacheBlockAddr -> 4294967295 `ul ]
+"1002
+[; ;memoryCard.c: 1002:     return CARD_NO_ERROR;
+[e ) . `E88 0 ]
+[e $UE 403  ]
+"1003
+[; ;memoryCard.c: 1003: }
+[e :UE 403 ]
+}
+"1006
+[; ;memoryCard.c: 1006: CommandError memCard_readBlock(uint32_t blockAddr)
+[v _memCard_readBlock `(E88 ~T0 @X0 1 ef1`ul ]
+"1007
+[; ;memoryCard.c: 1007: {
+{
+[e :U _memCard_readBlock ]
+"1006
+[; ;memoryCard.c: 1006: CommandError memCard_readBlock(uint32_t blockAddr)
+[v _blockAddr `ul ~T0 @X0 1 r1 ]
+"1007
+[; ;memoryCard.c: 1007: {
+[f ]
+"1008
+[; ;memoryCard.c: 1008:     if (cardStatus != STATUS_CARD_READY)
+[e $ ! != -> _cardStatus `ui -> . `E105 3 `ui 423  ]
+"1009
+[; ;memoryCard.c: 1009:     {
+{
+"1010
+[; ;memoryCard.c: 1010:         return CARD_NOT_INIT;
+[e ) . `E88 9 ]
+[e $UE 422  ]
+"1011
+[; ;memoryCard.c: 1011:     }
+}
+[e :U 423 ]
+"1013
+[; ;memoryCard.c: 1013:     if (writeSize != 0xFFFF)
+[e $ ! != -> _writeSize `ui -> 65535 `ui 424  ]
+"1014
+[; ;memoryCard.c: 1014:     {
+{
+"1016
+[; ;memoryCard.c: 1016:     printf("[DEBUG FILE I/O] Read failed due to write in progress\r\n");
+[e ( _printf :s 48C ]
+"1018
+[; ;memoryCard.c: 1018:         return CARD_WRITE_IN_PROGRESS;
+[e ) . `E88 7 ]
+[e $UE 422  ]
+"1019
+[; ;memoryCard.c: 1019:     }
+}
+[e :U 424 ]
+"1022
+[; ;memoryCard.c: 1022:     if (blockAddr == cacheBlockAddr)
+[e $ ! == _blockAddr _cacheBlockAddr 425  ]
+"1023
+[; ;memoryCard.c: 1023:     {
+{
+"1025
+[; ;memoryCard.c: 1025:     printf("[DEBUG FILE I/O] Sector %lu fetch skipped due to cache\r\n", blockAddr);
+[e ( _printf , :s 49C _blockAddr ]
+"1027
+[; ;memoryCard.c: 1027:         return CARD_NO_ERROR;
+[e ) . `E88 0 ]
+[e $UE 422  ]
+"1028
+[; ;memoryCard.c: 1028:     }
+}
+[e :U 425 ]
+"1032
+[; ;memoryCard.c: 1032:     printf("[DEBUG FILE I/O] Fetching Sector %lu\r\n", blockAddr);
+[e ( _printf , :s 50C _blockAddr ]
+"1035
+[; ;memoryCard.c: 1035:     uint32_t compBlockAddr = blockAddr;
+[v _compBlockAddr `ul ~T0 @X0 1 a ]
+[e = _compBlockAddr _blockAddr ]
+"1037
+[; ;memoryCard.c: 1037:     if (memCapacity != CCS_HIGH_CAPACITY)
+[e $ ! != -> _memCapacity `i -> . `E100 2 `i 426  ]
+"1038
+[; ;memoryCard.c: 1038:     {
+{
+"1040
+[; ;memoryCard.c: 1040:         compBlockAddr <<= 9;
+[e =<< _compBlockAddr -> -> 9 `i `ul ]
+"1041
+[; ;memoryCard.c: 1041:     }
+}
+[e :U 426 ]
+"1044
+[; ;memoryCard.c: 1044:     uint8_t cmdData[6];
+[v _cmdData `uc ~T0 @X0 -> 6 `i a ]
+"1045
+[; ;memoryCard.c: 1045:     cmdData[0] = 0x40 | 17;
+[e = *U + &U _cmdData * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> | -> 64 `i -> 17 `i `uc ]
+"1048
+[; ;memoryCard.c: 1048:     printf("[DEBUG] Sending CMD%d\r\n", 17);
+[e ( _printf , :s 51C -> 17 `i ]
+"1052
+[; ;memoryCard.c: 1052:     cmdData[1] = (compBlockAddr & 0xFF000000) >> 24;
+[e = *U + &U _cmdData * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> >> & _compBlockAddr -> 4278190080 `ul -> 24 `i `uc ]
+"1053
+[; ;memoryCard.c: 1053:     cmdData[2] = (compBlockAddr & 0x00FF0000) >> 16;
+[e = *U + &U _cmdData * -> -> -> 2 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> >> & _compBlockAddr -> -> 16711680 `l `ul -> 16 `i `uc ]
+"1054
+[; ;memoryCard.c: 1054:     cmdData[3] = (compBlockAddr & 0x0000FF00) >> 8;
+[e = *U + &U _cmdData * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> >> & _compBlockAddr -> -> 65280 `ui `ul -> 8 `i `uc ]
+"1055
+[; ;memoryCard.c: 1055:     cmdData[4] = (compBlockAddr & 0x000000FF);
+[e = *U + &U _cmdData * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> & _compBlockAddr -> -> -> 255 `i `l `ul `uc ]
+"1058
+[; ;memoryCard.c: 1058:     cmdData[5] = memCard_runCRC7(&cmdData[0], 5);
+[e = *U + &U _cmdData * -> -> -> 5 `i `ui `ux -> -> # *U &U _cmdData `ui `ux ( _memCard_runCRC7 (2 , &U *U + &U _cmdData * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> -> 5 `i `uc ]
+"1063
+[; ;memoryCard.c: 1063:     SPI_sendBytes(&cmdData[0], 6);
+[e ( _SPI_sendBytes (2 , &U *U + &U _cmdData * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdData `ui `ux -> -> 6 `i `us ]
+"1065
+[; ;memoryCard.c: 1065:     uint8_t header;
+[v _header `uc ~T0 @X0 1 a ]
+"1066
+[; ;memoryCard.c: 1066:     if (!memCard_receiveResponse_R1(&header))
+[e $ ! ! != -> ( _memCard_receiveResponse_R1 (1 &U _header `i -> 0 `i 427  ]
+"1067
+[; ;memoryCard.c: 1067:     {
+{
+"1070
+[; ;memoryCard.c: 1070:     printf("[ERROR] No response returned\r\n");
+[e ( _printf :s 52C ]
+"1073
+[; ;memoryCard.c: 1073:         return CARD_SPI_TIMEOUT;
+[e ) . `E88 1 ]
+[e $UE 422  ]
+"1074
+[; ;memoryCard.c: 1074:     }
+}
+[e :U 427 ]
+"1076
+[; ;memoryCard.c: 1076:     if (header != 0x00)
+[e $ ! != -> _header `i -> 0 `i 428  ]
+"1077
+[; ;memoryCard.c: 1077:     {
+{
+"1081
+[; ;memoryCard.c: 1081:     printf("[ERROR] Command Error\r\n");
+[e ( _printf :s 53C ]
+"1085
+[; ;memoryCard.c: 1085:         return CARD_RESPONSE_ERROR;
+[e ) . `E88 3 ]
+[e $UE 422  ]
+"1086
+[; ;memoryCard.c: 1086:     }
+}
+[e :U 428 ]
+"1089
+[; ;memoryCard.c: 1089:     CommandError err = memCard_receiveBlockData(&cache[0], 512);
+[v _err `E88 ~T0 @X0 1 a ]
+[e = _err ( _memCard_receiveBlockData (2 , -> &U *U + &U _cache * -> -> -> 0 `i `ui `ux -> -> # *U &U _cache `ui `ux `*uc -> -> 512 `i `us ]
+"1094
+[; ;memoryCard.c: 1094:     cacheBlockAddr = blockAddr;
+[e = _cacheBlockAddr _blockAddr ]
+"1096
+[; ;memoryCard.c: 1096:     return err;
+[e ) _err ]
+[e $UE 422  ]
+"1097
+[; ;memoryCard.c: 1097: }
+[e :UE 422 ]
+}
+"1100
+[; ;memoryCard.c: 1100: CommandError memCard_receiveBlockData(uint8_t* data, uint16_t length)
+[v _memCard_receiveBlockData `(E88 ~T0 @X0 1 ef2`*uc`us ]
+"1101
+[; ;memoryCard.c: 1101: {
+{
+[e :U _memCard_receiveBlockData ]
+"1100
+[; ;memoryCard.c: 1100: CommandError memCard_receiveBlockData(uint8_t* data, uint16_t length)
+[v _data `*uc ~T0 @X0 1 r1 ]
+[v _length `us ~T0 @X0 1 r2 ]
+"1101
+[; ;memoryCard.c: 1101: {
+[f ]
+"1103
+[; ;memoryCard.c: 1103:     RespToken eToken;
+[v _eToken `S3 ~T0 @X0 1 a ]
+"1104
+[; ;memoryCard.c: 1104:     eToken.data = 0xFF;
+[e = . _eToken 2 -> -> 255 `i `uc ]
+"1105
+[; ;memoryCard.c: 1105:     uint8_t rCount = 0;
+[v _rCount `uc ~T0 @X0 1 a ]
+[e = _rCount -> -> 0 `i `uc ]
+"1106
+[; ;memoryCard.c: 1106:     _Bool good = 0;
+[v _good `a ~T0 @X0 1 a ]
+[e = _good -> -> 0 `i `a ]
+"1108
+[; ;memoryCard.c: 1108:     do
+[e :U 432 ]
+"1109
+[; ;memoryCard.c: 1109:     {
+{
+"1110
+[; ;memoryCard.c: 1110:         eToken.data = SPI_exchangeByte(0xFF);
+[e = . _eToken 2 ( _SPI_exchangeByte (1 -> -> 255 `i `uc ]
+"1113
+[; ;memoryCard.c: 1113:         if (eToken.data != 0xFF)
+[e $ ! != -> . _eToken 2 `i -> 255 `i 433  ]
+"1114
+[; ;memoryCard.c: 1114:         {
+{
+"1115
+[; ;memoryCard.c: 1115:             good = 1;
+[e = _good -> -> 1 `i `a ]
+"1116
+[; ;memoryCard.c: 1116:         }
+}
+[e :U 433 ]
+"1118
+[; ;memoryCard.c: 1118:         rCount++;
+[e ++ _rCount -> -> 1 `i `uc ]
+"1119
+[; ;memoryCard.c: 1119:     } while ((rCount < 30) && (!good));
+}
+[e $ && < -> _rCount `i -> 30 `i ! != -> _good `i -> 0 `i 432  ]
+[e :U 431 ]
+"1121
+[; ;memoryCard.c: 1121:     if (rCount >= 30)
+[e $ ! >= -> _rCount `i -> 30 `i 434  ]
+"1122
+[; ;memoryCard.c: 1122:     {
+{
+"1123
+[; ;memoryCard.c: 1123:         return CARD_SPI_TIMEOUT;
+[e ) . `E88 1 ]
+[e $UE 429  ]
+"1124
+[; ;memoryCard.c: 1124:     }
+}
+[e :U 434 ]
+"1126
+[; ;memoryCard.c: 1126:     if (eToken.data != 0xFE)
+[e $ ! != -> . _eToken 2 `i -> 254 `i 435  ]
+"1127
+[; ;memoryCard.c: 1127:     {
+{
+"1129
+[; ;memoryCard.c: 1129:         return CARD_RESPONSE_ERROR;
+[e ) . `E88 3 ]
+[e $UE 429  ]
+"1130
+[; ;memoryCard.c: 1130:     }
+}
+[e :U 435 ]
+"1134
+[; ;memoryCard.c: 1134:     if (speedSwitchOK)
+[e $ ! != -> _speedSwitchOK `i -> 0 `i 436  ]
+"1135
+[; ;memoryCard.c: 1135:     {
+{
+"1138
+[; ;memoryCard.c: 1138:     }
+}
+[e :U 436 ]
+"1142
+[; ;memoryCard.c: 1142:     SPI_receiveBytesTransmitFF(&data[0], length);
+[e ( _SPI_receiveBytesTransmitFF (2 , &U *U + _data * -> -> 0 `i `x -> -> # *U _data `i `x _length ]
+"1193
+[; ;memoryCard.c: 1193:     return CARD_NO_ERROR;
+[e ) . `E88 0 ]
+[e $UE 429  ]
+"1194
+[; ;memoryCard.c: 1194: }
+[e :UE 429 ]
+}
+"1197
+[; ;memoryCard.c: 1197: uint8_t memCard_runCRC7(uint8_t* dataIn, uint8_t len)
+[v _memCard_runCRC7 `(uc ~T0 @X0 1 ef2`*uc`uc ]
+"1198
+[; ;memoryCard.c: 1198: {
+{
+[e :U _memCard_runCRC7 ]
+"1197
+[; ;memoryCard.c: 1197: uint8_t memCard_runCRC7(uint8_t* dataIn, uint8_t len)
+[v _dataIn `*uc ~T0 @X0 1 r1 ]
+[v _len `uc ~T0 @X0 1 r2 ]
+"1198
+[; ;memoryCard.c: 1198: {
+[f ]
+"1199
+[; ;memoryCard.c: 1199:     uint8_t output = 0x00;
+[v _output `uc ~T0 @X0 1 a ]
+[e = _output -> -> 0 `i `uc ]
+"1200
+[; ;memoryCard.c: 1200:     uint8_t mask;
+[v _mask `uc ~T0 @X0 1 a ]
+"1202
+[; ;memoryCard.c: 1202:     for (uint8_t by = 0; by < len; by++)
+{
+[v _by `uc ~T0 @X0 1 a ]
+[e = _by -> -> 0 `i `uc ]
+[e $U 441  ]
+[e :U 438 ]
+"1203
+[; ;memoryCard.c: 1203:     {
+{
+"1205
+[; ;memoryCard.c: 1205:         mask = 0x80;
+[e = _mask -> -> 128 `i `uc ]
+"1206
+[; ;memoryCard.c: 1206:         while (mask != 0x00)
+[e $U 442  ]
+[e :U 443 ]
+"1207
+[; ;memoryCard.c: 1207:         {
+{
+"1209
+[; ;memoryCard.c: 1209:             _Bool input = ((dataIn[by] & mask) != 0x00) ? 1 : 0;
+[v _input `a ~T0 @X0 1 a ]
+[e = _input -> ? != & -> *U + _dataIn * -> _by `ux -> -> # *U _dataIn `ui `ux `i -> _mask `i -> 0 `i : -> 1 `i -> 0 `i `a ]
+"1212
+[; ;memoryCard.c: 1212:             input ^= (output & 0x01);
+[e =^ _input & -> _output `i -> 1 `i ]
+"1215
+[; ;memoryCard.c: 1215:             output >>= 1;
+[e =>> _output -> -> 1 `i `uc ]
+"1219
+[; ;memoryCard.c: 1219:             output |= (input << 6);
+[e =| _output -> << -> _input `i -> 6 `i `uc ]
+"1222
+[; ;memoryCard.c: 1222:             uint8_t t = output & 0x08;
+[v _t `uc ~T0 @X0 1 a ]
+[e = _t -> & -> _output `i -> 8 `i `uc ]
+"1223
+[; ;memoryCard.c: 1223:             uint8_t t2 = (t >> 3) ^ input;
+[v _t2 `uc ~T0 @X0 1 a ]
+[e = _t2 -> ^ >> -> _t `i -> 3 `i -> _input `i `uc ]
+"1224
+[; ;memoryCard.c: 1224:             output = (output & 0xF7) | (t2 << 3);
+[e = _output -> | & -> _output `i -> 247 `i << -> _t2 `i -> 3 `i `uc ]
+"1227
+[; ;memoryCard.c: 1227:             mask >>= 1;
+[e =>> _mask -> -> 1 `i `uc ]
+"1228
+[; ;memoryCard.c: 1228:         }
+}
+[e :U 442 ]
+"1206
+[; ;memoryCard.c: 1206:         while (mask != 0x00)
+[e $ != -> _mask `i -> 0 `i 443  ]
+[e :U 444 ]
+"1229
+[; ;memoryCard.c: 1229:     }
+}
+[e ++ _by -> -> 1 `i `uc ]
+[e :U 441 ]
+[e $ < -> _by `i -> _len `i 438  ]
+[e :U 439 ]
+}
+"1233
+[; ;memoryCard.c: 1233:     uint8_t tOut;
+[v _tOut `uc ~T0 @X0 1 a ]
+"1234
+[; ;memoryCard.c: 1234:     tOut = ((output & 0x40) >> 5);
+[e = _tOut -> >> & -> _output `i -> 64 `i -> 5 `i `uc ]
+"1235
+[; ;memoryCard.c: 1235:     tOut |= ((output & 0x20) >> 3);
+[e =| _tOut -> >> & -> _output `i -> 32 `i -> 3 `i `uc ]
+"1236
+[; ;memoryCard.c: 1236:     tOut |= ((output & 0x10) >> 1);
+[e =| _tOut -> >> & -> _output `i -> 16 `i -> 1 `i `uc ]
+"1237
+[; ;memoryCard.c: 1237:     tOut |= ((output & 0x08) << 1);
+[e =| _tOut -> << & -> _output `i -> 8 `i -> 1 `i `uc ]
+"1238
+[; ;memoryCard.c: 1238:     tOut |= ((output & 0x04) << 3);
+[e =| _tOut -> << & -> _output `i -> 4 `i -> 3 `i `uc ]
+"1239
+[; ;memoryCard.c: 1239:     tOut |= ((output & 0x02) << 5);
+[e =| _tOut -> << & -> _output `i -> 2 `i -> 5 `i `uc ]
+"1240
+[; ;memoryCard.c: 1240:     tOut |= ((output & 0x01) << 7);
+[e =| _tOut -> << & -> _output `i -> 1 `i -> 7 `i `uc ]
+"1241
+[; ;memoryCard.c: 1241:     output = tOut;
+[e = _output _tOut ]
+"1244
+[; ;memoryCard.c: 1244:     output |= 0b1;
+[e =| _output -> -> 1 `i `uc ]
+"1246
+[; ;memoryCard.c: 1246:     return output;
+[e ) _output ]
+[e $UE 437  ]
+"1247
+[; ;memoryCard.c: 1247: }
+[e :UE 437 ]
+}
+[a 7C 67 65 82 68 95 83 80 73 95 84 73 77 69 79 85 84 0 ]
+[a 6C 67 65 82 68 95 78 79 95 69 82 82 79 82 0 ]
+[a 12C 67 65 82 68 95 80 65 84 84 69 82 78 95 69 82 82 79 82 0 ]
+[a 9C 67 65 82 68 95 82 69 83 80 79 78 83 69 95 69 82 82 79 82 0 ]
+[a 8C 67 65 82 68 95 67 82 67 95 69 82 82 79 82 0 ]
+[a 10C 67 65 82 68 95 73 76 76 69 71 65 76 95 67 77 68 0 ]
+[a 11C 67 65 82 68 95 86 79 76 84 65 71 69 95 78 79 84 95 83 85 80 80 79 82 84 69 68 0 ]
+[a 13C 63 63 63 0 ]
+[a 1C 37 120 37 120 32 0 ]
+[a 25C 83 101 116 116 105 110 103 32 109 97 120 32 83 80 73 32 67 76 75 32 116 111 32 0 ]
+[a 5C 91 69 82 82 79 82 93 32 67 77 68 56 32 102 97 105 108 101 100 32 116 111 32 99 111 110 102 105 103 117 114 101 32 99 97 114 100 32 40 32 0 ]
+[a 27C 56 32 77 72 122 13 10 0 ]
+[a 26C 49 48 46 54 32 77 72 122 13 10 0 ]
+[a 28C 54 46 52 32 77 72 122 13 10 0 ]
+[a 29C 52 32 77 72 122 13 10 0 ]
+[a 30C 51 46 50 32 77 72 122 13 10 0 ]
+[a 31C 50 32 77 72 122 13 10 0 ]
+[a 32C 49 32 77 72 122 13 10 0 ]
+[a 24C 91 68 69 66 85 71 93 32 84 114 97 110 115 102 101 114 32 83 112 101 101 100 32 66 121 116 101 32 61 32 48 120 37 120 13 10 0 ]
+[a 40C 91 68 69 66 85 71 32 70 73 76 69 32 73 47 79 93 32 80 114 101 112 97 114 105 110 103 32 102 111 114 32 119 114 105 116 101 32 111 110 32 115 101 99 116 111 114 32 37 108 117 13 10 0 ]
+[a 50C 91 68 69 66 85 71 32 70 73 76 69 32 73 47 79 93 32 70 101 116 99 104 105 110 103 32 83 101 99 116 111 114 32 37 108 117 13 10 0 ]
+[a 19C 91 87 65 82 78 93 32 67 77 68 53 56 32 119 97 115 32 117 110 97 98 108 101 32 116 111 32 100 101 116 101 114 109 105 110 101 32 99 97 112 97 99 105 116 121 32 115 117 112 112 111 114 116 13 10 0 ]
+[a 39C 91 68 69 66 85 71 32 70 73 76 69 32 73 47 79 93 32 83 101 99 116 111 114 32 99 97 99 104 101 32 104 105 116 13 10 0 ]
+[a 48C 91 68 69 66 85 71 32 70 73 76 69 32 73 47 79 93 32 82 101 97 100 32 102 97 105 108 101 100 32 100 117 101 32 116 111 32 119 114 105 116 101 32 105 110 32 112 114 111 103 114 101 115 115 13 10 0 ]
+[a 38C 91 68 69 66 85 71 32 70 73 76 69 32 73 47 79 93 32 82 101 113 117 101 115 116 105 110 103 32 83 101 99 116 111 114 32 37 108 117 32 97 116 32 111 102 102 115 101 116 32 37 117 32 102 111 114 32 37 117 32 98 121 116 101 115 13 10 0 ]
+[a 22C 91 87 65 82 78 93 32 85 110 97 98 108 101 32 116 111 32 100 101 116 101 99 116 32 109 97 120 32 83 80 73 32 99 108 111 99 107 32 115 112 101 101 100 115 13 10 0 ]
+[a 45C 91 69 82 82 79 82 93 32 67 111 109 109 97 110 100 32 114 101 115 112 111 110 115 101 32 101 114 114 111 114 13 10 0 ]
+[a 53C 91 69 82 82 79 82 93 32 67 111 109 109 97 110 100 32 69 114 114 111 114 13 10 0 ]
+[a 36C 91 68 69 66 85 71 93 32 80 114 105 110 116 105 110 103 32 79 67 82 32 82 101 103 105 115 116 101 114 13 10 0 ]
+[a 37C 91 68 69 66 85 71 93 32 80 114 105 110 116 105 110 103 32 67 83 68 32 82 101 103 105 115 116 101 114 13 10 0 ]
+[a 17C 91 68 69 66 85 71 93 32 77 101 109 111 114 121 32 67 97 114 100 32 105 115 32 115 109 97 108 108 32 45 32 117 115 101 32 98 121 116 101 45 109 111 100 101 32 97 100 100 114 101 115 115 105 110 103 13 10 0 ]
+[a 18C 91 68 69 66 85 71 93 32 77 101 109 111 114 121 32 67 97 114 100 32 105 115 32 108 97 114 103 101 32 45 32 117 115 101 32 76 66 65 32 97 100 100 114 101 115 115 105 110 103 13 10 0 ]
+[a 41C 91 68 69 66 85 71 32 70 73 76 69 32 73 47 79 93 32 81 117 101 117 101 100 32 37 117 32 98 121 116 101 115 32 102 111 114 32 119 114 105 116 101 13 10 0 ]
+[a 49C 91 68 69 66 85 71 32 70 73 76 69 32 73 47 79 93 32 83 101 99 116 111 114 32 37 108 117 32 102 101 116 99 104 32 115 107 105 112 112 101 100 32 100 117 101 32 116 111 32 99 97 99 104 101 13 10 0 ]
+[a 23C 91 33 93 32 85 110 97 98 108 101 32 116 111 32 105 110 105 116 105 97 108 105 122 101 32 109 101 109 111 114 121 32 99 97 114 100 13 10 0 ]
+[a 15C 91 69 82 82 79 82 93 32 67 77 68 49 32 102 97 105 108 101 100 32 116 111 32 105 110 105 116 32 99 97 114 100 13 10 0 ]
+[a 16C 91 69 82 82 79 82 93 32 65 67 77 68 52 49 32 102 97 105 108 101 100 32 116 111 32 105 110 105 116 32 99 97 114 100 13 10 0 ]
+[a 44C 91 69 82 82 79 82 93 32 78 111 32 114 101 115 112 111 110 115 101 32 114 101 116 117 114 110 101 100 13 10 0 ]
+[a 52C 91 69 82 82 79 82 93 32 78 111 32 114 101 115 112 111 110 115 101 32 114 101 116 117 114 110 101 100 13 10 0 ]
+[a 33C 91 68 69 66 85 71 93 32 83 101 110 100 105 110 103 32 67 77 68 37 100 13 10 0 ]
+[a 34C 91 68 69 66 85 71 93 32 83 101 110 100 105 110 103 32 67 77 68 37 100 13 10 0 ]
+[a 35C 91 68 69 66 85 71 93 32 83 101 110 100 105 110 103 32 67 77 68 37 100 13 10 0 ]
+[a 43C 91 68 69 66 85 71 93 32 83 101 110 100 105 110 103 32 67 77 68 37 100 13 10 0 ]
+[a 51C 91 68 69 66 85 71 93 32 83 101 110 100 105 110 103 32 67 77 68 37 100 13 10 0 ]
+[a 4C 65 116 116 101 109 112 116 32 37 100 32 111 102 32 37 100 13 10 0 ]
+[a 21C 77 101 109 111 114 121 32 67 97 114 100 32 45 32 82 69 65 68 89 13 10 0 ]
+[a 20C 91 87 65 82 78 93 32 85 110 97 98 108 101 32 116 111 32 115 101 116 32 66 76 79 67 75 32 83 73 90 69 13 10 0 ]
+[a 46C 91 68 69 66 85 71 93 32 87 97 105 116 105 110 103 32 102 111 114 32 98 117 115 121 32 116 111 32 99 108 101 97 114 46 46 46 13 10 0 ]
+[a 3C 66 101 103 105 110 110 105 110 103 32 109 101 109 111 114 121 32 99 97 114 100 32 99 111 110 102 105 103 117 114 97 116 105 111 110 46 46 46 13 10 0 ]
+[a 14C 32 41 13 10 0 ]
+[a 47C 91 68 69 66 85 71 93 32 66 117 115 121 32 98 105 116 32 104 97 115 32 99 108 101 97 114 101 100 32 45 32 119 114 105 116 101 32 100 111 110 101 33 13 10 0 ]
+[a 42C 91 68 69 66 85 71 32 70 73 76 69 32 73 47 79 93 32 87 114 105 116 105 110 103 32 37 117 32 98 121 116 101 115 32 116 111 32 115 101 99 116 111 114 32 37 108 117 32 13 10 0 ]
+[a 2C 13 10 0 ]
