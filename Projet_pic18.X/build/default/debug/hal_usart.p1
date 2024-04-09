@@ -1,42 +1,42 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2543 `(v ~T0 @X0 0 tf ]
-[v F2544 `(v ~T0 @X0 0 tf ]
-[v F2546 `(v ~T0 @X0 0 tf ]
-[v F2547 `(v ~T0 @X0 0 tf ]
-[v F2549 `(v ~T0 @X0 0 tf ]
-[v F2550 `(v ~T0 @X0 0 tf ]
-[v F2552 `(v ~T0 @X0 0 tf ]
-[v F2553 `(v ~T0 @X0 0 tf ]
+[v F2710 `(v ~T0 @X0 0 tf ]
+[v F2711 `(v ~T0 @X0 0 tf ]
+[v F2713 `(v ~T0 @X0 0 tf ]
+[v F2714 `(v ~T0 @X0 0 tf ]
+[v F2716 `(v ~T0 @X0 0 tf ]
+[v F2717 `(v ~T0 @X0 0 tf ]
+[v F2719 `(v ~T0 @X0 0 tf ]
+[v F2720 `(v ~T0 @X0 0 tf ]
 "57 hal_usart.c
 [; ;hal_usart.c: 57: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart)
-[c E2481 0 1 2 3 4 5 .. ]
-[n E2481 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
+[c E2648 0 1 2 3 4 5 .. ]
+[n E2648 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
 [c E2294 0 1 .. ]
 [n E2294 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
 "100 ./hal_usart.h
 [; ;./hal_usart.h: 100: {
-[s S270 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2294 1 ]
-[n S270 . usart_tx_reserved usart_enable_tx usart_enable_tx_interrupt usart_enable_9bit_tx usart_tx_interrupt_priority ]
+[s S271 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2294 1 ]
+[n S271 . usart_tx_reserved usart_enable_tx usart_enable_tx_interrupt usart_enable_9bit_tx usart_tx_interrupt_priority ]
 "110
 [; ;./hal_usart.h: 110: {
-[s S271 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2294 1 ]
-[n S271 . usart_rx_reserved usart_enable_rx usart_enable_rx_interrupt usart_enable_9bit_rx usart_rx_interrupt_priority ]
+[s S272 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2294 1 ]
+[n S272 . usart_rx_reserved usart_enable_rx usart_enable_rx_interrupt usart_enable_9bit_rx usart_rx_interrupt_priority ]
 "122
 [; ;./hal_usart.h: 122:     {
-[s S273 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S273 . usart_tx_reserved usart_ferr usart_oerr ]
+[s S274 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S274 . usart_tx_reserved usart_ferr usart_oerr ]
 "120
 [; ;./hal_usart.h: 120: {
-[u S272 `S273 1 `uc 1 ]
-[n S272 . . status ]
-[v F2518 `(v ~T0 @X0 0 tf ]
-[v F2520 `(v ~T0 @X0 0 tf ]
-[v F2522 `(v ~T0 @X0 0 tf ]
-[v F2524 `(v ~T0 @X0 0 tf ]
+[u S273 `S274 1 `uc 1 ]
+[n S273 . . status ]
+[v F2685 `(v ~T0 @X0 0 tf ]
+[v F2687 `(v ~T0 @X0 0 tf ]
+[v F2689 `(v ~T0 @X0 0 tf ]
+[v F2691 `(v ~T0 @X0 0 tf ]
 "132
 [; ;./hal_usart.h: 132: {
-[s S274 `ul 1 `E2481 1 `S270 1 `S271 1 `S272 1 `*F2518 1 `*F2520 1 `*F2522 1 `*F2524 1 ]
-[n S274 . baudrate baudrate_config usart_tx_cfg usart_rx_cfg eusart_error_status USART_TxDefaultInterruptHandler USART_RxDefaultInterruptHandler USART_FramingErrorHandler USART_OverrunErrorHandler ]
+[s S275 `ul 1 `E2648 1 `S271 1 `S272 1 `S273 1 `*F2685 1 `*F2687 1 `*F2689 1 `*F2691 1 ]
+[n S275 . baudrate baudrate_config usart_tx_cfg usart_rx_cfg eusart_error_status USART_TxDefaultInterruptHandler USART_RxDefaultInterruptHandler USART_FramingErrorHandler USART_OverrunErrorHandler ]
 "3031 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S107 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
@@ -73,13 +73,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _TRISCbits `VS64 ~T0 @X0 0 e@3988 ]
 "34 hal_usart.c
 [; ;hal_usart.c: 34: static void USART_Baud_Rate_Calculation(const usart_t *_usart);
-[v _USART_Baud_Rate_Calculation `(v ~T0 @X0 0 sf1`*CS274 ]
+[v _USART_Baud_Rate_Calculation `(v ~T0 @X0 0 sf1`*CS275 ]
 "40
 [; ;hal_usart.c: 40: static void USART_ASYNCRONOUS_TX_Init(const usart_t *_usart);
-[v _USART_ASYNCRONOUS_TX_Init `(v ~T0 @X0 0 sf1`*CS274 ]
+[v _USART_ASYNCRONOUS_TX_Init `(v ~T0 @X0 0 sf1`*CS275 ]
 "46
 [; ;hal_usart.c: 46: static void USART_ASYNCRONOUS_RX_Init(const usart_t *_usart);
-[v _USART_ASYNCRONOUS_RX_Init `(v ~T0 @X0 0 sf1`*CS274 ]
+[v _USART_ASYNCRONOUS_RX_Init `(v ~T0 @X0 0 sf1`*CS275 ]
 "2580 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [s S89 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S89 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
@@ -155,10 +155,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S257 . . . . ]
 "6406
 [v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
-[v F2606 `(v ~T0 @X0 0 tf ]
-[v F2608 `(v ~T0 @X0 0 tf ]
-[v F2609 `(v ~T0 @X0 0 tf ]
-[v F2610 `(v ~T0 @X0 0 tf ]
+[v F2773 `(v ~T0 @X0 0 tf ]
+[v F2775 `(v ~T0 @X0 0 tf ]
+[v F2776 `(v ~T0 @X0 0 tf ]
+[v F2777 `(v ~T0 @X0 0 tf ]
 "54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; <" PORTA equ 0F80h ;# ">
 "191
@@ -501,38 +501,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTRB  =  OFF       ]
 "18 hal_usart.c
 [; ;hal_usart.c: 18:     static void (*USART_TxDefaultInterruptHandler)(void) = ((void*)0);
-[v _USART_TxDefaultInterruptHandler `*F2543 ~T0 @X0 1 s ]
+[v _USART_TxDefaultInterruptHandler `*F2710 ~T0 @X0 1 s ]
 [i _USART_TxDefaultInterruptHandler
--> -> -> 0 `i `*v `*F2544
+-> -> -> 0 `i `*v `*F2711
 ]
 "25
 [; ;hal_usart.c: 25:     static void (*USART_RxDefaultInterruptHandler)(void) = ((void*)0);
-[v _USART_RxDefaultInterruptHandler `*F2546 ~T0 @X0 1 s ]
+[v _USART_RxDefaultInterruptHandler `*F2713 ~T0 @X0 1 s ]
 [i _USART_RxDefaultInterruptHandler
--> -> -> 0 `i `*v `*F2547
+-> -> -> 0 `i `*v `*F2714
 ]
 "26
 [; ;hal_usart.c: 26:     static void (*USART_FramingErrorHandler)(void) = ((void*)0);
-[v _USART_FramingErrorHandler `*F2549 ~T0 @X0 1 s ]
+[v _USART_FramingErrorHandler `*F2716 ~T0 @X0 1 s ]
 [i _USART_FramingErrorHandler
--> -> -> 0 `i `*v `*F2550
+-> -> -> 0 `i `*v `*F2717
 ]
 "27
 [; ;hal_usart.c: 27:     static void (*USART_OverrunErrorHandler)(void) = ((void*)0);
-[v _USART_OverrunErrorHandler `*F2552 ~T0 @X0 1 s ]
+[v _USART_OverrunErrorHandler `*F2719 ~T0 @X0 1 s ]
 [i _USART_OverrunErrorHandler
--> -> -> 0 `i `*v `*F2553
+-> -> -> 0 `i `*v `*F2720
 ]
 "57
 [; ;hal_usart.c: 57: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart)
-[v _USART_Asynchronous_Initialize `(uc ~T0 @X0 1 ef1`*CS274 ]
+[v _USART_Asynchronous_Initialize `(uc ~T0 @X0 1 ef1`*CS275 ]
 "58
 [; ;hal_usart.c: 58: {
 {
 [e :U _USART_Asynchronous_Initialize ]
 "57
 [; ;hal_usart.c: 57: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart)
-[v __usart `*CS274 ~T0 @X0 1 r1 ]
+[v __usart `*CS275 ~T0 @X0 1 r1 ]
 "58
 [; ;hal_usart.c: 58: {
 [f ]
@@ -542,7 +542,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 "60
 [; ;hal_usart.c: 60:     if(((void*)0) == _usart)
-[e $ ! == -> -> -> 0 `i `*v `*CS274 __usart 276  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS275 __usart 277  ]
 "61
 [; ;hal_usart.c: 61:     {
 {
@@ -552,10 +552,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "63
 [; ;hal_usart.c: 63:     }
 }
-[e $U 277  ]
+[e $U 278  ]
 "64
 [; ;hal_usart.c: 64:     else
-[e :U 276 ]
+[e :U 277 ]
 "65
 [; ;hal_usart.c: 65:     {
 {
@@ -586,25 +586,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "80
 [; ;hal_usart.c: 80:     }
 }
-[e :U 277 ]
+[e :U 278 ]
 "81
 [; ;hal_usart.c: 81:     return ret;
 [e ) _ret ]
-[e $UE 275  ]
+[e $UE 276  ]
 "82
 [; ;hal_usart.c: 82: }
-[e :UE 275 ]
+[e :UE 276 ]
 }
 "91
 [; ;hal_usart.c: 91: uint8_t USART_Asynchronous_DeInitialize(const usart_t *_usart)
-[v _USART_Asynchronous_DeInitialize `(uc ~T0 @X0 1 ef1`*CS274 ]
+[v _USART_Asynchronous_DeInitialize `(uc ~T0 @X0 1 ef1`*CS275 ]
 "92
 [; ;hal_usart.c: 92: {
 {
 [e :U _USART_Asynchronous_DeInitialize ]
 "91
 [; ;hal_usart.c: 91: uint8_t USART_Asynchronous_DeInitialize(const usart_t *_usart)
-[v __usart `*CS274 ~T0 @X0 1 r1 ]
+[v __usart `*CS275 ~T0 @X0 1 r1 ]
 "92
 [; ;hal_usart.c: 92: {
 [f ]
@@ -614,7 +614,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 "94
 [; ;hal_usart.c: 94:     if(((void*)0) == _usart)
-[e $ ! == -> -> -> 0 `i `*v `*CS274 __usart 279  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS275 __usart 280  ]
 "95
 [; ;hal_usart.c: 95:     {
 {
@@ -624,10 +624,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "97
 [; ;hal_usart.c: 97:     }
 }
-[e $U 280  ]
+[e $U 281  ]
 "98
 [; ;hal_usart.c: 98:     else
-[e :U 279 ]
+[e :U 280 ]
 "99
 [; ;hal_usart.c: 99:     {
 {
@@ -640,14 +640,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "103
 [; ;hal_usart.c: 103:     }
 }
-[e :U 280 ]
+[e :U 281 ]
 "104
 [; ;hal_usart.c: 104:     return ret;
 [e ) _ret ]
-[e $UE 278  ]
+[e $UE 279  ]
 "105
 [; ;hal_usart.c: 105: }
-[e :UE 278 ]
+[e :UE 279 ]
 }
 "114
 [; ;hal_usart.c: 114: uint8_t USART_Asynchronous_ReadByte_Blocking(uint8_t *_data)
@@ -668,21 +668,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 "117
 [; ;hal_usart.c: 117:     while(!PIR1bits.RCIF);
-[e $U 282  ]
-[e :U 283 ]
-[e :U 282 ]
-[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 283  ]
+[e $U 283  ]
 [e :U 284 ]
+[e :U 283 ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 284  ]
+[e :U 285 ]
 "118
 [; ;hal_usart.c: 118:     *_data = RCREG;
 [e = *U __data _RCREG ]
 "119
 [; ;hal_usart.c: 119:     return ret;
 [e ) _ret ]
-[e $UE 281  ]
+[e $UE 282  ]
 "120
 [; ;hal_usart.c: 120: }
-[e :UE 281 ]
+[e :UE 282 ]
 }
 "129
 [; ;hal_usart.c: 129: uint8_t USART_Asynchronous_ReadByte_NonBlocking(uint8_t *_data)
@@ -703,7 +703,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 "132
 [; ;hal_usart.c: 132:     if(1 == PIR1bits.RCIF)
-[e $ ! == -> 1 `i -> . . _PIR1bits 0 5 `i 286  ]
+[e $ ! == -> 1 `i -> . . _PIR1bits 0 5 `i 287  ]
 "133
 [; ;hal_usart.c: 133:     {
 {
@@ -716,10 +716,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "136
 [; ;hal_usart.c: 136:     }
 }
-[e $U 287  ]
+[e $U 288  ]
 "137
 [; ;hal_usart.c: 137:     else
-[e :U 286 ]
+[e :U 287 ]
 "138
 [; ;hal_usart.c: 138:     {
 {
@@ -729,14 +729,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "140
 [; ;hal_usart.c: 140:     }
 }
-[e :U 287 ]
+[e :U 288 ]
 "141
 [; ;hal_usart.c: 141:     return ret;
 [e ) _ret ]
-[e $UE 285  ]
+[e $UE 286  ]
 "142
 [; ;hal_usart.c: 142: }
-[e :UE 285 ]
+[e :UE 286 ]
 }
 "150
 [; ;hal_usart.c: 150: uint8_t USART_Asynchronous_Restart_RX(void)
@@ -759,10 +759,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "157
 [; ;hal_usart.c: 157:     return ret;
 [e ) _ret ]
-[e $UE 288  ]
+[e $UE 289  ]
 "158
 [; ;hal_usart.c: 158: }
-[e :UE 288 ]
+[e :UE 289 ]
 }
 "167
 [; ;hal_usart.c: 167: uint8_t USART_Asynchronous_WriteByte_Blocking(uint8_t _data)
@@ -783,11 +783,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "170
 [; ;hal_usart.c: 170:     while(!TXSTAbits.TRMT);
-[e $U 290  ]
-[e :U 291 ]
-[e :U 290 ]
-[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 291  ]
+[e $U 291  ]
 [e :U 292 ]
+[e :U 291 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 292  ]
+[e :U 293 ]
 "173
 [; ;hal_usart.c: 173:     (PIE1bits.TXIE = 1);
 [e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
@@ -797,10 +797,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "176
 [; ;hal_usart.c: 176:     return ret;
 [e ) _ret ]
-[e $UE 289  ]
+[e $UE 290  ]
 "177
 [; ;hal_usart.c: 177: }
-[e :UE 289 ]
+[e :UE 290 ]
 }
 "186
 [; ;hal_usart.c: 186: uint8_t USART_Asynchronous_WriteByte_NonBlocking(uint8_t _data)
@@ -825,7 +825,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _char_counter -> -> 0 `i `us ]
 "190
 [; ;hal_usart.c: 190:     if(1 == TXSTAbits.TRMT)
-[e $ ! == -> 1 `i -> . . _TXSTAbits 0 1 `i 294  ]
+[e $ ! == -> 1 `i -> . . _TXSTAbits 0 1 `i 295  ]
 "191
 [; ;hal_usart.c: 191:     {
 {
@@ -841,10 +841,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "198
 [; ;hal_usart.c: 198:     }
 }
-[e $U 295  ]
+[e $U 296  ]
 "199
 [; ;hal_usart.c: 199:     else
-[e :U 294 ]
+[e :U 295 ]
 "200
 [; ;hal_usart.c: 200:     {
 {
@@ -854,14 +854,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "202
 [; ;hal_usart.c: 202:     }
 }
-[e :U 295 ]
+[e :U 296 ]
 "203
 [; ;hal_usart.c: 203:     return ret;
 [e ) _ret ]
-[e $UE 293  ]
+[e $UE 294  ]
 "204
 [; ;hal_usart.c: 204: }
-[e :UE 293 ]
+[e :UE 294 ]
 }
 "214
 [; ;hal_usart.c: 214: uint8_t USART_Asynchronous_WriteString_Blocking(uint8_t *_data, uint16_t str_length)
@@ -889,8 +889,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_usart.c: 218:     for(char_counter = 0; char_counter < str_length; char_counter++)
 {
 [e = _char_counter -> -> 0 `i `us ]
-[e $U 300  ]
-[e :U 297 ]
+[e $U 301  ]
+[e :U 298 ]
 "219
 [; ;hal_usart.c: 219:     {
 {
@@ -901,28 +901,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_usart.c: 221:     }
 }
 [e ++ _char_counter -> -> 1 `i `us ]
-[e :U 300 ]
-[e $ < -> _char_counter `ui -> _str_length `ui 297  ]
-[e :U 298 ]
+[e :U 301 ]
+[e $ < -> _char_counter `ui -> _str_length `ui 298  ]
+[e :U 299 ]
 }
 "222
 [; ;hal_usart.c: 222:     return ret;
 [e ) _ret ]
-[e $UE 296  ]
+[e $UE 297  ]
 "223
 [; ;hal_usart.c: 223: }
-[e :UE 296 ]
+[e :UE 297 ]
 }
 "229
 [; ;hal_usart.c: 229: static void USART_Baud_Rate_Calculation(const usart_t *_usart)
-[v _USART_Baud_Rate_Calculation `(v ~T0 @X0 1 sf1`*CS274 ]
+[v _USART_Baud_Rate_Calculation `(v ~T0 @X0 1 sf1`*CS275 ]
 "230
 [; ;hal_usart.c: 230: {
 {
 [e :U _USART_Baud_Rate_Calculation ]
 "229
 [; ;hal_usart.c: 229: static void USART_Baud_Rate_Calculation(const usart_t *_usart)
-[v __usart `*CS274 ~T0 @X0 1 r1 ]
+[v __usart `*CS275 ~T0 @X0 1 r1 ]
 "230
 [; ;hal_usart.c: 230: {
 [f ]
@@ -932,13 +932,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _Baud_Rate_Temp_Value -> -> 0 `i `f ]
 "232
 [; ;hal_usart.c: 232:     switch(_usart->baudrate_config)
-[e $U 303  ]
+[e $U 304  ]
 "233
 [; ;hal_usart.c: 233:     {
 {
 "234
 [; ;hal_usart.c: 234:         case BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED :
-[e :U 304 ]
+[e :U 305 ]
 "235
 [; ;hal_usart.c: 235:             TXSTAbits.SYNC = 0;
 [e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
@@ -953,10 +953,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 64 `i `f -> -> 1 `i `f ]
 "239
 [; ;hal_usart.c: 239:         break;
-[e $U 302  ]
+[e $U 303  ]
 "241
 [; ;hal_usart.c: 241:         case BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED :
-[e :U 305 ]
+[e :U 306 ]
 "242
 [; ;hal_usart.c: 242:             TXSTAbits.SYNC = 0;
 [e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
@@ -971,10 +971,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 16 `i `f -> -> 1 `i `f ]
 "246
 [; ;hal_usart.c: 246:         break;
-[e $U 302  ]
+[e $U 303  ]
 "248
 [; ;hal_usart.c: 248:         case BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED :
-[e :U 306 ]
+[e :U 307 ]
 "249
 [; ;hal_usart.c: 249:             TXSTAbits.SYNC = 0;
 [e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
@@ -989,10 +989,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 16 `i `f -> -> 1 `i `f ]
 "253
 [; ;hal_usart.c: 253:         break;
-[e $U 302  ]
+[e $U 303  ]
 "255
 [; ;hal_usart.c: 255:         case BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED :
-[e :U 307 ]
+[e :U 308 ]
 "256
 [; ;hal_usart.c: 256:             TXSTAbits.SYNC = 0;
 [e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
@@ -1007,10 +1007,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "260
 [; ;hal_usart.c: 260:         break;
-[e $U 302  ]
+[e $U 303  ]
 "262
 [; ;hal_usart.c: 262:         case BAUDRATE_SYNCHRONOUS_MODE_8BIT :
-[e :U 308 ]
+[e :U 309 ]
 "263
 [; ;hal_usart.c: 263:             TXSTAbits.SYNC = 1;
 [e = . . _TXSTAbits 0 4 -> -> 1 `i `uc ]
@@ -1022,10 +1022,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "266
 [; ;hal_usart.c: 266:         break;
-[e $U 302  ]
+[e $U 303  ]
 "268
 [; ;hal_usart.c: 268:         case BAUDRATE_SYNCHRONOUS_MODE_16BIT :
-[e :U 309 ]
+[e :U 310 ]
 "269
 [; ;hal_usart.c: 269:             TXSTAbits.SYNC = 1;
 [e = . . _TXSTAbits 0 4 -> -> 1 `i `uc ]
@@ -1037,23 +1037,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "272
 [; ;hal_usart.c: 272:         break;
-[e $U 302  ]
+[e $U 303  ]
 "274
 [; ;hal_usart.c: 274:         default : ;
-[e :U 310 ]
+[e :U 311 ]
 "275
 [; ;hal_usart.c: 275:     }
 }
-[e $U 302  ]
+[e $U 303  ]
+[e :U 304 ]
+[e [\ -> . *U __usart 1 `ui , $ -> . `E2648 0 `ui 305
+ , $ -> . `E2648 1 `ui 306
+ , $ -> . `E2648 2 `ui 307
+ , $ -> . `E2648 3 `ui 308
+ , $ -> . `E2648 4 `ui 309
+ , $ -> . `E2648 5 `ui 310
+ 311 ]
 [e :U 303 ]
-[e [\ -> . *U __usart 1 `ui , $ -> . `E2481 0 `ui 304
- , $ -> . `E2481 1 `ui 305
- , $ -> . `E2481 2 `ui 306
- , $ -> . `E2481 3 `ui 307
- , $ -> . `E2481 4 `ui 308
- , $ -> . `E2481 5 `ui 309
- 310 ]
-[e :U 302 ]
 "276
 [; ;hal_usart.c: 276:     SPBRG = (uint8_t)((uint32_t)Baud_Rate_Temp_Value);
 [e = _SPBRG -> -> _Baud_Rate_Temp_Value `ul `uc ]
@@ -1062,24 +1062,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _SPBRGH -> >> -> _Baud_Rate_Temp_Value `ul -> 8 `i `uc ]
 "278
 [; ;hal_usart.c: 278: }
-[e :UE 301 ]
+[e :UE 302 ]
 }
 "284
 [; ;hal_usart.c: 284: static void USART_ASYNCRONOUS_TX_Init(const usart_t *_usart)
-[v _USART_ASYNCRONOUS_TX_Init `(v ~T0 @X0 1 sf1`*CS274 ]
+[v _USART_ASYNCRONOUS_TX_Init `(v ~T0 @X0 1 sf1`*CS275 ]
 "285
 [; ;hal_usart.c: 285: {
 {
 [e :U _USART_ASYNCRONOUS_TX_Init ]
 "284
 [; ;hal_usart.c: 284: static void USART_ASYNCRONOUS_TX_Init(const usart_t *_usart)
-[v __usart `*CS274 ~T0 @X0 1 r1 ]
+[v __usart `*CS275 ~T0 @X0 1 r1 ]
 "285
 [; ;hal_usart.c: 285: {
 [f ]
 "286
 [; ;hal_usart.c: 286:     if(1 == _usart->usart_tx_cfg.usart_enable_tx)
-[e $ ! == -> 1 `i -> . . *U __usart 2 1 `i 312  ]
+[e $ ! == -> 1 `i -> . . *U __usart 2 1 `i 313  ]
 "287
 [; ;hal_usart.c: 287:     {
 {
@@ -1091,7 +1091,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _USART_TxDefaultInterruptHandler . *U __usart 5 ]
 "295
 [; ;hal_usart.c: 295:         if(1 == _usart->usart_tx_cfg.usart_enable_tx_interrupt)
-[e $ ! == -> 1 `i -> . . *U __usart 2 2 `i 313  ]
+[e $ ! == -> 1 `i -> . . *U __usart 2 2 `i 314  ]
 "296
 [; ;hal_usart.c: 296:         {
 {
@@ -1110,11 +1110,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "321
 [; ;hal_usart.c: 321:         }
 }
-[e $U 314  ]
+[e $U 315  ]
 "322
 [; ;hal_usart.c: 322:         else if(0 == _usart->usart_tx_cfg.usart_enable_tx_interrupt)
-[e :U 313 ]
-[e $ ! == -> 0 `i -> . . *U __usart 2 2 `i 315  ]
+[e :U 314 ]
+[e $ ! == -> 0 `i -> . . *U __usart 2 2 `i 316  ]
 "323
 [; ;hal_usart.c: 323:         {
 {
@@ -1124,17 +1124,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "325
 [; ;hal_usart.c: 325:         }
 }
-[e $U 316  ]
+[e $U 317  ]
 "326
 [; ;hal_usart.c: 326:         else{ }
-[e :U 315 ]
+[e :U 316 ]
 {
 }
-[e :U 316 ]
-[e :U 314 ]
+[e :U 317 ]
+[e :U 315 ]
 "329
 [; ;hal_usart.c: 329:         if(1 == _usart->usart_tx_cfg.usart_enable_9bit_tx)
-[e $ ! == -> 1 `i -> . . *U __usart 2 3 `i 317  ]
+[e $ ! == -> 1 `i -> . . *U __usart 2 3 `i 318  ]
 "330
 [; ;hal_usart.c: 330:         {
 {
@@ -1144,11 +1144,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "332
 [; ;hal_usart.c: 332:         }
 }
-[e $U 318  ]
+[e $U 319  ]
 "333
 [; ;hal_usart.c: 333:         else if(0 == _usart->usart_tx_cfg.usart_enable_9bit_tx)
-[e :U 317 ]
-[e $ ! == -> 0 `i -> . . *U __usart 2 3 `i 319  ]
+[e :U 318 ]
+[e $ ! == -> 0 `i -> . . *U __usart 2 3 `i 320  ]
 "334
 [; ;hal_usart.c: 334:         {
 {
@@ -1158,44 +1158,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "336
 [; ;hal_usart.c: 336:         }
 }
-[e $U 320  ]
+[e $U 321  ]
 "337
 [; ;hal_usart.c: 337:         else{ }
-[e :U 319 ]
-{
-}
 [e :U 320 ]
-[e :U 318 ]
-"338
-[; ;hal_usart.c: 338:     }
-}
-[e $U 321  ]
-"339
-[; ;hal_usart.c: 339:     else{ }
-[e :U 312 ]
 {
 }
 [e :U 321 ]
+[e :U 319 ]
+"338
+[; ;hal_usart.c: 338:     }
+}
+[e $U 322  ]
+"339
+[; ;hal_usart.c: 339:     else{ }
+[e :U 313 ]
+{
+}
+[e :U 322 ]
 "340
 [; ;hal_usart.c: 340: }
-[e :UE 311 ]
+[e :UE 312 ]
 }
 "346
 [; ;hal_usart.c: 346: static void USART_ASYNCRONOUS_RX_Init(const usart_t *_usart)
-[v _USART_ASYNCRONOUS_RX_Init `(v ~T0 @X0 1 sf1`*CS274 ]
+[v _USART_ASYNCRONOUS_RX_Init `(v ~T0 @X0 1 sf1`*CS275 ]
 "347
 [; ;hal_usart.c: 347: {
 {
 [e :U _USART_ASYNCRONOUS_RX_Init ]
 "346
 [; ;hal_usart.c: 346: static void USART_ASYNCRONOUS_RX_Init(const usart_t *_usart)
-[v __usart `*CS274 ~T0 @X0 1 r1 ]
+[v __usart `*CS275 ~T0 @X0 1 r1 ]
 "347
 [; ;hal_usart.c: 347: {
 [f ]
 "348
 [; ;hal_usart.c: 348:     if(1 == _usart->usart_rx_cfg.usart_enable_rx)
-[e $ ! == -> 1 `i -> . . *U __usart 3 1 `i 323  ]
+[e $ ! == -> 1 `i -> . . *U __usart 3 1 `i 324  ]
 "349
 [; ;hal_usart.c: 349:     {
 {
@@ -1213,7 +1213,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _USART_OverrunErrorHandler . *U __usart 8 ]
 "361
 [; ;hal_usart.c: 361:         if(1 == _usart->usart_rx_cfg.usart_enable_rx_interrupt)
-[e $ ! == -> 1 `i -> . . *U __usart 3 2 `i 324  ]
+[e $ ! == -> 1 `i -> . . *U __usart 3 2 `i 325  ]
 "362
 [; ;hal_usart.c: 362:         {
 {
@@ -1232,11 +1232,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "386
 [; ;hal_usart.c: 386:         }
 }
-[e $U 325  ]
+[e $U 326  ]
 "387
 [; ;hal_usart.c: 387:         else if(0 == _usart->usart_rx_cfg.usart_enable_rx_interrupt)
-[e :U 324 ]
-[e $ ! == -> 0 `i -> . . *U __usart 3 2 `i 326  ]
+[e :U 325 ]
+[e $ ! == -> 0 `i -> . . *U __usart 3 2 `i 327  ]
 "388
 [; ;hal_usart.c: 388:         {
 {
@@ -1246,17 +1246,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "390
 [; ;hal_usart.c: 390:         }
 }
-[e $U 327  ]
+[e $U 328  ]
 "391
 [; ;hal_usart.c: 391:         else{ }
-[e :U 326 ]
+[e :U 327 ]
 {
 }
-[e :U 327 ]
-[e :U 325 ]
+[e :U 328 ]
+[e :U 326 ]
 "394
 [; ;hal_usart.c: 394:         if(1 == _usart->usart_rx_cfg.usart_enable_9bit_rx)
-[e $ ! == -> 1 `i -> . . *U __usart 3 3 `i 328  ]
+[e $ ! == -> 1 `i -> . . *U __usart 3 3 `i 329  ]
 "395
 [; ;hal_usart.c: 395:         {
 {
@@ -1266,11 +1266,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "397
 [; ;hal_usart.c: 397:         }
 }
-[e $U 329  ]
+[e $U 330  ]
 "398
 [; ;hal_usart.c: 398:         else if(0 == _usart->usart_rx_cfg.usart_enable_9bit_rx)
-[e :U 328 ]
-[e $ ! == -> 0 `i -> . . *U __usart 3 3 `i 330  ]
+[e :U 329 ]
+[e $ ! == -> 0 `i -> . . *U __usart 3 3 `i 331  ]
 "399
 [; ;hal_usart.c: 399:         {
 {
@@ -1280,27 +1280,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 "401
 [; ;hal_usart.c: 401:         }
 }
-[e $U 331  ]
+[e $U 332  ]
 "402
 [; ;hal_usart.c: 402:         else{ }
-[e :U 330 ]
-{
-}
 [e :U 331 ]
-[e :U 329 ]
-"403
-[; ;hal_usart.c: 403:     }
-}
-[e $U 332  ]
-"404
-[; ;hal_usart.c: 404:     else{ }
-[e :U 323 ]
 {
 }
 [e :U 332 ]
+[e :U 330 ]
+"403
+[; ;hal_usart.c: 403:     }
+}
+[e $U 333  ]
+"404
+[; ;hal_usart.c: 404:     else{ }
+[e :U 324 ]
+{
+}
+[e :U 333 ]
 "405
 [; ;hal_usart.c: 405: }
-[e :UE 322 ]
+[e :UE 323 ]
 }
 "410
 [; ;hal_usart.c: 410: void USART_TX_ISR(void)
@@ -1315,7 +1315,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
 "414
 [; ;hal_usart.c: 414:     if(USART_TxDefaultInterruptHandler)
-[e $ ! != _USART_TxDefaultInterruptHandler -> -> 0 `i `*F2606 334  ]
+[e $ ! != _USART_TxDefaultInterruptHandler -> -> 0 `i `*F2773 335  ]
 "415
 [; ;hal_usart.c: 415:     {
 {
@@ -1325,16 +1325,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "417
 [; ;hal_usart.c: 417:     }
 }
-[e $U 335  ]
+[e $U 336  ]
 "418
 [; ;hal_usart.c: 418:     else{ }
-[e :U 334 ]
+[e :U 335 ]
 {
 }
-[e :U 335 ]
+[e :U 336 ]
 "419
 [; ;hal_usart.c: 419: }
-[e :UE 333 ]
+[e :UE 334 ]
 }
 "424
 [; ;hal_usart.c: 424: void USART_RX_ISR(void)
@@ -1346,7 +1346,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "426
 [; ;hal_usart.c: 426:   if(USART_RxDefaultInterruptHandler)
-[e $ ! != _USART_RxDefaultInterruptHandler -> -> 0 `i `*F2608 337  ]
+[e $ ! != _USART_RxDefaultInterruptHandler -> -> 0 `i `*F2775 338  ]
 "427
 [; ;hal_usart.c: 427:     {
 {
@@ -1356,16 +1356,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "429
 [; ;hal_usart.c: 429:     }
 }
-[e $U 338  ]
+[e $U 339  ]
 "430
 [; ;hal_usart.c: 430:     else{ }
-[e :U 337 ]
+[e :U 338 ]
 {
 }
-[e :U 338 ]
+[e :U 339 ]
 "432
 [; ;hal_usart.c: 432:   if(USART_FramingErrorHandler)
-[e $ ! != _USART_FramingErrorHandler -> -> 0 `i `*F2609 339  ]
+[e $ ! != _USART_FramingErrorHandler -> -> 0 `i `*F2776 340  ]
 "433
 [; ;hal_usart.c: 433:     {
 {
@@ -1375,16 +1375,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "435
 [; ;hal_usart.c: 435:     }
 }
-[e $U 340  ]
+[e $U 341  ]
 "436
 [; ;hal_usart.c: 436:     else{ }
-[e :U 339 ]
+[e :U 340 ]
 {
 }
-[e :U 340 ]
+[e :U 341 ]
 "438
 [; ;hal_usart.c: 438:   if(USART_OverrunErrorHandler)
-[e $ ! != _USART_OverrunErrorHandler -> -> 0 `i `*F2610 341  ]
+[e $ ! != _USART_OverrunErrorHandler -> -> 0 `i `*F2777 342  ]
 "439
 [; ;hal_usart.c: 439:     {
 {
@@ -1394,14 +1394,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "441
 [; ;hal_usart.c: 441:     }
 }
-[e $U 342  ]
+[e $U 343  ]
 "442
 [; ;hal_usart.c: 442:     else{ }
-[e :U 341 ]
+[e :U 342 ]
 {
 }
-[e :U 342 ]
+[e :U 343 ]
 "443
 [; ;hal_usart.c: 443: }
-[e :UE 336 ]
+[e :UE 337 ]
 }

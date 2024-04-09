@@ -4545,7 +4545,64 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
-# 88 "./common.h"
+# 87 "./common.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 1 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 411 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 2 3
+
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+# 65 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 3
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 88 "./common.h" 2
+
 typedef enum {
     OFF = 0,
     ON = 1,
@@ -4579,12 +4636,15 @@ typedef struct{
 
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
-void read_address_in_eeprom(void);
-void save_address_in_eeprom(void);
-void extract_one_day_of_data(void);
-void SD_control(void);
-void reset_address_in_eeprom(void);
+void read_eep_address_in_eeprom(void);
+void save_eep_address_in_eeprom(void);
+void update_SD_tab(SystemData* pSystem_data);
+void save_sd_address_in_eeprom(void);
+void read_sd_address_in_eeprom(void);
+void reset_eep_address_in_eeprom(void);
 void extract_all_alarms(void);
+void reset_sd_address_in_eeprom(void);
+void extract_data_for_days(int number_days);
 # 8 "temp_monitoring.c" 2
 
 # 1 "./ds18b20.h" 1
@@ -5164,11 +5224,208 @@ unsigned char read_one_byte_in_eeprom(uint16_t register_address);
 void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
 # 11 "temp_monitoring.c" 2
 
+# 1 "./SD_PIC.h" 1
+# 17 "./SD_PIC.h"
+# 1 "./SPI_PIC.h" 1
+# 35 "./SPI_PIC.h"
+unsigned char spiTransfer(unsigned char byteToSend);
+
+
+
+
+
+unsigned char spiReceive(void);
+
+
+
+
+
+void spiSend(unsigned char val);
+
+
+
+
+
+
+
+void spiInit(unsigned char divider);
+
+void SPI_sendResetSequence(void);
+
+void SPI_sendBytes(uint8_t* txData, uint16_t len);
+
+void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len);
+
+uint8_t SPI_exchangeByte(uint8_t data);
+
+void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len);
+# 18 "./SD_PIC.h" 2
+# 43 "./SD_PIC.h"
+extern const unsigned char CMD0;
+extern const unsigned char CMD0CRC;
+extern const unsigned char CMD1;
+extern const unsigned char CMD8;
+extern const unsigned char CMD8CRC;
+extern const unsigned char CMD9;
+extern const unsigned char CMD10;
+extern const unsigned char CMD12;
+extern const unsigned char CMD13;
+extern const unsigned char CMD16;
+extern const unsigned char CMD17;
+extern const unsigned char CMD18;
+extern const unsigned char CMD24;
+extern const unsigned char CMD25;
+extern const unsigned char CMD32;
+extern const unsigned char CMD33;
+extern const unsigned char CMD38;
+extern const unsigned char CMD55;
+extern const unsigned char CMD58;
+extern const unsigned char ACMD22;
+extern const unsigned char ACMD23;
+extern const unsigned char ACMD41;
+extern const unsigned char R1_READY_STATE;
+extern const unsigned char R1_IDLE_STATE;
+extern const unsigned char R1_ILLEGAL_COMMAND;
+extern const unsigned char START_BLOCK;
+extern const unsigned char START_BLOCK_TOKEN;
+extern const unsigned char STOP_TRAN;
+
+
+
+
+
+
+typedef enum{
+    TYPE_SDSC = 0,
+    TYPE_SDHC_SDXC = 1,
+    TYPE_MMC = 2
+}sd_card_types_e;
+
+
+typedef struct{
+    unsigned char SDversion;
+    sd_card_types_e Type;
+    unsigned char MID;
+    unsigned short OID;
+    unsigned long PHML;
+    unsigned char PHMH;
+    unsigned char PRV;
+    unsigned long PSN;
+    unsigned short MDT;
+    unsigned char CRC;
+    unsigned short blockSize;
+    unsigned long numBlocks;
+    double size;
+    unsigned char init;
+
+
+    struct{
+        unsigned long lastBlockWritten;
+        unsigned long MBW_startBlock;
+        unsigned char MBW_flag_first;
+    }write;
+
+
+    struct{
+        unsigned long lastBlockRead;
+        unsigned long MBR_startBlock;
+        unsigned char MBR_flag_first;
+    }read;
+}SDCard_t;
+
+
+extern SDCard_t SDCard;
+extern unsigned char SDwriteBuffer[512];
+extern unsigned char SDreadBuffer[512];
+
+
+
+
+
+
+void SD_SendDummyBytes(unsigned char numBytes);
+
+
+
+
+
+
+
+unsigned char SD_Command(unsigned char cmd, unsigned long arg);
+
+
+
+
+
+
+
+unsigned char SD_ACMD(unsigned char cmd, unsigned long args);
+# 150 "./SD_PIC.h"
+unsigned char SD_SingleBlockWrite(unsigned long block, unsigned char* arr);
+
+
+
+
+
+
+
+void SD_MBW_Start(unsigned long startBlock, unsigned long numBlocks);
+# 170 "./SD_PIC.h"
+unsigned char SD_MBW_Send(unsigned char* arrWrite);
+
+
+
+
+
+void SD_MBW_Stop(void);
+# 186 "./SD_PIC.h"
+unsigned char SD_SingleBlockRead(unsigned long block, unsigned char* buf);
+
+
+
+
+
+
+
+unsigned char SD_MBR_Start(unsigned long startBlock);
+
+
+
+
+
+
+
+void SD_MBR_Receive(unsigned char* bufReceive);
+
+
+
+
+
+
+void SD_MBR_Stop(void);
+# 219 "./SD_PIC.h"
+void SD_EraseBlocks(unsigned long firstBlock, unsigned long lastBlock);
+
+
+
+
+
+void initSD(void);
+
+
+void read_init_sd_card(void);
+unsigned char average(unsigned char* array, unsigned short n);
+void single_block_read(void);
+void multiple_block_write(void);
+void multiple_block_read(void);
+void single_block_write(unsigned long sector);
+# 12 "temp_monitoring.c" 2
+
 
 
 static uint16_t previous_address_eeprom=8;
 static uint8_t counter_alarm=0;
-
+static unsigned long sector_address = 0;
 
 void update_system_data(SystemData* pSystem_data)
 {
@@ -5227,18 +5484,25 @@ void save_in_eeprom(SystemData* pSystem_data)
     printf("\n");
 
 
+
    write_one_page_in_eeprom(tab, previous_address_eeprom);
    _delay((unsigned long)((100)*(4000000/4000.0)));
    write_one_page_in_eeprom(&tab[8], previous_address_eeprom+8);
    _delay((unsigned long)((100)*(4000000/4000.0)));
 
+
    previous_address_eeprom += 16;
    counter_alarm++;
    _delay((unsigned long)((100)*(4000000/4000.0)));
-   save_address_in_eeprom();
+   save_eep_address_in_eeprom();
+
+   if(counter_alarm == 254)
+   {
+       reset_eep_address_in_eeprom();
+   }
 }
 
-void save_address_in_eeprom(void)
+void save_eep_address_in_eeprom(void)
 {
     unsigned char addressH=0, addressL=0;
 
@@ -5246,15 +5510,16 @@ void save_address_in_eeprom(void)
     addressL = (previous_address_eeprom & 0xFF);
 
     write_one_byte_in_eeprom(addressH, 1);
-    _delay((unsigned long)((100)*(4000000/4000.0)));
+    _delay((unsigned long)((10)*(4000000/4000.0)));
     write_one_byte_in_eeprom(addressL, 0);
-    _delay((unsigned long)((100)*(4000000/4000.0)));
+    _delay((unsigned long)((10)*(4000000/4000.0)));
     write_one_byte_in_eeprom(counter_alarm, 2);
+     _delay((unsigned long)((10)*(4000000/4000.0)));
 
-
+    printf("previous add  save %u\r\n", previous_address_eeprom);
 }
 
-void read_address_in_eeprom(void)
+void read_eep_address_in_eeprom(void)
 {
     unsigned char addressH=0, addressL=0;
 
@@ -5272,12 +5537,15 @@ void read_address_in_eeprom(void)
 
 }
 
-void reset_address_in_eeprom(void)
+void reset_eep_address_in_eeprom(void)
 {
     unsigned char addressH=0, addressL=0;
 
     counter_alarm = 0;
-    previous_address_eeprom = 0;
+    previous_address_eeprom = 8;
+
+    addressH = (previous_address_eeprom & 0xF00)>>8;
+    addressL = (previous_address_eeprom & 0xFF);
 
     write_one_byte_in_eeprom(addressH, 1);
     _delay((unsigned long)((100)*(4000000/4000.0)));
@@ -5306,8 +5574,9 @@ void extract_all_alarms(void)
 
 
         printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7], tab2[8], tab2[9], tab2[10], tab2[11], tab2[12], tab2[13], tab2[14], tab2[15]);
-    }
 
+    }
+    reset_eep_address_in_eeprom();
 }
 
 
@@ -5334,8 +5603,111 @@ void extract_one_day_of_data(void)
     previous_address_counter = 8;
 }
 
-
-void SD_control(void)
+void update_SD_tab(SystemData* pSystem_data)
 {
+    static int counter = 0;
+    unsigned char tab[16] = {0};
 
+    tab[0] = pSystem_data->year;
+    tab[1] = pSystem_data->month;
+    tab[2] = pSystem_data->day;
+    tab[3] = pSystem_data->hour;
+    tab[4] = pSystem_data->minute;
+    tab[5] = pSystem_data->second;
+    tab[6] = pSystem_data->temp_decimal;
+    tab[7] = pSystem_data->temp_fraction;
+    tab[8] = pSystem_data->error_type;
+    tab[9] = 0;
+    tab[10] = 0;
+    tab[11] = 0;
+    tab[12] = 0;
+    tab[13] = 0;
+    tab[14] = 0;
+    tab[15] = 0;
+
+
+    memcpy(&SDwriteBuffer[counter], tab, 16);
+
+    counter += 16;
+
+
+    if (counter >= 512) {
+        single_block_write(sector_address);
+        sector_address++;
+        save_sd_address_in_eeprom();
+        counter = 0;
+    }
+
+    if(sector_address == 262144)
+    {
+        reset_sd_address_in_eeprom();
+    }
+}
+
+
+void save_sd_address_in_eeprom(void)
+{
+    for(int i = 0; i < 4; i++) {
+        write_one_byte_in_eeprom((sector_address >> (i * 8)) & 0xFF, 3 + i);
+        _delay((unsigned long)((10)*(4000000/4000.0)));
+    }
+}
+
+void read_sd_address_in_eeprom(void)
+{
+    for(int i = 0; i < 4; i++) {
+        sector_address |= ((unsigned long)read_one_byte_in_eeprom(6 - i)) << ((3 - i) * 8);
+        _delay((unsigned long)((10)*(4000000/4000.0)));
+    }
+}
+
+void reset_sd_address_in_eeprom(void)
+{
+    for(int i = 0; i < 4; i++) {
+        write_one_byte_in_eeprom(0, 3 + i);
+        _delay((unsigned long)((10)*(4000000/4000.0)));
+    }
+}
+
+void extract_data_for_days(int number_days)
+{
+    unsigned long i;
+    unsigned short numWrites = number_days * 90;
+    long firstBlock = sector_address - numWrites;
+
+
+
+    if (firstBlock < 0) {
+        firstBlock = 0;
+    }
+
+    for(i = 0; i < sizeof(SDreadBuffer); i++)
+    {
+
+        SDreadBuffer[i] = 0;
+    }
+
+
+    SD_MBR_Start(firstBlock);
+
+    printf("Reading sectors ");
+    printf("%d-%d\r\n", firstBlock, firstBlock + numWrites - 1);
+
+    for(i = 0; i < numWrites; i++)
+    {
+
+        SD_MBR_Receive(SDreadBuffer);
+
+
+        printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", SDreadBuffer[0], SDreadBuffer[1], SDreadBuffer[2], SDreadBuffer[3], SDreadBuffer[4], SDreadBuffer[5], SDreadBuffer[6], SDreadBuffer[7], SDreadBuffer[8], SDreadBuffer[9], SDreadBuffer[10], SDreadBuffer[11], SDreadBuffer[12], SDreadBuffer[13], SDreadBuffer[14], SDreadBuffer[15]);
+
+        if((i > 0) && (i % 250 == 0)){
+            printf(".");
+        }
+    }
+    SD_MBR_Stop();
+
+    { LATEbits.LATE2 = 1; SSPCON1bits.SSPEN = 0;};
+
+    printf("Sec %d-%d\r\n", (int)firstBlock, (int)(firstBlock + numWrites - 1));
 }

@@ -4539,7 +4539,64 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
-# 88 "./common.h"
+# 87 "./common.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 1 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 411 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 2 3
+
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+# 65 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 3
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 88 "./common.h" 2
+
 typedef enum {
     OFF = 0,
     ON = 1,
@@ -4654,6 +4711,8 @@ typedef struct{
 
 
 extern SDCard_t SDCard;
+extern unsigned char SDwriteBuffer[512];
+extern unsigned char SDreadBuffer[512];
 
 
 
@@ -4677,7 +4736,7 @@ unsigned char SD_Command(unsigned char cmd, unsigned long arg);
 
 
 unsigned char SD_ACMD(unsigned char cmd, unsigned long args);
-# 148 "./SD_PIC.h"
+# 150 "./SD_PIC.h"
 unsigned char SD_SingleBlockWrite(unsigned long block, unsigned char* arr);
 
 
@@ -4687,7 +4746,7 @@ unsigned char SD_SingleBlockWrite(unsigned long block, unsigned char* arr);
 
 
 void SD_MBW_Start(unsigned long startBlock, unsigned long numBlocks);
-# 168 "./SD_PIC.h"
+# 170 "./SD_PIC.h"
 unsigned char SD_MBW_Send(unsigned char* arrWrite);
 
 
@@ -4695,7 +4754,7 @@ unsigned char SD_MBW_Send(unsigned char* arrWrite);
 
 
 void SD_MBW_Stop(void);
-# 184 "./SD_PIC.h"
+# 186 "./SD_PIC.h"
 unsigned char SD_SingleBlockRead(unsigned long block, unsigned char* buf);
 
 
@@ -4720,7 +4779,7 @@ void SD_MBR_Receive(unsigned char* bufReceive);
 
 
 void SD_MBR_Stop(void);
-# 217 "./SD_PIC.h"
+# 219 "./SD_PIC.h"
 void SD_EraseBlocks(unsigned long firstBlock, unsigned long lastBlock);
 
 
@@ -4735,7 +4794,7 @@ unsigned char average(unsigned char* array, unsigned short n);
 void single_block_read(void);
 void multiple_block_write(void);
 void multiple_block_read(void);
-void single_block_write(void);
+void single_block_write(unsigned long sector);
 # 12 "SD_PIC.c" 2
 
 
@@ -4776,8 +4835,8 @@ SDCard_t SDCard = {0};
 
 
 
-unsigned char writeBuffer[512];
-static unsigned char readBuffer[512];
+unsigned char SDwriteBuffer[512];
+unsigned char SDreadBuffer[512];
 
 
 void SD_SendDummyBytes(unsigned char numBytes){
@@ -5456,8 +5515,8 @@ void single_block_read(void)
     _delay((unsigned long)((1000)*(4000000/4000.0)));
 
 
-    if(SD_SingleBlockRead(0, readBuffer)){
-        printf("Avg: %d\r\n", average(readBuffer, 512));
+    if(SD_SingleBlockRead(0, SDreadBuffer)){
+        printf("Avg: %d\r\n", average(SDreadBuffer, 512));
     }
     else{
 
@@ -5474,7 +5533,7 @@ void multiple_block_write(void)
 
 
     for(i = 0; i < 512; i++){
-        writeBuffer[i] = 0x34;
+        SDwriteBuffer[i] = 0x34;
     }
 
     printf("MBW Start...\r\n");
@@ -5482,7 +5541,7 @@ void multiple_block_write(void)
 
     for(i = 0; i < numWrites; i++){
 
-        if(!SD_MBW_Send(writeBuffer)){
+        if(!SD_MBW_Send(SDwriteBuffer)){
             break;
         }
         if(i % 100 == 0){
@@ -5505,10 +5564,10 @@ void multiple_block_read(void)
     unsigned long i;
     unsigned char firstBlock = 1;
     unsigned short numWrites = 1000;
-    for(i = 0; i < sizeof(readBuffer); i++)
+    for(i = 0; i < sizeof(SDreadBuffer); i++)
     {
 
-        readBuffer[i] = 0;
+        SDreadBuffer[i] = 0;
     }
 
 
@@ -5527,11 +5586,11 @@ void multiple_block_read(void)
     )
     {
 
-        SD_MBR_Receive(readBuffer);
+        SD_MBR_Receive(SDreadBuffer);
 
 
 
-        avg += average(readBuffer, 512);
+        avg += average(SDreadBuffer, 512);
 
         if((i > 0) && (i % 250 == 0)){
             printf(".");
@@ -5550,24 +5609,19 @@ void multiple_block_read(void)
 
 }
 
-void single_block_write(void)
+void single_block_write(unsigned long sector)
 {
-    unsigned long i;
+
 
     { SSPCON1bits.SSPEN = 1; LATEbits.LATE2 = 0;};
-    SD_EraseBlocks(0, 0);
+    SD_EraseBlocks(sector, sector);
     while(spiReceive() != 0xFF){ continue; }
 
 
-    for(i = 0; i < 512; i++){
-        writeBuffer[i] = 10;
-    }
-
-
-    while(!SD_SingleBlockWrite(0, writeBuffer));
+    while(!SD_SingleBlockWrite(sector, SDwriteBuffer));
 
     printf("Single block\r\n");
 
-    printf("write finished\r\n");
+    printf("write finished in sector %d\r\n",sector);
     _delay((unsigned long)((1000)*(4000000/4000.0)));
 }

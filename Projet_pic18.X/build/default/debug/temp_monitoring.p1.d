@@ -4,4 +4,6 @@ temp_monitoring.h  \
 common.h  \
 ds18b20.h  \
 RTC.h  \
-AT24C32.h 
+AT24C32.h  \
+SD_PIC.h  \
+SPI_PIC.h 

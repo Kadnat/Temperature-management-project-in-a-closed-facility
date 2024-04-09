@@ -37,11 +37,15 @@ typedef struct{
 
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
-void read_address_in_eeprom(void);
-void save_address_in_eeprom(void);
-void extract_one_day_of_data(void);
-void SD_control(void);
-void reset_address_in_eeprom(void);
+void read_eep_address_in_eeprom(void);
+void save_eep_address_in_eeprom(void);
+void update_SD_tab(SystemData* pSystem_data);
+void save_sd_address_in_eeprom(void);
+void read_sd_address_in_eeprom(void);
+void reset_eep_address_in_eeprom(void);
 void extract_all_alarms(void);
+void reset_sd_address_in_eeprom(void);
+void extract_data_for_days(int number_days);
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 

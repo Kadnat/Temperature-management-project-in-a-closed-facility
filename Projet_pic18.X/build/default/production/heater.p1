@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "11 heater.c
 [; ;heater.c: 11: void heater_set_mode(BooleanState state)
-[c E2473 0 1 .. ]
-[n E2473 . OFF ON  ]
+[c E2640 0 1 .. ]
+[n E2640 . OFF ON  ]
 "2057 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
 [s S76 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S76 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
@@ -373,14 +373,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSU equ 0FFFh ;# ">
 "11 heater.c
 [; ;heater.c: 11: void heater_set_mode(BooleanState state)
-[v _heater_set_mode `(v ~T0 @X0 1 ef1`E2473 ]
+[v _heater_set_mode `(v ~T0 @X0 1 ef1`E2640 ]
 "12
 [; ;heater.c: 12: {
 {
 [e :U _heater_set_mode ]
 "11
 [; ;heater.c: 11: void heater_set_mode(BooleanState state)
-[v _state `E2473 ~T0 @X0 1 r1 ]
+[v _state `E2640 ~T0 @X0 1 r1 ]
 "12
 [; ;heater.c: 12: {
 [f ]
@@ -389,47 +389,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _TRISDbits 0 4 -> -> 0 `i `uc ]
 "14
 [; ;heater.c: 14:     switch(state)
-[e $U 272  ]
+[e $U 273  ]
 "15
 [; ;heater.c: 15:     {
 {
 "16
 [; ;heater.c: 16:         case OFF:
-[e :U 273 ]
+[e :U 274 ]
 "17
 [; ;heater.c: 17:             PORTDbits.RD4 = 1;
 [e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
 "18
 [; ;heater.c: 18:             break;
-[e $U 271  ]
+[e $U 272  ]
 "20
 [; ;heater.c: 20:         case ON:
-[e :U 274 ]
+[e :U 275 ]
 "21
 [; ;heater.c: 21:             PORTDbits.RD4 = 0;
 [e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
 "22
 [; ;heater.c: 22:             break;
-[e $U 271  ]
+[e $U 272  ]
 "24
 [; ;heater.c: 24:         default:
-[e :U 275 ]
+[e :U 276 ]
 "25
 [; ;heater.c: 25:             PORTDbits.RD4 = 1;
 [e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
 "26
 [; ;heater.c: 26:             break;
-[e $U 271  ]
+[e $U 272  ]
 "27
 [; ;heater.c: 27:     }
 }
-[e $U 271  ]
+[e $U 272  ]
+[e :U 273 ]
+[e [\ -> _state `ui , $ -> . `E2640 0 `ui 274
+ , $ -> . `E2640 1 `ui 275
+ 276 ]
 [e :U 272 ]
-[e [\ -> _state `ui , $ -> . `E2473 0 `ui 273
- , $ -> . `E2473 1 `ui 274
- 275 ]
-[e :U 271 ]
 "28
 [; ;heater.c: 28: }
-[e :UE 270 ]
+[e :UE 271 ]
 }

@@ -1,15 +1,15 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2505 `(v ~T0 @X0 0 tf ]
-[v F2506 `(v ~T0 @X0 0 tf ]
-[v F2483 `(v ~T0 @X0 0 tf ]
+[v F2672 `(v ~T0 @X0 0 tf ]
+[v F2673 `(v ~T0 @X0 0 tf ]
+[v F2650 `(v ~T0 @X0 0 tf ]
 "40 hal_timer1.c
 [; ;hal_timer1.c: 40: uint8_t Timer1_Init(const timer1_t *_timer)
-[c E2477 0 1 .. ]
-[n E2477 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
+[c E2644 0 1 .. ]
+[n E2644 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
 "82 ./hal_timer1.h
 [; ;./hal_timer1.h: 82: {
-[s S270 `*F2483 1 `E2477 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
-[n S270 . TMR1_InterruptHandler priority timer1_preload_value timer1_prescaler_value timer1_mode timer1_counter_mode timer1_osc_cfg timer1_reg_rw_mode timer1_reserved ]
+[s S271 `*F2650 1 `E2644 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
+[n S271 . TMR1_InterruptHandler priority timer1_preload_value timer1_prescaler_value timer1_mode timer1_counter_mode timer1_osc_cfg timer1_reg_rw_mode timer1_reserved ]
 "5230 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [s S216 :2 `uc 1 :1 `uc 1 ]
 [n S216 . . NOT_T1SYNC ]
@@ -27,10 +27,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S215 . . . . . ]
 "5257
 [v _T1CONbits `VS215 ~T0 @X0 0 e@4045 ]
-[v F2508 `(v ~T0 @X0 1 tf1`*CS270 ]
+[v F2675 `(v ~T0 @X0 1 tf1`*CS271 ]
 "29 hal_timer1.c
 [; ;hal_timer1.c: 29: static __attribute__((inline)) void Timer1_Mode_Selection(const timer1_t *_timer);
-[v _Timer1_Mode_Selection `TF2508 ~T0 @X0 0 s ]
+[v _Timer1_Mode_Selection `TF2675 ~T0 @X0 0 s ]
 "5341 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _TMR1H `Vuc ~T0 @X0 0 e@4047 ]
 "5334
@@ -71,7 +71,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S257 . . . . ]
 "6406
 [v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
-[v F2530 `(v ~T0 @X0 0 tf ]
+[v F2697 `(v ~T0 @X0 0 tf ]
 "54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; <" PORTA equ 0F80h ;# ">
 "191
@@ -420,20 +420,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "22
 [; ;hal_timer1.c: 22:     static void (*TMR1_InterruptHandler)(void) = ((void*)0);
-[v _TMR1_InterruptHandler `*F2505 ~T0 @X0 1 s ]
+[v _TMR1_InterruptHandler `*F2672 ~T0 @X0 1 s ]
 [i _TMR1_InterruptHandler
--> -> -> 0 `i `*v `*F2506
+-> -> -> 0 `i `*v `*F2673
 ]
 "40
 [; ;hal_timer1.c: 40: uint8_t Timer1_Init(const timer1_t *_timer)
-[v _Timer1_Init `(uc ~T0 @X0 1 ef1`*CS270 ]
+[v _Timer1_Init `(uc ~T0 @X0 1 ef1`*CS271 ]
 "41
 [; ;hal_timer1.c: 41: {
 {
 [e :U _Timer1_Init ]
 "40
 [; ;hal_timer1.c: 40: uint8_t Timer1_Init(const timer1_t *_timer)
-[v __timer `*CS270 ~T0 @X0 1 r1 ]
+[v __timer `*CS271 ~T0 @X0 1 r1 ]
 "41
 [; ;hal_timer1.c: 41: {
 [f ]
@@ -443,7 +443,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 "43
 [; ;hal_timer1.c: 43:     if(((void*)0) == _timer)
-[e $ ! == -> -> -> 0 `i `*v `*CS270 __timer 272  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS271 __timer 273  ]
 "44
 [; ;hal_timer1.c: 44:     {
 {
@@ -453,10 +453,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46
 [; ;hal_timer1.c: 46:     }
 }
-[e $U 273  ]
+[e $U 274  ]
 "47
 [; ;hal_timer1.c: 47:     else
-[e :U 272 ]
+[e :U 273 ]
 "48
 [; ;hal_timer1.c: 48:     {
 {
@@ -502,25 +502,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "86
 [; ;hal_timer1.c: 86:     }
 }
-[e :U 273 ]
+[e :U 274 ]
 "87
 [; ;hal_timer1.c: 87:     return ret;
 [e ) _ret ]
-[e $UE 271  ]
+[e $UE 272  ]
 "88
 [; ;hal_timer1.c: 88: }
-[e :UE 271 ]
+[e :UE 272 ]
 }
 "97
 [; ;hal_timer1.c: 97: uint8_t Timer1_DeInit(const timer1_t *_timer)
-[v _Timer1_DeInit `(uc ~T0 @X0 1 ef1`*CS270 ]
+[v _Timer1_DeInit `(uc ~T0 @X0 1 ef1`*CS271 ]
 "98
 [; ;hal_timer1.c: 98: {
 {
 [e :U _Timer1_DeInit ]
 "97
 [; ;hal_timer1.c: 97: uint8_t Timer1_DeInit(const timer1_t *_timer)
-[v __timer `*CS270 ~T0 @X0 1 r1 ]
+[v __timer `*CS271 ~T0 @X0 1 r1 ]
 "98
 [; ;hal_timer1.c: 98: {
 [f ]
@@ -530,7 +530,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 "100
 [; ;hal_timer1.c: 100:     if(((void*)0) == _timer)
-[e $ ! == -> -> -> 0 `i `*v `*CS270 __timer 275  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS271 __timer 276  ]
 "101
 [; ;hal_timer1.c: 101:     {
 {
@@ -540,10 +540,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "103
 [; ;hal_timer1.c: 103:     }
 }
-[e $U 276  ]
+[e $U 277  ]
 "104
 [; ;hal_timer1.c: 104:     else
-[e :U 275 ]
+[e :U 276 ]
 "105
 [; ;hal_timer1.c: 105:     {
 {
@@ -559,25 +559,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "113
 [; ;hal_timer1.c: 113:     }
 }
-[e :U 276 ]
+[e :U 277 ]
 "114
 [; ;hal_timer1.c: 114:     return ret;
 [e ) _ret ]
-[e $UE 274  ]
+[e $UE 275  ]
 "115
 [; ;hal_timer1.c: 115: }
-[e :UE 274 ]
+[e :UE 275 ]
 }
 "125
 [; ;hal_timer1.c: 125: uint8_t Timer1_Write_Value(const timer1_t *_timer, uint16_t _value)
-[v _Timer1_Write_Value `(uc ~T0 @X0 1 ef2`*CS270`us ]
+[v _Timer1_Write_Value `(uc ~T0 @X0 1 ef2`*CS271`us ]
 "126
 [; ;hal_timer1.c: 126: {
 {
 [e :U _Timer1_Write_Value ]
 "125
 [; ;hal_timer1.c: 125: uint8_t Timer1_Write_Value(const timer1_t *_timer, uint16_t _value)
-[v __timer `*CS270 ~T0 @X0 1 r1 ]
+[v __timer `*CS271 ~T0 @X0 1 r1 ]
 [v __value `us ~T0 @X0 1 r2 ]
 "126
 [; ;hal_timer1.c: 126: {
@@ -588,7 +588,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 "128
 [; ;hal_timer1.c: 128:     if(((void*)0) == _timer)
-[e $ ! == -> -> -> 0 `i `*v `*CS270 __timer 278  ]
+[e $ ! == -> -> -> 0 `i `*v `*CS271 __timer 279  ]
 "129
 [; ;hal_timer1.c: 129:     {
 {
@@ -598,10 +598,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "131
 [; ;hal_timer1.c: 131:     }
 }
-[e $U 279  ]
+[e $U 280  ]
 "132
 [; ;hal_timer1.c: 132:     else
-[e :U 278 ]
+[e :U 279 ]
 "133
 [; ;hal_timer1.c: 133:     {
 {
@@ -617,25 +617,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "138
 [; ;hal_timer1.c: 138:     }
 }
-[e :U 279 ]
+[e :U 280 ]
 "139
 [; ;hal_timer1.c: 139:     return ret;
 [e ) _ret ]
-[e $UE 277  ]
+[e $UE 278  ]
 "140
 [; ;hal_timer1.c: 140: }
-[e :UE 277 ]
+[e :UE 278 ]
 }
 "150
 [; ;hal_timer1.c: 150: uint8_t Timer1_Read_Value(const timer1_t *_timer, uint16_t *_value)
-[v _Timer1_Read_Value `(uc ~T0 @X0 1 ef2`*CS270`*us ]
+[v _Timer1_Read_Value `(uc ~T0 @X0 1 ef2`*CS271`*us ]
 "151
 [; ;hal_timer1.c: 151: {
 {
 [e :U _Timer1_Read_Value ]
 "150
 [; ;hal_timer1.c: 150: uint8_t Timer1_Read_Value(const timer1_t *_timer, uint16_t *_value)
-[v __timer `*CS270 ~T0 @X0 1 r1 ]
+[v __timer `*CS271 ~T0 @X0 1 r1 ]
 [v __value `*us ~T0 @X0 1 r2 ]
 "151
 [; ;hal_timer1.c: 151: {
@@ -654,7 +654,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _l_tmr1h -> -> 0 `i `uc ]
 "155
 [; ;hal_timer1.c: 155:     if((((void*)0) == _timer) || (((void*)0) == _value))
-[e $ ! || == -> -> -> 0 `i `*v `*CS270 __timer == -> -> -> 0 `i `*v `*us __value 281  ]
+[e $ ! || == -> -> -> 0 `i `*v `*CS271 __timer == -> -> -> 0 `i `*v `*us __value 282  ]
 "156
 [; ;hal_timer1.c: 156:     {
 {
@@ -664,10 +664,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "158
 [; ;hal_timer1.c: 158:     }
 }
-[e $U 282  ]
+[e $U 283  ]
 "159
 [; ;hal_timer1.c: 159:     else
-[e :U 281 ]
+[e :U 282 ]
 "160
 [; ;hal_timer1.c: 160:     {
 {
@@ -686,14 +686,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "165
 [; ;hal_timer1.c: 165:     }
 }
-[e :U 282 ]
+[e :U 283 ]
 "166
 [; ;hal_timer1.c: 166:     return ret;
 [e ) _ret ]
-[e $UE 280  ]
+[e $UE 281  ]
 "167
 [; ;hal_timer1.c: 167: }
-[e :UE 280 ]
+[e :UE 281 ]
 }
 "172
 [; ;hal_timer1.c: 172: void TMR1_ISR(void)
@@ -714,7 +714,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _TMR1L -> _timer1_preload `uc ]
 "177
 [; ;hal_timer1.c: 177:     if(TMR1_InterruptHandler)
-[e $ ! != _TMR1_InterruptHandler -> -> 0 `i `*F2530 284  ]
+[e $ ! != _TMR1_InterruptHandler -> -> 0 `i `*F2697 285  ]
 "178
 [; ;hal_timer1.c: 178:     {
 {
@@ -724,34 +724,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 "180
 [; ;hal_timer1.c: 180:     }
 }
-[e $U 285  ]
+[e $U 286  ]
 "181
 [; ;hal_timer1.c: 181:     else{ }
-[e :U 284 ]
+[e :U 285 ]
 {
 }
-[e :U 285 ]
+[e :U 286 ]
 "182
 [; ;hal_timer1.c: 182: }
-[e :UE 283 ]
+[e :UE 284 ]
 }
-[v F2532 `(v ~T0 @X0 1 tf1`*CS270 ]
+[v F2699 `(v ~T0 @X0 1 tf1`*CS271 ]
 "188
 [; ;hal_timer1.c: 188: static __attribute__((inline)) void Timer1_Mode_Selection(const timer1_t *_timer)
-[v _Timer1_Mode_Selection `TF2532 ~T0 @X0 1 s ]
+[v _Timer1_Mode_Selection `TF2699 ~T0 @X0 1 s ]
 "189
 [; ;hal_timer1.c: 189: {
 {
 [e :U _Timer1_Mode_Selection ]
 "188
 [; ;hal_timer1.c: 188: static __attribute__((inline)) void Timer1_Mode_Selection(const timer1_t *_timer)
-[v __timer `*CS270 ~T0 @X0 1 r1 ]
+[v __timer `*CS271 ~T0 @X0 1 r1 ]
 "189
 [; ;hal_timer1.c: 189: {
 [f ]
 "190
 [; ;hal_timer1.c: 190:     if(0 == _timer->timer1_mode)
-[e $ ! == -> 0 `i -> . *U __timer 4 `i 287  ]
+[e $ ! == -> 0 `i -> . *U __timer 4 `i 288  ]
 "191
 [; ;hal_timer1.c: 191:     {
 {
@@ -761,11 +761,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "193
 [; ;hal_timer1.c: 193:     }
 }
-[e $U 288  ]
+[e $U 289  ]
 "194
 [; ;hal_timer1.c: 194:     else if(1 == _timer->timer1_mode)
-[e :U 287 ]
-[e $ ! == -> 1 `i -> . *U __timer 4 `i 289  ]
+[e :U 288 ]
+[e $ ! == -> 1 `i -> . *U __timer 4 `i 290  ]
 "195
 [; ;hal_timer1.c: 195:     {
 {
@@ -774,7 +774,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _T1CONbits 1 1 -> -> 1 `i `uc ]
 "197
 [; ;hal_timer1.c: 197:         if(1 == _timer->timer1_counter_mode)
-[e $ ! == -> 1 `i -> . *U __timer 5 `i 290  ]
+[e $ ! == -> 1 `i -> . *U __timer 5 `i 291  ]
 "198
 [; ;hal_timer1.c: 198:         {
 {
@@ -784,11 +784,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "200
 [; ;hal_timer1.c: 200:         }
 }
-[e $U 291  ]
+[e $U 292  ]
 "201
 [; ;hal_timer1.c: 201:         else if(0 == _timer->timer1_counter_mode)
-[e :U 290 ]
-[e $ ! == -> 0 `i -> . *U __timer 5 `i 292  ]
+[e :U 291 ]
+[e $ ! == -> 0 `i -> . *U __timer 5 `i 293  ]
 "202
 [; ;hal_timer1.c: 202:         {
 {
@@ -798,26 +798,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 "204
 [; ;hal_timer1.c: 204:         }
 }
-[e $U 293  ]
+[e $U 294  ]
 "205
 [; ;hal_timer1.c: 205:         else{ }
-[e :U 292 ]
-{
-}
 [e :U 293 ]
-[e :U 291 ]
-"206
-[; ;hal_timer1.c: 206:     }
-}
-[e $U 294  ]
-"207
-[; ;hal_timer1.c: 207:     else{ }
-[e :U 289 ]
 {
 }
 [e :U 294 ]
-[e :U 288 ]
+[e :U 292 ]
+"206
+[; ;hal_timer1.c: 206:     }
+}
+[e $U 295  ]
+"207
+[; ;hal_timer1.c: 207:     else{ }
+[e :U 290 ]
+{
+}
+[e :U 295 ]
+[e :U 289 ]
 "208
 [; ;hal_timer1.c: 208: }
-[e :UE 286 ]
+[e :UE 287 ]
 }

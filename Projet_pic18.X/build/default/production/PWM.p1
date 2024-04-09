@@ -384,7 +384,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
 "12
 [; ;PWM.c: 12: }
-[e :UE 270 ]
+[e :UE 271 ]
 }
 "15
 [; ;PWM.c: 15:  void set_pwm_duty(float duty)
@@ -428,5 +428,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _TMR2 -> -> 0 `i `uc ]
 "29
 [; ;PWM.c: 29: }
-[e :UE 271 ]
+[e :UE 272 ]
 }

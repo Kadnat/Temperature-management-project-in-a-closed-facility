@@ -1,12 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "11 led.c
 [; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
-[c E2477 0 1 2 .. ]
-[n E2477 . NO_ERROR TOO_HOT TOO_COLD  ]
+[c E2644 0 1 2 .. ]
+[n E2644 . NO_ERROR TOO_HOT TOO_COLD  ]
 "20 ./temp_monitoring.h
 [; ;./temp_monitoring.h: 20: typedef struct{
-[s S270 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E2477 1 ]
-[n S270 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
+[s S271 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E2644 1 ]
+[n S271 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
 "2057 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
 [s S76 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S76 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
@@ -377,14 +377,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSU equ 0FFFh ;# ">
 "11 led.c
 [; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
-[v _led_set_mode `(v ~T0 @X0 1 ef1`*S270 ]
+[v _led_set_mode `(v ~T0 @X0 1 ef1`*S271 ]
 "12
 [; ;led.c: 12: {
 {
 [e :U _led_set_mode ]
 "11
 [; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
-[v _psystem_state `*S270 ~T0 @X0 1 r1 ]
+[v _psystem_state `*S271 ~T0 @X0 1 r1 ]
 "12
 [; ;led.c: 12: {
 [f ]
@@ -399,13 +399,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _TRISDbits 0 5 -> -> 0 `i `uc ]
 "16
 [; ;led.c: 16:     switch(psystem_state->error_type)
-[e $U 273  ]
+[e $U 274  ]
 "17
 [; ;led.c: 17:     {
 {
 "18
 [; ;led.c: 18:         case NO_ERROR:
-[e :U 274 ]
+[e :U 275 ]
 "19
 [; ;led.c: 19:             PORTDbits.RD2 = 1;
 [e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
@@ -417,10 +417,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
 "22
 [; ;led.c: 22:             break;
-[e $U 272  ]
+[e $U 273  ]
 "24
 [; ;led.c: 24:         case TOO_COLD:
-[e :U 275 ]
+[e :U 276 ]
 "25
 [; ;led.c: 25:             PORTDbits.RD2 = 0;
 [e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
@@ -432,10 +432,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
 "28
 [; ;led.c: 28:             break;
-[e $U 272  ]
+[e $U 273  ]
 "30
 [; ;led.c: 30:         case TOO_HOT:
-[e :U 276 ]
+[e :U 277 ]
 "31
 [; ;led.c: 31:             PORTDbits.RD2 = 0;
 [e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
@@ -447,10 +447,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
 "34
 [; ;led.c: 34:             break;
-[e $U 272  ]
+[e $U 273  ]
 "36
 [; ;led.c: 36:         default:
-[e :U 277 ]
+[e :U 278 ]
 "37
 [; ;led.c: 37:             PORTDbits.RD2 = 0;
 [e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
@@ -462,18 +462,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
 "40
 [; ;led.c: 40:             break;
-[e $U 272  ]
+[e $U 273  ]
 "41
 [; ;led.c: 41:     }
 }
-[e $U 272  ]
+[e $U 273  ]
+[e :U 274 ]
+[e [\ -> . *U _psystem_state 13 `ui , $ -> . `E2644 0 `ui 275
+ , $ -> . `E2644 2 `ui 276
+ , $ -> . `E2644 1 `ui 277
+ 278 ]
 [e :U 273 ]
-[e [\ -> . *U _psystem_state 13 `ui , $ -> . `E2477 0 `ui 274
- , $ -> . `E2477 2 `ui 275
- , $ -> . `E2477 1 `ui 276
- 277 ]
-[e :U 272 ]
 "42
 [; ;led.c: 42: }
-[e :UE 271 ]
+[e :UE 272 ]
 }

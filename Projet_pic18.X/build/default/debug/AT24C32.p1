@@ -402,7 +402,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _I2C_Stop ..  ]
 "22
 [; ;AT24C32.c: 22: }
-[e :UE 270 ]
+[e :UE 271 ]
 }
 "24
 [; ;AT24C32.c: 24: void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address)
@@ -443,9 +443,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 272  ]
-[e $U 273  ]
-[e :U 272 ]
+[e $ < _i -> 8 `i 273  ]
+[e $U 274  ]
+[e :U 273 ]
 "34
 [; ;AT24C32.c: 34:     {
 {
@@ -456,15 +456,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;AT24C32.c: 36:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 272  ]
-[e :U 273 ]
+[e $ < _i -> 8 `i 273  ]
+[e :U 274 ]
 }
 "37
 [; ;AT24C32.c: 37:  I2C_Stop();
 [e ( _I2C_Stop ..  ]
 "38
 [; ;AT24C32.c: 38: }
-[e :UE 271 ]
+[e :UE 272 ]
 }
 "40
 [; ;AT24C32.c: 40: unsigned char read_one_byte_in_eeprom(uint16_t register_address)
@@ -517,10 +517,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "54
 [; ;AT24C32.c: 54:    return c;
 [e ) _c ]
-[e $UE 275  ]
+[e $UE 276  ]
 "55
 [; ;AT24C32.c: 55: }
-[e :UE 275 ]
+[e :UE 276 ]
 }
 "57
 [; ;AT24C32.c: 57: void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
@@ -566,30 +566,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;AT24C32.c: 68:    I2C_ReadFromAddress(0x50);
 [e ( _I2C_ReadFromAddress (1 -> -> 80 `i `uc ]
 "69
-[; ;AT24C32.c: 69:     for(int i=0;i<8;i++)
+[; ;AT24C32.c: 69:     for(int i=0;i<7;i++)
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 277  ]
-[e $U 278  ]
-[e :U 277 ]
+[e $ < _i -> 7 `i 278  ]
+[e $U 279  ]
+[e :U 278 ]
 "70
 [; ;AT24C32.c: 70:     {
 {
 "71
 [; ;AT24C32.c: 71:         data[i] = I2C_ReadResult_withAck();
 [e = *U + _data * -> _i `x -> -> # *U _data `i `x -> ( _I2C_ReadResult_withAck ..  `uc ]
-"73
-[; ;AT24C32.c: 73:    }
+"72
+[; ;AT24C32.c: 72:    }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 277  ]
-[e :U 278 ]
+[e $ < _i -> 7 `i 278  ]
+[e :U 279 ]
 }
+"73
+[; ;AT24C32.c: 73:     data[7] = I2C_ReadResult();
+[e = *U + _data * -> -> 7 `i `x -> -> # *U _data `i `x -> ( _I2C_ReadResult ..  `uc ]
 "74
 [; ;AT24C32.c: 74:     I2C_Stop();
 [e ( _I2C_Stop ..  ]
 "76
 [; ;AT24C32.c: 76: }
-[e :UE 276 ]
+[e :UE 277 ]
 }

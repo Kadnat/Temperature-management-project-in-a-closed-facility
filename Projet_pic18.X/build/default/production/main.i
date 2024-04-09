@@ -4536,7 +4536,64 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
 # 78 "./common.h" 2
-# 88 "./common.h"
+# 87 "./common.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 1 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 411 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 2 3
+
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+# 65 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\string.h" 3
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 88 "./common.h" 2
+
 typedef enum {
     OFF = 0,
     ON = 1,
@@ -4614,12 +4671,15 @@ typedef struct{
 
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
-void read_address_in_eeprom(void);
-void save_address_in_eeprom(void);
-void extract_one_day_of_data(void);
-void SD_control(void);
-void reset_address_in_eeprom(void);
+void read_eep_address_in_eeprom(void);
+void save_eep_address_in_eeprom(void);
+void update_SD_tab(SystemData* pSystem_data);
+void save_sd_address_in_eeprom(void);
+void read_sd_address_in_eeprom(void);
+void reset_eep_address_in_eeprom(void);
 void extract_all_alarms(void);
+void reset_sd_address_in_eeprom(void);
+void extract_data_for_days(int number_days);
 # 11 "./RTC.h" 2
 # 30 "./RTC.h"
 typedef struct {
@@ -5385,6 +5445,8 @@ typedef struct{
 
 
 extern SDCard_t SDCard;
+extern unsigned char SDwriteBuffer[512];
+extern unsigned char SDreadBuffer[512];
 
 
 
@@ -5408,7 +5470,7 @@ unsigned char SD_Command(unsigned char cmd, unsigned long arg);
 
 
 unsigned char SD_ACMD(unsigned char cmd, unsigned long args);
-# 148 "./SD_PIC.h"
+# 150 "./SD_PIC.h"
 unsigned char SD_SingleBlockWrite(unsigned long block, unsigned char* arr);
 
 
@@ -5418,7 +5480,7 @@ unsigned char SD_SingleBlockWrite(unsigned long block, unsigned char* arr);
 
 
 void SD_MBW_Start(unsigned long startBlock, unsigned long numBlocks);
-# 168 "./SD_PIC.h"
+# 170 "./SD_PIC.h"
 unsigned char SD_MBW_Send(unsigned char* arrWrite);
 
 
@@ -5426,7 +5488,7 @@ unsigned char SD_MBW_Send(unsigned char* arrWrite);
 
 
 void SD_MBW_Stop(void);
-# 184 "./SD_PIC.h"
+# 186 "./SD_PIC.h"
 unsigned char SD_SingleBlockRead(unsigned long block, unsigned char* buf);
 
 
@@ -5451,7 +5513,7 @@ void SD_MBR_Receive(unsigned char* bufReceive);
 
 
 void SD_MBR_Stop(void);
-# 217 "./SD_PIC.h"
+# 219 "./SD_PIC.h"
 void SD_EraseBlocks(unsigned long firstBlock, unsigned long lastBlock);
 
 
@@ -5466,7 +5528,7 @@ unsigned char average(unsigned char* array, unsigned short n);
 void single_block_read(void);
 void multiple_block_write(void);
 void multiple_block_read(void);
-void single_block_write(void);
+void single_block_write(unsigned long sector);
 # 9 "main.c" 2
 
 # 1 "./AT24C32.h" 1
@@ -5596,12 +5658,15 @@ void main(void) {
     heater_set_mode(ON);
 
 
-    read_address_in_eeprom();
+    read_eep_address_in_eeprom();
+    read_sd_address_in_eeprom();
 
     set_pwm_duty(0);
     start_pwm();
     LCD_Init(0x27);
-# 66 "main.c"
+# 65 "main.c"
+    read_init_sd_card();
+
     while(1)
     {
         ;
@@ -5612,10 +5677,11 @@ void main(void) {
 void Timer1_DefaultInterruptHandler(void)
 {
     static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_eeprom=0;
-
+    static uint32_t cpt_ms_sd=0;
     cpt_ms_lcd++;
     cpt_ms_oled++;
     cpt_ms_eeprom++;
+    cpt_ms_sd++;
 
     if(cpt_ms_lcd >=1000)
     {
@@ -5624,6 +5690,7 @@ void Timer1_DefaultInterruptHandler(void)
         DisplayTimeToLCD(&system_management);
         DisplayDateOnLCD(&system_management);
         cpt_ms_lcd=0;
+
     }
 
     if(cpt_ms_oled >=10000)
@@ -5632,14 +5699,23 @@ void Timer1_DefaultInterruptHandler(void)
         cpt_ms_oled=0;
     }
 
-    if(cpt_ms_eeprom >= 60000)
+    if(cpt_ms_sd >= 30000)
     {
-        save_in_eeprom(&system_management);
-        cpt_ms_eeprom=0;
-        extract_all_alarms();
 
+        update_SD_tab(&system_management);
+
+        cpt_ms_sd=0;
 
     }
+
+    if(cpt_ms_eeprom >= 60000)
+    {
+
+        cpt_ms_eeprom=0;
+
+    }
+
+
 }
 
 void timer1_timer_init(void)

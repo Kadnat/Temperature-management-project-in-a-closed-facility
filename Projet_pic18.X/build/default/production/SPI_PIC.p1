@@ -422,27 +422,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _SSPBUF _byteToTransfer ]
 "22
 [; ;SPI_PIC.c: 22:     while(!SSPSTATbits.BF | !SSPIF){
-[e $U 271  ]
-[e :U 272 ]
+[e $U 272  ]
+[e :U 273 ]
 {
 "23
 [; ;SPI_PIC.c: 23:         continue;
-[e $U 271  ]
+[e $U 272  ]
 "24
 [; ;SPI_PIC.c: 24:     }
 }
-[e :U 271 ]
+[e :U 272 ]
 "22
 [; ;SPI_PIC.c: 22:     while(!SSPSTATbits.BF | !SSPIF){
-[e $ | ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i ! _SSPIF 272  ]
-[e :U 273 ]
+[e $ | ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i ! _SSPIF 273  ]
+[e :U 274 ]
 "26
 [; ;SPI_PIC.c: 26:     return SSPBUF;
 [e ) _SSPBUF ]
-[e $UE 270  ]
+[e $UE 271  ]
 "27
 [; ;SPI_PIC.c: 27: }
-[e :UE 270 ]
+[e :UE 271 ]
 }
 "29
 [; ;SPI_PIC.c: 29: void spiSend(unsigned char val){
@@ -456,7 +456,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _spiTransfer (1 _val ]
 "31
 [; ;SPI_PIC.c: 31: }
-[e :UE 274 ]
+[e :UE 275 ]
 }
 "33
 [; ;SPI_PIC.c: 33: unsigned char spiReceive(void){
@@ -467,10 +467,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "34
 [; ;SPI_PIC.c: 34:     return spiTransfer(0xFF);
 [e ) ( _spiTransfer (1 -> -> 255 `i `uc ]
-[e $UE 275  ]
+[e $UE 276  ]
 "35
 [; ;SPI_PIC.c: 35: }
-[e :UE 275 ]
+[e :UE 276 ]
 }
 "37
 [; ;SPI_PIC.c: 37: void spiInit(unsigned char divider){
@@ -487,51 +487,51 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _SSPSTAT -> -> 0 `i `uc ]
 "44
 [; ;SPI_PIC.c: 44:     switch(divider){
-[e $U 278  ]
+[e $U 279  ]
 {
 "45
 [; ;SPI_PIC.c: 45:         case 4:
-[e :U 279 ]
+[e :U 280 ]
 "46
 [; ;SPI_PIC.c: 46:             SSPCON1 = 0b00010000;
 [e = _SSPCON1 -> -> 16 `i `uc ]
 "47
 [; ;SPI_PIC.c: 47:             break;
-[e $U 277  ]
+[e $U 278  ]
 "48
 [; ;SPI_PIC.c: 48:         case 16:
-[e :U 280 ]
+[e :U 281 ]
 "49
 [; ;SPI_PIC.c: 49:             SSPCON1 = 0b00010001;
 [e = _SSPCON1 -> -> 17 `i `uc ]
 "50
 [; ;SPI_PIC.c: 50:             break;
-[e $U 277  ]
+[e $U 278  ]
 "51
 [; ;SPI_PIC.c: 51:         case 64:
-[e :U 281 ]
+[e :U 282 ]
 "52
 [; ;SPI_PIC.c: 52:             SSPCON1 = 0b00010010;
 [e = _SSPCON1 -> -> 18 `i `uc ]
 "53
 [; ;SPI_PIC.c: 53:             break;
-[e $U 277  ]
+[e $U 278  ]
 "54
 [; ;SPI_PIC.c: 54:         default:
-[e :U 282 ]
+[e :U 283 ]
 "55
 [; ;SPI_PIC.c: 55:             SSPCON1 = 0b00010001;
 [e = _SSPCON1 -> -> 17 `i `uc ]
 "56
 [; ;SPI_PIC.c: 56:     }
 }
-[e $U 277  ]
+[e $U 278  ]
+[e :U 279 ]
+[e [\ -> _divider `i , $ -> 4 `i 280
+ , $ -> 16 `i 281
+ , $ -> 64 `i 282
+ 283 ]
 [e :U 278 ]
-[e [\ -> _divider `i , $ -> 4 `i 279
- , $ -> 16 `i 280
- , $ -> 64 `i 281
- 282 ]
-[e :U 277 ]
 "59
 [; ;SPI_PIC.c: 59:     TRISCbits.TRISC5 = 0;
 [e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
@@ -546,7 +546,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _SSPCON1bits 0 2 -> -> 1 `i `uc ]
 "64
 [; ;SPI_PIC.c: 64: }
-[e :UE 276 ]
+[e :UE 277 ]
 }
 "66
 [; ;SPI_PIC.c: 66: void SPI_sendResetSequence(void)
@@ -571,14 +571,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _wIndex -> -> 1 `i `uc ]
 "88
 [; ;SPI_PIC.c: 88:     while (wIndex < 10)
-[e $U 284  ]
-[e :U 285 ]
+[e $U 285  ]
+[e :U 286 ]
 "89
 [; ;SPI_PIC.c: 89:     {
 {
 "90
 [; ;SPI_PIC.c: 90:         if (!SSPSTATbits.BF)
-[e $ ! ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i 287  ]
+[e $ ! ! != -> . . _SSPSTATbits 2 0 `i -> 0 `i 288  ]
 "91
 [; ;SPI_PIC.c: 91:         {
 {
@@ -591,18 +591,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "95
 [; ;SPI_PIC.c: 95:         }
 }
-[e :U 287 ]
+[e :U 288 ]
 "96
 [; ;SPI_PIC.c: 96:     }
 }
-[e :U 284 ]
+[e :U 285 ]
 "88
 [; ;SPI_PIC.c: 88:     while (wIndex < 10)
-[e $ < -> _wIndex `i -> 10 `i 285  ]
-[e :U 286 ]
+[e $ < -> _wIndex `i -> 10 `i 286  ]
+[e :U 287 ]
 "97
 [; ;SPI_PIC.c: 97: }
-[e :UE 283 ]
+[e :UE 284 ]
 }
 "99
 [; ;SPI_PIC.c: 99: void SPI_sendBytes(uint8_t* txData, uint16_t len)
@@ -624,8 +624,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _wIndex -> -> 0 `i `us ]
 "105
 [; ;SPI_PIC.c: 105:     while (wIndex < len)
-[e $U 289  ]
-[e :U 290 ]
+[e $U 290  ]
+[e :U 291 ]
 "106
 [; ;SPI_PIC.c: 106:     {
 {
@@ -638,14 +638,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "110
 [; ;SPI_PIC.c: 110:     }
 }
-[e :U 289 ]
+[e :U 290 ]
 "105
 [; ;SPI_PIC.c: 105:     while (wIndex < len)
-[e $ < -> _wIndex `ui -> _len `ui 290  ]
-[e :U 291 ]
+[e $ < -> _wIndex `ui -> _len `ui 291  ]
+[e :U 292 ]
 "111
 [; ;SPI_PIC.c: 111: }
-[e :UE 288 ]
+[e :UE 289 ]
 }
 "113
 [; ;SPI_PIC.c: 113: void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len)
@@ -668,8 +668,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _index -> -> 0 `i `uc ]
 "119
 [; ;SPI_PIC.c: 119:     while (index < len)
-[e $U 293  ]
-[e :U 294 ]
+[e $U 294  ]
+[e :U 295 ]
 "120
 [; ;SPI_PIC.c: 120:     {
 {
@@ -685,14 +685,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "128
 [; ;SPI_PIC.c: 128:     }
 }
-[e :U 293 ]
+[e :U 294 ]
 "119
 [; ;SPI_PIC.c: 119:     while (index < len)
-[e $ < -> _index `i -> _len `i 294  ]
-[e :U 295 ]
+[e $ < -> _index `i -> _len `i 295  ]
+[e :U 296 ]
 "129
 [; ;SPI_PIC.c: 129: }
-[e :UE 292 ]
+[e :UE 293 ]
 }
 "132
 [; ;SPI_PIC.c: 132: uint8_t SPI_exchangeByte(uint8_t data)
@@ -717,10 +717,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "136
 [; ;SPI_PIC.c: 136:     return output;
 [e ) _output ]
-[e $UE 296  ]
+[e $UE 297  ]
 "137
 [; ;SPI_PIC.c: 137: }
-[e :UE 296 ]
+[e :UE 297 ]
 }
 "139
 [; ;SPI_PIC.c: 139: void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len)
@@ -742,8 +742,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _index -> -> 0 `i `us ]
 "145
 [; ;SPI_PIC.c: 145:     while (index < len)
-[e $U 298  ]
-[e :U 299 ]
+[e $U 299  ]
+[e :U 300 ]
 "146
 [; ;SPI_PIC.c: 146:     {
 {
@@ -759,12 +759,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "154
 [; ;SPI_PIC.c: 154:     }
 }
-[e :U 298 ]
+[e :U 299 ]
 "145
 [; ;SPI_PIC.c: 145:     while (index < len)
-[e $ < -> _index `ui -> _len `ui 299  ]
-[e :U 300 ]
+[e $ < -> _index `ui -> _len `ui 300  ]
+[e :U 301 ]
 "155
 [; ;SPI_PIC.c: 155: }
-[e :UE 297 ]
+[e :UE 298 ]
 }

@@ -48,8 +48,8 @@ SDCard_t SDCard = {0};
 //   2. Declared with the keyword "static" (if declared within a function)
 // This is done so that the array is placed in general memory instead of the
 // compiled stack (source: XC8 user guide)
-unsigned char writeBuffer[512];
-static unsigned char readBuffer[512];
+unsigned char SDwriteBuffer[512];
+unsigned char SDreadBuffer[512];
 
 /***************************** Public Functions ******************************/
 void SD_SendDummyBytes(unsigned char numBytes){   
@@ -728,8 +728,8 @@ void single_block_read(void)
     __delay_ms(1000);
     
     // Single block read from sector 0
-    if(SD_SingleBlockRead(0, readBuffer)){
-        printf("Avg: %d\r\n", average(readBuffer, 512));
+    if(SD_SingleBlockRead(0, SDreadBuffer)){
+        printf("Avg: %d\r\n", average(SDreadBuffer, 512));
     }
     else{
         // If the single block read fails...
@@ -746,7 +746,7 @@ void multiple_block_write(void)
     
     // Prepare a different array to write for MBW
     for(i = 0; i < 512; i++){
-        writeBuffer[i] = 0x34; // Each element is 0x34 = d52
+        SDwriteBuffer[i] = 0x34; // Each element is 0x34 = d52
     }
     
     printf("MBW Start...\r\n");
@@ -754,7 +754,7 @@ void multiple_block_write(void)
 
     for(i = 0; i < numWrites; i++){
         // Send the buffer
-        if(!SD_MBW_Send(writeBuffer)){
+        if(!SD_MBW_Send(SDwriteBuffer)){
             break; // If SD_MBW_Send returns an error, stop transmission
         }
         if(i % 100 == 0){
@@ -777,10 +777,10 @@ void multiple_block_read(void)
     unsigned long i;
     unsigned char firstBlock = 1;
     unsigned short numWrites = 1000;
-    for(i = 0; i < sizeof(readBuffer); i++)
+    for(i = 0; i < sizeof(SDreadBuffer); i++)
     {
         // Clear buffer to prove we are reading from the card
-        readBuffer[i] = 0;
+        SDreadBuffer[i] = 0;
     }
     
     // This will hold the average value of the data in sectors 1-999
@@ -798,12 +798,12 @@ void multiple_block_read(void)
         i++
     )
     {
-        // Read the sector and store it in readBuffer
-        SD_MBR_Receive(readBuffer);
+        // Read the sector and store it in SDreadBuffer
+        SD_MBR_Receive(SDreadBuffer);
         
         // Do something with the data block received. In this case, compute its
         // average and add it to our average counter
-        avg += average(readBuffer, 512);
+        avg += average(SDreadBuffer, 512);
         
         if((i > 0) && (i % 250 == 0)){
             printf(".");
@@ -822,24 +822,19 @@ void multiple_block_read(void)
 
 }
 
-void single_block_write(void)
+void single_block_write(unsigned long sector)
 {
-    unsigned long i;
+    
     // Erase the first sector (sector 0)
     sd_start(); // Start SPI and clear SD card chip select
-    SD_EraseBlocks(0, 0);
+    SD_EraseBlocks(sector, sector);
     while(spiReceive() != 0xFF){  continue;   }
     
-    // Store 0-255 into the array for single block write, twice
-    for(i = 0; i < 512; i++){
-        writeBuffer[i] = 10;
-    }
-    
     // Single block write into sector 0
-    while(!SD_SingleBlockWrite(0, writeBuffer));
+    while(!SD_SingleBlockWrite(sector, SDwriteBuffer));
 
     printf("Single block\r\n");
 
-    printf("write finished\r\n");
+    printf("write finished in sector %d\r\n",sector);
     __delay_ms(1000);
 }

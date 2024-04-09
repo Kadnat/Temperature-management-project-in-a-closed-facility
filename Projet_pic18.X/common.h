@@ -84,6 +84,7 @@ extern "C" {
 #define FALSE 0 
    
 #include <stdint.h>
+#include <string.h>
     
 typedef enum {
     OFF = 0,

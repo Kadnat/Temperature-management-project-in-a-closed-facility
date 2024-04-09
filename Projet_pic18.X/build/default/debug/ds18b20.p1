@@ -944,7 +944,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _I2C_Stop ..  ]
 "206
 [; ;./ssd1306_unbuffered.h: 206: }
-[e :UE 272 ]
+[e :UE 273 ]
 }
 "209
 [; ;./ssd1306_unbuffered.h: 209: void SSD1306_Init(uint8_t vccstate, uint8_t i2caddr) {
@@ -989,22 +989,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 141 `i `uc ]
 "230
 [; ;./ssd1306_unbuffered.h: 230:   if (vccstate == 0x01)
-[e $ ! == -> _vccstate `i -> 1 `i 274  ]
+[e $ ! == -> _vccstate `i -> 1 `i 275  ]
 "231
 [; ;./ssd1306_unbuffered.h: 231:     { ssd1306_command(0x10); }
 {
 [e ( _ssd1306_command (1 -> -> 16 `i `uc ]
 }
-[e $U 275  ]
+[e $U 276  ]
 "232
 [; ;./ssd1306_unbuffered.h: 232:   else
-[e :U 274 ]
+[e :U 275 ]
 "233
 [; ;./ssd1306_unbuffered.h: 233:     { ssd1306_command(0x14); }
 {
 [e ( _ssd1306_command (1 -> -> 20 `i `uc ]
 }
-[e :U 275 ]
+[e :U 276 ]
 "234
 [; ;./ssd1306_unbuffered.h: 234:   ssd1306_command(0x20);
 [e ( _ssd1306_command (1 -> -> 32 `i `uc ]
@@ -1028,43 +1028,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 129 `i `uc ]
 "249
 [; ;./ssd1306_unbuffered.h: 249:   if (vccstate == 0x01)
-[e $ ! == -> _vccstate `i -> 1 `i 276  ]
+[e $ ! == -> _vccstate `i -> 1 `i 277  ]
 "250
 [; ;./ssd1306_unbuffered.h: 250:     { ssd1306_command(0x9F); }
 {
 [e ( _ssd1306_command (1 -> -> 159 `i `uc ]
 }
-[e $U 277  ]
+[e $U 278  ]
 "251
 [; ;./ssd1306_unbuffered.h: 251:   else
-[e :U 276 ]
+[e :U 277 ]
 "252
 [; ;./ssd1306_unbuffered.h: 252:     { ssd1306_command(0xCF); }
 {
 [e ( _ssd1306_command (1 -> -> 207 `i `uc ]
 }
-[e :U 277 ]
+[e :U 278 ]
 "265
 [; ;./ssd1306_unbuffered.h: 265:   ssd1306_command(0xD9);
 [e ( _ssd1306_command (1 -> -> 217 `i `uc ]
 "266
 [; ;./ssd1306_unbuffered.h: 266:   if (vccstate == 0x01)
-[e $ ! == -> _vccstate `i -> 1 `i 278  ]
+[e $ ! == -> _vccstate `i -> 1 `i 279  ]
 "267
 [; ;./ssd1306_unbuffered.h: 267:     { ssd1306_command(0x22); }
 {
 [e ( _ssd1306_command (1 -> -> 34 `i `uc ]
 }
-[e $U 279  ]
+[e $U 280  ]
 "268
 [; ;./ssd1306_unbuffered.h: 268:   else
-[e :U 278 ]
+[e :U 279 ]
 "269
 [; ;./ssd1306_unbuffered.h: 269:     { ssd1306_command(0xF1); }
 {
 [e ( _ssd1306_command (1 -> -> 241 `i `uc ]
 }
-[e :U 279 ]
+[e :U 280 ]
 "270
 [; ;./ssd1306_unbuffered.h: 270:   ssd1306_command(0xDB);
 [e ( _ssd1306_command (1 -> -> 219 `i `uc ]
@@ -1085,7 +1085,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 175 `i `uc ]
 "278
 [; ;./ssd1306_unbuffered.h: 278: }
-[e :UE 273 ]
+[e :UE 274 ]
 }
 "280
 [; ;./ssd1306_unbuffered.h: 280: void SSD1306_StartScrollRight(uint8_t start, uint8_t stop) {
@@ -1121,7 +1121,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 47 `i `uc ]
 "289
 [; ;./ssd1306_unbuffered.h: 289: }
-[e :UE 280 ]
+[e :UE 281 ]
 }
 "291
 [; ;./ssd1306_unbuffered.h: 291: void SSD1306_StartScrollLeft(uint8_t start, uint8_t stop) {
@@ -1157,7 +1157,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 47 `i `uc ]
 "300
 [; ;./ssd1306_unbuffered.h: 300: }
-[e :UE 281 ]
+[e :UE 282 ]
 }
 "302
 [; ;./ssd1306_unbuffered.h: 302: void SSD1306_StartScrollDiagRight(uint8_t start, uint8_t stop) {
@@ -1199,7 +1199,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 47 `i `uc ]
 "313
 [; ;./ssd1306_unbuffered.h: 313: }
-[e :UE 282 ]
+[e :UE 283 ]
 }
 "315
 [; ;./ssd1306_unbuffered.h: 315: void SSD1306_StartScrollDiagLeft(uint8_t start, uint8_t stop) {
@@ -1241,7 +1241,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 47 `i `uc ]
 "326
 [; ;./ssd1306_unbuffered.h: 326: }
-[e :UE 283 ]
+[e :UE 284 ]
 }
 "328
 [; ;./ssd1306_unbuffered.h: 328: void SSD1306_StopScroll(void) {
@@ -1254,7 +1254,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 46 `i `uc ]
 "330
 [; ;./ssd1306_unbuffered.h: 330: }
-[e :UE 284 ]
+[e :UE 285 ]
 }
 "332
 [; ;./ssd1306_unbuffered.h: 332: void SSD1306_Dim(char dim) {
@@ -1268,33 +1268,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _contrast `uc ~T0 @X0 1 a ]
 "334
 [; ;./ssd1306_unbuffered.h: 334:   if (dim)
-[e $ ! != -> _dim `i -> 0 `i 286  ]
+[e $ ! != -> _dim `i -> 0 `i 287  ]
 "335
 [; ;./ssd1306_unbuffered.h: 335:     contrast = 0;
 [e = _contrast -> -> 0 `i `uc ]
-[e $U 287  ]
+[e $U 288  ]
 "336
 [; ;./ssd1306_unbuffered.h: 336:   else {
-[e :U 286 ]
+[e :U 287 ]
 {
 "337
 [; ;./ssd1306_unbuffered.h: 337:     if (_vccstate == 0x01)
-[e $ ! == -> __vccstate `i -> 1 `i 288  ]
+[e $ ! == -> __vccstate `i -> 1 `i 289  ]
 "338
 [; ;./ssd1306_unbuffered.h: 338:       contrast = 0x9F;
 [e = _contrast -> -> 159 `i `uc ]
-[e $U 289  ]
+[e $U 290  ]
 "339
 [; ;./ssd1306_unbuffered.h: 339:     else
-[e :U 288 ]
+[e :U 289 ]
 "340
 [; ;./ssd1306_unbuffered.h: 340:       contrast = 0xCF;
 [e = _contrast -> -> 207 `i `uc ]
-[e :U 289 ]
+[e :U 290 ]
 "341
 [; ;./ssd1306_unbuffered.h: 341:   }
 }
-[e :U 287 ]
+[e :U 288 ]
 "344
 [; ;./ssd1306_unbuffered.h: 344:   ssd1306_command(0x81);
 [e ( _ssd1306_command (1 -> -> 129 `i `uc ]
@@ -1303,7 +1303,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 _contrast ]
 "346
 [; ;./ssd1306_unbuffered.h: 346: }
-[e :UE 285 ]
+[e :UE 286 ]
 }
 "348
 [; ;./ssd1306_unbuffered.h: 348: void SSD1306_SetTextWrap(char w) {
@@ -1317,7 +1317,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _wrap _w ]
 "350
 [; ;./ssd1306_unbuffered.h: 350: }
-[e :UE 290 ]
+[e :UE 291 ]
 }
 "352
 [; ;./ssd1306_unbuffered.h: 352: void SSD1306_InvertDisplay(char i) {
@@ -1328,21 +1328,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "353
 [; ;./ssd1306_unbuffered.h: 353:   if (i)
-[e $ ! != -> _i `i -> 0 `i 292  ]
+[e $ ! != -> _i `i -> 0 `i 293  ]
 "354
 [; ;./ssd1306_unbuffered.h: 354:     ssd1306_command(0xA7);
 [e ( _ssd1306_command (1 -> -> 167 `i `uc ]
-[e $U 293  ]
+[e $U 294  ]
 "355
 [; ;./ssd1306_unbuffered.h: 355:   else
-[e :U 292 ]
+[e :U 293 ]
 "356
 [; ;./ssd1306_unbuffered.h: 356:     ssd1306_command(0xA6);
 [e ( _ssd1306_command (1 -> -> 166 `i `uc ]
-[e :U 293 ]
+[e :U 294 ]
 "357
 [; ;./ssd1306_unbuffered.h: 357: }
-[e :UE 291 ]
+[e :UE 292 ]
 }
 "359
 [; ;./ssd1306_unbuffered.h: 359: void SSD1306_GotoXY(uint8_t x, uint8_t y) {
@@ -1354,11 +1354,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "360
 [; ;./ssd1306_unbuffered.h: 360:   if((x > 21) || y > 8)
-[e $ ! || > -> _x `i -> 21 `i > -> _y `i -> 8 `i 295  ]
+[e $ ! || > -> _x `i -> 21 `i > -> _y `i -> 8 `i 296  ]
 "361
 [; ;./ssd1306_unbuffered.h: 361:     return;
-[e $UE 294  ]
-[e :U 295 ]
+[e $UE 295  ]
+[e :U 296 ]
 "362
 [; ;./ssd1306_unbuffered.h: 362:   x_pos = x;
 [e = _x_pos _x ]
@@ -1367,7 +1367,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _y_pos _y ]
 "364
 [; ;./ssd1306_unbuffered.h: 364: }
-[e :UE 294 ]
+[e :UE 295 ]
 }
 "366
 [; ;./ssd1306_unbuffered.h: 366: void SSD1306_PutC(uint8_t c) {
@@ -1381,11 +1381,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _font_c `uc ~T0 @X0 1 a ]
 "370
 [; ;./ssd1306_unbuffered.h: 370:   if((c < ' ') || (c > '~'))
-[e $ ! || < -> _c `ui -> 32 `ui > -> _c `ui -> 126 `ui 297  ]
+[e $ ! || < -> _c `ui -> 32 `ui > -> _c `ui -> 126 `ui 298  ]
 "371
 [; ;./ssd1306_unbuffered.h: 371:     c = '?';
 [e = _c -> -> 63 `ui `uc ]
-[e :U 297 ]
+[e :U 298 ]
 "372
 [; ;./ssd1306_unbuffered.h: 372:   ssd1306_command(0x21);
 [e ( _ssd1306_command (1 -> -> 33 `i `uc ]
@@ -1418,16 +1418,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 298  ]
-[e $U 299  ]
-[e :U 298 ]
+[e $ < -> _i `i -> 5 `i 299  ]
+[e $U 300  ]
+[e :U 299 ]
 {
 "385
 [; ;./ssd1306_unbuffered.h: 385:     uint8_t offs;
 [v _offs `uc ~T0 @X0 1 a ]
 "386
 [; ;./ssd1306_unbuffered.h: 386:     if(c < 'S') {
-[e $ ! < -> _c `ui -> 83 `ui 301  ]
+[e $ ! < -> _c `ui -> 83 `ui 302  ]
 {
 "387
 [; ;./ssd1306_unbuffered.h: 387:         offs = (c - 32)*5;
@@ -1438,8 +1438,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "389
 [; ;./ssd1306_unbuffered.h: 389:     } else {
 }
-[e $U 302  ]
-[e :U 301 ]
+[e $U 303  ]
+[e :U 302 ]
 {
 "390
 [; ;./ssd1306_unbuffered.h: 390:         offs = (c - 'S')*5;
@@ -1450,7 +1450,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "392
 [; ;./ssd1306_unbuffered.h: 392:     }
 }
-[e :U 302 ]
+[e :U 303 ]
 "394
 [; ;./ssd1306_unbuffered.h: 394:     I2C_WriteByte(font_c);
 [e ( _I2C_WriteByte (1 -> _font_c `uc ]
@@ -1458,8 +1458,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ssd1306_unbuffered.h: 395:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 298  ]
-[e :U 299 ]
+[e $ < -> _i `i -> 5 `i 299  ]
+[e :U 300 ]
 }
 "396
 [; ;./ssd1306_unbuffered.h: 396:   I2C_Stop();
@@ -1469,14 +1469,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _x_pos -> + % -> _x_pos `i -> 21 `i -> 1 `i `uc ]
 "399
 [; ;./ssd1306_unbuffered.h: 399:   if (wrap && (x_pos == 1))
-[e $ ! && != -> _wrap `i -> 0 `i == -> _x_pos `i -> 1 `i 303  ]
+[e $ ! && != -> _wrap `i -> 0 `i == -> _x_pos `i -> 1 `i 304  ]
 "400
 [; ;./ssd1306_unbuffered.h: 400:     y_pos = y_pos % 8 + 1;
 [e = _y_pos -> + % -> _y_pos `i -> 8 `i -> 1 `i `uc ]
-[e :U 303 ]
+[e :U 304 ]
 "402
 [; ;./ssd1306_unbuffered.h: 402: }
-[e :UE 296 ]
+[e :UE 297 ]
 }
 "404
 [; ;./ssd1306_unbuffered.h: 404: void SSD1306_PutStretchC(uint8_t c, uint8_t size_mult) {
@@ -1497,14 +1497,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 1 `i `uc ]
 "410
 [; ;./ssd1306_unbuffered.h: 410:   if((c < ' ') || (c > '~'))
-[e $ ! || < -> _c `ui -> 32 `ui > -> _c `ui -> 126 `ui 305  ]
+[e $ ! || < -> _c `ui -> 32 `ui > -> _c `ui -> 126 `ui 306  ]
 "411
 [; ;./ssd1306_unbuffered.h: 411:     c = '?';
 [e = _c -> -> 63 `ui `uc ]
-[e :U 305 ]
+[e :U 306 ]
 "414
 [; ;./ssd1306_unbuffered.h: 414:   if(size_mult < 1 || size_mult > 4) {
-[e $ ! || < -> _size_mult `i -> 1 `i > -> _size_mult `i -> 4 `i 306  ]
+[e $ ! || < -> _size_mult `i -> 1 `i > -> _size_mult `i -> 4 `i 307  ]
 {
 "415
 [; ;./ssd1306_unbuffered.h: 415:       size_mult = 1;
@@ -1512,18 +1512,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "416
 [; ;./ssd1306_unbuffered.h: 416:   }
 }
-[e :U 306 ]
+[e :U 307 ]
 "418
 [; ;./ssd1306_unbuffered.h: 418:   for(uint8_t i=0; i<(size_mult - 1); i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $U 310  ]
-[e :U 307 ]
+[e $U 311  ]
+[e :U 308 ]
 {
 "419
 [; ;./ssd1306_unbuffered.h: 419:       if(x_pos % size_mult != 1) {
-[e $ ! != % -> _x_pos `i -> _size_mult `i -> 1 `i 311  ]
+[e $ ! != % -> _x_pos `i -> _size_mult `i -> 1 `i 312  ]
 {
 "420
 [; ;./ssd1306_unbuffered.h: 420:         x_pos++;
@@ -1531,34 +1531,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 "421
 [; ;./ssd1306_unbuffered.h: 421:       } else {
 }
-[e $U 312  ]
-[e :U 311 ]
+[e $U 313  ]
+[e :U 312 ]
 {
 "422
 [; ;./ssd1306_unbuffered.h: 422:           break;
-[e $U 308  ]
+[e $U 309  ]
 "423
 [; ;./ssd1306_unbuffered.h: 423:       }
 }
-[e :U 312 ]
+[e :U 313 ]
 "424
 [; ;./ssd1306_unbuffered.h: 424:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 310 ]
-[e $ < -> _i `i - -> _size_mult `i -> 1 `i 307  ]
-[e :U 308 ]
+[e :U 311 ]
+[e $ < -> _i `i - -> _size_mult `i -> 1 `i 308  ]
+[e :U 309 ]
 }
 "426
 [; ;./ssd1306_unbuffered.h: 426:   if(x_pos > 21) {
-[e $ ! > -> _x_pos `i -> 21 `i 313  ]
+[e $ ! > -> _x_pos `i -> 21 `i 314  ]
 {
 "427
 [; ;./ssd1306_unbuffered.h: 427:       x_pos = 1;
 [e = _x_pos -> -> 1 `i `uc ]
 "428
 [; ;./ssd1306_unbuffered.h: 428:       if(wrap) {
-[e $ ! != -> _wrap `i -> 0 `i 314  ]
+[e $ ! != -> _wrap `i -> 0 `i 315  ]
 {
 "429
 [; ;./ssd1306_unbuffered.h: 429:           y_pos+=size_mult;
@@ -1566,11 +1566,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "430
 [; ;./ssd1306_unbuffered.h: 430:       }
 }
-[e :U 314 ]
+[e :U 315 ]
 "431
 [; ;./ssd1306_unbuffered.h: 431:   }
 }
-[e :U 313 ]
+[e :U 314 ]
 "432
 [; ;./ssd1306_unbuffered.h: 432:   ssd1306_command(0x21);
 [e ( _ssd1306_command (1 -> -> 33 `i `uc ]
@@ -1603,15 +1603,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 315  ]
-[e $U 316  ]
-[e :U 315 ]
+[e $ < -> _i `i -> 5 `i 316  ]
+[e $U 317  ]
+[e :U 316 ]
 {
 "446
 [; ;./ssd1306_unbuffered.h: 446:     uint8_t offs;
 [v _offs `uc ~T0 @X0 1 a ]
-[v F3305 `uc ~T0 @X0 -> 4 `i s ]
-[i F3305
+[v F3472 `uc ~T0 @X0 -> 4 `i s ]
+[i F3472
 :U ..
 "447
 [; ;./ssd1306_unbuffered.h: 447:     uint8_t b[4] = {0};
@@ -1619,10 +1619,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _b `uc ~T0 @X0 -> 4 `i a ]
-[e = _b F3305 ]
+[e = _b F3472 ]
 "449
 [; ;./ssd1306_unbuffered.h: 449:     if(c < 'S') {
-[e $ ! < -> _c `ui -> 83 `ui 318  ]
+[e $ ! < -> _c `ui -> 83 `ui 319  ]
 {
 "450
 [; ;./ssd1306_unbuffered.h: 450:         offs = (c - 32)*5;
@@ -1633,8 +1633,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "452
 [; ;./ssd1306_unbuffered.h: 452:     } else {
 }
-[e $U 319  ]
-[e :U 318 ]
+[e $U 320  ]
+[e :U 319 ]
 {
 "453
 [; ;./ssd1306_unbuffered.h: 453:         offs = (c - 'S')*5;
@@ -1645,10 +1645,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "455
 [; ;./ssd1306_unbuffered.h: 455:     }
 }
-[e :U 319 ]
+[e :U 320 ]
 "457
 [; ;./ssd1306_unbuffered.h: 457:     if(size_mult == 1) {
-[e $ ! == -> _size_mult `i -> 1 `i 320  ]
+[e $ ! == -> _size_mult `i -> 1 `i 321  ]
 {
 "459
 [; ;./ssd1306_unbuffered.h: 459:         I2C_WriteByte(font_c);
@@ -1656,29 +1656,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "460
 [; ;./ssd1306_unbuffered.h: 460:     } else {
 }
-[e $U 321  ]
-[e :U 320 ]
+[e $U 322  ]
+[e :U 321 ]
 {
 "463
 [; ;./ssd1306_unbuffered.h: 463:         for(uint8_t i = 0; i < 8; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 322  ]
-[e $U 323  ]
-[e :U 322 ]
+[e $ < -> _i `i -> 8 `i 323  ]
+[e $U 324  ]
+[e :U 323 ]
 {
 "464
 [; ;./ssd1306_unbuffered.h: 464:             if(font_c & (1 << i)) {
-[e $ ! != & -> _font_c `i << -> 1 `i -> _i `i -> 0 `i 325  ]
+[e $ ! != & -> _font_c `i << -> 1 `i -> _i `i -> 0 `i 326  ]
 {
 "465
 [; ;./ssd1306_unbuffered.h: 465:                 for(uint8_t p = 0; p < size_mult; p++) {
 {
 [v _p `uc ~T0 @X0 1 a ]
 [e = _p -> -> 0 `i `uc ]
-[e $U 329  ]
-[e :U 326 ]
+[e $U 330  ]
+[e :U 327 ]
 {
 "467
 [; ;./ssd1306_unbuffered.h: 467:                     uint8_t pos = (i*size_mult + p) % 8;
@@ -1695,36 +1695,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ssd1306_unbuffered.h: 472:                 }
 }
 [e ++ _p -> -> 1 `i `uc ]
-[e :U 329 ]
-[e $ < -> _p `i -> _size_mult `i 326  ]
-[e :U 327 ]
+[e :U 330 ]
+[e $ < -> _p `i -> _size_mult `i 327  ]
+[e :U 328 ]
 }
 "473
 [; ;./ssd1306_unbuffered.h: 473:             }
 }
-[e :U 325 ]
+[e :U 326 ]
 "474
 [; ;./ssd1306_unbuffered.h: 474:         }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 322  ]
-[e :U 323 ]
+[e $ < -> _i `i -> 8 `i 323  ]
+[e :U 324 ]
 }
 "477
 [; ;./ssd1306_unbuffered.h: 477:         for(uint8_t i = 0; i < size_mult; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $U 333  ]
-[e :U 330 ]
+[e $U 334  ]
+[e :U 331 ]
 {
 "478
 [; ;./ssd1306_unbuffered.h: 478:             for(uint8_t bn = 0; bn < size_mult; bn++) {
 {
 [v _bn `uc ~T0 @X0 1 a ]
 [e = _bn -> -> 0 `i `uc ]
-[e $U 337  ]
-[e :U 334 ]
+[e $U 338  ]
+[e :U 335 ]
 {
 "479
 [; ;./ssd1306_unbuffered.h: 479:                 I2C_WriteByte(b[bn]);
@@ -1733,28 +1733,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ssd1306_unbuffered.h: 480:             }
 }
 [e ++ _bn -> -> 1 `i `uc ]
-[e :U 337 ]
-[e $ < -> _bn `i -> _size_mult `i 334  ]
-[e :U 335 ]
+[e :U 338 ]
+[e $ < -> _bn `i -> _size_mult `i 335  ]
+[e :U 336 ]
 }
 "481
 [; ;./ssd1306_unbuffered.h: 481:         }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 333 ]
-[e $ < -> _i `i -> _size_mult `i 330  ]
-[e :U 331 ]
+[e :U 334 ]
+[e $ < -> _i `i -> _size_mult `i 331  ]
+[e :U 332 ]
 }
 "482
 [; ;./ssd1306_unbuffered.h: 482:     }
 }
-[e :U 321 ]
+[e :U 322 ]
 "483
 [; ;./ssd1306_unbuffered.h: 483:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 315  ]
-[e :U 316 ]
+[e $ < -> _i `i -> 5 `i 316  ]
+[e :U 317 ]
 }
 "484
 [; ;./ssd1306_unbuffered.h: 484:   I2C_Stop();
@@ -1764,14 +1764,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e =+ _x_pos -> _size_mult `uc ]
 "487
 [; ;./ssd1306_unbuffered.h: 487:   if(x_pos > 21) {
-[e $ ! > -> _x_pos `i -> 21 `i 338  ]
+[e $ ! > -> _x_pos `i -> 21 `i 339  ]
 {
 "488
 [; ;./ssd1306_unbuffered.h: 488:       x_pos = 1;
 [e = _x_pos -> -> 1 `i `uc ]
 "489
 [; ;./ssd1306_unbuffered.h: 489:       if(wrap) {
-[e $ ! != -> _wrap `i -> 0 `i 339  ]
+[e $ ! != -> _wrap `i -> 0 `i 340  ]
 {
 "490
 [; ;./ssd1306_unbuffered.h: 490:           y_pos+=size_mult;
@@ -1779,11 +1779,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "491
 [; ;./ssd1306_unbuffered.h: 491:       }
 }
-[e :U 339 ]
+[e :U 340 ]
 "492
 [; ;./ssd1306_unbuffered.h: 492:   }
 }
-[e :U 338 ]
+[e :U 339 ]
 "495
 [; ;./ssd1306_unbuffered.h: 495:   ssd1306_command(0x20);
 [e ( _ssd1306_command (1 -> -> 32 `i `uc ]
@@ -1792,7 +1792,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 0 `i `uc ]
 "498
 [; ;./ssd1306_unbuffered.h: 498: }
-[e :UE 304 ]
+[e :UE 305 ]
 }
 "500
 [; ;./ssd1306_unbuffered.h: 500: void SSD1306_PutCustomC(char *c) {
@@ -1836,9 +1836,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 341  ]
-[e $U 342  ]
-[e :U 341 ]
+[e $ < -> _i `i -> 5 `i 342  ]
+[e $U 343  ]
+[e :U 342 ]
 {
 "515
 [; ;./ssd1306_unbuffered.h: 515:     line = c[i];
@@ -1850,8 +1850,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ssd1306_unbuffered.h: 517:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 341  ]
-[e :U 342 ]
+[e $ < -> _i `i -> 5 `i 342  ]
+[e :U 343 ]
 }
 "518
 [; ;./ssd1306_unbuffered.h: 518:   I2C_Stop();
@@ -1861,14 +1861,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _x_pos -> + % -> _x_pos `i -> 21 `i -> 1 `i `uc ]
 "521
 [; ;./ssd1306_unbuffered.h: 521:   if (wrap && (x_pos == 1))
-[e $ ! && != -> _wrap `i -> 0 `i == -> _x_pos `i -> 1 `i 344  ]
+[e $ ! && != -> _wrap `i -> 0 `i == -> _x_pos `i -> 1 `i 345  ]
 "522
 [; ;./ssd1306_unbuffered.h: 522:     y_pos = y_pos % 8 + 1;
 [e = _y_pos -> + % -> _y_pos `i -> 8 `i -> 1 `i `uc ]
-[e :U 344 ]
+[e :U 345 ]
 "524
 [; ;./ssd1306_unbuffered.h: 524: }
-[e :UE 340 ]
+[e :UE 341 ]
 }
 "526
 [; ;./ssd1306_unbuffered.h: 526: void SSD1306_ClearDisplay() {
@@ -1908,22 +1908,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `us ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `us ]
-[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 346  ]
-[e $U 347  ]
-[e :U 346 ]
+[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 347  ]
+[e $U 348  ]
+[e :U 347 ]
 "551
 [; ;./ssd1306_unbuffered.h: 551:     I2C_WriteByte(0);
 [e ( _I2C_WriteByte (1 -> -> 0 `i `uc ]
 [e ++ _i -> -> 1 `i `us ]
-[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 346  ]
-[e :U 347 ]
+[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 347  ]
+[e :U 348 ]
 }
 "553
 [; ;./ssd1306_unbuffered.h: 553:   I2C_Stop();
 [e ( _I2C_Stop ..  ]
 "555
 [; ;./ssd1306_unbuffered.h: 555: }
-[e :UE 345 ]
+[e :UE 346 ]
 }
 "557
 [; ;./ssd1306_unbuffered.h: 557: void SSD1306_FillScreen() {
@@ -1963,22 +1963,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `us ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `us ]
-[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 350  ]
-[e $U 351  ]
-[e :U 350 ]
+[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 351  ]
+[e $U 352  ]
+[e :U 351 ]
 "582
 [; ;./ssd1306_unbuffered.h: 582:     I2C_WriteByte(0xFF);
 [e ( _I2C_WriteByte (1 -> -> 255 `i `uc ]
 [e ++ _i -> -> 1 `i `us ]
-[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 350  ]
-[e :U 351 ]
+[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 351  ]
+[e :U 352 ]
 }
 "584
 [; ;./ssd1306_unbuffered.h: 584:   I2C_Stop();
 [e ( _I2C_Stop ..  ]
 "586
 [; ;./ssd1306_unbuffered.h: 586: }
-[e :UE 349 ]
+[e :UE 350 ]
 }
 "588
 [; ;./ssd1306_unbuffered.h: 588: void oled_puts(const char* c, uint8_t size) {
@@ -1990,8 +1990,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "589
 [; ;./ssd1306_unbuffered.h: 589:     while(*c != '\0') {
-[e $U 354  ]
-[e :U 355 ]
+[e $U 355  ]
+[e :U 356 ]
 {
 "590
 [; ;./ssd1306_unbuffered.h: 590:         SSD1306_PutStretchC(*c, size);
@@ -2002,14 +2002,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "592
 [; ;./ssd1306_unbuffered.h: 592:     }
 }
-[e :U 354 ]
+[e :U 355 ]
 "589
 [; ;./ssd1306_unbuffered.h: 589:     while(*c != '\0') {
-[e $ != -> *U _c `ui -> 0 `ui 355  ]
-[e :U 356 ]
+[e $ != -> *U _c `ui -> 0 `ui 356  ]
+[e :U 357 ]
 "593
 [; ;./ssd1306_unbuffered.h: 593: }
-[e :UE 353 ]
+[e :UE 354 ]
 }
 "53 ds18b20.c
 [; ;ds18b20.c: 53: float OneWireTemp(){
@@ -2028,11 +2028,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _OneWireWriteByte (1 -> -> 68 `i `uc ]
 "58
 [; ;ds18b20.c: 58:     while(!PORTCbits.RC1);
-[e $U 358  ]
-[e :U 359 ]
-[e :U 358 ]
-[e $ ! != -> . . _PORTCbits 0 1 `i -> 0 `i 359  ]
+[e $U 359  ]
 [e :U 360 ]
+[e :U 359 ]
+[e $ ! != -> . . _PORTCbits 0 1 `i -> 0 `i 360  ]
+[e :U 361 ]
 "59
 [; ;ds18b20.c: 59:     OneWireReset();
 [e ( _OneWireReset ..  ]
@@ -2064,10 +2064,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "67
 [; ;ds18b20.c: 67:     return (temperature/16);
 [e ) / _temperature -> -> 16 `i `f ]
-[e $UE 357  ]
+[e $UE 358  ]
 "69
 [; ;ds18b20.c: 69: }
-[e :UE 357 ]
+[e :UE 358 ]
 }
 "71
 [; ;ds18b20.c: 71: void OneWireHigh(){
@@ -2083,7 +2083,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _TRISAbits 1 1 -> -> 1 `i `uc ]
 "74
 [; ;ds18b20.c: 74: }
-[e :UE 361 ]
+[e :UE 362 ]
 }
 "76
 [; ;ds18b20.c: 76: void OneWireRelease(){
@@ -2099,7 +2099,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _TRISAbits 1 1 -> -> 0 `i `uc ]
 "79
 [; ;ds18b20.c: 79: }
-[e :UE 362 ]
+[e :UE 363 ]
 }
 "81
 [; ;ds18b20.c: 81: unsigned char OneWireRead(){
@@ -2110,10 +2110,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "82
 [; ;ds18b20.c: 82:     return PORTCbits.RC1;
 [e ) . . _PORTCbits 0 1 ]
-[e $UE 363  ]
+[e $UE 364  ]
 "83
 [; ;ds18b20.c: 83: }
-[e :UE 363 ]
+[e :UE 364 ]
 }
 "85
 [; ;ds18b20.c: 85: unsigned int OneWireReset(){
@@ -2152,10 +2152,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "95
 [; ;ds18b20.c: 95:     return OW;
 [e ) _OW ]
-[e $UE 364  ]
+[e $UE 365  ]
 "96
 [; ;ds18b20.c: 96: }
-[e :UE 364 ]
+[e :UE 365 ]
 }
 "99
 [; ;ds18b20.c: 99: void OneWireWriteBit(unsigned char b){
@@ -2166,7 +2166,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "100
 [; ;ds18b20.c: 100:     if(b){
-[e $ ! != -> _b `i -> 0 `i 366  ]
+[e $ ! != -> _b `i -> 0 `i 367  ]
 {
 "101
 [; ;ds18b20.c: 101:         OneWireRelease();
@@ -2183,10 +2183,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "105
 [; ;ds18b20.c: 105:     }
 }
-[e $U 367  ]
+[e $U 368  ]
 "106
 [; ;ds18b20.c: 106:     else{
-[e :U 366 ]
+[e :U 367 ]
 {
 "107
 [; ;ds18b20.c: 107:         OneWireRelease();
@@ -2203,10 +2203,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "111
 [; ;ds18b20.c: 111:     }
 }
-[e :U 367 ]
+[e :U 368 ]
 "112
 [; ;ds18b20.c: 112: }
-[e :UE 365 ]
+[e :UE 366 ]
 }
 "114
 [; ;ds18b20.c: 114: unsigned char OneWireReadBit(){
@@ -2236,10 +2236,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "121
 [; ;ds18b20.c: 121:     return out;
 [e ) _out ]
-[e $UE 368  ]
+[e $UE 369  ]
 "122
 [; ;ds18b20.c: 122: }
-[e :UE 368 ]
+[e :UE 369 ]
 }
 "124
 [; ;ds18b20.c: 124: void OneWireWriteByte(unsigned char b){
@@ -2253,9 +2253,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 370  ]
-[e $U 371  ]
-[e :U 370 ]
+[e $ < _i -> 8 `i 371  ]
+[e $U 372  ]
+[e :U 371 ]
 {
 "126
 [; ;ds18b20.c: 126:         OneWireWriteBit(b & 0x01);
@@ -2267,12 +2267,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ds18b20.c: 128:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 370  ]
-[e :U 371 ]
+[e $ < _i -> 8 `i 371  ]
+[e :U 372 ]
 }
 "129
 [; ;ds18b20.c: 129: }
-[e :UE 369 ]
+[e :UE 370 ]
 }
 "131
 [; ;ds18b20.c: 131: unsigned char OneWireReadByte(void){
@@ -2288,34 +2288,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 374  ]
-[e $U 375  ]
-[e :U 374 ]
+[e $ < _i -> 8 `i 375  ]
+[e $U 376  ]
+[e :U 375 ]
 {
 "134
 [; ;ds18b20.c: 134:         out = out >> 1;
 [e = _out -> >> -> _out `i -> 1 `i `uc ]
 "135
 [; ;ds18b20.c: 135:         if(OneWireReadBit() & 0x01)
-[e $ ! != & -> ( _OneWireReadBit ..  `i -> 1 `i -> 0 `i 377  ]
+[e $ ! != & -> ( _OneWireReadBit ..  `i -> 1 `i -> 0 `i 378  ]
 "136
 [; ;ds18b20.c: 136:             out = out | 0x80;
 [e = _out -> | -> _out `i -> 128 `i `uc ]
-[e :U 377 ]
+[e :U 378 ]
 "137
 [; ;ds18b20.c: 137:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 374  ]
-[e :U 375 ]
+[e $ < _i -> 8 `i 375  ]
+[e :U 376 ]
 }
 "138
 [; ;ds18b20.c: 138:     return out;
 [e ) _out ]
-[e $UE 373  ]
+[e $UE 374  ]
 "139
 [; ;ds18b20.c: 139: }
-[e :UE 373 ]
+[e :UE 374 ]
 }
 "141
 [; ;ds18b20.c: 141: float print_temperature(float temp)
@@ -2357,10 +2357,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "152
 [; ;ds18b20.c: 152:     return temp;
 [e ) _temp ]
-[e $UE 378  ]
+[e $UE 379  ]
 "153
 [; ;ds18b20.c: 153: }
-[e :UE 378 ]
+[e :UE 379 ]
 }
 [p f _snprintf 8462340 ]
 [a 1C 37 48 46 49 102 67 0 ]

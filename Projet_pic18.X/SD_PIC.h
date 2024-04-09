@@ -114,6 +114,8 @@ typedef struct{
 
 /***************************** Public Variables ******************************/
 extern SDCard_t SDCard;
+extern unsigned char SDwriteBuffer[512];
+extern unsigned char SDreadBuffer[512];
 /************************ Public Function Prototypes *************************/
 /**
  * @brief Sends dummy bytes of 0xFF to the SD card. Used to update the flash
@@ -228,7 +230,7 @@ unsigned char average(unsigned char* array, unsigned short n);
 void single_block_read(void);
 void multiple_block_write(void);
 void multiple_block_read(void);
-void single_block_write(void);
+void single_block_write(unsigned long sector);
 /**
  * @}
  */

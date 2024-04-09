@@ -45,7 +45,8 @@ void main(void) {
     heater_set_mode(ON);
 
     
-    read_address_in_eeprom();
+    read_eep_address_in_eeprom();
+    read_sd_address_in_eeprom();
 
     set_pwm_duty(0);
     start_pwm();
@@ -61,7 +62,7 @@ void main(void) {
     //multiple_block_write();
     
     //multiple_block_read();
-    //read_init_sd_card();
+    read_init_sd_card();
             
     while(1)
     {
@@ -73,10 +74,11 @@ void main(void) {
 void Timer1_DefaultInterruptHandler(void)
 {
     static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_eeprom=0;
-    
+    static uint32_t cpt_ms_sd=0;
     cpt_ms_lcd++;
     cpt_ms_oled++;
     cpt_ms_eeprom++;
+    cpt_ms_sd++;
     
     if(cpt_ms_lcd >=1000)
     {
@@ -85,6 +87,7 @@ void Timer1_DefaultInterruptHandler(void)
         DisplayTimeToLCD(&system_management);
         DisplayDateOnLCD(&system_management);
         cpt_ms_lcd=0;
+ 
     }
     
     if(cpt_ms_oled >=10000)
@@ -93,14 +96,23 @@ void Timer1_DefaultInterruptHandler(void)
         cpt_ms_oled=0;
     }
     
+    if(cpt_ms_sd >= 30000)
+    {
+        //save_in_eeprom(&system_management);
+        update_SD_tab(&system_management);
+        //extract_data_for_days(1);
+        cpt_ms_sd=0;
+        //extract_all_alarms();
+    }
+    
     if(cpt_ms_eeprom >= 60000)
     {
-        save_in_eeprom(&system_management);
+        //save_in_eeprom(&system_management);
         cpt_ms_eeprom=0;
-        extract_all_alarms();
-
-
+        //extract_all_alarms();
     }
+    
+
 }
 
 void timer1_timer_init(void)

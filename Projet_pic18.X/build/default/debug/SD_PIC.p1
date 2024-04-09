@@ -1,20 +1,20 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "44 SD_PIC.c
 [; ;SD_PIC.c: 44: SDCard_t SDCard = {0};
-[c E2525 0 1 2 .. ]
-[n E2525 . TYPE_SDSC TYPE_SDHC_SDXC TYPE_MMC  ]
+[c E2692 0 1 2 .. ]
+[n E2692 . TYPE_SDSC TYPE_SDHC_SDXC TYPE_MMC  ]
 "101 ./SD_PIC.h
 [; ;./SD_PIC.h: 101:     struct{
-[s S271 `ul 1 `ul 1 `uc 1 ]
-[n S271 . lastBlockWritten MBW_startBlock MBW_flag_first ]
+[s S272 `ul 1 `ul 1 `uc 1 ]
+[n S272 . lastBlockWritten MBW_startBlock MBW_flag_first ]
 "108
 [; ;./SD_PIC.h: 108:     struct{
-[s S272 `ul 1 `ul 1 `uc 1 ]
-[n S272 . lastBlockRead MBR_startBlock MBR_flag_first ]
+[s S273 `ul 1 `ul 1 `uc 1 ]
+[n S273 . lastBlockRead MBR_startBlock MBR_flag_first ]
 "84
 [; ;./SD_PIC.h: 84: typedef struct{
-[s S270 `uc 1 `E2525 1 `uc 1 `us 1 `ul 1 `uc 1 `uc 1 `ul 1 `us 1 `uc 1 `us 1 `ul 1 `d 1 `uc 1 `S271 1 `S272 1 ]
-[n S270 . SDversion Type MID OID PHML PHMH PRV PSN MDT CRC blockSize numBlocks size init write read ]
+[s S271 `uc 1 `E2692 1 `uc 1 `us 1 `ul 1 `uc 1 `uc 1 `ul 1 `us 1 `uc 1 `us 1 `ul 1 `d 1 `uc 1 `S272 1 `S273 1 ]
+[n S271 . SDversion Type MID OID PHML PHMH PRV PSN MDT CRC blockSize numBlocks size init write read ]
 "47 ./SPI_PIC.h
 [; ;./SPI_PIC.h: 47: void spiSend(unsigned char val);
 [v _spiSend `(v ~T0 @X0 0 ef1`uc ]
@@ -603,7 +603,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "44
 [; ;SD_PIC.c: 44: SDCard_t SDCard = {0};
-[v _SDCard `S270 ~T0 @X0 1 e ]
+[v _SDCard `S271 ~T0 @X0 1 e ]
 [i _SDCard
 :U ..
 :U ..
@@ -612,11 +612,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "51
-[; ;SD_PIC.c: 51: unsigned char writeBuffer[512];
-[v _writeBuffer `uc ~T0 @X0 -> 512 `i e ]
+[; ;SD_PIC.c: 51: unsigned char SDwriteBuffer[512];
+[v _SDwriteBuffer `uc ~T0 @X0 -> 512 `i e ]
 "52
-[; ;SD_PIC.c: 52: static unsigned char readBuffer[512];
-[v _readBuffer `uc ~T0 @X0 -> 512 `i s ]
+[; ;SD_PIC.c: 52: unsigned char SDreadBuffer[512];
+[v _SDreadBuffer `uc ~T0 @X0 -> 512 `i e ]
 "55
 [; ;SD_PIC.c: 55: void SD_SendDummyBytes(unsigned char numBytes){
 [v _SD_SendDummyBytes `(v ~T0 @X0 1 ef1`uc ]
@@ -630,8 +630,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _n _numBytes ]
 "57
 [; ;SD_PIC.c: 57:     while(n > 0){
-[e $U 274  ]
-[e :U 275 ]
+[e $U 275  ]
+[e :U 276 ]
 {
 "58
 [; ;SD_PIC.c: 58:         spiSend(0xFF);
@@ -642,14 +642,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "60
 [; ;SD_PIC.c: 60:     }
 }
-[e :U 274 ]
+[e :U 275 ]
 "57
 [; ;SD_PIC.c: 57:     while(n > 0){
-[e $ > -> _n `i -> 0 `i 275  ]
-[e :U 276 ]
+[e $ > -> _n `i -> 0 `i 276  ]
+[e :U 277 ]
 "61
 [; ;SD_PIC.c: 61: }
-[e :UE 273 ]
+[e :UE 274 ]
 }
 "63
 [; ;SD_PIC.c: 63: unsigned char SD_Command(unsigned char cmd, unsigned long arg){
@@ -664,20 +664,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "69
 [; ;SD_PIC.c: 69:     while(spiReceive() != 0xFF){
-[e $U 278  ]
-[e :U 279 ]
+[e $U 279  ]
+[e :U 280 ]
 {
 "70
 [; ;SD_PIC.c: 70:         continue;
-[e $U 278  ]
+[e $U 279  ]
 "71
 [; ;SD_PIC.c: 71:     }
 }
-[e :U 278 ]
+[e :U 279 ]
 "69
 [; ;SD_PIC.c: 69:     while(spiReceive() != 0xFF){
-[e $ != -> ( _spiReceive ..  `i -> 255 `i 279  ]
-[e :U 280 ]
+[e $ != -> ( _spiReceive ..  `i -> 255 `i 280  ]
+[e :U 281 ]
 "74
 [; ;SD_PIC.c: 74:     spiSend(cmd | 0x40U);
 [e ( _spiSend (1 -> | -> _cmd `ui -> 64 `ui `uc ]
@@ -695,7 +695,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _spiSend (1 -> & _arg -> -> -> 255 `i `l `ul `uc ]
 "85
 [; ;SD_PIC.c: 85:     if(cmd == CMD8){
-[e $ ! == -> _cmd `i -> _CMD8 `i 281  ]
+[e $ ! == -> _cmd `i -> _CMD8 `i 282  ]
 {
 "86
 [; ;SD_PIC.c: 86:         spiSend(CMD8CRC);
@@ -703,10 +703,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "87
 [; ;SD_PIC.c: 87:     }
 }
-[e $U 282  ]
+[e $U 283  ]
 "88
 [; ;SD_PIC.c: 88:     else{
-[e :U 281 ]
+[e :U 282 ]
 {
 "89
 [; ;SD_PIC.c: 89:         spiSend(CMD0CRC);
@@ -714,7 +714,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "90
 [; ;SD_PIC.c: 90:     }
 }
-[e :U 282 ]
+[e :U 283 ]
 "93
 [; ;SD_PIC.c: 93:     unsigned char n = 0;
 [v _n `uc ~T0 @X0 1 a ]
@@ -724,7 +724,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _response `uc ~T0 @X0 1 a ]
 "95
 [; ;SD_PIC.c: 95:     do{
-[e :U 285 ]
+[e :U 286 ]
 {
 "96
 [; ;SD_PIC.c: 96:         response = spiReceive();
@@ -735,18 +735,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "98
 [; ;SD_PIC.c: 98:     }while((n < 8) && (response == 0xFF));
 }
-[e $ && < -> _n `i -> 8 `i == -> _response `i -> 255 `i 285  ]
-[e :U 284 ]
+[e $ && < -> _n `i -> 8 `i == -> _response `i -> 255 `i 286  ]
+[e :U 285 ]
 "100
 [; ;SD_PIC.c: 100:     LATEbits.LATE2 = 1;
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 "102
 [; ;SD_PIC.c: 102:     return response;
 [e ) _response ]
-[e $UE 277  ]
+[e $UE 278  ]
 "103
 [; ;SD_PIC.c: 103: }
-[e :UE 277 ]
+[e :UE 278 ]
 }
 "105
 [; ;SD_PIC.c: 105: unsigned char SD_ACMD(unsigned char cmd, unsigned long arg){
@@ -762,10 +762,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "109
 [; ;SD_PIC.c: 109:     return SD_Command(cmd, arg);
 [e ) ( _SD_Command (2 , _cmd _arg ]
-[e $UE 286  ]
+[e $UE 287  ]
 "110
 [; ;SD_PIC.c: 110: }
-[e :UE 286 ]
+[e :UE 287 ]
 }
 "112
 [; ;SD_PIC.c: 112: unsigned char SD_SingleBlockWrite(unsigned long block, unsigned char* arr){
@@ -777,7 +777,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "117
 [; ;SD_PIC.c: 117:     if(SDCard.Type == TYPE_SDSC){
-[e $ ! == -> . _SDCard 1 `ui -> . `E2525 0 `ui 288  ]
+[e $ ! == -> . _SDCard 1 `ui -> . `E2692 0 `ui 289  ]
 {
 "119
 [; ;SD_PIC.c: 119:         block <<= 9;
@@ -785,14 +785,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "120
 [; ;SD_PIC.c: 120:     }
 }
-[e :U 288 ]
+[e :U 289 ]
 "123
 [; ;SD_PIC.c: 123:     while(SD_Command(CMD24, block) != R1_READY_STATE);
-[e $U 289  ]
-[e :U 290 ]
-[e :U 289 ]
-[e $ != -> ( _SD_Command (2 , _CMD24 _block `i -> _R1_READY_STATE `i 290  ]
+[e $U 290  ]
 [e :U 291 ]
+[e :U 290 ]
+[e $ != -> ( _SD_Command (2 , _CMD24 _block `i -> _R1_READY_STATE `i 291  ]
+[e :U 292 ]
 "126
 [; ;SD_PIC.c: 126:     LATEbits.LATE2 = 0;
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
@@ -804,9 +804,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `us ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `us ]
-[e $ < -> _i `ui -> -> 512 `i `ui 292  ]
-[e $U 293  ]
-[e :U 292 ]
+[e $ < -> _i `ui -> -> 512 `i `ui 293  ]
+[e $U 294  ]
+[e :U 293 ]
 {
 "131
 [; ;SD_PIC.c: 131:         spiTransfer(arr[i]);
@@ -815,8 +815,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 132:     }
 }
 [e ++ _i -> -> 1 `i `us ]
-[e $ < -> _i `ui -> -> 512 `i `ui 292  ]
-[e :U 293 ]
+[e $ < -> _i `ui -> -> 512 `i `ui 293  ]
+[e :U 294 ]
 }
 "135
 [; ;SD_PIC.c: 135:     SD_SendDummyBytes(2);
@@ -830,62 +830,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 "140
 [; ;SD_PIC.c: 140:     switch(response){
-[e $U 296  ]
+[e $U 297  ]
 {
 "141
 [; ;SD_PIC.c: 141:         case 0b10:
-[e :U 297 ]
+[e :U 298 ]
 "145
 [; ;SD_PIC.c: 145:             SDCard.write.lastBlockWritten = block;
 [e = . . _SDCard 14 0 _block ]
 "148
 [; ;SD_PIC.c: 148:             while(spiReceive() == 0){ continue; }
-[e $U 298  ]
-[e :U 299 ]
-{
-[e $U 298  ]
-}
-[e :U 298 ]
-[e $ == -> ( _spiReceive ..  `i -> 0 `i 299  ]
+[e $U 299  ]
 [e :U 300 ]
+{
+[e $U 299  ]
+}
+[e :U 299 ]
+[e $ == -> ( _spiReceive ..  `i -> 0 `i 300  ]
+[e :U 301 ]
 "149
 [; ;SD_PIC.c: 149:             return 1;
 [e ) -> -> 1 `i `uc ]
-[e $UE 287  ]
+[e $UE 288  ]
 "150
 [; ;SD_PIC.c: 150:         case 0b101:
-[e :U 301 ]
+[e :U 302 ]
 "152
 [; ;SD_PIC.c: 152:             return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 287  ]
+[e $UE 288  ]
 "153
 [; ;SD_PIC.c: 153:         case 0b110:
-[e :U 302 ]
+[e :U 303 ]
 "155
 [; ;SD_PIC.c: 155:             return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 287  ]
+[e $UE 288  ]
 "156
 [; ;SD_PIC.c: 156:         default:
-[e :U 303 ]
+[e :U 304 ]
 "157
 [; ;SD_PIC.c: 157:             return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 287  ]
+[e $UE 288  ]
 "158
 [; ;SD_PIC.c: 158:     }
 }
-[e $U 295  ]
+[e $U 296  ]
+[e :U 297 ]
+[e [\ -> _response `i , $ -> 2 `i 298
+ , $ -> 5 `i 302
+ , $ -> 6 `i 303
+ 304 ]
 [e :U 296 ]
-[e [\ -> _response `i , $ -> 2 `i 297
- , $ -> 5 `i 301
- , $ -> 6 `i 302
- 303 ]
-[e :U 295 ]
 "159
 [; ;SD_PIC.c: 159: }
-[e :UE 287 ]
+[e :UE 288 ]
 }
 "161
 [; ;SD_PIC.c: 161: void SD_MBW_Start(unsigned long startBlock, unsigned long numBlocks){
@@ -897,7 +897,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "166
 [; ;SD_PIC.c: 166:     if(SDCard.Type == TYPE_SDSC){
-[e $ ! == -> . _SDCard 1 `ui -> . `E2525 0 `ui 305  ]
+[e $ ! == -> . _SDCard 1 `ui -> . `E2692 0 `ui 306  ]
 {
 "168
 [; ;SD_PIC.c: 168:         startBlock <<= 9;
@@ -905,23 +905,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 "169
 [; ;SD_PIC.c: 169:     }
 }
-[e :U 305 ]
+[e :U 306 ]
 "172
 [; ;SD_PIC.c: 172:     SD_ACMD(ACMD23, numBlocks);
 [e ( _SD_ACMD (2 , _ACMD23 _numBlocks ]
 "175
 [; ;SD_PIC.c: 175:     while(SD_Command(CMD25, startBlock) != R1_READY_STATE);
-[e $U 306  ]
-[e :U 307 ]
-[e :U 306 ]
-[e $ != -> ( _SD_Command (2 , _CMD25 _startBlock `i -> _R1_READY_STATE `i 307  ]
+[e $U 307  ]
 [e :U 308 ]
+[e :U 307 ]
+[e $ != -> ( _SD_Command (2 , _CMD25 _startBlock `i -> _R1_READY_STATE `i 308  ]
+[e :U 309 ]
 "177
 [; ;SD_PIC.c: 177:     SDCard.write.MBW_startBlock = startBlock;
 [e = . . _SDCard 14 1 _startBlock ]
 "178
 [; ;SD_PIC.c: 178: }
-[e :UE 304 ]
+[e :UE 305 ]
 }
 "180
 [; ;SD_PIC.c: 180: unsigned char SD_MBW_Send(unsigned char* arrWrite){
@@ -935,11 +935,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "182
 [; ;SD_PIC.c: 182:     while(spiReceive() != 0xFF);
-[e $U 310  ]
-[e :U 311 ]
-[e :U 310 ]
-[e $ != -> ( _spiReceive ..  `i -> 255 `i 311  ]
+[e $U 311  ]
 [e :U 312 ]
+[e :U 311 ]
+[e $ != -> ( _spiReceive ..  `i -> 255 `i 312  ]
+[e :U 313 ]
 "185
 [; ;SD_PIC.c: 185:     spiSend(START_BLOCK_TOKEN);
 [e ( _spiSend (1 _START_BLOCK_TOKEN ]
@@ -952,9 +952,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `us ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `us ]
-[e $ < -> _i `ui -> -> 512 `i `ui 313  ]
-[e $U 314  ]
-[e :U 313 ]
+[e $ < -> _i `ui -> -> 512 `i `ui 314  ]
+[e $U 315  ]
+[e :U 314 ]
 {
 "190
 [; ;SD_PIC.c: 190:         response = spiTransfer(arrWrite[i]);
@@ -963,15 +963,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 191:     }
 }
 [e ++ _i -> -> 1 `i `us ]
-[e $ < -> _i `ui -> -> 512 `i `ui 313  ]
-[e :U 314 ]
+[e $ < -> _i `ui -> -> 512 `i `ui 314  ]
+[e :U 315 ]
 }
 "194
 [; ;SD_PIC.c: 194:     SD_SendDummyBytes(2);
 [e ( _SD_SendDummyBytes (1 -> -> 2 `i `uc ]
 "197
 [; ;SD_PIC.c: 197:     do{
-[e :U 318 ]
+[e :U 319 ]
 {
 "198
 [; ;SD_PIC.c: 198:         response = spiReceive() & 0x1F;
@@ -979,21 +979,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "199
 [; ;SD_PIC.c: 199:     }while(response == 0x1F);
 }
-[e $ == -> _response `i -> 31 `i 318  ]
-[e :U 317 ]
+[e $ == -> _response `i -> 31 `i 319  ]
+[e :U 318 ]
 "200
 [; ;SD_PIC.c: 200:     LATEbits.LATE2 = 1;
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 "202
 [; ;SD_PIC.c: 202:     switch(response){
-[e $U 320  ]
+[e $U 321  ]
 {
 "203
 [; ;SD_PIC.c: 203:         case 0b00101:
-[e :U 321 ]
+[e :U 322 ]
 "207
 [; ;SD_PIC.c: 207:             if(SDCard.write.MBW_flag_first){
-[e $ ! != -> . . _SDCard 14 2 `i -> 0 `i 322  ]
+[e $ ! != -> . . _SDCard 14 2 `i -> 0 `i 323  ]
 {
 "209
 [; ;SD_PIC.c: 209:                 SDCard.write.lastBlockWritten = SDCard.write.MBW_startBlock;
@@ -1004,10 +1004,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "211
 [; ;SD_PIC.c: 211:             }
 }
-[e $U 323  ]
+[e $U 324  ]
 "212
 [; ;SD_PIC.c: 212:             else{
-[e :U 322 ]
+[e :U 323 ]
 {
 "213
 [; ;SD_PIC.c: 213:                 SDCard.write.lastBlockWritten++;
@@ -1015,51 +1015,51 @@ Version 4.0 HI-TECH Software Intermediate Code
 "214
 [; ;SD_PIC.c: 214:             }
 }
-[e :U 323 ]
+[e :U 324 ]
 "216
 [; ;SD_PIC.c: 216:             return 1;
 [e ) -> -> 1 `i `uc ]
-[e $UE 309  ]
+[e $UE 310  ]
 "217
 [; ;SD_PIC.c: 217:         case 0b01011:
-[e :U 324 ]
+[e :U 325 ]
 "219
 [; ;SD_PIC.c: 219:             SD_Command(CMD12, 0);
 [e ( _SD_Command (2 , _CMD12 -> -> -> 0 `i `l `ul ]
 "220
 [; ;SD_PIC.c: 220:             return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 309  ]
+[e $UE 310  ]
 "221
 [; ;SD_PIC.c: 221:         case 0b01101:
-[e :U 325 ]
+[e :U 326 ]
 "223
 [; ;SD_PIC.c: 223:             SD_Command(CMD12, 0);
 [e ( _SD_Command (2 , _CMD12 -> -> -> 0 `i `l `ul ]
 "224
 [; ;SD_PIC.c: 224:             return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 309  ]
+[e $UE 310  ]
 "225
 [; ;SD_PIC.c: 225:         default:
-[e :U 326 ]
+[e :U 327 ]
 "226
 [; ;SD_PIC.c: 226:             return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 309  ]
+[e $UE 310  ]
 "227
 [; ;SD_PIC.c: 227:     }
 }
-[e $U 319  ]
+[e $U 320  ]
+[e :U 321 ]
+[e [\ -> _response `i , $ -> 5 `i 322
+ , $ -> 11 `i 325
+ , $ -> 13 `i 326
+ 327 ]
 [e :U 320 ]
-[e [\ -> _response `i , $ -> 5 `i 321
- , $ -> 11 `i 324
- , $ -> 13 `i 325
- 326 ]
-[e :U 319 ]
 "228
 [; ;SD_PIC.c: 228: }
-[e :UE 309 ]
+[e :UE 310 ]
 }
 "230
 [; ;SD_PIC.c: 230: void SD_MBW_Stop(void){
@@ -1072,30 +1072,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "232
 [; ;SD_PIC.c: 232:     while(spiReceive() != 0xFF);
-[e $U 328  ]
-[e :U 329 ]
-[e :U 328 ]
-[e $ != -> ( _spiReceive ..  `i -> 255 `i 329  ]
+[e $U 329  ]
 [e :U 330 ]
+[e :U 329 ]
+[e $ != -> ( _spiReceive ..  `i -> 255 `i 330  ]
+[e :U 331 ]
 "235
 [; ;SD_PIC.c: 235:     spiSend(STOP_TRAN);
 [e ( _spiSend (1 _STOP_TRAN ]
 "238
 [; ;SD_PIC.c: 238:     while(spiReceive() == 0){
-[e $U 331  ]
-[e :U 332 ]
+[e $U 332  ]
+[e :U 333 ]
 {
 "239
 [; ;SD_PIC.c: 239:         continue;
-[e $U 331  ]
+[e $U 332  ]
 "240
 [; ;SD_PIC.c: 240:     }
 }
-[e :U 331 ]
+[e :U 332 ]
 "238
 [; ;SD_PIC.c: 238:     while(spiReceive() == 0){
-[e $ == -> ( _spiReceive ..  `i -> 0 `i 332  ]
-[e :U 333 ]
+[e $ == -> ( _spiReceive ..  `i -> 0 `i 333  ]
+[e :U 334 ]
 "242
 [; ;SD_PIC.c: 242:     LATEbits.LATE2 = 1;
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
@@ -1104,7 +1104,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _SDCard 14 2 -> -> 1 `i `uc ]
 "245
 [; ;SD_PIC.c: 245: }
-[e :UE 327 ]
+[e :UE 328 ]
 }
 "247
 [; ;SD_PIC.c: 247: unsigned char SD_SingleBlockRead(unsigned long block, unsigned char* buf){
@@ -1116,7 +1116,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "252
 [; ;SD_PIC.c: 252:     if(SDCard.Type == TYPE_SDSC){
-[e $ ! == -> . _SDCard 1 `ui -> . `E2525 0 `ui 335  ]
+[e $ ! == -> . _SDCard 1 `ui -> . `E2692 0 `ui 336  ]
 {
 "254
 [; ;SD_PIC.c: 254:         block <<= 9;
@@ -1124,40 +1124,40 @@ Version 4.0 HI-TECH Software Intermediate Code
 "255
 [; ;SD_PIC.c: 255:     }
 }
-[e :U 335 ]
+[e :U 336 ]
 "259
 [; ;SD_PIC.c: 259:     unsigned char response;
 [v _response `uc ~T0 @X0 1 a ]
 "260
 [; ;SD_PIC.c: 260:     do{
-[e :U 338 ]
+[e :U 339 ]
 {
 "261
 [; ;SD_PIC.c: 261:         response = SD_Command(CMD17, block);
 [e = _response ( _SD_Command (2 , _CMD17 _block ]
 "262
 [; ;SD_PIC.c: 262:         if((response & 0x0F) != 0){
-[e $ ! != & -> _response `i -> 15 `i -> 0 `i 339  ]
+[e $ ! != & -> _response `i -> 15 `i -> 0 `i 340  ]
 {
 "267
 [; ;SD_PIC.c: 267:             return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 334  ]
+[e $UE 335  ]
 "268
 [; ;SD_PIC.c: 268:         }
 }
-[e :U 339 ]
+[e :U 340 ]
 "269
 [; ;SD_PIC.c: 269:     }while(response != R1_READY_STATE);
 }
-[e $ != -> _response `i -> _R1_READY_STATE `i 338  ]
-[e :U 337 ]
+[e $ != -> _response `i -> _R1_READY_STATE `i 339  ]
+[e :U 338 ]
 "272
 [; ;SD_PIC.c: 272:     LATEbits.LATE2 = 0;
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "273
 [; ;SD_PIC.c: 273:     do{
-[e :U 342 ]
+[e :U 343 ]
 {
 "274
 [; ;SD_PIC.c: 274:         response = spiReceive();
@@ -1165,16 +1165,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "275
 [; ;SD_PIC.c: 275:     }while(response != START_BLOCK);
 }
-[e $ != -> _response `i -> _START_BLOCK `i 342  ]
-[e :U 341 ]
+[e $ != -> _response `i -> _START_BLOCK `i 343  ]
+[e :U 342 ]
 "277
 [; ;SD_PIC.c: 277:     for(unsigned short i = 0; i < 512; i++){
 {
 [v _i `us ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `us ]
-[e $ < -> _i `ui -> -> 512 `i `ui 343  ]
-[e $U 344  ]
-[e :U 343 ]
+[e $ < -> _i `ui -> -> 512 `i `ui 344  ]
+[e $U 345  ]
+[e :U 344 ]
 {
 "278
 [; ;SD_PIC.c: 278:         buf[i] = spiReceive();
@@ -1183,8 +1183,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 279:     }
 }
 [e ++ _i -> -> 1 `i `us ]
-[e $ < -> _i `ui -> -> 512 `i `ui 343  ]
-[e :U 344 ]
+[e $ < -> _i `ui -> -> 512 `i `ui 344  ]
+[e :U 345 ]
 }
 "282
 [; ;SD_PIC.c: 282:     spiSend(0xFF);
@@ -1201,10 +1201,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "289
 [; ;SD_PIC.c: 289:     return 1;
 [e ) -> -> 1 `i `uc ]
-[e $UE 334  ]
+[e $UE 335  ]
 "290
 [; ;SD_PIC.c: 290: }
-[e :UE 334 ]
+[e :UE 335 ]
 }
 "292
 [; ;SD_PIC.c: 292: unsigned char SD_MBR_Start(unsigned long startBlock){
@@ -1215,7 +1215,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "297
 [; ;SD_PIC.c: 297:     if(SDCard.Type == TYPE_SDSC){
-[e $ ! == -> . _SDCard 1 `ui -> . `E2525 0 `ui 347  ]
+[e $ ! == -> . _SDCard 1 `ui -> . `E2692 0 `ui 348  ]
 {
 "299
 [; ;SD_PIC.c: 299:         startBlock <<= 9;
@@ -1223,45 +1223,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 "300
 [; ;SD_PIC.c: 300:     }
 }
-[e :U 347 ]
+[e :U 348 ]
 "304
 [; ;SD_PIC.c: 304:     unsigned char response = 0;
 [v _response `uc ~T0 @X0 1 a ]
 [e = _response -> -> 0 `i `uc ]
 "305
 [; ;SD_PIC.c: 305:     do{
-[e :U 350 ]
+[e :U 351 ]
 {
 "306
 [; ;SD_PIC.c: 306:         response = SD_Command(CMD18, startBlock);
 [e = _response ( _SD_Command (2 , _CMD18 _startBlock ]
 "307
 [; ;SD_PIC.c: 307:         if(response & 0x0F){
-[e $ ! != & -> _response `i -> 15 `i -> 0 `i 351  ]
+[e $ ! != & -> _response `i -> 15 `i -> 0 `i 352  ]
 {
 "312
 [; ;SD_PIC.c: 312:             return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 346  ]
+[e $UE 347  ]
 "313
 [; ;SD_PIC.c: 313:         }
 }
-[e :U 351 ]
+[e :U 352 ]
 "314
 [; ;SD_PIC.c: 314:     }while(response != R1_READY_STATE);
 }
-[e $ != -> _response `i -> _R1_READY_STATE `i 350  ]
-[e :U 349 ]
+[e $ != -> _response `i -> _R1_READY_STATE `i 351  ]
+[e :U 350 ]
 "316
 [; ;SD_PIC.c: 316:     SDCard.read.MBR_startBlock = startBlock;
 [e = . . _SDCard 15 1 _startBlock ]
 "318
 [; ;SD_PIC.c: 318:     return 1;
 [e ) -> -> 1 `i `uc ]
-[e $UE 346  ]
+[e $UE 347  ]
 "319
 [; ;SD_PIC.c: 319: }
-[e :UE 346 ]
+[e :UE 347 ]
 }
 "321
 [; ;SD_PIC.c: 321: void SD_MBR_Receive(unsigned char* bufReceive){
@@ -1272,47 +1272,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "324
 [; ;SD_PIC.c: 324:     while(spiReceive() == 0x00){
-[e $U 353  ]
-[e :U 354 ]
+[e $U 354  ]
+[e :U 355 ]
 {
 "325
 [; ;SD_PIC.c: 325:         continue;
-[e $U 353  ]
+[e $U 354  ]
 "326
 [; ;SD_PIC.c: 326:     }
 }
-[e :U 353 ]
+[e :U 354 ]
 "324
 [; ;SD_PIC.c: 324:     while(spiReceive() == 0x00){
-[e $ == -> ( _spiReceive ..  `i -> 0 `i 354  ]
-[e :U 355 ]
+[e $ == -> ( _spiReceive ..  `i -> 0 `i 355  ]
+[e :U 356 ]
 "328
 [; ;SD_PIC.c: 328:     LATEbits.LATE2 = 0;
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "331
 [; ;SD_PIC.c: 331:     while(spiReceive() != START_BLOCK){
-[e $U 356  ]
-[e :U 357 ]
+[e $U 357  ]
+[e :U 358 ]
 {
 "332
 [; ;SD_PIC.c: 332:         continue;
-[e $U 356  ]
+[e $U 357  ]
 "333
 [; ;SD_PIC.c: 333:     }
 }
-[e :U 356 ]
+[e :U 357 ]
 "331
 [; ;SD_PIC.c: 331:     while(spiReceive() != START_BLOCK){
-[e $ != -> ( _spiReceive ..  `i -> _START_BLOCK `i 357  ]
-[e :U 358 ]
+[e $ != -> ( _spiReceive ..  `i -> _START_BLOCK `i 358  ]
+[e :U 359 ]
 "336
 [; ;SD_PIC.c: 336:     for(unsigned short i = 0; i < 512; i++){
 {
 [v _i `us ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `us ]
-[e $ < -> _i `ui -> -> 512 `i `ui 359  ]
-[e $U 360  ]
-[e :U 359 ]
+[e $ < -> _i `ui -> -> 512 `i `ui 360  ]
+[e $U 361  ]
+[e :U 360 ]
 {
 "337
 [; ;SD_PIC.c: 337:         bufReceive[i] = spiReceive();
@@ -1321,8 +1321,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 338:     }
 }
 [e ++ _i -> -> 1 `i `us ]
-[e $ < -> _i `ui -> -> 512 `i `ui 359  ]
-[e :U 360 ]
+[e $ < -> _i `ui -> -> 512 `i `ui 360  ]
+[e :U 361 ]
 }
 "341
 [; ;SD_PIC.c: 341:     spiSend(0xFF);
@@ -1335,7 +1335,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 "346
 [; ;SD_PIC.c: 346:     if(SDCard.read.MBR_flag_first){
-[e $ ! != -> . . _SDCard 15 2 `i -> 0 `i 362  ]
+[e $ ! != -> . . _SDCard 15 2 `i -> 0 `i 363  ]
 {
 "347
 [; ;SD_PIC.c: 347:         SDCard.read.lastBlockRead = SDCard.read.MBR_startBlock;
@@ -1346,10 +1346,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "349
 [; ;SD_PIC.c: 349:     }
 }
-[e $U 363  ]
+[e $U 364  ]
 "350
 [; ;SD_PIC.c: 350:     else{
-[e :U 362 ]
+[e :U 363 ]
 {
 "351
 [; ;SD_PIC.c: 351:         SDCard.read.lastBlockRead++;
@@ -1357,10 +1357,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "352
 [; ;SD_PIC.c: 352:     }
 }
-[e :U 363 ]
+[e :U 364 ]
 "353
 [; ;SD_PIC.c: 353: }
-[e :UE 352 ]
+[e :UE 353 ]
 }
 "355
 [; ;SD_PIC.c: 355: void SD_MBR_Stop(void){
@@ -1376,7 +1376,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _SDCard 15 2 -> -> 1 `i `uc ]
 "359
 [; ;SD_PIC.c: 359: }
-[e :UE 364 ]
+[e :UE 365 ]
 }
 "361
 [; ;SD_PIC.c: 361: void SD_EraseBlocks(unsigned long firstBlock, unsigned long lastBlock){
@@ -1388,7 +1388,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "366
 [; ;SD_PIC.c: 366:     if(SDCard.Type == TYPE_SDSC){
-[e $ ! == -> . _SDCard 1 `ui -> . `E2525 0 `ui 366  ]
+[e $ ! == -> . _SDCard 1 `ui -> . `E2692 0 `ui 367  ]
 {
 "368
 [; ;SD_PIC.c: 368:         firstBlock <<= 9;
@@ -1399,7 +1399,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "370
 [; ;SD_PIC.c: 370:     }
 }
-[e :U 366 ]
+[e :U 367 ]
 "373
 [; ;SD_PIC.c: 373:     SD_Command(CMD32, firstBlock);
 [e ( _SD_Command (2 , _CMD32 _firstBlock ]
@@ -1411,7 +1411,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _SD_Command (2 , _CMD38 -> -> -> 0 `i `l `ul ]
 "380
 [; ;SD_PIC.c: 380: }
-[e :UE 365 ]
+[e :UE 366 ]
 }
 "382
 [; ;SD_PIC.c: 382: void initSD(void){
@@ -1430,8 +1430,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "385
 [; ;SD_PIC.c: 385:     unsigned char response;
 [v _response `uc ~T0 @X0 1 a ]
-[v F2668 `uc ~T0 @X0 -> 16 `i s ]
-[i F2668
+[v F2838 `uc ~T0 @X0 -> 16 `i s ]
+[i F2838
 :U ..
 "386
 [; ;SD_PIC.c: 386:     unsigned char arr_response[16] = {0};
@@ -1439,7 +1439,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _arr_response `uc ~T0 @X0 -> 16 `i a ]
-[e = _arr_response F2668 ]
+[e = _arr_response F2838 ]
 "391
 [; ;SD_PIC.c: 391:     OSCTUNEbits.TUN = 0b000000;
 [e = . . _OSCTUNEbits 0 0 -> -> 0 `i `uc ]
@@ -1451,8 +1451,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _OSCCONbits 0 0 -> -> 3 `i `uc ]
 "396
 [; ;SD_PIC.c: 396:     while(!OSCCONbits.IOFS){
-[e $U 368  ]
-[e :U 369 ]
+[e $U 369  ]
+[e :U 370 ]
 {
 "397
 [; ;SD_PIC.c: 397:         _delay((unsigned long)((20)*(4000000/4000000.0)));
@@ -1460,11 +1460,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "398
 [; ;SD_PIC.c: 398:     }
 }
-[e :U 368 ]
+[e :U 369 ]
 "396
 [; ;SD_PIC.c: 396:     while(!OSCCONbits.IOFS){
-[e $ ! != -> . . _OSCCONbits 0 1 `i -> 0 `i 369  ]
-[e :U 370 ]
+[e $ ! != -> . . _OSCCONbits 0 1 `i -> 0 `i 370  ]
+[e :U 371 ]
 "400
 [; ;SD_PIC.c: 400:     spiInit(16);
 [e ( _spiInit (1 -> -> 16 `i `uc ]
@@ -1482,9 +1482,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 371  ]
-[e $U 372  ]
-[e :U 371 ]
+[e $ < -> _i `i -> 10 `i 372  ]
+[e $U 373  ]
+[e :U 372 ]
 {
 "412
 [; ;SD_PIC.c: 412:         spiSend(0xFF);
@@ -1493,31 +1493,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 413:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 371  ]
-[e :U 372 ]
+[e $ < -> _i `i -> 10 `i 372  ]
+[e :U 373 ]
 }
 "415
 [; ;SD_PIC.c: 415:     LATEbits.LATE2 = 0;
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "420
 [; ;SD_PIC.c: 420:     while(SD_Command(CMD0, 0) != R1_IDLE_STATE){
-[e $U 374  ]
-[e :U 375 ]
+[e $U 375  ]
+[e :U 376 ]
 {
 "421
 [; ;SD_PIC.c: 421:         continue;
-[e $U 374  ]
+[e $U 375  ]
 "422
 [; ;SD_PIC.c: 422:     }
 }
-[e :U 374 ]
+[e :U 375 ]
 "420
 [; ;SD_PIC.c: 420:     while(SD_Command(CMD0, 0) != R1_IDLE_STATE){
-[e $ != -> ( _SD_Command (2 , _CMD0 -> -> -> 0 `i `l `ul `i -> _R1_IDLE_STATE `i 375  ]
-[e :U 376 ]
+[e $ != -> ( _SD_Command (2 , _CMD0 -> -> -> 0 `i `l `ul `i -> _R1_IDLE_STATE `i 376  ]
+[e :U 377 ]
 "429
 [; ;SD_PIC.c: 429:     while(1){
-[e :U 378 ]
+[e :U 379 ]
 {
 "430
 [; ;SD_PIC.c: 430:         response = SD_Command(CMD8, 0x01AA);
@@ -1530,9 +1530,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 380  ]
-[e $U 381  ]
-[e :U 380 ]
+[e $ < -> _i `i -> 4 `i 381  ]
+[e $U 382  ]
+[e :U 381 ]
 {
 "435
 [; ;SD_PIC.c: 435:             arr_response[i] = spiReceive();
@@ -1541,15 +1541,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 436:         }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 380  ]
-[e :U 381 ]
+[e $ < -> _i `i -> 4 `i 381  ]
+[e :U 382 ]
 }
 "437
 [; ;SD_PIC.c: 437:         LATEbits.LATE2 = 1;
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 "439
 [; ;SD_PIC.c: 439:         if((response & R1_ILLEGAL_COMMAND) == R1_ILLEGAL_COMMAND){
-[e $ ! == & -> _response `i -> _R1_ILLEGAL_COMMAND `i -> _R1_ILLEGAL_COMMAND `i 383  ]
+[e $ ! == & -> _response `i -> _R1_ILLEGAL_COMMAND `i -> _R1_ILLEGAL_COMMAND `i 384  ]
 {
 "442
 [; ;SD_PIC.c: 442:             SDCard.SDversion = 1;
@@ -1565,9 +1565,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 384  ]
-[e $U 385  ]
-[e :U 384 ]
+[e $ < -> _i `i -> 4 `i 385  ]
+[e $U 386  ]
+[e :U 385 ]
 {
 "448
 [; ;SD_PIC.c: 448:                 arr_response[i] = spiReceive();
@@ -1576,78 +1576,78 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 449:             }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 384  ]
-[e :U 385 ]
+[e $ < -> _i `i -> 4 `i 385  ]
+[e :U 386 ]
 }
 "450
 [; ;SD_PIC.c: 450:             LATEbits.LATE2 = 1;
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 "452
 [; ;SD_PIC.c: 452:             if(arr_response[2] != 0x01){
-[e $ ! != -> *U + &U _arr_response * -> -> -> 2 `i `ui `ux -> -> # *U &U _arr_response `ui `ux `i -> 1 `i 387  ]
+[e $ ! != -> *U + &U _arr_response * -> -> -> 2 `i `ui `ux -> -> # *U &U _arr_response `ui `ux `i -> 1 `i 388  ]
 {
 "454
 [; ;SD_PIC.c: 454:                 return;
-[e $UE 367  ]
+[e $UE 368  ]
 "455
 [; ;SD_PIC.c: 455:             }
 }
-[e :U 387 ]
+[e :U 388 ]
 "456
 [; ;SD_PIC.c: 456:             break;
-[e $U 379  ]
+[e $U 380  ]
 "457
 [; ;SD_PIC.c: 457:         }
 }
-[e $U 388  ]
+[e $U 389  ]
 "458
 [; ;SD_PIC.c: 458:         else if(response == R1_IDLE_STATE){
-[e :U 383 ]
-[e $ ! == -> _response `i -> _R1_IDLE_STATE `i 389  ]
+[e :U 384 ]
+[e $ ! == -> _response `i -> _R1_IDLE_STATE `i 390  ]
 {
 "459
 [; ;SD_PIC.c: 459:             if((arr_response[2] == 0x01) && (arr_response[3] == 0xAA)){
-[e $ ! && == -> *U + &U _arr_response * -> -> -> 2 `i `ui `ux -> -> # *U &U _arr_response `ui `ux `i -> 1 `i == -> *U + &U _arr_response * -> -> -> 3 `i `ui `ux -> -> # *U &U _arr_response `ui `ux `i -> 170 `i 390  ]
+[e $ ! && == -> *U + &U _arr_response * -> -> -> 2 `i `ui `ux -> -> # *U &U _arr_response `ui `ux `i -> 1 `i == -> *U + &U _arr_response * -> -> -> 3 `i `ui `ux -> -> # *U &U _arr_response `ui `ux `i -> 170 `i 391  ]
 {
 "462
 [; ;SD_PIC.c: 462:                SDCard.SDversion = 2;
 [e = . _SDCard 0 -> -> 2 `i `uc ]
 "463
 [; ;SD_PIC.c: 463:                break;
-[e $U 379  ]
+[e $U 380  ]
 "464
 [; ;SD_PIC.c: 464:             }
 }
-[e $U 391  ]
+[e $U 392  ]
 "465
 [; ;SD_PIC.c: 465:             else{
-[e :U 390 ]
+[e :U 391 ]
 {
 "467
 [; ;SD_PIC.c: 467:                 return;
-[e $UE 367  ]
+[e $UE 368  ]
 "468
 [; ;SD_PIC.c: 468:             }
 }
-[e :U 391 ]
+[e :U 392 ]
 "469
 [; ;SD_PIC.c: 469:         }
 }
+[e :U 390 ]
 [e :U 389 ]
-[e :U 388 ]
 "470
 [; ;SD_PIC.c: 470:     }
 }
-[e :U 377 ]
-[e $U 378  ]
-[e :U 379 ]
+[e :U 378 ]
+[e $U 379  ]
+[e :U 380 ]
 "478
 [; ;SD_PIC.c: 478:     unsigned long argument = (SDCard.SDversion == 1) ? 0 : 0x40000000;
 [v _argument `ul ~T0 @X0 1 a ]
 [e = _argument -> ? == -> . _SDCard 0 `i -> 1 `i : -> -> 0 `i `l -> 1073741824 `l `ul ]
 "480
 [; ;SD_PIC.c: 480:     do{
-[e :U 394 ]
+[e :U 395 ]
 {
 "481
 [; ;SD_PIC.c: 481:         response = SD_ACMD(ACMD41, argument);
@@ -1655,47 +1655,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 "482
 [; ;SD_PIC.c: 482:     }while(
 }
-[e $ && != -> _response `i -> _R1_READY_STATE `i != & -> _response `i -> _R1_ILLEGAL_COMMAND `i -> _R1_ILLEGAL_COMMAND `i 394  ]
-[e :U 393 ]
+[e $ && != -> _response `i -> _R1_READY_STATE `i != & -> _response `i -> _R1_ILLEGAL_COMMAND `i -> _R1_ILLEGAL_COMMAND `i 395  ]
+[e :U 394 ]
 "489
 [; ;SD_PIC.c: 489:     if((response & R1_ILLEGAL_COMMAND) == R1_ILLEGAL_COMMAND){
-[e $ ! == & -> _response `i -> _R1_ILLEGAL_COMMAND `i -> _R1_ILLEGAL_COMMAND `i 395  ]
+[e $ ! == & -> _response `i -> _R1_ILLEGAL_COMMAND `i -> _R1_ILLEGAL_COMMAND `i 396  ]
 {
 "490
 [; ;SD_PIC.c: 490:         if(SDCard.SDversion == 1){
-[e $ ! == -> . _SDCard 0 `i -> 1 `i 396  ]
+[e $ ! == -> . _SDCard 0 `i -> 1 `i 397  ]
 {
 "492
 [; ;SD_PIC.c: 492:             SDCard.Type = TYPE_MMC;
-[e = . _SDCard 1 . `E2525 2 ]
+[e = . _SDCard 1 . `E2692 2 ]
 "493
 [; ;SD_PIC.c: 493:             SD_Command(CMD1, 0);
 [e ( _SD_Command (2 , _CMD1 -> -> -> 0 `i `l `ul ]
 "494
 [; ;SD_PIC.c: 494:         }
 }
-[e $U 397  ]
+[e $U 398  ]
 "495
 [; ;SD_PIC.c: 495:         else{
-[e :U 396 ]
+[e :U 397 ]
 {
 "497
 [; ;SD_PIC.c: 497:             SDCard.init = 0;
 [e = . _SDCard 13 -> -> 0 `i `uc ]
 "498
 [; ;SD_PIC.c: 498:             return;
-[e $UE 367  ]
+[e $UE 368  ]
 "499
 [; ;SD_PIC.c: 499:         }
 }
-[e :U 397 ]
+[e :U 398 ]
 "500
 [; ;SD_PIC.c: 500:     }
 }
-[e :U 395 ]
+[e :U 396 ]
 "502
 [; ;SD_PIC.c: 502:     if(SDCard.Type != TYPE_MMC){
-[e $ ! != -> . _SDCard 1 `ui -> . `E2525 2 `ui 398  ]
+[e $ ! != -> . _SDCard 1 `ui -> . `E2692 2 `ui 399  ]
 {
 "505
 [; ;SD_PIC.c: 505:         SD_Command(CMD58, 0);
@@ -1705,34 +1705,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "509
 [; ;SD_PIC.c: 509:         if((spiReceive() & 0xC0) == 0xC0){
-[e $ ! == & -> ( _spiReceive ..  `i -> 192 `i -> 192 `i 399  ]
+[e $ ! == & -> ( _spiReceive ..  `i -> 192 `i -> 192 `i 400  ]
 {
 "510
 [; ;SD_PIC.c: 510:             SDCard.Type = TYPE_SDHC_SDXC;
-[e = . _SDCard 1 . `E2525 1 ]
+[e = . _SDCard 1 . `E2692 1 ]
 "511
 [; ;SD_PIC.c: 511:         }
 }
-[e $U 400  ]
+[e $U 401  ]
 "512
 [; ;SD_PIC.c: 512:         else{
-[e :U 399 ]
+[e :U 400 ]
 {
 "513
 [; ;SD_PIC.c: 513:             SDCard.Type = TYPE_SDSC;
-[e = . _SDCard 1 . `E2525 0 ]
+[e = . _SDCard 1 . `E2692 0 ]
 "514
 [; ;SD_PIC.c: 514:         }
 }
-[e :U 400 ]
+[e :U 401 ]
 "518
 [; ;SD_PIC.c: 518:         for(unsigned char i = 0; i < 3; i++){
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 401  ]
-[e $U 402  ]
-[e :U 401 ]
+[e $ < -> _i `i -> 3 `i 402  ]
+[e $U 403  ]
+[e :U 402 ]
 {
 "519
 [; ;SD_PIC.c: 519:             spiReceive();
@@ -1741,8 +1741,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 520:         }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 401  ]
-[e :U 402 ]
+[e $ < -> _i `i -> 3 `i 402  ]
+[e :U 403 ]
 }
 "521
 [; ;SD_PIC.c: 521:         LATEbits.LATE2 = 1;
@@ -1750,17 +1750,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "522
 [; ;SD_PIC.c: 522:     }
 }
-[e :U 398 ]
+[e :U 399 ]
 "525
 [; ;SD_PIC.c: 525:     while(SD_Command(CMD16, 512) != R1_READY_STATE){ continue; }
-[e $U 404  ]
-[e :U 405 ]
-{
-[e $U 404  ]
-}
-[e :U 404 ]
-[e $ != -> ( _SD_Command (2 , _CMD16 -> -> -> 512 `i `l `ul `i -> _R1_READY_STATE `i 405  ]
+[e $U 405  ]
 [e :U 406 ]
+{
+[e $U 405  ]
+}
+[e :U 405 ]
+[e $ != -> ( _SD_Command (2 , _CMD16 -> -> -> 512 `i `l `ul `i -> _R1_READY_STATE `i 406  ]
+[e :U 407 ]
 "526
 [; ;SD_PIC.c: 526:     SDCard.blockSize = 512;
 [e = . _SDCard 10 -> -> 512 `i `us ]
@@ -1772,22 +1772,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "531
 [; ;SD_PIC.c: 531:     while(spiReceive() != START_BLOCK){ continue; }
-[e $U 407  ]
-[e :U 408 ]
-{
-[e $U 407  ]
-}
-[e :U 407 ]
-[e $ != -> ( _spiReceive ..  `i -> _START_BLOCK `i 408  ]
+[e $U 408  ]
 [e :U 409 ]
+{
+[e $U 408  ]
+}
+[e :U 408 ]
+[e $ != -> ( _spiReceive ..  `i -> _START_BLOCK `i 409  ]
+[e :U 410 ]
 "532
 [; ;SD_PIC.c: 532:     for(unsigned char i = 0; i < 16; i++){
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 16 `i 410  ]
-[e $U 411  ]
-[e :U 410 ]
+[e $ < -> _i `i -> 16 `i 411  ]
+[e $U 412  ]
+[e :U 411 ]
 {
 "533
 [; ;SD_PIC.c: 533:         arr_response[i] = spiReceive();
@@ -1796,8 +1796,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 534:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 16 `i 410  ]
-[e :U 411 ]
+[e $ < -> _i `i -> 16 `i 411  ]
+[e :U 412 ]
 }
 "535
 [; ;SD_PIC.c: 535:     spiReceive();
@@ -1810,7 +1810,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 "539
 [; ;SD_PIC.c: 539:     if(SDCard.SDversion == 2){
-[e $ ! == -> . _SDCard 0 `i -> 2 `i 413  ]
+[e $ ! == -> . _SDCard 0 `i -> 2 `i 414  ]
 {
 "544
 [; ;SD_PIC.c: 544:         unsigned long tempSize = arr_response[9] + 1UL;
@@ -1831,10 +1831,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "549
 [; ;SD_PIC.c: 549:      }
 }
-[e $U 414  ]
+[e $U 415  ]
 "550
 [; ;SD_PIC.c: 550:      else{
-[e :U 413 ]
+[e :U 414 ]
 {
 "557
 [; ;SD_PIC.c: 557:         unsigned long tempSize = (unsigned long)(arr_response[6] & 0x03) << 4;
@@ -1861,7 +1861,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "566
 [; ;SD_PIC.c: 566:     }
 }
-[e :U 414 ]
+[e :U 415 ]
 "569
 [; ;SD_PIC.c: 569:     SD_Command(CMD10, 0);
 [e ( _SD_Command (2 , _CMD10 -> -> -> 0 `i `l `ul ]
@@ -1870,7 +1870,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "574
 [; ;SD_PIC.c: 574:     do{
-[e :U 417 ]
+[e :U 418 ]
 {
 "575
 [; ;SD_PIC.c: 575:         response = spiReceive();
@@ -1878,16 +1878,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "576
 [; ;SD_PIC.c: 576:     }while(response != START_BLOCK);
 }
-[e $ != -> _response `i -> _START_BLOCK `i 417  ]
-[e :U 416 ]
+[e $ != -> _response `i -> _START_BLOCK `i 418  ]
+[e :U 417 ]
 "578
 [; ;SD_PIC.c: 578:     for(unsigned char i = 0; i < 16; i++){
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 16 `i 418  ]
-[e $U 419  ]
-[e :U 418 ]
+[e $ < -> _i `i -> 16 `i 419  ]
+[e $U 420  ]
+[e :U 419 ]
 {
 "579
 [; ;SD_PIC.c: 579:         arr_response[i] = spiReceive();
@@ -1896,8 +1896,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 580:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 16 `i 418  ]
-[e :U 419 ]
+[e $ < -> _i `i -> 16 `i 419  ]
+[e :U 420 ]
 }
 "581
 [; ;SD_PIC.c: 581:     spiReceive();
@@ -1964,14 +1964,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _OSCTUNE _last_OSCTUNE ]
 "615
 [; ;SD_PIC.c: 615:     while(!OSCCONbits.IOFS){ _delay((unsigned long)((20)*(4000000/4000000.0))); }
-[e $U 421  ]
-[e :U 422 ]
+[e $U 422  ]
+[e :U 423 ]
 {
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
 }
-[e :U 421 ]
-[e $ ! != -> . . _OSCCONbits 0 1 `i -> 0 `i 422  ]
-[e :U 423 ]
+[e :U 422 ]
+[e $ ! != -> . . _OSCCONbits 0 1 `i -> 0 `i 423  ]
+[e :U 424 ]
 "618
 [; ;SD_PIC.c: 618:     spiInit(16);
 [e ( _spiInit (1 -> -> 16 `i `uc ]
@@ -1998,7 +1998,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . _SDCard 13 -> -> 1 `i `uc ]
 "630
 [; ;SD_PIC.c: 630: }
-[e :UE 367 ]
+[e :UE 368 ]
 }
 "634
 [; ;SD_PIC.c: 634: void read_init_sd_card(void)
@@ -2016,55 +2016,55 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _initSD ..  ]
 "638
 [; ;SD_PIC.c: 638:     if(SDCard.init){
-[e $ ! != -> . _SDCard 13 `i -> 0 `i 425  ]
+[e $ ! != -> . _SDCard 13 `i -> 0 `i 426  ]
 {
 "639
 [; ;SD_PIC.c: 639:             printf("SD init success!\r\n");
 [e ( _printf :s 1C ]
 "640
 [; ;SD_PIC.c: 640:             switch(SDCard.Type){
-[e $U 427  ]
+[e $U 428  ]
 {
 "641
 [; ;SD_PIC.c: 641:                 case TYPE_SDHC_SDXC: printf("Type: SDHC/SDXC\r\n");
-[e :U 428 ]
+[e :U 429 ]
 [e ( _printf :s 2C ]
 "642
 [; ;SD_PIC.c: 642:                     break;
-[e $U 426  ]
+[e $U 427  ]
 "643
 [; ;SD_PIC.c: 643:                 case TYPE_SDSC: printf("Type: SDSC\r\n");
-[e :U 429 ]
+[e :U 430 ]
 [e ( _printf :s 3C ]
 "644
 [; ;SD_PIC.c: 644:                     break;
-[e $U 426  ]
+[e $U 427  ]
 "645
 [; ;SD_PIC.c: 645:                 case TYPE_MMC: printf("Type: MMC\r\n");
-[e :U 430 ]
+[e :U 431 ]
 [e ( _printf :s 4C ]
 "646
 [; ;SD_PIC.c: 646:                     break;
-[e $U 426  ]
+[e $U 427  ]
 "647
 [; ;SD_PIC.c: 647:                 default:
-[e :U 431 ]
+[e :U 432 ]
 "648
 [; ;SD_PIC.c: 648:                     printf("Type: Unknown\r\n");
 [e ( _printf :s 5C ]
 "649
 [; ;SD_PIC.c: 649:                     break;
-[e $U 426  ]
+[e $U 427  ]
 "650
 [; ;SD_PIC.c: 650:             }
 }
-[e $U 426  ]
+[e $U 427  ]
+[e :U 428 ]
+[e [\ -> . _SDCard 1 `ui , $ -> . `E2692 1 `ui 429
+ , $ -> . `E2692 0 `ui 430
+ , $ -> . `E2692 2 `ui 431
+ 432 ]
 [e :U 427 ]
-[e [\ -> . _SDCard 1 `ui , $ -> . `E2525 1 `ui 428
- , $ -> . `E2525 0 `ui 429
- , $ -> . `E2525 2 `ui 430
- 431 ]
-[e :U 426 ]
 "651
 [; ;SD_PIC.c: 651:             _delay((unsigned long)((2000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
@@ -2160,10 +2160,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "689
 [; ;SD_PIC.c: 689:         }
 }
-[e $U 432  ]
+[e $U 433  ]
 "690
 [; ;SD_PIC.c: 690:         else{
-[e :U 425 ]
+[e :U 426 ]
 {
 "691
 [; ;SD_PIC.c: 691:             printf("SD init failed!\r\n");
@@ -2171,10 +2171,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "692
 [; ;SD_PIC.c: 692:         }
 }
-[e :U 432 ]
+[e :U 433 ]
 "694
 [; ;SD_PIC.c: 694: }
-[e :UE 424 ]
+[e :UE 425 ]
 }
 "702
 [; ;SD_PIC.c: 702: unsigned char average(unsigned char* array, unsigned short n){
@@ -2194,8 +2194,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _sum -> -> -> 0 `i `l `ul ]
 "705
 [; ;SD_PIC.c: 705:     while(idx < n){
-[e $U 434  ]
-[e :U 435 ]
+[e $U 435  ]
+[e :U 436 ]
 {
 "706
 [; ;SD_PIC.c: 706:         sum += array[idx];
@@ -2206,18 +2206,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "708
 [; ;SD_PIC.c: 708:     }
 }
-[e :U 434 ]
+[e :U 435 ]
 "705
 [; ;SD_PIC.c: 705:     while(idx < n){
-[e $ < -> _idx `ui -> _n `ui 435  ]
-[e :U 436 ]
+[e $ < -> _idx `ui -> _n `ui 436  ]
+[e :U 437 ]
 "709
 [; ;SD_PIC.c: 709:     return sum / n;
 [e ) -> / _sum -> _n `ul `uc ]
-[e $UE 433  ]
+[e $UE 434  ]
 "710
 [; ;SD_PIC.c: 710: }
-[e :UE 433 ]
+[e :UE 434 ]
 }
 "714
 [; ;SD_PIC.c: 714: void single_block_read(void)
@@ -2232,7 +2232,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _initSD ..  ]
 "718
 [; ;SD_PIC.c: 718:     if(SDCard.init){
-[e $ ! != -> . _SDCard 13 `i -> 0 `i 438  ]
+[e $ ! != -> . _SDCard 13 `i -> 0 `i 439  ]
 {
 "719
 [; ;SD_PIC.c: 719:         printf("Init success!\r\n");
@@ -2240,24 +2240,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "720
 [; ;SD_PIC.c: 720:     }
 }
-[e $U 439  ]
+[e $U 440  ]
 "721
 [; ;SD_PIC.c: 721:     else{
-[e :U 438 ]
+[e :U 439 ]
 {
 "722
 [; ;SD_PIC.c: 722:         printf("Init failed\r\n");
 [e ( _printf :s 23C ]
 "723
 [; ;SD_PIC.c: 723:         while(1);
-[e :U 441 ]
-[e :U 440 ]
-[e $U 441  ]
 [e :U 442 ]
+[e :U 441 ]
+[e $U 442  ]
+[e :U 443 ]
 "724
 [; ;SD_PIC.c: 724:     }
 }
-[e :U 439 ]
+[e :U 440 ]
 "725
 [; ;SD_PIC.c: 725:     _delay((unsigned long)((1000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
@@ -2268,19 +2268,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 728:     _delay((unsigned long)((1000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "731
-[; ;SD_PIC.c: 731:     if(SD_SingleBlockRead(0, readBuffer)){
-[e $ ! != -> ( _SD_SingleBlockRead (2 , -> -> -> 0 `i `l `ul &U _readBuffer `i -> 0 `i 443  ]
+[; ;SD_PIC.c: 731:     if(SD_SingleBlockRead(0, SDreadBuffer)){
+[e $ ! != -> ( _SD_SingleBlockRead (2 , -> -> -> 0 `i `l `ul &U _SDreadBuffer `i -> 0 `i 444  ]
 {
 "732
-[; ;SD_PIC.c: 732:         printf("Avg: %d\r\n", average(readBuffer, 512));
-[e ( _printf , :s 25C -> ( _average (2 , &U _readBuffer -> -> 512 `i `us `i ]
+[; ;SD_PIC.c: 732:         printf("Avg: %d\r\n", average(SDreadBuffer, 512));
+[e ( _printf , :s 25C -> ( _average (2 , &U _SDreadBuffer -> -> 512 `i `us `i ]
 "733
 [; ;SD_PIC.c: 733:     }
 }
-[e $U 444  ]
+[e $U 445  ]
 "734
 [; ;SD_PIC.c: 734:     else{
-[e :U 443 ]
+[e :U 444 ]
 {
 "736
 [; ;SD_PIC.c: 736:         printf("Failure!\r\n");
@@ -2288,13 +2288,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "737
 [; ;SD_PIC.c: 737:     }
 }
-[e :U 444 ]
+[e :U 445 ]
 "738
 [; ;SD_PIC.c: 738:     _delay((unsigned long)((1000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "739
 [; ;SD_PIC.c: 739: }
-[e :UE 437 ]
+[e :UE 438 ]
 }
 "741
 [; ;SD_PIC.c: 741: void multiple_block_write(void)
@@ -2319,19 +2319,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 748:     for(i = 0; i < 512; i++){
 {
 [e = _i -> -> -> 0 `i `l `ul ]
-[e $ < _i -> -> -> 512 `i `l `ul 446  ]
-[e $U 447  ]
-[e :U 446 ]
+[e $ < _i -> -> -> 512 `i `l `ul 447  ]
+[e $U 448  ]
+[e :U 447 ]
 {
 "749
-[; ;SD_PIC.c: 749:         writeBuffer[i] = 0x34;
-[e = *U + &U _writeBuffer * -> _i `ux -> -> # *U &U _writeBuffer `ui `ux -> -> 52 `i `uc ]
+[; ;SD_PIC.c: 749:         SDwriteBuffer[i] = 0x34;
+[e = *U + &U _SDwriteBuffer * -> _i `ux -> -> # *U &U _SDwriteBuffer `ui `ux -> -> 52 `i `uc ]
 "750
 [; ;SD_PIC.c: 750:     }
 }
 [e ++ _i -> -> -> 1 `i `l `ul ]
-[e $ < _i -> -> -> 512 `i `l `ul 446  ]
-[e :U 447 ]
+[e $ < _i -> -> -> 512 `i `l `ul 447  ]
+[e :U 448 ]
 }
 "752
 [; ;SD_PIC.c: 752:     printf("MBW Start...\r\n");
@@ -2343,23 +2343,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 755:     for(i = 0; i < numWrites; i++){
 {
 [e = _i -> -> -> 0 `i `l `ul ]
-[e $U 452  ]
-[e :U 449 ]
+[e $U 453  ]
+[e :U 450 ]
 {
 "757
-[; ;SD_PIC.c: 757:         if(!SD_MBW_Send(writeBuffer)){
-[e $ ! ! != -> ( _SD_MBW_Send (1 &U _writeBuffer `i -> 0 `i 453  ]
+[; ;SD_PIC.c: 757:         if(!SD_MBW_Send(SDwriteBuffer)){
+[e $ ! ! != -> ( _SD_MBW_Send (1 &U _SDwriteBuffer `i -> 0 `i 454  ]
 {
 "758
 [; ;SD_PIC.c: 758:             break;
-[e $U 450  ]
+[e $U 451  ]
 "759
 [; ;SD_PIC.c: 759:         }
 }
-[e :U 453 ]
+[e :U 454 ]
 "760
 [; ;SD_PIC.c: 760:         if(i % 100 == 0){
-[e $ ! == % _i -> -> -> 100 `i `l `ul -> -> -> 0 `i `l `ul 454  ]
+[e $ ! == % _i -> -> -> 100 `i `l `ul -> -> -> 0 `i `l `ul 455  ]
 {
 "762
 [; ;SD_PIC.c: 762:             printf("Done: %lu\r\n", i);
@@ -2367,14 +2367,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "763
 [; ;SD_PIC.c: 763:         }
 }
-[e :U 454 ]
+[e :U 455 ]
 "764
 [; ;SD_PIC.c: 764:     }
 }
 [e ++ _i -> -> -> 1 `i `l `ul ]
-[e :U 452 ]
-[e $ < _i -> _numWrites `ul 449  ]
-[e :U 450 ]
+[e :U 453 ]
+[e $ < _i -> _numWrites `ul 450  ]
+[e :U 451 ]
 }
 "765
 [; ;SD_PIC.c: 765:     SD_MBW_Stop();
@@ -2402,7 +2402,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "773
 [; ;SD_PIC.c: 773: }
-[e :UE 445 ]
+[e :UE 446 ]
 }
 "775
 [; ;SD_PIC.c: 775: void multiple_block_read(void)
@@ -2424,24 +2424,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _numWrites `us ~T0 @X0 1 a ]
 [e = _numWrites -> -> 1000 `i `us ]
 "780
-[; ;SD_PIC.c: 780:     for(i = 0; i < sizeof(readBuffer); i++)
+[; ;SD_PIC.c: 780:     for(i = 0; i < sizeof(SDreadBuffer); i++)
 {
 [e = _i -> -> -> 0 `i `l `ul ]
-[e $ < _i -> -> # _readBuffer `ui `ul 456  ]
-[e $U 457  ]
-[e :U 456 ]
+[e $ < _i -> -> # _SDreadBuffer `ui `ul 457  ]
+[e $U 458  ]
+[e :U 457 ]
 "781
 [; ;SD_PIC.c: 781:     {
 {
 "783
-[; ;SD_PIC.c: 783:         readBuffer[i] = 0;
-[e = *U + &U _readBuffer * -> _i `ux -> -> # *U &U _readBuffer `ui `ux -> -> 0 `i `uc ]
+[; ;SD_PIC.c: 783:         SDreadBuffer[i] = 0;
+[e = *U + &U _SDreadBuffer * -> _i `ux -> -> # *U &U _SDreadBuffer `ui `ux -> -> 0 `i `uc ]
 "784
 [; ;SD_PIC.c: 784:     }
 }
 [e ++ _i -> -> -> 1 `i `l `ul ]
-[e $ < _i -> -> # _readBuffer `ui `ul 456  ]
-[e :U 457 ]
+[e $ < _i -> -> # _SDreadBuffer `ui `ul 457  ]
+[e :U 458 ]
 }
 "787
 [; ;SD_PIC.c: 787:     unsigned long avg = 0;
@@ -2460,20 +2460,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 796:     for(i = 0;
 {
 [e = _i -> -> -> 0 `i `l `ul ]
-[e $U 462  ]
-[e :U 459 ]
+[e $U 463  ]
+[e :U 460 ]
 "800
 [; ;SD_PIC.c: 800:     {
 {
 "802
-[; ;SD_PIC.c: 802:         SD_MBR_Receive(readBuffer);
-[e ( _SD_MBR_Receive (1 &U _readBuffer ]
+[; ;SD_PIC.c: 802:         SD_MBR_Receive(SDreadBuffer);
+[e ( _SD_MBR_Receive (1 &U _SDreadBuffer ]
 "806
-[; ;SD_PIC.c: 806:         avg += average(readBuffer, 512);
-[e =+ _avg -> ( _average (2 , &U _readBuffer -> -> 512 `i `us `ul ]
+[; ;SD_PIC.c: 806:         avg += average(SDreadBuffer, 512);
+[e =+ _avg -> ( _average (2 , &U _SDreadBuffer -> -> 512 `i `us `ul ]
 "808
 [; ;SD_PIC.c: 808:         if((i > 0) && (i % 250 == 0)){
-[e $ ! && > _i -> -> -> 0 `i `l `ul == % _i -> -> -> 250 `i `l `ul -> -> -> 0 `i `l `ul 463  ]
+[e $ ! && > _i -> -> -> 0 `i `l `ul == % _i -> -> -> 250 `i `l `ul -> -> -> 0 `i `l `ul 464  ]
 {
 "809
 [; ;SD_PIC.c: 809:             printf(".");
@@ -2481,14 +2481,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "810
 [; ;SD_PIC.c: 810:         }
 }
-[e :U 463 ]
+[e :U 464 ]
 "811
 [; ;SD_PIC.c: 811:     }
 }
 [e ++ _i -> -> -> 1 `i `l `ul ]
-[e :U 462 ]
-[e $ < _i + - . . _SDCard 14 0 . . _SDCard 14 1 -> -> -> 1 `i `l `ul 459  ]
-[e :U 460 ]
+[e :U 463 ]
+[e $ < _i + - . . _SDCard 14 0 . . _SDCard 14 1 -> -> -> 1 `i `l `ul 460  ]
+[e :U 461 ]
 }
 "812
 [; ;SD_PIC.c: 812:     SD_MBR_Stop();
@@ -2510,19 +2510,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _printf , :s 35C -> _avg `i ]
 "823
 [; ;SD_PIC.c: 823: }
-[e :UE 455 ]
+[e :UE 456 ]
 }
 "825
-[; ;SD_PIC.c: 825: void single_block_write(void)
-[v _single_block_write `(v ~T0 @X0 1 ef ]
+[; ;SD_PIC.c: 825: void single_block_write(unsigned long sector)
+[v _single_block_write `(v ~T0 @X0 1 ef1`ul ]
 "826
 [; ;SD_PIC.c: 826: {
 {
 [e :U _single_block_write ]
+"825
+[; ;SD_PIC.c: 825: void single_block_write(unsigned long sector)
+[v _sector `ul ~T0 @X0 1 r1 ]
+"826
+[; ;SD_PIC.c: 826: {
 [f ]
-"827
-[; ;SD_PIC.c: 827:     unsigned long i;
-[v _i `ul ~T0 @X0 1 a ]
 "829
 [; ;SD_PIC.c: 829:     { SSPCON1bits.SSPEN = 1; LATEbits.LATE2 = 0;};
 {
@@ -2530,55 +2532,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 }
 "830
-[; ;SD_PIC.c: 830:     SD_EraseBlocks(0, 0);
-[e ( _SD_EraseBlocks (2 , -> -> -> 0 `i `l `ul -> -> -> 0 `i `l `ul ]
+[; ;SD_PIC.c: 830:     SD_EraseBlocks(sector, sector);
+[e ( _SD_EraseBlocks (2 , _sector _sector ]
 "831
 [; ;SD_PIC.c: 831:     while(spiReceive() != 0xFF){ continue; }
-[e $U 465  ]
-[e :U 466 ]
-{
-[e $U 465  ]
-}
-[e :U 465 ]
-[e $ != -> ( _spiReceive ..  `i -> 255 `i 466  ]
+[e $U 466  ]
 [e :U 467 ]
-"834
-[; ;SD_PIC.c: 834:     for(i = 0; i < 512; i++){
 {
-[e = _i -> -> -> 0 `i `l `ul ]
-[e $ < _i -> -> -> 512 `i `l `ul 468  ]
-[e $U 469  ]
+[e $U 466  ]
+}
+[e :U 466 ]
+[e $ != -> ( _spiReceive ..  `i -> 255 `i 467  ]
 [e :U 468 ]
-{
-"835
-[; ;SD_PIC.c: 835:         writeBuffer[i] = 10;
-[e = *U + &U _writeBuffer * -> _i `ux -> -> # *U &U _writeBuffer `ui `ux -> -> 10 `i `uc ]
-"836
-[; ;SD_PIC.c: 836:     }
-}
-[e ++ _i -> -> -> 1 `i `l `ul ]
-[e $ < _i -> -> -> 512 `i `l `ul 468  ]
+"834
+[; ;SD_PIC.c: 834:     while(!SD_SingleBlockWrite(sector, SDwriteBuffer));
+[e $U 469  ]
+[e :U 470 ]
 [e :U 469 ]
-}
-"839
-[; ;SD_PIC.c: 839:     while(!SD_SingleBlockWrite(0, writeBuffer));
-[e $U 471  ]
-[e :U 472 ]
+[e $ ! != -> ( _SD_SingleBlockWrite (2 , _sector &U _SDwriteBuffer `i -> 0 `i 470  ]
 [e :U 471 ]
-[e $ ! != -> ( _SD_SingleBlockWrite (2 , -> -> -> 0 `i `l `ul &U _writeBuffer `i -> 0 `i 472  ]
-[e :U 473 ]
-"841
-[; ;SD_PIC.c: 841:     printf("Single block\r\n");
+"836
+[; ;SD_PIC.c: 836:     printf("Single block\r\n");
 [e ( _printf :s 36C ]
-"843
-[; ;SD_PIC.c: 843:     printf("write finished\r\n");
+"838
+[; ;SD_PIC.c: 838:     printf("write finished\r\n");
 [e ( _printf :s 37C ]
-"844
-[; ;SD_PIC.c: 844:     _delay((unsigned long)((1000)*(4000000/4000.0)));
+"839
+[; ;SD_PIC.c: 839:     _delay((unsigned long)((1000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"845
-[; ;SD_PIC.c: 845: }
-[e :UE 464 ]
+"840
+[; ;SD_PIC.c: 840: }
+[e :UE 465 ]
 }
 [a 19C 78 117 109 98 101 114 32 111 102 32 98 108 111 99 107 115 58 0 ]
 [a 17C 78 117 109 98 101 114 32 111 102 32 77 66 58 0 ]
