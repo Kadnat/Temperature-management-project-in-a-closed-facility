@@ -5622,6 +5622,6 @@ void single_block_write(unsigned long sector)
 
     printf("Single block\r\n");
 
-    printf("write finished\r\n");
+    printf("write finished in sector %d\r\n",sector);
     _delay((unsigned long)((1000)*(4000000/4000.0)));
 }

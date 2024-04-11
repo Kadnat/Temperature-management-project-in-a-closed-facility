@@ -4827,6 +4827,7 @@ void reset_eep_address_in_eeprom(void);
 void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
+void temp_management(SystemData* pSystem_data);
 # 11 "./RTC.h" 2
 # 30 "./RTC.h"
 typedef struct {

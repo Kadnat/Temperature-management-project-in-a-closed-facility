@@ -16,6 +16,12 @@
 #include "temp_monitoring.h"
 #include "heater.h"
 
+#define MAX_BUFFER_SIZE 100
+#define NUM_COMMANDS 3
+
+char rx_buffer[MAX_BUFFER_SIZE];
+int rx_buffer_index = 0;
+char* commands[NUM_COMMANDS] = {"HISTORY:", "ALARMS", "COMMAND:"};
 
 uint8_t receive_usart_data;
 
@@ -31,7 +37,7 @@ void USART_TxDefaultInterruptHandler(void);
 void USART_RxDefaultInterruptHandler(void);
 void usart_module_init(void);
 void timer1_timer_init(void);
-
+void execute_rx_command(int command_index);
 
 void main(void) {
 
@@ -40,28 +46,12 @@ void main(void) {
     usart_module_init();
     timer1_timer_init();
     
-    system_management.error_type = TOO_COLD;
-    led_set_mode(&system_management);
-    heater_set_mode(ON);
-
-    
     read_eep_address_in_eeprom();
     read_sd_address_in_eeprom();
 
-    set_pwm_duty(0);
     start_pwm();
     LCD_Init(0x27); // start LCD function
 
-
-    //Set_DS1307_RTC_Time(TwentyFourHoursMode,10,8,00);
-    //Set_DS1307_RTC_Date(2,4,24,2);
-    //single_block_write();
-    
-    //single_block_read();
-    
-    //multiple_block_write();
-    
-    //multiple_block_read();
     read_init_sd_card();
             
     while(1)
@@ -73,13 +63,19 @@ void main(void) {
 
 void Timer1_DefaultInterruptHandler(void)
 {
-    static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_eeprom=0;
+    static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0;
     static uint32_t cpt_ms_sd=0;
+    static uint8_t cpt_ms_temp_management=0;
     cpt_ms_lcd++;
     cpt_ms_oled++;
-    cpt_ms_eeprom++;
     cpt_ms_sd++;
+    cpt_ms_temp_management++;
     
+    if(cpt_ms_temp_management >= 100)
+    {
+        cpt_ms_temp_management=0;
+        temp_management(&system_management);
+    }
     if(cpt_ms_lcd >=1000)
     {
         update_system_data(&system_management);
@@ -98,20 +94,10 @@ void Timer1_DefaultInterruptHandler(void)
     
     if(cpt_ms_sd >= 30000)
     {
-        //save_in_eeprom(&system_management);
         update_SD_tab(&system_management);
-        //extract_data_for_days(1);
         cpt_ms_sd=0;
-        //extract_all_alarms();
     }
-    
-    if(cpt_ms_eeprom >= 60000)
-    {
-        //save_in_eeprom(&system_management);
-        cpt_ms_eeprom=0;
-        //extract_all_alarms();
-    }
-    
+
 
 }
 
@@ -154,7 +140,58 @@ void USART_RxDefaultInterruptHandler(void)
     uint8_t ret = 0;
     valid_usart_rx++;
     ret = USART_Asynchronous_ReadByte_NonBlocking(&receive_usart_data);
-      
+
+    // Ajouter le caractère reçu au buffer
+    if (rx_buffer_index < MAX_BUFFER_SIZE - 1) {
+        rx_buffer[rx_buffer_index] = receive_usart_data;
+        rx_buffer_index++;
+    }
+
+    // Vérifier si le buffer contient un caractère de fin de ligne
+    if (strchr(rx_buffer, '\n') != NULL) {
+        // Vérifier si le buffer correspond à une commande
+        for (int i = 0; i < NUM_COMMANDS; i++) {
+            if (strncmp(rx_buffer, commands[i], strlen(commands[i])) == 0) {
+                // La commande correspond, exécuter l'action correspondante
+                printf("command receive\r\n");
+                execute_rx_command(i);
+                break;
+            }
+        }
+
+        // Vider le buffer après avoir traité la commande
+        memset(rx_buffer, 0, sizeof(rx_buffer));
+        rx_buffer_index = 0;
+    }
+}
+
+void execute_rx_command(int command_index) {
+    // Exécuter l'action correspondante à la commande
+    switch (command_index) {
+        case 0:
+            {
+                // Extraire le nombre après "HISTORY:"
+                int days = atoi(rx_buffer + strlen(commands[0]));
+                extract_data_for_days(days);
+            }
+            
+            break;
+        case 1:
+            // Exécuter l'action pour "ALARMS"
+            extract_all_alarms();
+            break;
+            
+        case 2:
+            // Exécuter l'action pour "COMMAND"
+        {
+            float temperature = atof(rx_buffer + strlen(commands[2]));
+            system_management.command_decimal = (uint8_t)temperature;
+            system_management.command_fraction = (temperature - (float)system_management.command_decimal) * 100.0;
+        }       
+            break;
+        default:
+            break;
+    }
 }
 
 void usart_module_init(void)

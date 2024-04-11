@@ -6,4 +6,7 @@ ds18b20.h  \
 RTC.h  \
 AT24C32.h  \
 SD_PIC.h  \
-SPI_PIC.h 
+SPI_PIC.h  \
+PWM.h  \
+led.h  \
+heater.h 

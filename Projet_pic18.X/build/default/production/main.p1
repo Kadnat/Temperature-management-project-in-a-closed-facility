@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"25 main.c
-[; ;main.c: 25: SystemData system_management;
+"31 main.c
+[; ;main.c: 31: SystemData system_management;
 [c E2687 0 1 2 .. ]
 [n E2687 . NO_ERROR TOO_HOT TOO_COLD  ]
 "20 ./temp_monitoring.h
@@ -8,32 +8,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [s S271 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E2687 1 ]
 [n S271 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
 [p mainexit ]
-"32 main.c
-[; ;main.c: 32: void usart_module_init(void);
+"38 main.c
+[; ;main.c: 38: void usart_module_init(void);
 [v _usart_module_init `(v ~T0 @X0 0 ef ]
-"33
-[; ;main.c: 33: void timer1_timer_init(void);
+"39
+[; ;main.c: 39: void timer1_timer_init(void);
 [v _timer1_timer_init `(v ~T0 @X0 0 ef ]
-"15 ./led.h
-[; ;./led.h: 15: void led_set_mode(SystemData *psystem_state);
-[v _led_set_mode `(v ~T0 @X0 0 ef1`*S271 ]
-"45 main.c
-[; ;main.c: 45:     heater_set_mode(ON);
-[c E2640 0 1 .. ]
-[n E2640 . OFF ON  ]
-"10 ./heater.h
-[; ;./heater.h: 10: void heater_set_mode(BooleanState state);
-[v _heater_set_mode `(v ~T0 @X0 0 ef1`E2640 ]
 "40 ./temp_monitoring.h
 [; ;./temp_monitoring.h: 40: void read_eep_address_in_eeprom(void);
 [v _read_eep_address_in_eeprom `(v ~T0 @X0 0 ef ]
 "44
 [; ;./temp_monitoring.h: 44: void read_sd_address_in_eeprom(void);
 [v _read_sd_address_in_eeprom `(v ~T0 @X0 0 ef ]
-"7 ./PWM.h
-[; ;./PWM.h: 7: void set_pwm_duty(float duty);
-[v _set_pwm_duty `(v ~T0 @X0 0 ef1`f ]
-"6
+"6 ./PWM.h
 [; ;./PWM.h: 6: void start_pwm(void);
 [v _start_pwm `(v ~T0 @X0 0 ef ]
 "47 ./lcd.h
@@ -42,7 +29,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "228 ./SD_PIC.h
 [; ;./SD_PIC.h: 228: void read_init_sd_card(void);
 [v _read_init_sd_card `(v ~T0 @X0 0 ef ]
-"39 ./temp_monitoring.h
+"49 ./temp_monitoring.h
+[; ;./temp_monitoring.h: 49: void temp_management(SystemData* pSystem_data);
+[v _temp_management `(v ~T0 @X0 0 ef1`*S271 ]
+"39
 [; ;./temp_monitoring.h: 39: void update_system_data(SystemData* pSystem_data);
 [v _update_system_data `(v ~T0 @X0 0 ef1`*S271 ]
 "62 ./RTC.h
@@ -57,14 +47,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "42 ./temp_monitoring.h
 [; ;./temp_monitoring.h: 42: void update_SD_tab(SystemData* pSystem_data);
 [v _update_SD_tab `(v ~T0 @X0 0 ef1`*S271 ]
-[v F3726 `(v ~T0 @X0 0 tf ]
-"120 main.c
-[; ;main.c: 120:     timer1_t timer_obj;
-[c E2766 0 1 .. ]
-[n E2766 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
+[v F3728 `(v ~T0 @X0 0 tf ]
+"106 main.c
+[; ;main.c: 106:     timer1_t timer_obj;
+[c E2768 0 1 .. ]
+[n E2768 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
 "82 ./hal_timer1.h
 [; ;./hal_timer1.h: 82: {
-[s S284 `*F3726 1 `E2766 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
+[s S284 `*F3728 1 `E2768 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
 [n S284 . TMR1_InterruptHandler priority timer1_preload_value timer1_prescaler_value timer1_mode timer1_counter_mode timer1_osc_cfg timer1_reg_rw_mode timer1_reserved ]
 "105
 [; ;./hal_timer1.h: 105: uint8_t Timer1_Init(const timer1_t *_timer);
@@ -78,17 +68,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 "188
 [; ;./hal_usart.h: 188: uint8_t USART_Asynchronous_Restart_RX(void);
 [v _USART_Asynchronous_Restart_RX `(uc ~T0 @X0 0 ef ]
-"163 main.c
-[; ;main.c: 163:     usart_t usart_obj;
-[c E2770 0 1 2 3 4 5 .. ]
-[n E2770 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
+"45 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\string.h
+[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\string.h: 45: char *strchr (const char *, int);
+[v _strchr `(*uc ~T0 @X0 0 ef2`*Cuc`i ]
+"40
+[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\string.h: 40: int strncmp (const char *, const char *, size_t);
+[v _strncmp `(i ~T0 @X0 0 ef3`*Cuc`*Cuc`ui ]
+"54
+[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\string.h: 54: size_t strlen (const char *);
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+"105 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h
+[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h: 105: int printf(const char *restrict, ...);
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"40 main.c
+[; ;main.c: 40: void execute_rx_command(int command_index);
+[v _execute_rx_command `(v ~T0 @X0 0 ef1`i ]
+"29 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\string.h
+[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\string.h: 29: void *memset (void *, int, size_t);
+[v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
+"23 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdlib.h
+[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdlib.h: 23: int atoi (const char *);
+[v _atoi `(i ~T0 @X0 0 ef1`*Cuc ]
+"48 ./temp_monitoring.h
+[; ;./temp_monitoring.h: 48: void extract_data_for_days(int number_days);
+[v _extract_data_for_days `(v ~T0 @X0 0 ef1`i ]
+"46
+[; ;./temp_monitoring.h: 46: void extract_all_alarms(void);
+[v _extract_all_alarms `(v ~T0 @X0 0 ef ]
+"26 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdlib.h
+[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdlib.h: 26: double atof (const char *);
+[v _atof `(d ~T0 @X0 0 ef1`*Cuc ]
+"200 main.c
+[; ;main.c: 200:     usart_t usart_obj;
+[c E2772 0 1 2 3 4 5 .. ]
+[n E2772 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
 "100 ./hal_usart.h
 [; ;./hal_usart.h: 100: {
-[s S274 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2766 1 ]
+[s S274 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2768 1 ]
 [n S274 . usart_tx_reserved usart_enable_tx usart_enable_tx_interrupt usart_enable_9bit_tx usart_tx_interrupt_priority ]
 "110
 [; ;./hal_usart.h: 110: {
-[s S275 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2766 1 ]
+[s S275 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2768 1 ]
 [n S275 . usart_rx_reserved usart_enable_rx usart_enable_rx_interrupt usart_enable_9bit_rx usart_rx_interrupt_priority ]
 "122
 [; ;./hal_usart.h: 122:     {
@@ -98,13 +118,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./hal_usart.h: 120: {
 [u S276 `S277 1 `uc 1 ]
 [n S276 . . status ]
-[v F2807 `(v ~T0 @X0 0 tf ]
 [v F2809 `(v ~T0 @X0 0 tf ]
 [v F2811 `(v ~T0 @X0 0 tf ]
 [v F2813 `(v ~T0 @X0 0 tf ]
+[v F2815 `(v ~T0 @X0 0 tf ]
 "132
 [; ;./hal_usart.h: 132: {
-[s S278 `ul 1 `E2770 1 `S274 1 `S275 1 `S276 1 `*F2807 1 `*F2809 1 `*F2811 1 `*F2813 1 ]
+[s S278 `ul 1 `E2772 1 `S274 1 `S275 1 `S276 1 `*F2809 1 `*F2811 1 `*F2813 1 `*F2815 1 ]
 [n S278 . baudrate baudrate_config usart_tx_cfg usart_rx_cfg eusart_error_status USART_TxDefaultInterruptHandler USART_RxDefaultInterruptHandler USART_FramingErrorHandler USART_OverrunErrorHandler ]
 "153
 [; ;./hal_usart.h: 153: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart);
@@ -455,373 +475,532 @@ Version 4.0 HI-TECH Software Intermediate Code
 "58
 [; ;./RTC.h: 58: unsigned char Temp;
 [v _Temp `uc ~T0 @X0 1 e ]
-"20 main.c
-[; ;main.c: 20: uint8_t receive_usart_data;
-[v _receive_usart_data `uc ~T0 @X0 1 e ]
-"22
-[; ;main.c: 22: volatile uint32_t valid_usart_tx;
-[v _valid_usart_tx `Vul ~T0 @X0 1 e ]
+"22 main.c
+[; ;main.c: 22: char rx_buffer[100];
+[v _rx_buffer `uc ~T0 @X0 -> 100 `i e ]
 "23
-[; ;main.c: 23: volatile uint32_t valid_usart_rx;
+[; ;main.c: 23: int rx_buffer_index = 0;
+[v _rx_buffer_index `i ~T0 @X0 1 e ]
+[i _rx_buffer_index
+-> 0 `i
+]
+"24
+[; ;main.c: 24: char* commands[3] = {"HISTORY:", "ALARMS", "COMMAND:"};
+[v _commands `*uc ~T0 @X0 -> 3 `i e ]
+[i _commands
+:U ..
+:s 1C
+:s 2C
+:s 3C
+..
+]
+"26
+[; ;main.c: 26: uint8_t receive_usart_data;
+[v _receive_usart_data `uc ~T0 @X0 1 e ]
+"28
+[; ;main.c: 28: volatile uint32_t valid_usart_tx;
+[v _valid_usart_tx `Vul ~T0 @X0 1 e ]
+"29
+[; ;main.c: 29: volatile uint32_t valid_usart_rx;
 [v _valid_usart_rx `Vul ~T0 @X0 1 e ]
-"25
-[; ;main.c: 25: SystemData system_management;
+"31
+[; ;main.c: 31: SystemData system_management;
 [v _system_management `S271 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"36
-[; ;main.c: 36: void main(void) {
+"42
+[; ;main.c: 42: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"38
-[; ;main.c: 38:     uint8_t ret=0;
+"44
+[; ;main.c: 44:     uint8_t ret=0;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `i `uc ]
-"39
-[; ;main.c: 39:     volatile uint16_t timer1_counter_val;
-[v _timer1_counter_val `Vus ~T0 @X0 1 a ]
-"40
-[; ;main.c: 40:     usart_module_init();
-[e ( _usart_module_init ..  ]
-"41
-[; ;main.c: 41:     timer1_timer_init();
-[e ( _timer1_timer_init ..  ]
-"43
-[; ;main.c: 43:     system_management.error_type = TOO_COLD;
-[e = . _system_management 13 . `E2687 2 ]
-"44
-[; ;main.c: 44:     led_set_mode(&system_management);
-[e ( _led_set_mode (1 &U _system_management ]
 "45
-[; ;main.c: 45:     heater_set_mode(ON);
-[e ( _heater_set_mode (1 . `E2640 1 ]
-"48
-[; ;main.c: 48:     read_eep_address_in_eeprom();
-[e ( _read_eep_address_in_eeprom ..  ]
+[; ;main.c: 45:     volatile uint16_t timer1_counter_val;
+[v _timer1_counter_val `Vus ~T0 @X0 1 a ]
+"46
+[; ;main.c: 46:     usart_module_init();
+[e ( _usart_module_init ..  ]
+"47
+[; ;main.c: 47:     timer1_timer_init();
+[e ( _timer1_timer_init ..  ]
 "49
-[; ;main.c: 49:     read_sd_address_in_eeprom();
+[; ;main.c: 49:     read_eep_address_in_eeprom();
+[e ( _read_eep_address_in_eeprom ..  ]
+"50
+[; ;main.c: 50:     read_sd_address_in_eeprom();
 [e ( _read_sd_address_in_eeprom ..  ]
-"51
-[; ;main.c: 51:     set_pwm_duty(0);
-[e ( _set_pwm_duty (1 -> -> 0 `i `f ]
 "52
 [; ;main.c: 52:     start_pwm();
 [e ( _start_pwm ..  ]
 "53
 [; ;main.c: 53:     LCD_Init(0x27);
 [e ( _LCD_Init (1 -> -> 39 `i `uc ]
-"65
-[; ;main.c: 65:     read_init_sd_card();
+"55
+[; ;main.c: 55:     read_init_sd_card();
 [e ( _read_init_sd_card ..  ]
-"67
-[; ;main.c: 67:     while(1)
+"57
+[; ;main.c: 57:     while(1)
 [e :U 288 ]
-"68
-[; ;main.c: 68:     {
+"58
+[; ;main.c: 58:     {
 {
-"70
-[; ;main.c: 70:      }
+"60
+[; ;main.c: 60:      }
 }
 [e :U 287 ]
 [e $U 288  ]
 [e :U 289 ]
-"72
-[; ;main.c: 72: }
+"62
+[; ;main.c: 62: }
 [e :UE 286 ]
 }
-"74
-[; ;main.c: 74: void Timer1_DefaultInterruptHandler(void)
+"64
+[; ;main.c: 64: void Timer1_DefaultInterruptHandler(void)
 [v _Timer1_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
-"75
-[; ;main.c: 75: {
+"65
+[; ;main.c: 65: {
 {
 [e :U _Timer1_DefaultInterruptHandler ]
 [f ]
-"76
-[; ;main.c: 76:     static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_eeprom=0;
-[v F3796 `us ~T0 @X0 1 s cpt_ms_lcd ]
-[i F3796
+"66
+[; ;main.c: 66:     static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0;
+[v F3803 `us ~T0 @X0 1 s cpt_ms_lcd ]
+[i F3803
 -> -> 0 `i `us
 ]
-[v F3797 `us ~T0 @X0 1 s cpt_ms_oled ]
-[i F3797
+[v F3804 `us ~T0 @X0 1 s cpt_ms_oled ]
+[i F3804
 -> -> 0 `i `us
 ]
-[v F3798 `us ~T0 @X0 1 s cpt_ms_eeprom ]
-[i F3798
--> -> 0 `i `us
-]
-"77
-[; ;main.c: 77:     static uint32_t cpt_ms_sd=0;
-[v F3799 `ul ~T0 @X0 1 s cpt_ms_sd ]
-[i F3799
+"67
+[; ;main.c: 67:     static uint32_t cpt_ms_sd=0;
+[v F3805 `ul ~T0 @X0 1 s cpt_ms_sd ]
+[i F3805
 -> -> -> 0 `i `l `ul
 ]
-"78
-[; ;main.c: 78:     cpt_ms_lcd++;
-[e ++ F3796 -> -> 1 `i `us ]
-"79
-[; ;main.c: 79:     cpt_ms_oled++;
-[e ++ F3797 -> -> 1 `i `us ]
-"80
-[; ;main.c: 80:     cpt_ms_eeprom++;
-[e ++ F3798 -> -> 1 `i `us ]
-"81
-[; ;main.c: 81:     cpt_ms_sd++;
-[e ++ F3799 -> -> -> 1 `i `l `ul ]
-"83
-[; ;main.c: 83:     if(cpt_ms_lcd >=1000)
-[e $ ! >= -> F3796 `ui -> -> 1000 `i `ui 291  ]
-"84
-[; ;main.c: 84:     {
+"68
+[; ;main.c: 68:     static uint8_t cpt_ms_temp_management=0;
+[v F3806 `uc ~T0 @X0 1 s cpt_ms_temp_management ]
+[i F3806
+-> -> 0 `i `uc
+]
+"69
+[; ;main.c: 69:     cpt_ms_lcd++;
+[e ++ F3803 -> -> 1 `i `us ]
+"70
+[; ;main.c: 70:     cpt_ms_oled++;
+[e ++ F3804 -> -> 1 `i `us ]
+"71
+[; ;main.c: 71:     cpt_ms_sd++;
+[e ++ F3805 -> -> -> 1 `i `l `ul ]
+"72
+[; ;main.c: 72:     cpt_ms_temp_management++;
+[e ++ F3806 -> -> 1 `i `uc ]
+"74
+[; ;main.c: 74:     if(cpt_ms_temp_management >= 100)
+[e $ ! >= -> F3806 `i -> 100 `i 291  ]
+"75
+[; ;main.c: 75:     {
 {
-"85
-[; ;main.c: 85:         update_system_data(&system_management);
-[e ( _update_system_data (1 &U _system_management ]
-"87
-[; ;main.c: 87:         DisplayTimeToLCD(&system_management);
-[e ( _DisplayTimeToLCD (1 &U _system_management ]
-"88
-[; ;main.c: 88:         DisplayDateOnLCD(&system_management);
-[e ( _DisplayDateOnLCD (1 &U _system_management ]
-"89
-[; ;main.c: 89:         cpt_ms_lcd=0;
-[e = F3796 -> -> 0 `i `us ]
-"91
-[; ;main.c: 91:     }
+"76
+[; ;main.c: 76:         cpt_ms_temp_management=0;
+[e = F3806 -> -> 0 `i `uc ]
+"77
+[; ;main.c: 77:         temp_management(&system_management);
+[e ( _temp_management (1 &U _system_management ]
+"78
+[; ;main.c: 78:     }
 }
 [e :U 291 ]
-"93
-[; ;main.c: 93:     if(cpt_ms_oled >=10000)
-[e $ ! >= -> F3797 `ui -> -> 10000 `i `ui 292  ]
-"94
-[; ;main.c: 94:     {
+"79
+[; ;main.c: 79:     if(cpt_ms_lcd >=1000)
+[e $ ! >= -> F3803 `ui -> -> 1000 `i `ui 292  ]
+"80
+[; ;main.c: 80:     {
 {
-"95
-[; ;main.c: 95:         print_temperature(system_management.temperature);
-[e ( _print_temperature (1 . _system_management 10 ]
-"96
-[; ;main.c: 96:         cpt_ms_oled=0;
-[e = F3797 -> -> 0 `i `us ]
-"97
-[; ;main.c: 97:     }
+"81
+[; ;main.c: 81:         update_system_data(&system_management);
+[e ( _update_system_data (1 &U _system_management ]
+"83
+[; ;main.c: 83:         DisplayTimeToLCD(&system_management);
+[e ( _DisplayTimeToLCD (1 &U _system_management ]
+"84
+[; ;main.c: 84:         DisplayDateOnLCD(&system_management);
+[e ( _DisplayDateOnLCD (1 &U _system_management ]
+"85
+[; ;main.c: 85:         cpt_ms_lcd=0;
+[e = F3803 -> -> 0 `i `us ]
+"87
+[; ;main.c: 87:     }
 }
 [e :U 292 ]
-"99
-[; ;main.c: 99:     if(cpt_ms_sd >= 30000)
-[e $ ! >= F3799 -> -> -> 30000 `i `l `ul 293  ]
-"100
-[; ;main.c: 100:     {
+"89
+[; ;main.c: 89:     if(cpt_ms_oled >=10000)
+[e $ ! >= -> F3804 `ui -> -> 10000 `i `ui 293  ]
+"90
+[; ;main.c: 90:     {
 {
-"102
-[; ;main.c: 102:         update_SD_tab(&system_management);
-[e ( _update_SD_tab (1 &U _system_management ]
-"104
-[; ;main.c: 104:         cpt_ms_sd=0;
-[e = F3799 -> -> -> 0 `i `l `ul ]
-"106
-[; ;main.c: 106:     }
+"91
+[; ;main.c: 91:         print_temperature(system_management.temperature);
+[e ( _print_temperature (1 . _system_management 10 ]
+"92
+[; ;main.c: 92:         cpt_ms_oled=0;
+[e = F3804 -> -> 0 `i `us ]
+"93
+[; ;main.c: 93:     }
 }
 [e :U 293 ]
-"108
-[; ;main.c: 108:     if(cpt_ms_eeprom >= 60000)
-[e $ ! >= -> F3798 `l -> 60000 `l 294  ]
-"109
-[; ;main.c: 109:     {
+"95
+[; ;main.c: 95:     if(cpt_ms_sd >= 30000)
+[e $ ! >= F3805 -> -> -> 30000 `i `l `ul 294  ]
+"96
+[; ;main.c: 96:     {
 {
-"111
-[; ;main.c: 111:         cpt_ms_eeprom=0;
-[e = F3798 -> -> 0 `i `us ]
-"113
-[; ;main.c: 113:     }
+"97
+[; ;main.c: 97:         update_SD_tab(&system_management);
+[e ( _update_SD_tab (1 &U _system_management ]
+"98
+[; ;main.c: 98:         cpt_ms_sd=0;
+[e = F3805 -> -> -> 0 `i `l `ul ]
+"99
+[; ;main.c: 99:     }
 }
 [e :U 294 ]
-"116
-[; ;main.c: 116: }
+"102
+[; ;main.c: 102: }
 [e :UE 290 ]
 }
-"118
-[; ;main.c: 118: void timer1_timer_init(void)
+"104
+[; ;main.c: 104: void timer1_timer_init(void)
 [v _timer1_timer_init `(v ~T0 @X0 1 ef ]
-"119
-[; ;main.c: 119: {
+"105
+[; ;main.c: 105: {
 {
 [e :U _timer1_timer_init ]
 [f ]
-"120
-[; ;main.c: 120:     timer1_t timer_obj;
+"106
+[; ;main.c: 106:     timer1_t timer_obj;
 [v _timer_obj `S284 ~T0 @X0 1 a ]
-"121
-[; ;main.c: 121:     timer_obj.TMR1_InterruptHandler = Timer1_DefaultInterruptHandler;
+"107
+[; ;main.c: 107:     timer_obj.TMR1_InterruptHandler = Timer1_DefaultInterruptHandler;
 [e = . _timer_obj 0 &U _Timer1_DefaultInterruptHandler ]
-"122
-[; ;main.c: 122:     timer_obj.priority = INTERRUPT_LOW_PRIORITY;
-[e = . _timer_obj 1 . `E2766 0 ]
-"123
-[; ;main.c: 123:     timer_obj.timer1_mode = 0;
+"108
+[; ;main.c: 108:     timer_obj.priority = INTERRUPT_LOW_PRIORITY;
+[e = . _timer_obj 1 . `E2768 0 ]
+"109
+[; ;main.c: 109:     timer_obj.timer1_mode = 0;
 [e = . _timer_obj 4 -> -> 0 `i `uc ]
-"124
-[; ;main.c: 124:     timer_obj.timer1_prescaler_value = 2;
+"110
+[; ;main.c: 110:     timer_obj.timer1_prescaler_value = 2;
 [e = . _timer_obj 3 -> -> 2 `i `uc ]
-"126
-[; ;main.c: 126:     timer_obj.timer1_preload_value = 65286;
+"112
+[; ;main.c: 112:     timer_obj.timer1_preload_value = 65286;
 [e = . _timer_obj 2 -> -> 65286 `l `us ]
-"127
-[; ;main.c: 127:     timer_obj.timer1_reg_rw_mode = 1;
+"113
+[; ;main.c: 113:     timer_obj.timer1_reg_rw_mode = 1;
 [e = . _timer_obj 7 -> -> 1 `i `uc ]
-"128
-[; ;main.c: 128:     Timer1_Init(&timer_obj);
+"114
+[; ;main.c: 114:     Timer1_Init(&timer_obj);
 [e ( _Timer1_Init (1 -> &U _timer_obj `*CS284 ]
-"129
-[; ;main.c: 129: }
+"115
+[; ;main.c: 115: }
 [e :UE 295 ]
 }
-"131
-[; ;main.c: 131: void putch(char c)
+"117
+[; ;main.c: 117: void putch(char c)
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
-"132
-[; ;main.c: 132: {
+"118
+[; ;main.c: 118: {
 {
 [e :U _putch ]
-"131
-[; ;main.c: 131: void putch(char c)
+"117
+[; ;main.c: 117: void putch(char c)
 [v _c `uc ~T0 @X0 1 r1 ]
-"132
-[; ;main.c: 132: {
+"118
+[; ;main.c: 118: {
 [f ]
-"133
-[; ;main.c: 133:     USART_Asynchronous_WriteByte_Blocking(c);
+"119
+[; ;main.c: 119:     USART_Asynchronous_WriteByte_Blocking(c);
 [e ( _USART_Asynchronous_WriteByte_Blocking (1 -> _c `uc ]
-"134
-[; ;main.c: 134: }
+"120
+[; ;main.c: 120: }
 [e :UE 296 ]
 }
-"136
-[; ;main.c: 136: void USART_FramingDefaultErrorHandler(void)
+"122
+[; ;main.c: 122: void USART_FramingDefaultErrorHandler(void)
 [v _USART_FramingDefaultErrorHandler `(v ~T0 @X0 1 ef ]
-"137
-[; ;main.c: 137: {
+"123
+[; ;main.c: 123: {
 {
 [e :U _USART_FramingDefaultErrorHandler ]
 [f ]
-"138
-[; ;main.c: 138:     uint8_t _data_;
+"124
+[; ;main.c: 124:     uint8_t _data_;
 [v __data_ `uc ~T0 @X0 1 a ]
-"139
-[; ;main.c: 139:     USART_Asynchronous_ReadByte_NonBlocking(&_data_);
+"125
+[; ;main.c: 125:     USART_Asynchronous_ReadByte_NonBlocking(&_data_);
 [e ( _USART_Asynchronous_ReadByte_NonBlocking (1 &U __data_ ]
-"140
-[; ;main.c: 140: }
+"126
+[; ;main.c: 126: }
 [e :UE 297 ]
 }
-"142
-[; ;main.c: 142: void USART_OverrunDefaultErrorHandler(void)
+"128
+[; ;main.c: 128: void USART_OverrunDefaultErrorHandler(void)
 [v _USART_OverrunDefaultErrorHandler `(v ~T0 @X0 1 ef ]
-"143
-[; ;main.c: 143: {
+"129
+[; ;main.c: 129: {
 {
 [e :U _USART_OverrunDefaultErrorHandler ]
 [f ]
-"144
-[; ;main.c: 144:     USART_Asynchronous_Restart_RX();
+"130
+[; ;main.c: 130:     USART_Asynchronous_Restart_RX();
 [e ( _USART_Asynchronous_Restart_RX ..  ]
-"145
-[; ;main.c: 145: }
+"131
+[; ;main.c: 131: }
 [e :UE 298 ]
 }
-"147
-[; ;main.c: 147: void USART_TxDefaultInterruptHandler(void)
+"133
+[; ;main.c: 133: void USART_TxDefaultInterruptHandler(void)
 [v _USART_TxDefaultInterruptHandler `(v ~T0 @X0 1 ef ]
-"148
-[; ;main.c: 148: {
+"134
+[; ;main.c: 134: {
 {
 [e :U _USART_TxDefaultInterruptHandler ]
 [f ]
-"149
-[; ;main.c: 149:     valid_usart_tx++;
+"135
+[; ;main.c: 135:     valid_usart_tx++;
 [e ++ _valid_usart_tx -> -> 1 `i `Vul ]
-"150
-[; ;main.c: 150: }
+"136
+[; ;main.c: 136: }
 [e :UE 299 ]
 }
-"152
-[; ;main.c: 152: void USART_RxDefaultInterruptHandler(void)
+"138
+[; ;main.c: 138: void USART_RxDefaultInterruptHandler(void)
 [v _USART_RxDefaultInterruptHandler `(v ~T0 @X0 1 ef ]
-"153
-[; ;main.c: 153: {
+"139
+[; ;main.c: 139: {
 {
 [e :U _USART_RxDefaultInterruptHandler ]
 [f ]
-"154
-[; ;main.c: 154:     uint8_t ret = 0;
+"140
+[; ;main.c: 140:     uint8_t ret = 0;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `i `uc ]
-"155
-[; ;main.c: 155:     valid_usart_rx++;
+"141
+[; ;main.c: 141:     valid_usart_rx++;
 [e ++ _valid_usart_rx -> -> 1 `i `Vul ]
-"156
-[; ;main.c: 156:     ret = USART_Asynchronous_ReadByte_NonBlocking(&receive_usart_data);
+"142
+[; ;main.c: 142:     ret = USART_Asynchronous_ReadByte_NonBlocking(&receive_usart_data);
 [e = _ret ( _USART_Asynchronous_ReadByte_NonBlocking (1 &U _receive_usart_data ]
+"145
+[; ;main.c: 145:     if (rx_buffer_index < 100 - 1) {
+[e $ ! < _rx_buffer_index - -> 100 `i -> 1 `i 301  ]
+{
+"146
+[; ;main.c: 146:         rx_buffer[rx_buffer_index] = receive_usart_data;
+[e = *U + &U _rx_buffer * -> -> _rx_buffer_index `ui `ux -> -> # *U &U _rx_buffer `ui `ux -> _receive_usart_data `uc ]
+"147
+[; ;main.c: 147:         rx_buffer_index++;
+[e ++ _rx_buffer_index -> 1 `i ]
+"148
+[; ;main.c: 148:     }
+}
+[e :U 301 ]
+"151
+[; ;main.c: 151:     if (strchr(rx_buffer, '\n') != ((void*)0)) {
+[e $ ! != ( _strchr (2 , -> &U _rx_buffer `*Cuc -> -> 10 `ui `i -> -> -> 0 `i `*v `*uc 302  ]
+{
+"153
+[; ;main.c: 153:         for (int i = 0; i < 3; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 3 `i 303  ]
+[e $U 304  ]
+[e :U 303 ]
+{
+"154
+[; ;main.c: 154:             if (strncmp(rx_buffer, commands[i], strlen(commands[i])) == 0) {
+[e $ ! == ( _strncmp (3 , , -> &U _rx_buffer `*Cuc -> *U + &U _commands * -> -> _i `ui `ux -> -> # *U &U _commands `ui `ux `*Cuc ( _strlen (1 -> *U + &U _commands * -> -> _i `ui `ux -> -> # *U &U _commands `ui `ux `*Cuc -> 0 `i 306  ]
+{
+"156
+[; ;main.c: 156:                 printf("command receive\r\n");
+[e ( _printf :s 4C ]
+"157
+[; ;main.c: 157:                 execute_rx_command(i);
+[e ( _execute_rx_command (1 _i ]
 "158
-[; ;main.c: 158: }
+[; ;main.c: 158:                 break;
+[e $U 304  ]
+"159
+[; ;main.c: 159:             }
+}
+[e :U 306 ]
+"160
+[; ;main.c: 160:         }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 3 `i 303  ]
+[e :U 304 ]
+}
+"163
+[; ;main.c: 163:         memset(rx_buffer, 0, sizeof(rx_buffer));
+[e ( _memset (3 , , -> &U _rx_buffer `*v -> 0 `i -> # _rx_buffer `ui ]
+"164
+[; ;main.c: 164:         rx_buffer_index = 0;
+[e = _rx_buffer_index -> 0 `i ]
+"165
+[; ;main.c: 165:     }
+}
+[e :U 302 ]
+"166
+[; ;main.c: 166: }
 [e :UE 300 ]
 }
-"160
-[; ;main.c: 160: void usart_module_init(void)
+"168
+[; ;main.c: 168: void execute_rx_command(int command_index) {
+[v _execute_rx_command `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _execute_rx_command ]
+[v _command_index `i ~T0 @X0 1 r1 ]
+[f ]
+"170
+[; ;main.c: 170:     switch (command_index) {
+[e $U 309  ]
+{
+"171
+[; ;main.c: 171:         case 0:
+[e :U 310 ]
+"172
+[; ;main.c: 172:             {
+{
+"174
+[; ;main.c: 174:                 int days = atoi(rx_buffer + strlen(commands[0]));
+[v _days `i ~T0 @X0 1 a ]
+[e = _days ( _atoi (1 -> + &U _rx_buffer * -> ( _strlen (1 -> *U + &U _commands * -> -> -> 0 `i `ui `ux -> -> # *U &U _commands `ui `ux `*Cuc `ux -> -> # *U &U _rx_buffer `ui `ux `*Cuc ]
+"175
+[; ;main.c: 175:                 extract_data_for_days(days);
+[e ( _extract_data_for_days (1 _days ]
+"176
+[; ;main.c: 176:             }
+}
+"178
+[; ;main.c: 178:             break;
+[e $U 308  ]
+"179
+[; ;main.c: 179:         case 1:
+[e :U 311 ]
+"181
+[; ;main.c: 181:             extract_all_alarms();
+[e ( _extract_all_alarms ..  ]
+"182
+[; ;main.c: 182:             break;
+[e $U 308  ]
+"184
+[; ;main.c: 184:         case 2:
+[e :U 312 ]
+"186
+[; ;main.c: 186:         {
+{
+"187
+[; ;main.c: 187:             float temperature = atof(rx_buffer + strlen(commands[2]));
+[v _temperature `f ~T0 @X0 1 a ]
+[e = _temperature -> ( _atof (1 -> + &U _rx_buffer * -> ( _strlen (1 -> *U + &U _commands * -> -> -> 2 `i `ui `ux -> -> # *U &U _commands `ui `ux `*Cuc `ux -> -> # *U &U _rx_buffer `ui `ux `*Cuc `f ]
+"188
+[; ;main.c: 188:             system_management.command_decimal = (uint8_t)temperature;
+[e = . _system_management 8 -> _temperature `uc ]
+"189
+[; ;main.c: 189:             system_management.command_fraction = (temperature - (float)system_management.command_decimal) * 100.0;
+[e = . _system_management 9 -> * -> - _temperature -> . _system_management 8 `f `d .100.0 `uc ]
+"190
+[; ;main.c: 190:         }
+}
+"191
+[; ;main.c: 191:             break;
+[e $U 308  ]
+"192
+[; ;main.c: 192:         default:
+[e :U 313 ]
+"193
+[; ;main.c: 193:             break;
+[e $U 308  ]
+"194
+[; ;main.c: 194:     }
+}
+[e $U 308  ]
+[e :U 309 ]
+[e [\ _command_index , $ -> 0 `i 310
+ , $ -> 1 `i 311
+ , $ -> 2 `i 312
+ 313 ]
+[e :U 308 ]
+"195
+[; ;main.c: 195: }
+[e :UE 307 ]
+}
+"197
+[; ;main.c: 197: void usart_module_init(void)
 [v _usart_module_init `(v ~T0 @X0 1 ef ]
-"161
-[; ;main.c: 161: {
+"198
+[; ;main.c: 198: {
 {
 [e :U _usart_module_init ]
 [f ]
-"162
-[; ;main.c: 162:     uint8_t ret = 0;
+"199
+[; ;main.c: 199:     uint8_t ret = 0;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `i `uc ]
-"163
-[; ;main.c: 163:     usart_t usart_obj;
+"200
+[; ;main.c: 200:     usart_t usart_obj;
 [v _usart_obj `S278 ~T0 @X0 1 a ]
-"165
-[; ;main.c: 165:     usart_obj.USART_FramingErrorHandler = USART_FramingDefaultErrorHandler;
+"202
+[; ;main.c: 202:     usart_obj.USART_FramingErrorHandler = USART_FramingDefaultErrorHandler;
 [e = . _usart_obj 7 &U _USART_FramingDefaultErrorHandler ]
-"166
-[; ;main.c: 166:     usart_obj.USART_OverrunErrorHandler = USART_OverrunDefaultErrorHandler;
+"203
+[; ;main.c: 203:     usart_obj.USART_OverrunErrorHandler = USART_OverrunDefaultErrorHandler;
 [e = . _usart_obj 8 &U _USART_OverrunDefaultErrorHandler ]
-"167
-[; ;main.c: 167:     usart_obj.USART_RxDefaultInterruptHandler = USART_RxDefaultInterruptHandler;
+"204
+[; ;main.c: 204:     usart_obj.USART_RxDefaultInterruptHandler = USART_RxDefaultInterruptHandler;
 [e = . _usart_obj 6 &U _USART_RxDefaultInterruptHandler ]
-"168
-[; ;main.c: 168:     usart_obj.USART_TxDefaultInterruptHandler = USART_TxDefaultInterruptHandler;
+"205
+[; ;main.c: 205:     usart_obj.USART_TxDefaultInterruptHandler = USART_TxDefaultInterruptHandler;
 [e = . _usart_obj 5 &U _USART_TxDefaultInterruptHandler ]
-"170
-[; ;main.c: 170:     usart_obj.baudrate = 9600;
+"207
+[; ;main.c: 207:     usart_obj.baudrate = 9600;
 [e = . _usart_obj 0 -> -> -> 9600 `i `l `ul ]
-"171
-[; ;main.c: 171:     usart_obj.baudrate_config = BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED;
-[e = . _usart_obj 1 . `E2770 1 ]
-"173
-[; ;main.c: 173:     usart_obj.usart_tx_cfg.usart_enable_tx = 1;
+"208
+[; ;main.c: 208:     usart_obj.baudrate_config = BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED;
+[e = . _usart_obj 1 . `E2772 1 ]
+"210
+[; ;main.c: 210:     usart_obj.usart_tx_cfg.usart_enable_tx = 1;
 [e = . . _usart_obj 2 1 -> -> 1 `i `uc ]
-"174
-[; ;main.c: 174:     usart_obj.usart_tx_cfg.usart_enable_tx_interrupt = 1;
+"211
+[; ;main.c: 211:     usart_obj.usart_tx_cfg.usart_enable_tx_interrupt = 1;
 [e = . . _usart_obj 2 2 -> -> 1 `i `uc ]
-"175
-[; ;main.c: 175:     usart_obj.usart_tx_cfg.usart_enable_9bit_tx = 0;
+"212
+[; ;main.c: 212:     usart_obj.usart_tx_cfg.usart_enable_9bit_tx = 0;
 [e = . . _usart_obj 2 3 -> -> 0 `i `uc ]
-"177
-[; ;main.c: 177:     usart_obj.usart_rx_cfg.usart_enable_rx = 1;
+"214
+[; ;main.c: 214:     usart_obj.usart_rx_cfg.usart_enable_rx = 1;
 [e = . . _usart_obj 3 1 -> -> 1 `i `uc ]
-"178
-[; ;main.c: 178:     usart_obj.usart_rx_cfg.usart_enable_rx_interrupt = 1;
+"215
+[; ;main.c: 215:     usart_obj.usart_rx_cfg.usart_enable_rx_interrupt = 1;
 [e = . . _usart_obj 3 2 -> -> 1 `i `uc ]
-"179
-[; ;main.c: 179:     usart_obj.usart_rx_cfg.usart_enable_9bit_rx = 0;
+"216
+[; ;main.c: 216:     usart_obj.usart_rx_cfg.usart_enable_9bit_rx = 0;
 [e = . . _usart_obj 3 3 -> -> 0 `i `uc ]
-"181
-[; ;main.c: 181:     ret = USART_Asynchronous_Initialize(&usart_obj);
+"218
+[; ;main.c: 218:     ret = USART_Asynchronous_Initialize(&usart_obj);
 [e = _ret ( _USART_Asynchronous_Initialize (1 -> &U _usart_obj `*CS278 ]
-"182
-[; ;main.c: 182: }
-[e :UE 301 ]
+"219
+[; ;main.c: 219: }
+[e :UE 314 ]
 }
+[p f _printf 8388608 ]
+[a 2C 65 76 65 82 77 83 0 ]
+[a 1C 72 73 83 84 79 82 89 58 0 ]
+[a 3C 67 79 77 77 65 78 68 58 0 ]
+[a 4C 99 111 109 109 97 110 100 32 114 101 99 101 105 118 101 13 10 0 ]

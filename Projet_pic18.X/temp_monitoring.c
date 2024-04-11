@@ -10,6 +10,9 @@
 #include "RTC.h"
 #include "AT24C32.h"
 #include "SD_PIC.h"
+#include "PWM.h"
+#include "led.h"
+#include "heater.h"
 
 
 static uint16_t previous_address_eeprom=8;
@@ -105,7 +108,7 @@ void save_eep_address_in_eeprom(void)
     write_one_byte_in_eeprom(counter_alarm, 2);
      __delay_ms(10);
 
-    printf("previous add  save %u\r\n", previous_address_eeprom);
+    //printf("previous add  save %u\r\n", previous_address_eeprom);
 }
 
 void read_eep_address_in_eeprom(void)
@@ -120,8 +123,8 @@ void read_eep_address_in_eeprom(void)
     
     previous_address_eeprom = (addressH<<8) | addressL;
     
-    printf("previous add read %u\r\n", previous_address_eeprom);
-    printf("counter alarm %u\r\n", counter_alarm);
+    //printf("previous add read %u\r\n", previous_address_eeprom);
+    //printf("counter alarm %u\r\n", counter_alarm);
     
 
 }
@@ -169,28 +172,6 @@ void extract_all_alarms(void)
 }
 
 // SD MANAGEMENT FUNCTIONS
-
-void extract_one_day_of_data(void)
-{
-    unsigned char tab2[8]={0};
-    
-    // Commencer à l'adresse 8
-    static uint16_t previous_address_counter = 8;
-    
-    // Lire 1440 paquets de données
-    for(int j=0; j<1440; j++)
-    {
-        read_one_page_in_eeprom(previous_address_counter,tab2);
-        previous_address_counter += 8;
-        __delay_ms(10);
-        
-        // Afficher les données
-        printf("{%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7]);
-    }
-    
-    // Retourner à l'adresse 8
-    previous_address_counter = 8;
-}
 
 void update_SD_tab(SystemData* pSystem_data)
 {
@@ -299,4 +280,37 @@ void extract_data_for_days(int number_days)
     sd_stop(); // Stop SPI and deselect SD card
     
     printf("Sec %d-%d\r\n", (int)firstBlock, (int)(firstBlock + numWrites - 1));
+}
+
+// TEMP MANAGEMENT FUNCTIONS
+
+ void temp_management(SystemData* pSystem_data)
+{
+    float command_temp = 23.0;
+    
+    command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
+    printf("temp %f",command_temp);
+    
+    if(pSystem_data->temperature >= command_temp + 1.0)
+    {
+        pSystem_data->error_type = TOO_HOT;
+        set_pwm_duty(100);
+        heater_set_mode(OFF);
+        //save_in_eeprom(pSystem_data);
+    }
+    else if(pSystem_data->temperature <= command_temp - 1.0)
+    {
+        pSystem_data->error_type = TOO_COLD;
+        heater_set_mode(ON);
+        set_pwm_duty(0);
+        //save_in_eeprom(pSystem_data);
+    }
+    else
+    {
+        pSystem_data->error_type = NO_ERROR;
+        heater_set_mode(OFF);
+        set_pwm_duty(0);
+    }
+    led_set_mode(pSystem_data);
+        
 }

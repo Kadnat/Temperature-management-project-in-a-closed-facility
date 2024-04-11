@@ -4645,6 +4645,7 @@ void reset_eep_address_in_eeprom(void);
 void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
+void temp_management(SystemData* pSystem_data);
 # 8 "temp_monitoring.c" 2
 
 # 1 "./ds18b20.h" 1
@@ -5421,6 +5422,26 @@ void multiple_block_read(void);
 void single_block_write(unsigned long sector);
 # 12 "temp_monitoring.c" 2
 
+# 1 "./PWM.h" 1
+
+
+
+
+
+void start_pwm(void);
+void set_pwm_duty(float duty);
+# 13 "temp_monitoring.c" 2
+
+# 1 "./led.h" 1
+# 15 "./led.h"
+void led_set_mode(SystemData *psystem_state);
+# 14 "temp_monitoring.c" 2
+
+# 1 "./heater.h" 1
+# 10 "./heater.h"
+void heater_set_mode(BooleanState state);
+# 15 "temp_monitoring.c" 2
+
 
 
 static uint16_t previous_address_eeprom=8;
@@ -5516,7 +5537,7 @@ void save_eep_address_in_eeprom(void)
     write_one_byte_in_eeprom(counter_alarm, 2);
      _delay((unsigned long)((10)*(4000000/4000.0)));
 
-    printf("previous add  save %u\r\n", previous_address_eeprom);
+
 }
 
 void read_eep_address_in_eeprom(void)
@@ -5531,8 +5552,8 @@ void read_eep_address_in_eeprom(void)
 
     previous_address_eeprom = (addressH<<8) | addressL;
 
-    printf("previous add read %u\r\n", previous_address_eeprom);
-    printf("counter alarm %u\r\n", counter_alarm);
+
+
 
 
 }
@@ -5580,28 +5601,6 @@ void extract_all_alarms(void)
 }
 
 
-
-void extract_one_day_of_data(void)
-{
-    unsigned char tab2[8]={0};
-
-
-    static uint16_t previous_address_counter = 8;
-
-
-    for(int j=0; j<1440; j++)
-    {
-        read_one_page_in_eeprom(previous_address_counter,tab2);
-        previous_address_counter += 8;
-        _delay((unsigned long)((10)*(4000000/4000.0)));
-
-
-        printf("{%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7]);
-    }
-
-
-    previous_address_counter = 8;
-}
 
 void update_SD_tab(SystemData* pSystem_data)
 {
@@ -5710,4 +5709,36 @@ void extract_data_for_days(int number_days)
     { LATEbits.LATE2 = 1; SSPCON1bits.SSPEN = 0;};
 
     printf("Sec %d-%d\r\n", (int)firstBlock, (int)(firstBlock + numWrites - 1));
+}
+
+
+
+ void temp_management(SystemData* pSystem_data)
+{
+    float command_temp = 23.0;
+
+    command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
+
+    if(pSystem_data->temperature >= command_temp + 1.0)
+    {
+        pSystem_data->error_type = TOO_HOT;
+        set_pwm_duty(100);
+        heater_set_mode(OFF);
+
+    }
+    else if(pSystem_data->temperature <= command_temp - 1.0)
+    {
+        pSystem_data->error_type = TOO_COLD;
+        heater_set_mode(ON);
+        set_pwm_duty(0);
+
+    }
+    else
+    {
+        pSystem_data->error_type = NO_ERROR;
+        heater_set_mode(OFF);
+        set_pwm_duty(0);
+    }
+    led_set_mode(pSystem_data);
+
 }

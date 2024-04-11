@@ -4680,6 +4680,7 @@ void reset_eep_address_in_eeprom(void);
 void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
+void temp_management(SystemData* pSystem_data);
 # 11 "./RTC.h" 2
 # 30 "./RTC.h"
 typedef struct {
@@ -5630,6 +5631,12 @@ void heater_set_mode(BooleanState state);
 # 18 "main.c" 2
 
 
+
+
+char rx_buffer[100];
+int rx_buffer_index = 0;
+char* commands[2] = {"HISTORY:", "ALARMS", "COMMAND:"};
+
 uint8_t receive_usart_data;
 
 volatile uint32_t valid_usart_tx;
@@ -5644,7 +5651,7 @@ void USART_TxDefaultInterruptHandler(void);
 void USART_RxDefaultInterruptHandler(void);
 void usart_module_init(void);
 void timer1_timer_init(void);
-
+void execute_rx_command(int command_index);
 
 void main(void) {
 
@@ -5653,18 +5660,14 @@ void main(void) {
     usart_module_init();
     timer1_timer_init();
 
-    system_management.error_type = TOO_COLD;
-    led_set_mode(&system_management);
-    heater_set_mode(ON);
-
-
     read_eep_address_in_eeprom();
     read_sd_address_in_eeprom();
 
-    set_pwm_duty(0);
     start_pwm();
     LCD_Init(0x27);
-# 67 "main.c"
+
+    read_init_sd_card();
+
     while(1)
     {
         ;
@@ -5674,23 +5677,27 @@ void main(void) {
 
 void Timer1_DefaultInterruptHandler(void)
 {
-    static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_eeprom=0;
+    static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0;
     static uint32_t cpt_ms_sd=0;
+    static uint8_t cpt_ms_temp_management=0;
     cpt_ms_lcd++;
     cpt_ms_oled++;
-    cpt_ms_eeprom++;
     cpt_ms_sd++;
+    cpt_ms_temp_management++;
 
+    if(cpt_ms_temp_management >= 100)
+    {
+        cpt_ms_temp_management=0;
+        temp_management(&system_management);
+    }
     if(cpt_ms_lcd >=1000)
     {
         update_system_data(&system_management);
 
+        DisplayTimeToLCD(&system_management);
+        DisplayDateOnLCD(&system_management);
+        cpt_ms_lcd=0;
 
-
-
-
-
-        update_SD_tab(&system_management);
     }
 
     if(cpt_ms_oled >=10000)
@@ -5699,20 +5706,13 @@ void Timer1_DefaultInterruptHandler(void)
         cpt_ms_oled=0;
     }
 
-    if(cpt_ms_eeprom >= 60000)
+    if(cpt_ms_sd >= 30000)
     {
-
-        cpt_ms_eeprom=0;
-
-    }
-
-    if(cpt_ms_sd >= 120000)
-    {
-
-        extract_data_for_days(1);
+        update_SD_tab(&system_management);
         cpt_ms_sd=0;
-
     }
+
+
 }
 
 void timer1_timer_init(void)
@@ -5755,6 +5755,57 @@ void USART_RxDefaultInterruptHandler(void)
     valid_usart_rx++;
     ret = USART_Asynchronous_ReadByte_NonBlocking(&receive_usart_data);
 
+
+    if (rx_buffer_index < 100 - 1) {
+        rx_buffer[rx_buffer_index] = receive_usart_data;
+        rx_buffer_index++;
+    }
+
+
+    if (strchr(rx_buffer, '\n') != ((void*)0)) {
+
+        for (int i = 0; i < 2; i++) {
+            if (strncmp(rx_buffer, commands[i], strlen(commands[i])) == 0) {
+
+                printf("command receive\r\n");
+                execute_rx_command(i);
+                break;
+            }
+        }
+
+
+        memset(rx_buffer, 0, sizeof(rx_buffer));
+        rx_buffer_index = 0;
+    }
+}
+
+void execute_rx_command(int command_index) {
+
+    switch (command_index) {
+        case 0:
+            {
+
+                int days = atoi(rx_buffer + strlen(commands[0]));
+                extract_data_for_days(days);
+            }
+
+            break;
+        case 1:
+
+            extract_all_alarms();
+            break;
+
+        case 2:
+
+        {
+            float temperature = atof(rx_buffer + strlen(commands[2]));
+            system_management.command_decimal = (uint8_t)temperature;
+            system_management.command_fraction = (temperature - (float)system_management.command_decimal) * 100.0;
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 void usart_module_init(void)
