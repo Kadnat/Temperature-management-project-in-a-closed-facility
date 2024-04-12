@@ -19,6 +19,9 @@
 #define MAX_BUFFER_SIZE 100
 #define NUM_COMMANDS 3
 
+
+
+
 char rx_buffer[MAX_BUFFER_SIZE];
 int rx_buffer_index = 0;
 char* commands[NUM_COMMANDS] = {"HISTORY:", "ALARMS", "COMMAND:"};
@@ -40,7 +43,12 @@ void timer1_timer_init(void);
 void execute_rx_command(int command_index);
 
 void main(void) {
-
+    OSCILLATOR = 0x70;
+    PLL = 0x40;
+    //OSCTUNEbits.TUN = 0b000000;
+    //OSCCONbits.IRCF = 0b111; // Configure internal oscillator to 4 MHz
+    //OSCCONbits.SCS = 0b11; // Use internal oscillator
+    //Set_DS1307_RTC_Time(TwentyFourHoursMode,01,39,45 );
     uint8_t ret=0;
     volatile uint16_t timer1_counter_val;
     usart_module_init();
@@ -77,7 +85,7 @@ void Timer1_DefaultInterruptHandler(void)
         update_system_data(&system_management);
         temp_management(&system_management);
     }
-    if(cpt_ms_lcd >=1000)
+    if(cpt_ms_lcd >=500)
     {
         DisplayTimeToLCD(&system_management);
         DisplayDateOnLCD(&system_management);
@@ -87,7 +95,7 @@ void Timer1_DefaultInterruptHandler(void)
     
     if(cpt_ms_oled >=10000)
     {
-        print_temperature(system_management.temperature);
+        print_temperature(&system_management);
         cpt_ms_oled=0;
     }
     
@@ -108,7 +116,8 @@ void timer1_timer_init(void)
     timer_obj.timer1_mode = TIMER1_TIMER_MODE;
     timer_obj.timer1_prescaler_value = TIMER1_PRESCALER_DIV_BY_4;
     //timer_obj.timer1_preload_value = 15536;400 ms
-    timer_obj.timer1_preload_value = 65286;//1 ms = (4*Presc*(65536-TMR1))/Fosc
+    //timer_obj.timer1_preload_value = 65286;//1 ms = (4*Presc*(65536-TMR1))/Fosc
+    timer_obj.timer1_preload_value = 63536;//1 ms = (4*Presc*(65536-TMR1))/Fosc
     timer_obj.timer1_reg_rw_mode = TIMER1_RW_16BIT_REGISTER_MODE;
     Timer1_Init(&timer_obj);
 }

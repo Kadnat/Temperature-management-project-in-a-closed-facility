@@ -388,9 +388,9 @@ void initSD(void){
     // Set oscillator to frequency such that the SPI will clock between 100 kHz 
     // and 400 kHz for SD card initialization
     
-    OSCTUNEbits.TUN = 0b000000; // Run oscillator at calibrated frequency
-    OSCCONbits.IRCF = 0b110; // Configure internal oscillator to 4 MHz
-    OSCCONbits.SCS = 0b11; // Use internal oscillator
+    //OSCTUNEbits.TUN = 0b000000; // Run oscillator at calibrated frequency
+    //OSCCONbits.IRCF = 0b110; // Configure internal oscillator to 4 MHz
+    //OSCCONbits.SCS = 0b11; // Use internal oscillator
 
     // Wait for internal oscillator to stabilize
     while(!OSCCONbits.IOFS){
@@ -648,15 +648,15 @@ void read_init_sd_card(void)
                     printf("Type: Unknown\r\n");
                     break;
             }     
-            __delay_ms(2000);
+            __delay_ms(500);
 
             printf("BlkSize: %d b\r\n", SDCard.blockSize);
             printf("#Blks: %lu\r\n", SDCard.numBlocks);
-            __delay_ms(2000);
+            __delay_ms(500);
 
             printf("SD Version: %u\r\n", SDCard.SDversion);
             printf("MFG ID: 0x%x\r\n", SDCard.MID);
-            __delay_ms(2000);
+            __delay_ms(500);
             
             printf("OEM ID: %c%c\r\n", SDCard.OID >> 8, SDCard.OID & 0xFF);
             
@@ -666,26 +666,26 @@ void read_init_sd_card(void)
             PNM[3] = (SDCard.PHML >> 24) & 0xFF;
             PNM[4] = SDCard.PHMH;
             printf("PNM: %c%c%c%c%c\r\n", PNM[4], PNM[3], PNM[2], PNM[1], PNM[0]);
-            __delay_ms(2000);
+            __delay_ms(500);
             
             printf("PRV: %u.%u\r\n", ((SDCard.PRV >> 4) & 0x0F), (SDCard.PRV & 0x0F));
             printf("PSN: 0x%x\r\n", (SDCard.PSN >> 16)); // Print upper 16 bits
             printf("%x\r\n",SDCard.PSN & 0xFFFF); // Print lower 16 bits
-            __delay_ms(2000);
+            __delay_ms(500);
             
             unsigned short year = 2000 + ((SDCard.MDT >> 4) & 0xFF);
             unsigned char month = SDCard.MDT & 0xF;
             printf("MDT: %u/%u\r\n", month, year);
             printf("CRC7: %u\r\n", SDCard.CRC);
-            __delay_ms(2000);
+            __delay_ms(500);
             
             printf("Number of MB:");
             printf("%.2f \r\n", SDCard.size);
-            __delay_ms(2000);
+            __delay_ms(500);
             
             printf("Number of blocks:");
             printf("%ul \r\n", SDCard.numBlocks);
-            __delay_ms(2000);
+            __delay_ms(500);
         }
         else{
             printf("SD init failed!\r\n");

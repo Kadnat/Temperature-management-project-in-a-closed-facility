@@ -42,6 +42,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 #include <stdlib.h>
 #include <math.h>
 #include <xc.h>
+#include "temp_monitoring.h"
+
 
 
 // This configuration is required to make a PIC be in open drain 
@@ -61,7 +63,7 @@ unsigned char OneWireReadByte(void); // reads a byte
 unsigned char OneWireRead(void); // reads the current status of the bus
 void OneWireHigh(void); // sets the bus high
 void OneWireRelease(void); // releases the bus 
-float print_temperature(float temp);
+float print_temperature(SystemData* pSystem_data);
 
 #endif // DS18B20_H
 

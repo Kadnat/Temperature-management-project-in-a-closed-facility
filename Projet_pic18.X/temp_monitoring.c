@@ -174,6 +174,7 @@ void extract_all_alarms(void)
 
 // SD MANAGEMENT FUNCTIONS
 
+
 void update_SD_tab(SystemData* pSystem_data)
 {
     static int counter = 0; // Compteur pour suivre la position actuelle dans le tableau
@@ -320,5 +321,6 @@ void extract_data_for_days(int number_days)
         set_pwm_duty(0);
     }
     led_set_mode(pSystem_data);
+
         
 }

@@ -17,334 +17,494 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46
 [; ;ds18b20.c: 46: void OneWireWriteByte(unsigned char);
 [v _OneWireWriteByte `(v ~T0 @X0 0 ef1`uc ]
-"366 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
+"366 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 366:     struct {
 [s S23 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S23 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
 "376
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 376:     struct {
 [s S24 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S24 . T1OSO T1OSI CCP1 SCK SDI SDO TX RX ]
 "386
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 386:     struct {
 [s S25 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S25 . T13CKI CCP2 . SCL SDA . CK DT ]
 "396
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 396:     struct {
 [s S26 :1 `uc 1 ]
 [n S26 . T1CKI ]
 "399
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 399:     struct {
 [s S27 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S27 . . PA2 PA1 ]
 "365
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 365: typedef union {
 [u S22 `S23 1 `S24 1 `S25 1 `S26 1 `S27 1 ]
 [n S22 . . . . . . ]
 "405
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 405: extern volatile PORTCbits_t PORTCbits __attribute__((address(0xF82)));
 [v _PORTCbits `VS22 ~T0 @X0 0 e@3970 ]
 "47 ds18b20.c
 [; ;ds18b20.c: 47: unsigned char OneWireReadByte(void);
 [v _OneWireReadByte `(uc ~T0 @X0 0 ef ]
-"886 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
+"886 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 886:     struct {
 [s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S45 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
 "896
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 896:     struct {
 [s S46 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S46 . LA0 LA1 LA2 LA3 LA4 LA5 LA6 LA7 ]
 "885
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 885: typedef union {
 [u S44 `S45 1 `S46 1 ]
 [n S44 . . . ]
 "907
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 907: extern volatile LATAbits_t LATAbits __attribute__((address(0xF89)));
 [v _LATAbits `VS44 ~T0 @X0 0 e@3977 ]
 "1391
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1391:     struct {
 [s S60 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S60 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
 "1401
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1401:     struct {
 [s S61 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S61 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
 "1390
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1390: typedef union {
 [u S59 `S60 1 `S61 1 ]
 [n S59 . . . ]
 "1412
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1412: extern volatile TRISAbits_t TRISAbits __attribute__((address(0xF92)));
 [v _TRISAbits `VS59 ~T0 @X0 0 e@3986 ]
-[v F934 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
-[v __delay `JF934 ~T0 @X0 0 e ]
+[v F947 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
+[v __delay `JF947 ~T0 @X0 0 e ]
 [p i __delay ]
-"111 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h
-[; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h: 111: int snprintf(char *restrict, size_t, const char *restrict, ...);
+"141 ds18b20.c
+[; ;ds18b20.c: 141: float print_temperature(SystemData* pSystem_data)
+[c E3399 0 1 2 .. ]
+[n E3399 . NO_ERROR TOO_HOT TOO_COLD  ]
+"20 ./temp_monitoring.h
+[; ;./temp_monitoring.h: 20: typedef struct{
+[s S273 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E3399 1 ]
+[n S273 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
+"123 C:\Program Files\Microchip\xc8\v2.46\pic\include\c99\stdio.h
+[; ;C:\Program Files\Microchip\xc8\v2.46\pic\include\c99\stdio.h: 123: int snprintf(char *restrict, size_t, const char *restrict, ...);
 [v _snprintf `(i ~T0 @X0 0 e2v`*uc`ui`*Cuc ]
-"54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc/pic18f4620.h
+"54 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
 "191
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 191: __asm("PORTB equ 0F81h");
 [; <" PORTB equ 0F81h ;# ">
 "362
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 362: __asm("PORTC equ 0F82h");
 [; <" PORTC equ 0F82h ;# ">
 "537
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 537: __asm("PORTD equ 0F83h");
 [; <" PORTD equ 0F83h ;# ">
 "679
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 679: __asm("PORTE equ 0F84h");
 [; <" PORTE equ 0F84h ;# ">
 "882
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 882: __asm("LATA equ 0F89h");
 [; <" LATA equ 0F89h ;# ">
 "994
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 994: __asm("LATB equ 0F8Ah");
 [; <" LATB equ 0F8Ah ;# ">
 "1106
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1106: __asm("LATC equ 0F8Bh");
 [; <" LATC equ 0F8Bh ;# ">
 "1218
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1218: __asm("LATD equ 0F8Ch");
 [; <" LATD equ 0F8Ch ;# ">
 "1330
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1330: __asm("LATE equ 0F8Dh");
 [; <" LATE equ 0F8Dh ;# ">
 "1382
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1382: __asm("TRISA equ 0F92h");
 [; <" TRISA equ 0F92h ;# ">
 "1387
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1387: __asm("DDRA equ 0F92h");
 [; <" DDRA equ 0F92h ;# ">
 "1604
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1604: __asm("TRISB equ 0F93h");
 [; <" TRISB equ 0F93h ;# ">
 "1609
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1609: __asm("DDRB equ 0F93h");
 [; <" DDRB equ 0F93h ;# ">
 "1826
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1826: __asm("TRISC equ 0F94h");
 [; <" TRISC equ 0F94h ;# ">
 "1831
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1831: __asm("DDRC equ 0F94h");
 [; <" DDRC equ 0F94h ;# ">
 "2048
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2048: __asm("TRISD equ 0F95h");
 [; <" TRISD equ 0F95h ;# ">
 "2053
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2053: __asm("DDRD equ 0F95h");
 [; <" DDRD equ 0F95h ;# ">
 "2270
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2270: __asm("TRISE equ 0F96h");
 [; <" TRISE equ 0F96h ;# ">
 "2275
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2275: __asm("DDRE equ 0F96h");
 [; <" DDRE equ 0F96h ;# ">
 "2434
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2434: __asm("OSCTUNE equ 0F9Bh");
 [; <" OSCTUNE equ 0F9Bh ;# ">
 "2499
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2499: __asm("PIE1 equ 0F9Dh");
 [; <" PIE1 equ 0F9Dh ;# ">
 "2576
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2576: __asm("PIR1 equ 0F9Eh");
 [; <" PIR1 equ 0F9Eh ;# ">
 "2653
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2653: __asm("IPR1 equ 0F9Fh");
 [; <" IPR1 equ 0F9Fh ;# ">
 "2730
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2730: __asm("PIE2 equ 0FA0h");
 [; <" PIE2 equ 0FA0h ;# ">
 "2796
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2796: __asm("PIR2 equ 0FA1h");
 [; <" PIR2 equ 0FA1h ;# ">
 "2862
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2862: __asm("IPR2 equ 0FA2h");
 [; <" IPR2 equ 0FA2h ;# ">
 "2928
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2928: __asm("EECON1 equ 0FA6h");
 [; <" EECON1 equ 0FA6h ;# ">
 "2994
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2994: __asm("EECON2 equ 0FA7h");
 [; <" EECON2 equ 0FA7h ;# ">
 "3001
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3001: __asm("EEDATA equ 0FA8h");
 [; <" EEDATA equ 0FA8h ;# ">
 "3008
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3008: __asm("EEADR equ 0FA9h");
 [; <" EEADR equ 0FA9h ;# ">
 "3015
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3015: __asm("EEADRH equ 0FAAh");
 [; <" EEADRH equ 0FAAh ;# ">
 "3022
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3022: __asm("RCSTA equ 0FABh");
 [; <" RCSTA equ 0FABh ;# ">
 "3027
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3027: __asm("RCSTA1 equ 0FABh");
 [; <" RCSTA1 equ 0FABh ;# ">
 "3232
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3232: __asm("TXSTA equ 0FACh");
 [; <" TXSTA equ 0FACh ;# ">
 "3237
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3237: __asm("TXSTA1 equ 0FACh");
 [; <" TXSTA1 equ 0FACh ;# ">
 "3488
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3488: __asm("TXREG equ 0FADh");
 [; <" TXREG equ 0FADh ;# ">
 "3493
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3493: __asm("TXREG1 equ 0FADh");
 [; <" TXREG1 equ 0FADh ;# ">
 "3500
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3500: __asm("RCREG equ 0FAEh");
 [; <" RCREG equ 0FAEh ;# ">
 "3505
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3505: __asm("RCREG1 equ 0FAEh");
 [; <" RCREG1 equ 0FAEh ;# ">
 "3512
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3512: __asm("SPBRG equ 0FAFh");
 [; <" SPBRG equ 0FAFh ;# ">
 "3517
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3517: __asm("SPBRG1 equ 0FAFh");
 [; <" SPBRG1 equ 0FAFh ;# ">
 "3524
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3524: __asm("SPBRGH equ 0FB0h");
 [; <" SPBRGH equ 0FB0h ;# ">
 "3531
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3531: __asm("T3CON equ 0FB1h");
 [; <" T3CON equ 0FB1h ;# ">
 "3643
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3643: __asm("TMR3 equ 0FB2h");
 [; <" TMR3 equ 0FB2h ;# ">
 "3650
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3650: __asm("TMR3L equ 0FB2h");
 [; <" TMR3L equ 0FB2h ;# ">
 "3657
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3657: __asm("TMR3H equ 0FB3h");
 [; <" TMR3H equ 0FB3h ;# ">
 "3664
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3664: __asm("CMCON equ 0FB4h");
 [; <" CMCON equ 0FB4h ;# ">
 "3754
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3754: __asm("CVRCON equ 0FB5h");
 [; <" CVRCON equ 0FB5h ;# ">
 "3833
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3833: __asm("ECCP1AS equ 0FB6h");
 [; <" ECCP1AS equ 0FB6h ;# ">
 "3915
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3915: __asm("PWM1CON equ 0FB7h");
 [; <" PWM1CON equ 0FB7h ;# ">
 "3985
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3985: __asm("BAUDCON equ 0FB8h");
 [; <" BAUDCON equ 0FB8h ;# ">
 "3990
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3990: __asm("BAUDCTL equ 0FB8h");
 [; <" BAUDCTL equ 0FB8h ;# ">
 "4157
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4157: __asm("CCP2CON equ 0FBAh");
 [; <" CCP2CON equ 0FBAh ;# ">
 "4236
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4236: __asm("CCPR2 equ 0FBBh");
 [; <" CCPR2 equ 0FBBh ;# ">
 "4243
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4243: __asm("CCPR2L equ 0FBBh");
 [; <" CCPR2L equ 0FBBh ;# ">
 "4250
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4250: __asm("CCPR2H equ 0FBCh");
 [; <" CCPR2H equ 0FBCh ;# ">
 "4257
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4257: __asm("CCP1CON equ 0FBDh");
 [; <" CCP1CON equ 0FBDh ;# ">
 "4354
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4354: __asm("CCPR1 equ 0FBEh");
 [; <" CCPR1 equ 0FBEh ;# ">
 "4361
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4361: __asm("CCPR1L equ 0FBEh");
 [; <" CCPR1L equ 0FBEh ;# ">
 "4368
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4368: __asm("CCPR1H equ 0FBFh");
 [; <" CCPR1H equ 0FBFh ;# ">
 "4375
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4375: __asm("ADCON2 equ 0FC0h");
 [; <" ADCON2 equ 0FC0h ;# ">
 "4446
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4446: __asm("ADCON1 equ 0FC1h");
 [; <" ADCON1 equ 0FC1h ;# ">
 "4531
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4531: __asm("ADCON0 equ 0FC2h");
 [; <" ADCON0 equ 0FC2h ;# ">
 "4650
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4650: __asm("ADRES equ 0FC3h");
 [; <" ADRES equ 0FC3h ;# ">
 "4657
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4657: __asm("ADRESL equ 0FC3h");
 [; <" ADRESL equ 0FC3h ;# ">
 "4664
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4664: __asm("ADRESH equ 0FC4h");
 [; <" ADRESH equ 0FC4h ;# ">
 "4671
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4671: __asm("SSPCON2 equ 0FC5h");
 [; <" SSPCON2 equ 0FC5h ;# ">
 "4733
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4733: __asm("SSPCON1 equ 0FC6h");
 [; <" SSPCON1 equ 0FC6h ;# ">
 "4803
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4803: __asm("SSPSTAT equ 0FC7h");
 [; <" SSPSTAT equ 0FC7h ;# ">
 "5024
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5024: __asm("SSPADD equ 0FC8h");
 [; <" SSPADD equ 0FC8h ;# ">
 "5031
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5031: __asm("SSPBUF equ 0FC9h");
 [; <" SSPBUF equ 0FC9h ;# ">
 "5038
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5038: __asm("T2CON equ 0FCAh");
 [; <" T2CON equ 0FCAh ;# ">
 "5109
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5109: __asm("PR2 equ 0FCBh");
 [; <" PR2 equ 0FCBh ;# ">
 "5114
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5114: __asm("MEMCON equ 0FCBh");
 [; <" MEMCON equ 0FCBh ;# ">
 "5219
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5219: __asm("TMR2 equ 0FCCh");
 [; <" TMR2 equ 0FCCh ;# ">
 "5226
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5226: __asm("T1CON equ 0FCDh");
 [; <" T1CON equ 0FCDh ;# ">
 "5329
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5329: __asm("TMR1 equ 0FCEh");
 [; <" TMR1 equ 0FCEh ;# ">
 "5336
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5336: __asm("TMR1L equ 0FCEh");
 [; <" TMR1L equ 0FCEh ;# ">
 "5343
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5343: __asm("TMR1H equ 0FCFh");
 [; <" TMR1H equ 0FCFh ;# ">
 "5350
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5350: __asm("RCON equ 0FD0h");
 [; <" RCON equ 0FD0h ;# ">
 "5483
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5483: __asm("WDTCON equ 0FD1h");
 [; <" WDTCON equ 0FD1h ;# ">
 "5511
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5511: __asm("HLVDCON equ 0FD2h");
 [; <" HLVDCON equ 0FD2h ;# ">
 "5516
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5516: __asm("LVDCON equ 0FD2h");
 [; <" LVDCON equ 0FD2h ;# ">
 "5781
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5781: __asm("OSCCON equ 0FD3h");
 [; <" OSCCON equ 0FD3h ;# ">
 "5858
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5858: __asm("T0CON equ 0FD5h");
 [; <" T0CON equ 0FD5h ;# ">
 "5935
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5935: __asm("TMR0 equ 0FD6h");
 [; <" TMR0 equ 0FD6h ;# ">
 "5942
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5942: __asm("TMR0L equ 0FD6h");
 [; <" TMR0L equ 0FD6h ;# ">
 "5949
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5949: __asm("TMR0H equ 0FD7h");
 [; <" TMR0H equ 0FD7h ;# ">
 "5956
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5956: __asm("STATUS equ 0FD8h");
 [; <" STATUS equ 0FD8h ;# ">
 "6027
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6027: __asm("FSR2 equ 0FD9h");
 [; <" FSR2 equ 0FD9h ;# ">
 "6034
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6034: __asm("FSR2L equ 0FD9h");
 [; <" FSR2L equ 0FD9h ;# ">
 "6041
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6041: __asm("FSR2H equ 0FDAh");
 [; <" FSR2H equ 0FDAh ;# ">
 "6048
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6048: __asm("PLUSW2 equ 0FDBh");
 [; <" PLUSW2 equ 0FDBh ;# ">
 "6055
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6055: __asm("PREINC2 equ 0FDCh");
 [; <" PREINC2 equ 0FDCh ;# ">
 "6062
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6062: __asm("POSTDEC2 equ 0FDDh");
 [; <" POSTDEC2 equ 0FDDh ;# ">
 "6069
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6069: __asm("POSTINC2 equ 0FDEh");
 [; <" POSTINC2 equ 0FDEh ;# ">
 "6076
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6076: __asm("INDF2 equ 0FDFh");
 [; <" INDF2 equ 0FDFh ;# ">
 "6083
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6083: __asm("BSR equ 0FE0h");
 [; <" BSR equ 0FE0h ;# ">
 "6090
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6090: __asm("FSR1 equ 0FE1h");
 [; <" FSR1 equ 0FE1h ;# ">
 "6097
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6097: __asm("FSR1L equ 0FE1h");
 [; <" FSR1L equ 0FE1h ;# ">
 "6104
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6104: __asm("FSR1H equ 0FE2h");
 [; <" FSR1H equ 0FE2h ;# ">
 "6111
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6111: __asm("PLUSW1 equ 0FE3h");
 [; <" PLUSW1 equ 0FE3h ;# ">
 "6118
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6118: __asm("PREINC1 equ 0FE4h");
 [; <" PREINC1 equ 0FE4h ;# ">
 "6125
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6125: __asm("POSTDEC1 equ 0FE5h");
 [; <" POSTDEC1 equ 0FE5h ;# ">
 "6132
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6132: __asm("POSTINC1 equ 0FE6h");
 [; <" POSTINC1 equ 0FE6h ;# ">
 "6139
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6139: __asm("INDF1 equ 0FE7h");
 [; <" INDF1 equ 0FE7h ;# ">
 "6146
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6146: __asm("WREG equ 0FE8h");
 [; <" WREG equ 0FE8h ;# ">
 "6158
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6158: __asm("FSR0 equ 0FE9h");
 [; <" FSR0 equ 0FE9h ;# ">
 "6165
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6165: __asm("FSR0L equ 0FE9h");
 [; <" FSR0L equ 0FE9h ;# ">
 "6172
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6172: __asm("FSR0H equ 0FEAh");
 [; <" FSR0H equ 0FEAh ;# ">
 "6179
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6179: __asm("PLUSW0 equ 0FEBh");
 [; <" PLUSW0 equ 0FEBh ;# ">
 "6186
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6186: __asm("PREINC0 equ 0FECh");
 [; <" PREINC0 equ 0FECh ;# ">
 "6193
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6193: __asm("POSTDEC0 equ 0FEDh");
 [; <" POSTDEC0 equ 0FEDh ;# ">
 "6200
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6200: __asm("POSTINC0 equ 0FEEh");
 [; <" POSTINC0 equ 0FEEh ;# ">
 "6207
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6207: __asm("INDF0 equ 0FEFh");
 [; <" INDF0 equ 0FEFh ;# ">
 "6214
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6214: __asm("INTCON3 equ 0FF0h");
 [; <" INTCON3 equ 0FF0h ;# ">
 "6306
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6306: __asm("INTCON2 equ 0FF1h");
 [; <" INTCON2 equ 0FF1h ;# ">
 "6376
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6376: __asm("INTCON equ 0FF2h");
 [; <" INTCON equ 0FF2h ;# ">
 "6493
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6493: __asm("PROD equ 0FF3h");
 [; <" PROD equ 0FF3h ;# ">
 "6500
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6500: __asm("PRODL equ 0FF3h");
 [; <" PRODL equ 0FF3h ;# ">
 "6507
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6507: __asm("PRODH equ 0FF4h");
 [; <" PRODH equ 0FF4h ;# ">
 "6514
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6514: __asm("TABLAT equ 0FF5h");
 [; <" TABLAT equ 0FF5h ;# ">
 "6523
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6523: __asm("TBLPTR equ 0FF6h");
 [; <" TBLPTR equ 0FF6h ;# ">
 "6530
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6530: __asm("TBLPTRL equ 0FF6h");
 [; <" TBLPTRL equ 0FF6h ;# ">
 "6537
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6537: __asm("TBLPTRH equ 0FF7h");
 [; <" TBLPTRH equ 0FF7h ;# ">
 "6544
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6544: __asm("TBLPTRU equ 0FF8h");
 [; <" TBLPTRU equ 0FF8h ;# ">
 "6553
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6553: __asm("PCLAT equ 0FF9h");
 [; <" PCLAT equ 0FF9h ;# ">
 "6560
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6560: __asm("PC equ 0FF9h");
 [; <" PC equ 0FF9h ;# ">
 "6567
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6567: __asm("PCL equ 0FF9h");
 [; <" PCL equ 0FF9h ;# ">
 "6574
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6574: __asm("PCLATH equ 0FFAh");
 [; <" PCLATH equ 0FFAh ;# ">
 "6581
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6581: __asm("PCLATU equ 0FFBh");
 [; <" PCLATU equ 0FFBh ;# ">
 "6588
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6588: __asm("STKPTR equ 0FFCh");
 [; <" STKPTR equ 0FFCh ;# ">
 "6694
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6694: __asm("TOS equ 0FFDh");
 [; <" TOS equ 0FFDh ;# ">
 "6701
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6701: __asm("TOSL equ 0FFDh");
 [; <" TOSL equ 0FFDh ;# ">
 "6708
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6708: __asm("TOSH equ 0FFEh");
 [; <" TOSH equ 0FFEh ;# ">
 "6715
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "20 ./common.h
-[p x OSC  =  XT          ]
+[p x OSC  =  INTIO67          ]
 "21
 [p x FCMEN  =  OFF       ]
 "22
@@ -944,7 +1104,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _I2C_Stop ..  ]
 "206
 [; ;./ssd1306_unbuffered.h: 206: }
-[e :UE 273 ]
+[e :UE 274 ]
 }
 "209
 [; ;./ssd1306_unbuffered.h: 209: void SSD1306_Init(uint8_t vccstate, uint8_t i2caddr) {
@@ -989,22 +1149,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 141 `i `uc ]
 "230
 [; ;./ssd1306_unbuffered.h: 230:   if (vccstate == 0x01)
-[e $ ! == -> _vccstate `i -> 1 `i 275  ]
+[e $ ! == -> _vccstate `i -> 1 `i 276  ]
 "231
 [; ;./ssd1306_unbuffered.h: 231:     { ssd1306_command(0x10); }
 {
 [e ( _ssd1306_command (1 -> -> 16 `i `uc ]
 }
-[e $U 276  ]
+[e $U 277  ]
 "232
 [; ;./ssd1306_unbuffered.h: 232:   else
-[e :U 275 ]
+[e :U 276 ]
 "233
 [; ;./ssd1306_unbuffered.h: 233:     { ssd1306_command(0x14); }
 {
 [e ( _ssd1306_command (1 -> -> 20 `i `uc ]
 }
-[e :U 276 ]
+[e :U 277 ]
 "234
 [; ;./ssd1306_unbuffered.h: 234:   ssd1306_command(0x20);
 [e ( _ssd1306_command (1 -> -> 32 `i `uc ]
@@ -1028,43 +1188,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 129 `i `uc ]
 "249
 [; ;./ssd1306_unbuffered.h: 249:   if (vccstate == 0x01)
-[e $ ! == -> _vccstate `i -> 1 `i 277  ]
+[e $ ! == -> _vccstate `i -> 1 `i 278  ]
 "250
 [; ;./ssd1306_unbuffered.h: 250:     { ssd1306_command(0x9F); }
 {
 [e ( _ssd1306_command (1 -> -> 159 `i `uc ]
 }
-[e $U 278  ]
+[e $U 279  ]
 "251
 [; ;./ssd1306_unbuffered.h: 251:   else
-[e :U 277 ]
+[e :U 278 ]
 "252
 [; ;./ssd1306_unbuffered.h: 252:     { ssd1306_command(0xCF); }
 {
 [e ( _ssd1306_command (1 -> -> 207 `i `uc ]
 }
-[e :U 278 ]
+[e :U 279 ]
 "265
 [; ;./ssd1306_unbuffered.h: 265:   ssd1306_command(0xD9);
 [e ( _ssd1306_command (1 -> -> 217 `i `uc ]
 "266
 [; ;./ssd1306_unbuffered.h: 266:   if (vccstate == 0x01)
-[e $ ! == -> _vccstate `i -> 1 `i 279  ]
+[e $ ! == -> _vccstate `i -> 1 `i 280  ]
 "267
 [; ;./ssd1306_unbuffered.h: 267:     { ssd1306_command(0x22); }
 {
 [e ( _ssd1306_command (1 -> -> 34 `i `uc ]
 }
-[e $U 280  ]
+[e $U 281  ]
 "268
 [; ;./ssd1306_unbuffered.h: 268:   else
-[e :U 279 ]
+[e :U 280 ]
 "269
 [; ;./ssd1306_unbuffered.h: 269:     { ssd1306_command(0xF1); }
 {
 [e ( _ssd1306_command (1 -> -> 241 `i `uc ]
 }
-[e :U 280 ]
+[e :U 281 ]
 "270
 [; ;./ssd1306_unbuffered.h: 270:   ssd1306_command(0xDB);
 [e ( _ssd1306_command (1 -> -> 219 `i `uc ]
@@ -1085,7 +1245,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 175 `i `uc ]
 "278
 [; ;./ssd1306_unbuffered.h: 278: }
-[e :UE 274 ]
+[e :UE 275 ]
 }
 "280
 [; ;./ssd1306_unbuffered.h: 280: void SSD1306_StartScrollRight(uint8_t start, uint8_t stop) {
@@ -1121,7 +1281,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 47 `i `uc ]
 "289
 [; ;./ssd1306_unbuffered.h: 289: }
-[e :UE 281 ]
+[e :UE 282 ]
 }
 "291
 [; ;./ssd1306_unbuffered.h: 291: void SSD1306_StartScrollLeft(uint8_t start, uint8_t stop) {
@@ -1157,7 +1317,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 47 `i `uc ]
 "300
 [; ;./ssd1306_unbuffered.h: 300: }
-[e :UE 282 ]
+[e :UE 283 ]
 }
 "302
 [; ;./ssd1306_unbuffered.h: 302: void SSD1306_StartScrollDiagRight(uint8_t start, uint8_t stop) {
@@ -1199,7 +1359,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 47 `i `uc ]
 "313
 [; ;./ssd1306_unbuffered.h: 313: }
-[e :UE 283 ]
+[e :UE 284 ]
 }
 "315
 [; ;./ssd1306_unbuffered.h: 315: void SSD1306_StartScrollDiagLeft(uint8_t start, uint8_t stop) {
@@ -1241,7 +1401,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 47 `i `uc ]
 "326
 [; ;./ssd1306_unbuffered.h: 326: }
-[e :UE 284 ]
+[e :UE 285 ]
 }
 "328
 [; ;./ssd1306_unbuffered.h: 328: void SSD1306_StopScroll(void) {
@@ -1254,7 +1414,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 46 `i `uc ]
 "330
 [; ;./ssd1306_unbuffered.h: 330: }
-[e :UE 285 ]
+[e :UE 286 ]
 }
 "332
 [; ;./ssd1306_unbuffered.h: 332: void SSD1306_Dim(char dim) {
@@ -1268,33 +1428,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _contrast `uc ~T0 @X0 1 a ]
 "334
 [; ;./ssd1306_unbuffered.h: 334:   if (dim)
-[e $ ! != -> _dim `i -> 0 `i 287  ]
+[e $ ! != -> _dim `i -> 0 `i 288  ]
 "335
 [; ;./ssd1306_unbuffered.h: 335:     contrast = 0;
 [e = _contrast -> -> 0 `i `uc ]
-[e $U 288  ]
+[e $U 289  ]
 "336
 [; ;./ssd1306_unbuffered.h: 336:   else {
-[e :U 287 ]
+[e :U 288 ]
 {
 "337
 [; ;./ssd1306_unbuffered.h: 337:     if (_vccstate == 0x01)
-[e $ ! == -> __vccstate `i -> 1 `i 289  ]
+[e $ ! == -> __vccstate `i -> 1 `i 290  ]
 "338
 [; ;./ssd1306_unbuffered.h: 338:       contrast = 0x9F;
 [e = _contrast -> -> 159 `i `uc ]
-[e $U 290  ]
+[e $U 291  ]
 "339
 [; ;./ssd1306_unbuffered.h: 339:     else
-[e :U 289 ]
+[e :U 290 ]
 "340
 [; ;./ssd1306_unbuffered.h: 340:       contrast = 0xCF;
 [e = _contrast -> -> 207 `i `uc ]
-[e :U 290 ]
+[e :U 291 ]
 "341
 [; ;./ssd1306_unbuffered.h: 341:   }
 }
-[e :U 288 ]
+[e :U 289 ]
 "344
 [; ;./ssd1306_unbuffered.h: 344:   ssd1306_command(0x81);
 [e ( _ssd1306_command (1 -> -> 129 `i `uc ]
@@ -1303,7 +1463,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 _contrast ]
 "346
 [; ;./ssd1306_unbuffered.h: 346: }
-[e :UE 286 ]
+[e :UE 287 ]
 }
 "348
 [; ;./ssd1306_unbuffered.h: 348: void SSD1306_SetTextWrap(char w) {
@@ -1317,7 +1477,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _wrap _w ]
 "350
 [; ;./ssd1306_unbuffered.h: 350: }
-[e :UE 291 ]
+[e :UE 292 ]
 }
 "352
 [; ;./ssd1306_unbuffered.h: 352: void SSD1306_InvertDisplay(char i) {
@@ -1328,21 +1488,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "353
 [; ;./ssd1306_unbuffered.h: 353:   if (i)
-[e $ ! != -> _i `i -> 0 `i 293  ]
+[e $ ! != -> _i `i -> 0 `i 294  ]
 "354
 [; ;./ssd1306_unbuffered.h: 354:     ssd1306_command(0xA7);
 [e ( _ssd1306_command (1 -> -> 167 `i `uc ]
-[e $U 294  ]
+[e $U 295  ]
 "355
 [; ;./ssd1306_unbuffered.h: 355:   else
-[e :U 293 ]
+[e :U 294 ]
 "356
 [; ;./ssd1306_unbuffered.h: 356:     ssd1306_command(0xA6);
 [e ( _ssd1306_command (1 -> -> 166 `i `uc ]
-[e :U 294 ]
+[e :U 295 ]
 "357
 [; ;./ssd1306_unbuffered.h: 357: }
-[e :UE 292 ]
+[e :UE 293 ]
 }
 "359
 [; ;./ssd1306_unbuffered.h: 359: void SSD1306_GotoXY(uint8_t x, uint8_t y) {
@@ -1354,11 +1514,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "360
 [; ;./ssd1306_unbuffered.h: 360:   if((x > 21) || y > 8)
-[e $ ! || > -> _x `i -> 21 `i > -> _y `i -> 8 `i 296  ]
+[e $ ! || > -> _x `i -> 21 `i > -> _y `i -> 8 `i 297  ]
 "361
 [; ;./ssd1306_unbuffered.h: 361:     return;
-[e $UE 295  ]
-[e :U 296 ]
+[e $UE 296  ]
+[e :U 297 ]
 "362
 [; ;./ssd1306_unbuffered.h: 362:   x_pos = x;
 [e = _x_pos _x ]
@@ -1367,7 +1527,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _y_pos _y ]
 "364
 [; ;./ssd1306_unbuffered.h: 364: }
-[e :UE 295 ]
+[e :UE 296 ]
 }
 "366
 [; ;./ssd1306_unbuffered.h: 366: void SSD1306_PutC(uint8_t c) {
@@ -1381,11 +1541,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _font_c `uc ~T0 @X0 1 a ]
 "370
 [; ;./ssd1306_unbuffered.h: 370:   if((c < ' ') || (c > '~'))
-[e $ ! || < -> _c `ui -> 32 `ui > -> _c `ui -> 126 `ui 298  ]
+[e $ ! || < -> _c `ui -> 32 `ui > -> _c `ui -> 126 `ui 299  ]
 "371
 [; ;./ssd1306_unbuffered.h: 371:     c = '?';
 [e = _c -> -> 63 `ui `uc ]
-[e :U 298 ]
+[e :U 299 ]
 "372
 [; ;./ssd1306_unbuffered.h: 372:   ssd1306_command(0x21);
 [e ( _ssd1306_command (1 -> -> 33 `i `uc ]
@@ -1418,16 +1578,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 299  ]
-[e $U 300  ]
-[e :U 299 ]
+[e $ < -> _i `i -> 5 `i 300  ]
+[e $U 301  ]
+[e :U 300 ]
 {
 "385
 [; ;./ssd1306_unbuffered.h: 385:     uint8_t offs;
 [v _offs `uc ~T0 @X0 1 a ]
 "386
 [; ;./ssd1306_unbuffered.h: 386:     if(c < 'S') {
-[e $ ! < -> _c `ui -> 83 `ui 302  ]
+[e $ ! < -> _c `ui -> 83 `ui 303  ]
 {
 "387
 [; ;./ssd1306_unbuffered.h: 387:         offs = (c - 32)*5;
@@ -1438,8 +1598,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "389
 [; ;./ssd1306_unbuffered.h: 389:     } else {
 }
-[e $U 303  ]
-[e :U 302 ]
+[e $U 304  ]
+[e :U 303 ]
 {
 "390
 [; ;./ssd1306_unbuffered.h: 390:         offs = (c - 'S')*5;
@@ -1450,7 +1610,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "392
 [; ;./ssd1306_unbuffered.h: 392:     }
 }
-[e :U 303 ]
+[e :U 304 ]
 "394
 [; ;./ssd1306_unbuffered.h: 394:     I2C_WriteByte(font_c);
 [e ( _I2C_WriteByte (1 -> _font_c `uc ]
@@ -1458,8 +1618,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ssd1306_unbuffered.h: 395:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 299  ]
-[e :U 300 ]
+[e $ < -> _i `i -> 5 `i 300  ]
+[e :U 301 ]
 }
 "396
 [; ;./ssd1306_unbuffered.h: 396:   I2C_Stop();
@@ -1469,14 +1629,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _x_pos -> + % -> _x_pos `i -> 21 `i -> 1 `i `uc ]
 "399
 [; ;./ssd1306_unbuffered.h: 399:   if (wrap && (x_pos == 1))
-[e $ ! && != -> _wrap `i -> 0 `i == -> _x_pos `i -> 1 `i 304  ]
+[e $ ! && != -> _wrap `i -> 0 `i == -> _x_pos `i -> 1 `i 305  ]
 "400
 [; ;./ssd1306_unbuffered.h: 400:     y_pos = y_pos % 8 + 1;
 [e = _y_pos -> + % -> _y_pos `i -> 8 `i -> 1 `i `uc ]
-[e :U 304 ]
+[e :U 305 ]
 "402
 [; ;./ssd1306_unbuffered.h: 402: }
-[e :UE 297 ]
+[e :UE 298 ]
 }
 "404
 [; ;./ssd1306_unbuffered.h: 404: void SSD1306_PutStretchC(uint8_t c, uint8_t size_mult) {
@@ -1497,14 +1657,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 1 `i `uc ]
 "410
 [; ;./ssd1306_unbuffered.h: 410:   if((c < ' ') || (c > '~'))
-[e $ ! || < -> _c `ui -> 32 `ui > -> _c `ui -> 126 `ui 306  ]
+[e $ ! || < -> _c `ui -> 32 `ui > -> _c `ui -> 126 `ui 307  ]
 "411
 [; ;./ssd1306_unbuffered.h: 411:     c = '?';
 [e = _c -> -> 63 `ui `uc ]
-[e :U 306 ]
+[e :U 307 ]
 "414
 [; ;./ssd1306_unbuffered.h: 414:   if(size_mult < 1 || size_mult > 4) {
-[e $ ! || < -> _size_mult `i -> 1 `i > -> _size_mult `i -> 4 `i 307  ]
+[e $ ! || < -> _size_mult `i -> 1 `i > -> _size_mult `i -> 4 `i 308  ]
 {
 "415
 [; ;./ssd1306_unbuffered.h: 415:       size_mult = 1;
@@ -1512,18 +1672,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "416
 [; ;./ssd1306_unbuffered.h: 416:   }
 }
-[e :U 307 ]
+[e :U 308 ]
 "418
 [; ;./ssd1306_unbuffered.h: 418:   for(uint8_t i=0; i<(size_mult - 1); i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $U 311  ]
-[e :U 308 ]
+[e $U 312  ]
+[e :U 309 ]
 {
 "419
 [; ;./ssd1306_unbuffered.h: 419:       if(x_pos % size_mult != 1) {
-[e $ ! != % -> _x_pos `i -> _size_mult `i -> 1 `i 312  ]
+[e $ ! != % -> _x_pos `i -> _size_mult `i -> 1 `i 313  ]
 {
 "420
 [; ;./ssd1306_unbuffered.h: 420:         x_pos++;
@@ -1531,34 +1691,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 "421
 [; ;./ssd1306_unbuffered.h: 421:       } else {
 }
-[e $U 313  ]
-[e :U 312 ]
+[e $U 314  ]
+[e :U 313 ]
 {
 "422
 [; ;./ssd1306_unbuffered.h: 422:           break;
-[e $U 309  ]
+[e $U 310  ]
 "423
 [; ;./ssd1306_unbuffered.h: 423:       }
 }
-[e :U 313 ]
+[e :U 314 ]
 "424
 [; ;./ssd1306_unbuffered.h: 424:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 311 ]
-[e $ < -> _i `i - -> _size_mult `i -> 1 `i 308  ]
-[e :U 309 ]
+[e :U 312 ]
+[e $ < -> _i `i - -> _size_mult `i -> 1 `i 309  ]
+[e :U 310 ]
 }
 "426
 [; ;./ssd1306_unbuffered.h: 426:   if(x_pos > 21) {
-[e $ ! > -> _x_pos `i -> 21 `i 314  ]
+[e $ ! > -> _x_pos `i -> 21 `i 315  ]
 {
 "427
 [; ;./ssd1306_unbuffered.h: 427:       x_pos = 1;
 [e = _x_pos -> -> 1 `i `uc ]
 "428
 [; ;./ssd1306_unbuffered.h: 428:       if(wrap) {
-[e $ ! != -> _wrap `i -> 0 `i 315  ]
+[e $ ! != -> _wrap `i -> 0 `i 316  ]
 {
 "429
 [; ;./ssd1306_unbuffered.h: 429:           y_pos+=size_mult;
@@ -1566,11 +1726,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "430
 [; ;./ssd1306_unbuffered.h: 430:       }
 }
-[e :U 315 ]
+[e :U 316 ]
 "431
 [; ;./ssd1306_unbuffered.h: 431:   }
 }
-[e :U 314 ]
+[e :U 315 ]
 "432
 [; ;./ssd1306_unbuffered.h: 432:   ssd1306_command(0x21);
 [e ( _ssd1306_command (1 -> -> 33 `i `uc ]
@@ -1603,15 +1763,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 316  ]
-[e $U 317  ]
-[e :U 316 ]
+[e $ < -> _i `i -> 5 `i 317  ]
+[e $U 318  ]
+[e :U 317 ]
 {
 "446
 [; ;./ssd1306_unbuffered.h: 446:     uint8_t offs;
 [v _offs `uc ~T0 @X0 1 a ]
-[v F3472 `uc ~T0 @X0 -> 4 `i s ]
-[i F3472
+[v F3523 `uc ~T0 @X0 -> 4 `i s ]
+[i F3523
 :U ..
 "447
 [; ;./ssd1306_unbuffered.h: 447:     uint8_t b[4] = {0};
@@ -1619,10 +1779,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _b `uc ~T0 @X0 -> 4 `i a ]
-[e = _b F3472 ]
+[e = _b F3523 ]
 "449
 [; ;./ssd1306_unbuffered.h: 449:     if(c < 'S') {
-[e $ ! < -> _c `ui -> 83 `ui 319  ]
+[e $ ! < -> _c `ui -> 83 `ui 320  ]
 {
 "450
 [; ;./ssd1306_unbuffered.h: 450:         offs = (c - 32)*5;
@@ -1633,8 +1793,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "452
 [; ;./ssd1306_unbuffered.h: 452:     } else {
 }
-[e $U 320  ]
-[e :U 319 ]
+[e $U 321  ]
+[e :U 320 ]
 {
 "453
 [; ;./ssd1306_unbuffered.h: 453:         offs = (c - 'S')*5;
@@ -1645,10 +1805,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "455
 [; ;./ssd1306_unbuffered.h: 455:     }
 }
-[e :U 320 ]
+[e :U 321 ]
 "457
 [; ;./ssd1306_unbuffered.h: 457:     if(size_mult == 1) {
-[e $ ! == -> _size_mult `i -> 1 `i 321  ]
+[e $ ! == -> _size_mult `i -> 1 `i 322  ]
 {
 "459
 [; ;./ssd1306_unbuffered.h: 459:         I2C_WriteByte(font_c);
@@ -1656,29 +1816,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "460
 [; ;./ssd1306_unbuffered.h: 460:     } else {
 }
-[e $U 322  ]
-[e :U 321 ]
+[e $U 323  ]
+[e :U 322 ]
 {
 "463
 [; ;./ssd1306_unbuffered.h: 463:         for(uint8_t i = 0; i < 8; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 323  ]
-[e $U 324  ]
-[e :U 323 ]
+[e $ < -> _i `i -> 8 `i 324  ]
+[e $U 325  ]
+[e :U 324 ]
 {
 "464
 [; ;./ssd1306_unbuffered.h: 464:             if(font_c & (1 << i)) {
-[e $ ! != & -> _font_c `i << -> 1 `i -> _i `i -> 0 `i 326  ]
+[e $ ! != & -> _font_c `i << -> 1 `i -> _i `i -> 0 `i 327  ]
 {
 "465
 [; ;./ssd1306_unbuffered.h: 465:                 for(uint8_t p = 0; p < size_mult; p++) {
 {
 [v _p `uc ~T0 @X0 1 a ]
 [e = _p -> -> 0 `i `uc ]
-[e $U 330  ]
-[e :U 327 ]
+[e $U 331  ]
+[e :U 328 ]
 {
 "467
 [; ;./ssd1306_unbuffered.h: 467:                     uint8_t pos = (i*size_mult + p) % 8;
@@ -1695,36 +1855,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ssd1306_unbuffered.h: 472:                 }
 }
 [e ++ _p -> -> 1 `i `uc ]
-[e :U 330 ]
-[e $ < -> _p `i -> _size_mult `i 327  ]
-[e :U 328 ]
+[e :U 331 ]
+[e $ < -> _p `i -> _size_mult `i 328  ]
+[e :U 329 ]
 }
 "473
 [; ;./ssd1306_unbuffered.h: 473:             }
 }
-[e :U 326 ]
+[e :U 327 ]
 "474
 [; ;./ssd1306_unbuffered.h: 474:         }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 323  ]
-[e :U 324 ]
+[e $ < -> _i `i -> 8 `i 324  ]
+[e :U 325 ]
 }
 "477
 [; ;./ssd1306_unbuffered.h: 477:         for(uint8_t i = 0; i < size_mult; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $U 334  ]
-[e :U 331 ]
+[e $U 335  ]
+[e :U 332 ]
 {
 "478
 [; ;./ssd1306_unbuffered.h: 478:             for(uint8_t bn = 0; bn < size_mult; bn++) {
 {
 [v _bn `uc ~T0 @X0 1 a ]
 [e = _bn -> -> 0 `i `uc ]
-[e $U 338  ]
-[e :U 335 ]
+[e $U 339  ]
+[e :U 336 ]
 {
 "479
 [; ;./ssd1306_unbuffered.h: 479:                 I2C_WriteByte(b[bn]);
@@ -1733,28 +1893,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ssd1306_unbuffered.h: 480:             }
 }
 [e ++ _bn -> -> 1 `i `uc ]
-[e :U 338 ]
-[e $ < -> _bn `i -> _size_mult `i 335  ]
-[e :U 336 ]
+[e :U 339 ]
+[e $ < -> _bn `i -> _size_mult `i 336  ]
+[e :U 337 ]
 }
 "481
 [; ;./ssd1306_unbuffered.h: 481:         }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 334 ]
-[e $ < -> _i `i -> _size_mult `i 331  ]
-[e :U 332 ]
+[e :U 335 ]
+[e $ < -> _i `i -> _size_mult `i 332  ]
+[e :U 333 ]
 }
 "482
 [; ;./ssd1306_unbuffered.h: 482:     }
 }
-[e :U 322 ]
+[e :U 323 ]
 "483
 [; ;./ssd1306_unbuffered.h: 483:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 316  ]
-[e :U 317 ]
+[e $ < -> _i `i -> 5 `i 317  ]
+[e :U 318 ]
 }
 "484
 [; ;./ssd1306_unbuffered.h: 484:   I2C_Stop();
@@ -1764,14 +1924,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e =+ _x_pos -> _size_mult `uc ]
 "487
 [; ;./ssd1306_unbuffered.h: 487:   if(x_pos > 21) {
-[e $ ! > -> _x_pos `i -> 21 `i 339  ]
+[e $ ! > -> _x_pos `i -> 21 `i 340  ]
 {
 "488
 [; ;./ssd1306_unbuffered.h: 488:       x_pos = 1;
 [e = _x_pos -> -> 1 `i `uc ]
 "489
 [; ;./ssd1306_unbuffered.h: 489:       if(wrap) {
-[e $ ! != -> _wrap `i -> 0 `i 340  ]
+[e $ ! != -> _wrap `i -> 0 `i 341  ]
 {
 "490
 [; ;./ssd1306_unbuffered.h: 490:           y_pos+=size_mult;
@@ -1779,11 +1939,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "491
 [; ;./ssd1306_unbuffered.h: 491:       }
 }
-[e :U 340 ]
+[e :U 341 ]
 "492
 [; ;./ssd1306_unbuffered.h: 492:   }
 }
-[e :U 339 ]
+[e :U 340 ]
 "495
 [; ;./ssd1306_unbuffered.h: 495:   ssd1306_command(0x20);
 [e ( _ssd1306_command (1 -> -> 32 `i `uc ]
@@ -1792,7 +1952,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ssd1306_command (1 -> -> 0 `i `uc ]
 "498
 [; ;./ssd1306_unbuffered.h: 498: }
-[e :UE 305 ]
+[e :UE 306 ]
 }
 "500
 [; ;./ssd1306_unbuffered.h: 500: void SSD1306_PutCustomC(char *c) {
@@ -1836,9 +1996,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 342  ]
-[e $U 343  ]
-[e :U 342 ]
+[e $ < -> _i `i -> 5 `i 343  ]
+[e $U 344  ]
+[e :U 343 ]
 {
 "515
 [; ;./ssd1306_unbuffered.h: 515:     line = c[i];
@@ -1850,8 +2010,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ssd1306_unbuffered.h: 517:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 342  ]
-[e :U 343 ]
+[e $ < -> _i `i -> 5 `i 343  ]
+[e :U 344 ]
 }
 "518
 [; ;./ssd1306_unbuffered.h: 518:   I2C_Stop();
@@ -1861,14 +2021,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _x_pos -> + % -> _x_pos `i -> 21 `i -> 1 `i `uc ]
 "521
 [; ;./ssd1306_unbuffered.h: 521:   if (wrap && (x_pos == 1))
-[e $ ! && != -> _wrap `i -> 0 `i == -> _x_pos `i -> 1 `i 345  ]
+[e $ ! && != -> _wrap `i -> 0 `i == -> _x_pos `i -> 1 `i 346  ]
 "522
 [; ;./ssd1306_unbuffered.h: 522:     y_pos = y_pos % 8 + 1;
 [e = _y_pos -> + % -> _y_pos `i -> 8 `i -> 1 `i `uc ]
-[e :U 345 ]
+[e :U 346 ]
 "524
 [; ;./ssd1306_unbuffered.h: 524: }
-[e :UE 341 ]
+[e :UE 342 ]
 }
 "526
 [; ;./ssd1306_unbuffered.h: 526: void SSD1306_ClearDisplay() {
@@ -1908,22 +2068,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `us ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `us ]
-[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 347  ]
-[e $U 348  ]
-[e :U 347 ]
+[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 348  ]
+[e $U 349  ]
+[e :U 348 ]
 "551
 [; ;./ssd1306_unbuffered.h: 551:     I2C_WriteByte(0);
 [e ( _I2C_WriteByte (1 -> -> 0 `i `uc ]
 [e ++ _i -> -> 1 `i `us ]
-[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 347  ]
-[e :U 348 ]
+[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 348  ]
+[e :U 349 ]
 }
 "553
 [; ;./ssd1306_unbuffered.h: 553:   I2C_Stop();
 [e ( _I2C_Stop ..  ]
 "555
 [; ;./ssd1306_unbuffered.h: 555: }
-[e :UE 346 ]
+[e :UE 347 ]
 }
 "557
 [; ;./ssd1306_unbuffered.h: 557: void SSD1306_FillScreen() {
@@ -1963,22 +2123,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `us ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `us ]
-[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 351  ]
-[e $U 352  ]
-[e :U 351 ]
+[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 352  ]
+[e $U 353  ]
+[e :U 352 ]
 "582
 [; ;./ssd1306_unbuffered.h: 582:     I2C_WriteByte(0xFF);
 [e ( _I2C_WriteByte (1 -> -> 255 `i `uc ]
 [e ++ _i -> -> 1 `i `us ]
-[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 351  ]
-[e :U 352 ]
+[e $ < -> _i `ui -> / * -> 64 `i -> 128 `i -> 8 `i `ui 352  ]
+[e :U 353 ]
 }
 "584
 [; ;./ssd1306_unbuffered.h: 584:   I2C_Stop();
 [e ( _I2C_Stop ..  ]
 "586
 [; ;./ssd1306_unbuffered.h: 586: }
-[e :UE 350 ]
+[e :UE 351 ]
 }
 "588
 [; ;./ssd1306_unbuffered.h: 588: void oled_puts(const char* c, uint8_t size) {
@@ -1990,8 +2150,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "589
 [; ;./ssd1306_unbuffered.h: 589:     while(*c != '\0') {
-[e $U 355  ]
-[e :U 356 ]
+[e $U 356  ]
+[e :U 357 ]
 {
 "590
 [; ;./ssd1306_unbuffered.h: 590:         SSD1306_PutStretchC(*c, size);
@@ -2002,14 +2162,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "592
 [; ;./ssd1306_unbuffered.h: 592:     }
 }
-[e :U 355 ]
+[e :U 356 ]
 "589
 [; ;./ssd1306_unbuffered.h: 589:     while(*c != '\0') {
-[e $ != -> *U _c `ui -> 0 `ui 356  ]
-[e :U 357 ]
+[e $ != -> *U _c `ui -> 0 `ui 357  ]
+[e :U 358 ]
 "593
 [; ;./ssd1306_unbuffered.h: 593: }
-[e :UE 354 ]
+[e :UE 355 ]
 }
 "53 ds18b20.c
 [; ;ds18b20.c: 53: float OneWireTemp(){
@@ -2028,11 +2188,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _OneWireWriteByte (1 -> -> 68 `i `uc ]
 "58
 [; ;ds18b20.c: 58:     while(!PORTCbits.RC1);
-[e $U 359  ]
-[e :U 360 ]
-[e :U 359 ]
-[e $ ! != -> . . _PORTCbits 0 1 `i -> 0 `i 360  ]
+[e $U 360  ]
 [e :U 361 ]
+[e :U 360 ]
+[e $ ! != -> . . _PORTCbits 0 1 `i -> 0 `i 361  ]
+[e :U 362 ]
 "59
 [; ;ds18b20.c: 59:     OneWireReset();
 [e ( _OneWireReset ..  ]
@@ -2064,10 +2224,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "67
 [; ;ds18b20.c: 67:     return (temperature/16);
 [e ) / _temperature -> -> 16 `i `f ]
-[e $UE 358  ]
+[e $UE 359  ]
 "69
 [; ;ds18b20.c: 69: }
-[e :UE 358 ]
+[e :UE 359 ]
 }
 "71
 [; ;ds18b20.c: 71: void OneWireHigh(){
@@ -2083,7 +2243,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _TRISAbits 1 1 -> -> 1 `i `uc ]
 "74
 [; ;ds18b20.c: 74: }
-[e :UE 362 ]
+[e :UE 363 ]
 }
 "76
 [; ;ds18b20.c: 76: void OneWireRelease(){
@@ -2099,7 +2259,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _TRISAbits 1 1 -> -> 0 `i `uc ]
 "79
 [; ;ds18b20.c: 79: }
-[e :UE 363 ]
+[e :UE 364 ]
 }
 "81
 [; ;ds18b20.c: 81: unsigned char OneWireRead(){
@@ -2110,10 +2270,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "82
 [; ;ds18b20.c: 82:     return PORTCbits.RC1;
 [e ) . . _PORTCbits 0 1 ]
-[e $UE 364  ]
+[e $UE 365  ]
 "83
 [; ;ds18b20.c: 83: }
-[e :UE 364 ]
+[e :UE 365 ]
 }
 "85
 [; ;ds18b20.c: 85: unsigned int OneWireReset(){
@@ -2125,37 +2285,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ds18b20.c: 86:     OneWireRelease();
 [e ( _OneWireRelease ..  ]
 "87
-[; ;ds18b20.c: 87:     _delay((unsigned long)((240)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 240 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 87:     _delay((unsigned long)((240)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 240 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "88
-[; ;ds18b20.c: 88:     _delay((unsigned long)((240)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 240 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 88:     _delay((unsigned long)((240)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 240 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "89
 [; ;ds18b20.c: 89:     OneWireHigh();
 [e ( _OneWireHigh ..  ]
 "90
-[; ;ds18b20.c: 90:     _delay((unsigned long)((70)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 70 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 90:     _delay((unsigned long)((70)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 70 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "91
 [; ;ds18b20.c: 91:     unsigned int OW = OneWireRead();
 [v _OW `ui ~T0 @X0 1 a ]
 [e = _OW -> ( _OneWireRead ..  `ui ]
 "92
-[; ;ds18b20.c: 92:     _delay((unsigned long)((205)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 205 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 92:     _delay((unsigned long)((205)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 205 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "93
-[; ;ds18b20.c: 93:     _delay((unsigned long)((205)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 205 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 93:     _delay((unsigned long)((205)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 205 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "94
 [; ;ds18b20.c: 94:     OneWireHigh();
 [e ( _OneWireHigh ..  ]
 "95
 [; ;ds18b20.c: 95:     return OW;
 [e ) _OW ]
-[e $UE 365  ]
+[e $UE 366  ]
 "96
 [; ;ds18b20.c: 96: }
-[e :UE 365 ]
+[e :UE 366 ]
 }
 "99
 [; ;ds18b20.c: 99: void OneWireWriteBit(unsigned char b){
@@ -2166,47 +2326,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "100
 [; ;ds18b20.c: 100:     if(b){
-[e $ ! != -> _b `i -> 0 `i 367  ]
+[e $ ! != -> _b `i -> 0 `i 368  ]
 {
 "101
 [; ;ds18b20.c: 101:         OneWireRelease();
 [e ( _OneWireRelease ..  ]
 "102
-[; ;ds18b20.c: 102:         _delay((unsigned long)((6)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 6 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 102:         _delay((unsigned long)((6)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 6 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "103
 [; ;ds18b20.c: 103:         OneWireHigh();
 [e ( _OneWireHigh ..  ]
 "104
-[; ;ds18b20.c: 104:         _delay((unsigned long)((64)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 64 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 104:         _delay((unsigned long)((64)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 64 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "105
 [; ;ds18b20.c: 105:     }
 }
-[e $U 368  ]
+[e $U 369  ]
 "106
 [; ;ds18b20.c: 106:     else{
-[e :U 367 ]
+[e :U 368 ]
 {
 "107
 [; ;ds18b20.c: 107:         OneWireRelease();
 [e ( _OneWireRelease ..  ]
 "108
-[; ;ds18b20.c: 108:         _delay((unsigned long)((60)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 60 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 108:         _delay((unsigned long)((60)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 60 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "109
 [; ;ds18b20.c: 109:         OneWireHigh();
 [e ( _OneWireHigh ..  ]
 "110
-[; ;ds18b20.c: 110:         _delay((unsigned long)((10)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 110:         _delay((unsigned long)((10)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "111
 [; ;ds18b20.c: 111:     }
 }
-[e :U 368 ]
+[e :U 369 ]
 "112
 [; ;ds18b20.c: 112: }
-[e :UE 366 ]
+[e :UE 367 ]
 }
 "114
 [; ;ds18b20.c: 114: unsigned char OneWireReadBit(){
@@ -2218,28 +2378,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ds18b20.c: 115:     OneWireRelease();
 [e ( _OneWireRelease ..  ]
 "116
-[; ;ds18b20.c: 116:     _delay((unsigned long)((6)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 6 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 116:     _delay((unsigned long)((6)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 6 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "117
 [; ;ds18b20.c: 117:     OneWireHigh();
 [e ( _OneWireHigh ..  ]
 "118
-[; ;ds18b20.c: 118:     _delay((unsigned long)((9)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 9 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 118:     _delay((unsigned long)((9)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 9 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "119
 [; ;ds18b20.c: 119:     unsigned char out = OneWireRead();
 [v _out `uc ~T0 @X0 1 a ]
 [e = _out ( _OneWireRead ..  ]
 "120
-[; ;ds18b20.c: 120:     _delay((unsigned long)((55)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 55 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;ds18b20.c: 120:     _delay((unsigned long)((55)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 55 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "121
 [; ;ds18b20.c: 121:     return out;
 [e ) _out ]
-[e $UE 369  ]
+[e $UE 370  ]
 "122
 [; ;ds18b20.c: 122: }
-[e :UE 369 ]
+[e :UE 370 ]
 }
 "124
 [; ;ds18b20.c: 124: void OneWireWriteByte(unsigned char b){
@@ -2253,9 +2413,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 371  ]
-[e $U 372  ]
-[e :U 371 ]
+[e $ < _i -> 8 `i 372  ]
+[e $U 373  ]
+[e :U 372 ]
 {
 "126
 [; ;ds18b20.c: 126:         OneWireWriteBit(b & 0x01);
@@ -2267,12 +2427,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ds18b20.c: 128:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 371  ]
-[e :U 372 ]
+[e $ < _i -> 8 `i 372  ]
+[e :U 373 ]
 }
 "129
 [; ;ds18b20.c: 129: }
-[e :UE 370 ]
+[e :UE 371 ]
 }
 "131
 [; ;ds18b20.c: 131: unsigned char OneWireReadByte(void){
@@ -2288,80 +2448,107 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 375  ]
-[e $U 376  ]
-[e :U 375 ]
+[e $ < _i -> 8 `i 376  ]
+[e $U 377  ]
+[e :U 376 ]
 {
 "134
 [; ;ds18b20.c: 134:         out = out >> 1;
 [e = _out -> >> -> _out `i -> 1 `i `uc ]
 "135
 [; ;ds18b20.c: 135:         if(OneWireReadBit() & 0x01)
-[e $ ! != & -> ( _OneWireReadBit ..  `i -> 1 `i -> 0 `i 378  ]
+[e $ ! != & -> ( _OneWireReadBit ..  `i -> 1 `i -> 0 `i 379  ]
 "136
 [; ;ds18b20.c: 136:             out = out | 0x80;
 [e = _out -> | -> _out `i -> 128 `i `uc ]
-[e :U 378 ]
+[e :U 379 ]
 "137
 [; ;ds18b20.c: 137:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 375  ]
-[e :U 376 ]
+[e $ < _i -> 8 `i 376  ]
+[e :U 377 ]
 }
 "138
 [; ;ds18b20.c: 138:     return out;
 [e ) _out ]
-[e $UE 374  ]
+[e $UE 375  ]
 "139
 [; ;ds18b20.c: 139: }
-[e :UE 374 ]
+[e :UE 375 ]
 }
 "141
-[; ;ds18b20.c: 141: float print_temperature(float temp)
-[v _print_temperature `(f ~T0 @X0 1 ef1`f ]
+[; ;ds18b20.c: 141: float print_temperature(SystemData* pSystem_data)
+[v _print_temperature `(f ~T0 @X0 1 ef1`*S273 ]
 "142
 [; ;ds18b20.c: 142: {
 {
 [e :U _print_temperature ]
 "141
-[; ;ds18b20.c: 141: float print_temperature(float temp)
-[v _temp `f ~T0 @X0 1 r1 ]
+[; ;ds18b20.c: 141: float print_temperature(SystemData* pSystem_data)
+[v _pSystem_data `*S273 ~T0 @X0 1 r1 ]
 "142
 [; ;ds18b20.c: 142: {
 [f ]
 "143
-[; ;ds18b20.c: 143:     char buffer[7];
-[v _buffer `uc ~T0 @X0 -> 7 `i a ]
+[; ;ds18b20.c: 143:     char buffer_temp[7];
+[v _buffer_temp `uc ~T0 @X0 -> 7 `i a ]
+"144
+[; ;ds18b20.c: 144:     char buffer_command[7];
+[v _buffer_command `uc ~T0 @X0 -> 7 `i a ]
 "145
-[; ;ds18b20.c: 145:     snprintf(buffer,7,"%0.1fC",temp);
-[e ( _snprintf (2 , (. , , &U _buffer -> -> 7 `i `ui :s 1C -> _temp `d ]
-"146
-[; ;ds18b20.c: 146:     SSD1306_Init(0x02, 0x3C);
-[e ( _SSD1306_Init (2 , -> -> 2 `i `uc -> -> 60 `i `uc ]
+[; ;ds18b20.c: 145:     float command_temp = 0.0;
+[v _command_temp `f ~T0 @X0 1 a ]
+[e = _command_temp -> .0.0 `f ]
 "147
-[; ;ds18b20.c: 147:     SSD1306_ClearDisplay();
-[e ( _SSD1306_ClearDisplay ..  ]
-"148
-[; ;ds18b20.c: 148:     SSD1306_GotoXY(1,2);
-[e ( _SSD1306_GotoXY (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
+[; ;ds18b20.c: 147:     command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
+[e = _command_temp + -> -> . *U _pSystem_data 8 `i `f / -> . *U _pSystem_data 9 `f -> -> 100 `i `f ]
 "149
-[; ;ds18b20.c: 149:     oled_puts("Temperature:", 2);
-[e ( _oled_puts (2 , :s 2C -> -> 2 `i `uc ]
+[; ;ds18b20.c: 149:     snprintf(buffer_temp,7,"%0.1fC",pSystem_data->temperature);
+[e ( _snprintf (2 , (. , , &U _buffer_temp -> -> 7 `i `ui :s 1C -> . *U _pSystem_data 10 `d ]
 "150
-[; ;ds18b20.c: 150:     SSD1306_GotoXY(2,5);
-[e ( _SSD1306_GotoXY (2 , -> -> 2 `i `uc -> -> 5 `i `uc ]
+[; ;ds18b20.c: 150:     snprintf(buffer_command,7,"%0.1fC",command_temp);
+[e ( _snprintf (2 , (. , , &U _buffer_command -> -> 7 `i `ui :s 2C -> _command_temp `d ]
 "151
-[; ;ds18b20.c: 151:     oled_puts(buffer, 3);
-[e ( _oled_puts (2 , -> &U _buffer `*Cuc -> -> 3 `i `uc ]
+[; ;ds18b20.c: 151:     SSD1306_Init(0x02, 0x3C);
+[e ( _SSD1306_Init (2 , -> -> 2 `i `uc -> -> 60 `i `uc ]
 "152
-[; ;ds18b20.c: 152:     return temp;
-[e ) _temp ]
-[e $UE 379  ]
+[; ;ds18b20.c: 152:     SSD1306_ClearDisplay();
+[e ( _SSD1306_ClearDisplay ..  ]
 "153
-[; ;ds18b20.c: 153: }
-[e :UE 379 ]
+[; ;ds18b20.c: 153:     SSD1306_GotoXY(1,2);
+[e ( _SSD1306_GotoXY (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
+"154
+[; ;ds18b20.c: 154:     oled_puts("T :", 2);
+[e ( _oled_puts (2 , :s 3C -> -> 2 `i `uc ]
+"155
+[; ;ds18b20.c: 155:     SSD1306_GotoXY(8,2);
+[e ( _SSD1306_GotoXY (2 , -> -> 8 `i `uc -> -> 2 `i `uc ]
+"156
+[; ;ds18b20.c: 156:     oled_puts(buffer_temp, 2);
+[e ( _oled_puts (2 , -> &U _buffer_temp `*Cuc -> -> 2 `i `uc ]
+"157
+[; ;ds18b20.c: 157:     SSD1306_GotoXY(1,5);
+[e ( _SSD1306_GotoXY (2 , -> -> 1 `i `uc -> -> 5 `i `uc ]
+"158
+[; ;ds18b20.c: 158:     oled_puts("C :", 2);
+[e ( _oled_puts (2 , :s 4C -> -> 2 `i `uc ]
+"159
+[; ;ds18b20.c: 159:     SSD1306_GotoXY(8,5);
+[e ( _SSD1306_GotoXY (2 , -> -> 8 `i `uc -> -> 5 `i `uc ]
+"160
+[; ;ds18b20.c: 160:     oled_puts(buffer_command, 2);
+[e ( _oled_puts (2 , -> &U _buffer_command `*Cuc -> -> 2 `i `uc ]
+"161
+[; ;ds18b20.c: 161:     return pSystem_data->temperature;
+[e ) . *U _pSystem_data 10 ]
+[e $UE 380  ]
+"162
+[; ;ds18b20.c: 162: }
+[e :UE 380 ]
 }
 [p f _snprintf 8462340 ]
 [a 1C 37 48 46 49 102 67 0 ]
-[a 2C 84 101 109 112 101 114 97 116 117 114 101 58 0 ]
+[a 2C 37 48 46 49 102 67 0 ]
+[a 3C 84 32 58 0 ]
+[a 4C 67 32 58 0 ]

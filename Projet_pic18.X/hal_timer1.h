@@ -10,7 +10,7 @@
 #define	HAL_TIMER1_H
 
 /**************************Includes-Section*****************************/
-#include "proc/pic18f4620.h"
+//#include "proc/pic18f4620.h"
 #include "common.h"
 #include "mcal_internal_interrupt.h"
 /***********************************************************************/

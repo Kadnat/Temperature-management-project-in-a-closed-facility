@@ -17,7 +17,7 @@ extern "C" {
 // 'C' source line config statements
 
 // CONFIG1H
-#pragma config OSC = XT         // Oscillator Selection bits (XT oscillator)
+#pragma config OSC = INTIO67         // Oscillator Selection bits (XT oscillator)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
 #pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
 
@@ -75,14 +75,19 @@ extern "C" {
 // Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
-#include "proc/pic18f4620.h"
-    
-#define _XTAL_FREQ 4000000
-    
+//#include "proc/pic18f4620.h"
+
+//#define _XTAL_FREQ 4000000
+#define _XTAL_FREQ 32000000  
 
 #define TRUE 1
 #define FALSE 0 
-   
+    
+
+#define PLL OSCTUNE
+#define OSCILLATOR OSCCON
+
+    
 #include <stdint.h>
 #include <string.h>
     
@@ -91,6 +96,12 @@ typedef enum {
     ON = 1,
 }BooleanState;
 
+
+// NOTE: To use the macros below, YOU must have previously defined _XTAL_FREQ
+#define ___delay_us(x) _delay((unsigned long)((x)*(_XTAL_FREQ/1000000.0)))
+#define ___delay_ms(x) _delay((unsigned long)((x)*(_XTAL_FREQ/1000.0)))
+#define ___delaywdt_us(x) _delaywdt((unsigned long)((x)*(_XTAL_FREQ/1000000.0)))
+#define ___delaywdt_ms(x) _delaywdt((unsigned long)((x)*(_XTAL_FREQ/1000.0)))
 
 
 #ifdef	__cplusplus

@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------
 void I2C_Delay(){
     
-	__delay_us(10);		//A delay may or may not be needed here.
+	__delay_us(25);		//A delay may or may not be needed here.
 	}	
 
 

@@ -138,16 +138,25 @@ unsigned char OneWireReadByte(void){
     return out;
 }
 
-float print_temperature(float temp)
+float print_temperature(SystemData* pSystem_data)
 {
-    char buffer[7];
+    char buffer_temp[7];
+    char buffer_command[7];
+    float command_temp = 0.0;
+    
+    command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
 
-    snprintf(buffer,7,"%0.1fC",temp);
+    snprintf(buffer_temp,7,"%0.1fC",pSystem_data->temperature);
+    snprintf(buffer_command,7,"%0.1fC",command_temp);
     SSD1306_Init(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
     SSD1306_ClearDisplay();
     SSD1306_GotoXY(1,2);
-    oled_puts("Temperature:", 2);
-    SSD1306_GotoXY(2,5);
-    oled_puts(buffer, 3);
-    return temp;
+    oled_puts("T :", 2);
+    SSD1306_GotoXY(8,2);
+    oled_puts(buffer_temp, 2);
+    SSD1306_GotoXY(1,5);
+    oled_puts("C :", 2);
+    SSD1306_GotoXY(8,5);
+    oled_puts(buffer_command, 2);
+    return pSystem_data->temperature;
 }

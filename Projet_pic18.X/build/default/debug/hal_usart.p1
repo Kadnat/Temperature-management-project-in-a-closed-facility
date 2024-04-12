@@ -1,25 +1,25 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2710 `(v ~T0 @X0 0 tf ]
-[v F2711 `(v ~T0 @X0 0 tf ]
-[v F2713 `(v ~T0 @X0 0 tf ]
-[v F2714 `(v ~T0 @X0 0 tf ]
-[v F2716 `(v ~T0 @X0 0 tf ]
-[v F2717 `(v ~T0 @X0 0 tf ]
-[v F2719 `(v ~T0 @X0 0 tf ]
 [v F2720 `(v ~T0 @X0 0 tf ]
+[v F2721 `(v ~T0 @X0 0 tf ]
+[v F2723 `(v ~T0 @X0 0 tf ]
+[v F2724 `(v ~T0 @X0 0 tf ]
+[v F2726 `(v ~T0 @X0 0 tf ]
+[v F2727 `(v ~T0 @X0 0 tf ]
+[v F2729 `(v ~T0 @X0 0 tf ]
+[v F2730 `(v ~T0 @X0 0 tf ]
 "57 hal_usart.c
 [; ;hal_usart.c: 57: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart)
-[c E2648 0 1 2 3 4 5 .. ]
-[n E2648 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
-[c E2294 0 1 .. ]
-[n E2294 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
+[c E2658 0 1 2 3 4 5 .. ]
+[n E2658 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
+[c E36 0 1 .. ]
+[n E36 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
 "100 ./hal_usart.h
 [; ;./hal_usart.h: 100: {
-[s S271 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2294 1 ]
+[s S271 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E36 1 ]
 [n S271 . usart_tx_reserved usart_enable_tx usart_enable_tx_interrupt usart_enable_9bit_tx usart_tx_interrupt_priority ]
 "110
 [; ;./hal_usart.h: 110: {
-[s S272 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2294 1 ]
+[s S272 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E36 1 ]
 [n S272 . usart_rx_reserved usart_enable_rx usart_enable_rx_interrupt usart_enable_9bit_rx usart_rx_interrupt_priority ]
 "122
 [; ;./hal_usart.h: 122:     {
@@ -29,48 +29,60 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./hal_usart.h: 120: {
 [u S273 `S274 1 `uc 1 ]
 [n S273 . . status ]
-[v F2685 `(v ~T0 @X0 0 tf ]
-[v F2687 `(v ~T0 @X0 0 tf ]
-[v F2689 `(v ~T0 @X0 0 tf ]
-[v F2691 `(v ~T0 @X0 0 tf ]
+[v F2695 `(v ~T0 @X0 0 tf ]
+[v F2697 `(v ~T0 @X0 0 tf ]
+[v F2699 `(v ~T0 @X0 0 tf ]
+[v F2701 `(v ~T0 @X0 0 tf ]
 "132
 [; ;./hal_usart.h: 132: {
-[s S275 `ul 1 `E2648 1 `S271 1 `S272 1 `S273 1 `*F2685 1 `*F2687 1 `*F2689 1 `*F2691 1 ]
+[s S275 `ul 1 `E2658 1 `S271 1 `S272 1 `S273 1 `*F2695 1 `*F2697 1 `*F2699 1 `*F2701 1 ]
 [n S275 . baudrate baudrate_config usart_tx_cfg usart_rx_cfg eusart_error_status USART_TxDefaultInterruptHandler USART_RxDefaultInterruptHandler USART_FramingErrorHandler USART_OverrunErrorHandler ]
-"3031 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
-[s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S107 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3031 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3031:     struct {
+[s S112 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S112 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
 "3041
-[s S108 :3 `uc 1 :1 `uc 1 ]
-[n S108 . . ADEN ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3041:     struct {
+[s S113 :3 `uc 1 :1 `uc 1 ]
+[n S113 . . ADEN ]
 "3045
-[s S109 :5 `uc 1 :1 `uc 1 ]
-[n S109 . . SRENA ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3045:     struct {
+[s S114 :5 `uc 1 :1 `uc 1 ]
+[n S114 . . SRENA ]
 "3049
-[s S110 :6 `uc 1 :1 `uc 1 ]
-[n S110 . . RC8_9 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3049:     struct {
+[s S115 :6 `uc 1 :1 `uc 1 ]
+[n S115 . . RC8_9 ]
 "3053
-[s S111 :6 `uc 1 :1 `uc 1 ]
-[n S111 . . RC9 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3053:     struct {
+[s S116 :6 `uc 1 :1 `uc 1 ]
+[n S116 . . RC9 ]
 "3057
-[s S112 :1 `uc 1 ]
-[n S112 . RCD8 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3057:     struct {
+[s S117 :1 `uc 1 ]
+[n S117 . RCD8 ]
 "3030
-[u S106 `S107 1 `S108 1 `S109 1 `S110 1 `S111 1 `S112 1 ]
-[n S106 . . . . . . . ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3030: typedef union {
+[u S111 `S112 1 `S113 1 `S114 1 `S115 1 `S116 1 `S117 1 ]
+[n S111 . . . . . . . ]
 "3061
-[v _RCSTAbits `VS106 ~T0 @X0 0 e@4011 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3061: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0xFAB)));
+[v _RCSTAbits `VS111 ~T0 @X0 0 e@4011 ]
 "1835
-[s S65 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S65 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1835:     struct {
+[s S70 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S70 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
 "1845
-[s S66 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S66 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1845:     struct {
+[s S71 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S71 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
 "1834
-[u S64 `S65 1 `S66 1 ]
-[n S64 . . . ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1834: typedef union {
+[u S69 `S70 1 `S71 1 ]
+[n S69 . . . ]
 "1856
-[v _TRISCbits `VS64 ~T0 @X0 0 e@3988 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1856: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
+[v _TRISCbits `VS69 ~T0 @X0 0 e@3988 ]
 "34 hal_usart.c
 [; ;hal_usart.c: 34: static void USART_Baud_Rate_Calculation(const usart_t *_usart);
 [v _USART_Baud_Rate_Calculation `(v ~T0 @X0 0 sf1`*CS275 ]
@@ -80,361 +92,115 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46
 [; ;hal_usart.c: 46: static void USART_ASYNCRONOUS_RX_Init(const usart_t *_usart);
 [v _USART_ASYNCRONOUS_RX_Init `(v ~T0 @X0 0 sf1`*CS275 ]
-"2580 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
-[s S89 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S89 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
+"2580 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2580:     struct {
+[s S94 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S94 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
 "2590
-[s S90 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S90 . . TX1IF RC1IF ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2590:     struct {
+[s S95 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S95 . . TX1IF RC1IF ]
 "2579
-[u S88 `S89 1 `S90 1 ]
-[n S88 . . . ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2579: typedef union {
+[u S93 `S94 1 `S95 1 ]
+[n S93 . . . ]
 "2596
-[v _PIR1bits `VS88 ~T0 @X0 0 e@3998 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2596: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
+[v _PIR1bits `VS93 ~T0 @X0 0 e@3998 ]
 "3498
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3498: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
 [v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
 "3241
-[s S121 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S121 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3241:     struct {
+[s S126 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S126 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
 "3251
-[s S122 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S122 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3251:     struct {
+[s S127 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S127 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
 "3261
-[s S123 :6 `uc 1 :1 `uc 1 ]
-[n S123 . . TX8_9 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3261:     struct {
+[s S128 :6 `uc 1 :1 `uc 1 ]
+[n S128 . . TX8_9 ]
 "3265
-[s S124 :1 `uc 1 ]
-[n S124 . TXD8 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3265:     struct {
+[s S129 :1 `uc 1 ]
+[n S129 . TXD8 ]
 "3240
-[u S120 `S121 1 `S122 1 `S123 1 `S124 1 ]
-[n S120 . . . . . ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3240: typedef union {
+[u S125 `S126 1 `S127 1 `S128 1 `S129 1 ]
+[n S125 . . . . . ]
 "3269
-[v _TXSTAbits `VS120 ~T0 @X0 0 e@4012 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3269: extern volatile TXSTAbits_t TXSTAbits __attribute__((address(0xFAC)));
+[v _TXSTAbits `VS125 ~T0 @X0 0 e@4012 ]
 "2503
-[s S86 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S86 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE PSPIE ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2503:     struct {
+[s S91 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S91 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE PSPIE ]
 "2513
-[s S87 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S87 . . TX1IE RC1IE ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2513:     struct {
+[s S92 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S92 . . TX1IE RC1IE ]
 "2502
-[u S85 `S86 1 `S87 1 ]
-[n S85 . . . ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2502: typedef union {
+[u S90 `S91 1 `S92 1 ]
+[n S90 . . . ]
 "2519
-[v _PIE1bits `VS85 ~T0 @X0 0 e@3997 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2519: extern volatile PIE1bits_t PIE1bits __attribute__((address(0xF9D)));
+[v _PIE1bits `VS90 ~T0 @X0 0 e@3997 ]
 "3486
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3486: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
 [v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
 "3994
-[s S151 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S151 . ABDEN WUE . BRG16 TXCKP RXDTP RCIDL ABDOVF ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3994:     struct {
+[s S156 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S156 . ABDEN WUE . BRG16 TXCKP RXDTP RCIDL ABDOVF ]
 "4004
-[s S152 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S152 . . SCKP RXCKP RCMT ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4004:     struct {
+[s S157 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S157 . . SCKP RXCKP RCMT ]
 "4010
-[s S153 :1 `uc 1 :1 `uc 1 ]
-[n S153 . . W4E ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4010:     struct {
+[s S158 :1 `uc 1 :1 `uc 1 ]
+[n S158 . . W4E ]
 "3993
-[u S150 `S151 1 `S152 1 `S153 1 ]
-[n S150 . . . . ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3993: typedef union {
+[u S155 `S156 1 `S157 1 `S158 1 ]
+[n S155 . . . . ]
 "4015
-[v _BAUDCONbits `VS150 ~T0 @X0 0 e@4024 ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4015: extern volatile BAUDCONbits_t BAUDCONbits __attribute__((address(0xFB8)));
+[v _BAUDCONbits `VS155 ~T0 @X0 0 e@4024 ]
 "3510
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3510: extern volatile unsigned char SPBRG __attribute__((address(0xFAF)));
 [v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
 "3522
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3522: extern volatile unsigned char SPBRGH __attribute__((address(0xFB0)));
 [v _SPBRGH `Vuc ~T0 @X0 0 e@4016 ]
 "6380
-[s S258 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S258 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6380:     struct {
+[s S263 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S263 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 "6390
-[s S259 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S259 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6390:     struct {
+[s S264 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S264 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
 "6400
-[s S260 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S260 . . GIEL GIEH ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6400:     struct {
+[s S265 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S265 . . GIEL GIEH ]
 "6379
-[u S257 `S258 1 `S259 1 `S260 1 ]
-[n S257 . . . . ]
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6379: typedef union {
+[u S262 `S263 1 `S264 1 `S265 1 ]
+[n S262 . . . . ]
 "6406
-[v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
-[v F2773 `(v ~T0 @X0 0 tf ]
-[v F2775 `(v ~T0 @X0 0 tf ]
-[v F2776 `(v ~T0 @X0 0 tf ]
-[v F2777 `(v ~T0 @X0 0 tf ]
-"54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
-[; <" PORTA equ 0F80h ;# ">
-"191
-[; <" PORTB equ 0F81h ;# ">
-"362
-[; <" PORTC equ 0F82h ;# ">
-"537
-[; <" PORTD equ 0F83h ;# ">
-"679
-[; <" PORTE equ 0F84h ;# ">
-"882
-[; <" LATA equ 0F89h ;# ">
-"994
-[; <" LATB equ 0F8Ah ;# ">
-"1106
-[; <" LATC equ 0F8Bh ;# ">
-"1218
-[; <" LATD equ 0F8Ch ;# ">
-"1330
-[; <" LATE equ 0F8Dh ;# ">
-"1382
-[; <" TRISA equ 0F92h ;# ">
-"1387
-[; <" DDRA equ 0F92h ;# ">
-"1604
-[; <" TRISB equ 0F93h ;# ">
-"1609
-[; <" DDRB equ 0F93h ;# ">
-"1826
-[; <" TRISC equ 0F94h ;# ">
-"1831
-[; <" DDRC equ 0F94h ;# ">
-"2048
-[; <" TRISD equ 0F95h ;# ">
-"2053
-[; <" DDRD equ 0F95h ;# ">
-"2270
-[; <" TRISE equ 0F96h ;# ">
-"2275
-[; <" DDRE equ 0F96h ;# ">
-"2434
-[; <" OSCTUNE equ 0F9Bh ;# ">
-"2499
-[; <" PIE1 equ 0F9Dh ;# ">
-"2576
-[; <" PIR1 equ 0F9Eh ;# ">
-"2653
-[; <" IPR1 equ 0F9Fh ;# ">
-"2730
-[; <" PIE2 equ 0FA0h ;# ">
-"2796
-[; <" PIR2 equ 0FA1h ;# ">
-"2862
-[; <" IPR2 equ 0FA2h ;# ">
-"2928
-[; <" EECON1 equ 0FA6h ;# ">
-"2994
-[; <" EECON2 equ 0FA7h ;# ">
-"3001
-[; <" EEDATA equ 0FA8h ;# ">
-"3008
-[; <" EEADR equ 0FA9h ;# ">
-"3015
-[; <" EEADRH equ 0FAAh ;# ">
-"3022
-[; <" RCSTA equ 0FABh ;# ">
-"3027
-[; <" RCSTA1 equ 0FABh ;# ">
-"3232
-[; <" TXSTA equ 0FACh ;# ">
-"3237
-[; <" TXSTA1 equ 0FACh ;# ">
-"3488
-[; <" TXREG equ 0FADh ;# ">
-"3493
-[; <" TXREG1 equ 0FADh ;# ">
-"3500
-[; <" RCREG equ 0FAEh ;# ">
-"3505
-[; <" RCREG1 equ 0FAEh ;# ">
-"3512
-[; <" SPBRG equ 0FAFh ;# ">
-"3517
-[; <" SPBRG1 equ 0FAFh ;# ">
-"3524
-[; <" SPBRGH equ 0FB0h ;# ">
-"3531
-[; <" T3CON equ 0FB1h ;# ">
-"3643
-[; <" TMR3 equ 0FB2h ;# ">
-"3650
-[; <" TMR3L equ 0FB2h ;# ">
-"3657
-[; <" TMR3H equ 0FB3h ;# ">
-"3664
-[; <" CMCON equ 0FB4h ;# ">
-"3754
-[; <" CVRCON equ 0FB5h ;# ">
-"3833
-[; <" ECCP1AS equ 0FB6h ;# ">
-"3915
-[; <" PWM1CON equ 0FB7h ;# ">
-"3985
-[; <" BAUDCON equ 0FB8h ;# ">
-"3990
-[; <" BAUDCTL equ 0FB8h ;# ">
-"4157
-[; <" CCP2CON equ 0FBAh ;# ">
-"4236
-[; <" CCPR2 equ 0FBBh ;# ">
-"4243
-[; <" CCPR2L equ 0FBBh ;# ">
-"4250
-[; <" CCPR2H equ 0FBCh ;# ">
-"4257
-[; <" CCP1CON equ 0FBDh ;# ">
-"4354
-[; <" CCPR1 equ 0FBEh ;# ">
-"4361
-[; <" CCPR1L equ 0FBEh ;# ">
-"4368
-[; <" CCPR1H equ 0FBFh ;# ">
-"4375
-[; <" ADCON2 equ 0FC0h ;# ">
-"4446
-[; <" ADCON1 equ 0FC1h ;# ">
-"4531
-[; <" ADCON0 equ 0FC2h ;# ">
-"4650
-[; <" ADRES equ 0FC3h ;# ">
-"4657
-[; <" ADRESL equ 0FC3h ;# ">
-"4664
-[; <" ADRESH equ 0FC4h ;# ">
-"4671
-[; <" SSPCON2 equ 0FC5h ;# ">
-"4733
-[; <" SSPCON1 equ 0FC6h ;# ">
-"4803
-[; <" SSPSTAT equ 0FC7h ;# ">
-"5024
-[; <" SSPADD equ 0FC8h ;# ">
-"5031
-[; <" SSPBUF equ 0FC9h ;# ">
-"5038
-[; <" T2CON equ 0FCAh ;# ">
-"5109
-[; <" PR2 equ 0FCBh ;# ">
-"5114
-[; <" MEMCON equ 0FCBh ;# ">
-"5219
-[; <" TMR2 equ 0FCCh ;# ">
-"5226
-[; <" T1CON equ 0FCDh ;# ">
-"5329
-[; <" TMR1 equ 0FCEh ;# ">
-"5336
-[; <" TMR1L equ 0FCEh ;# ">
-"5343
-[; <" TMR1H equ 0FCFh ;# ">
-"5350
-[; <" RCON equ 0FD0h ;# ">
-"5483
-[; <" WDTCON equ 0FD1h ;# ">
-"5511
-[; <" HLVDCON equ 0FD2h ;# ">
-"5516
-[; <" LVDCON equ 0FD2h ;# ">
-"5781
-[; <" OSCCON equ 0FD3h ;# ">
-"5858
-[; <" T0CON equ 0FD5h ;# ">
-"5935
-[; <" TMR0 equ 0FD6h ;# ">
-"5942
-[; <" TMR0L equ 0FD6h ;# ">
-"5949
-[; <" TMR0H equ 0FD7h ;# ">
-"5956
-[; <" STATUS equ 0FD8h ;# ">
-"6027
-[; <" FSR2 equ 0FD9h ;# ">
-"6034
-[; <" FSR2L equ 0FD9h ;# ">
-"6041
-[; <" FSR2H equ 0FDAh ;# ">
-"6048
-[; <" PLUSW2 equ 0FDBh ;# ">
-"6055
-[; <" PREINC2 equ 0FDCh ;# ">
-"6062
-[; <" POSTDEC2 equ 0FDDh ;# ">
-"6069
-[; <" POSTINC2 equ 0FDEh ;# ">
-"6076
-[; <" INDF2 equ 0FDFh ;# ">
-"6083
-[; <" BSR equ 0FE0h ;# ">
-"6090
-[; <" FSR1 equ 0FE1h ;# ">
-"6097
-[; <" FSR1L equ 0FE1h ;# ">
-"6104
-[; <" FSR1H equ 0FE2h ;# ">
-"6111
-[; <" PLUSW1 equ 0FE3h ;# ">
-"6118
-[; <" PREINC1 equ 0FE4h ;# ">
-"6125
-[; <" POSTDEC1 equ 0FE5h ;# ">
-"6132
-[; <" POSTINC1 equ 0FE6h ;# ">
-"6139
-[; <" INDF1 equ 0FE7h ;# ">
-"6146
-[; <" WREG equ 0FE8h ;# ">
-"6158
-[; <" FSR0 equ 0FE9h ;# ">
-"6165
-[; <" FSR0L equ 0FE9h ;# ">
-"6172
-[; <" FSR0H equ 0FEAh ;# ">
-"6179
-[; <" PLUSW0 equ 0FEBh ;# ">
-"6186
-[; <" PREINC0 equ 0FECh ;# ">
-"6193
-[; <" POSTDEC0 equ 0FEDh ;# ">
-"6200
-[; <" POSTINC0 equ 0FEEh ;# ">
-"6207
-[; <" INDF0 equ 0FEFh ;# ">
-"6214
-[; <" INTCON3 equ 0FF0h ;# ">
-"6306
-[; <" INTCON2 equ 0FF1h ;# ">
-"6376
-[; <" INTCON equ 0FF2h ;# ">
-"6493
-[; <" PROD equ 0FF3h ;# ">
-"6500
-[; <" PRODL equ 0FF3h ;# ">
-"6507
-[; <" PRODH equ 0FF4h ;# ">
-"6514
-[; <" TABLAT equ 0FF5h ;# ">
-"6523
-[; <" TBLPTR equ 0FF6h ;# ">
-"6530
-[; <" TBLPTRL equ 0FF6h ;# ">
-"6537
-[; <" TBLPTRH equ 0FF7h ;# ">
-"6544
-[; <" TBLPTRU equ 0FF8h ;# ">
-"6553
-[; <" PCLAT equ 0FF9h ;# ">
-"6560
-[; <" PC equ 0FF9h ;# ">
-"6567
-[; <" PCL equ 0FF9h ;# ">
-"6574
-[; <" PCLATH equ 0FFAh ;# ">
-"6581
-[; <" PCLATU equ 0FFBh ;# ">
-"6588
-[; <" STKPTR equ 0FFCh ;# ">
-"6694
-[; <" TOS equ 0FFDh ;# ">
-"6701
-[; <" TOSL equ 0FFDh ;# ">
-"6708
-[; <" TOSH equ 0FFEh ;# ">
-"6715
-[; <" TOSU equ 0FFFh ;# ">
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6406: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
+[v _INTCONbits `VS262 ~T0 @X0 0 e@4082 ]
+[v F2783 `(v ~T0 @X0 0 tf ]
+[v F2785 `(v ~T0 @X0 0 tf ]
+[v F2786 `(v ~T0 @X0 0 tf ]
+[v F2787 `(v ~T0 @X0 0 tf ]
 "20 ./common.h
-[p x OSC  =  XT          ]
+[p x OSC  =  INTIO67          ]
 "21
 [p x FCMEN  =  OFF       ]
 "22
@@ -499,29 +265,440 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR3  =  OFF       ]
 "72
 [p x EBTRB  =  OFF       ]
+"54 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
+[; <" PORTA equ 0F80h ;# ">
+"191
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 191: __asm("PORTB equ 0F81h");
+[; <" PORTB equ 0F81h ;# ">
+"362
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 362: __asm("PORTC equ 0F82h");
+[; <" PORTC equ 0F82h ;# ">
+"537
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 537: __asm("PORTD equ 0F83h");
+[; <" PORTD equ 0F83h ;# ">
+"679
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 679: __asm("PORTE equ 0F84h");
+[; <" PORTE equ 0F84h ;# ">
+"882
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 882: __asm("LATA equ 0F89h");
+[; <" LATA equ 0F89h ;# ">
+"994
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 994: __asm("LATB equ 0F8Ah");
+[; <" LATB equ 0F8Ah ;# ">
+"1106
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1106: __asm("LATC equ 0F8Bh");
+[; <" LATC equ 0F8Bh ;# ">
+"1218
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1218: __asm("LATD equ 0F8Ch");
+[; <" LATD equ 0F8Ch ;# ">
+"1330
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1330: __asm("LATE equ 0F8Dh");
+[; <" LATE equ 0F8Dh ;# ">
+"1382
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1382: __asm("TRISA equ 0F92h");
+[; <" TRISA equ 0F92h ;# ">
+"1387
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1387: __asm("DDRA equ 0F92h");
+[; <" DDRA equ 0F92h ;# ">
+"1604
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1604: __asm("TRISB equ 0F93h");
+[; <" TRISB equ 0F93h ;# ">
+"1609
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1609: __asm("DDRB equ 0F93h");
+[; <" DDRB equ 0F93h ;# ">
+"1826
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1826: __asm("TRISC equ 0F94h");
+[; <" TRISC equ 0F94h ;# ">
+"1831
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 1831: __asm("DDRC equ 0F94h");
+[; <" DDRC equ 0F94h ;# ">
+"2048
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2048: __asm("TRISD equ 0F95h");
+[; <" TRISD equ 0F95h ;# ">
+"2053
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2053: __asm("DDRD equ 0F95h");
+[; <" DDRD equ 0F95h ;# ">
+"2270
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2270: __asm("TRISE equ 0F96h");
+[; <" TRISE equ 0F96h ;# ">
+"2275
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2275: __asm("DDRE equ 0F96h");
+[; <" DDRE equ 0F96h ;# ">
+"2434
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2434: __asm("OSCTUNE equ 0F9Bh");
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2499
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2499: __asm("PIE1 equ 0F9Dh");
+[; <" PIE1 equ 0F9Dh ;# ">
+"2576
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2576: __asm("PIR1 equ 0F9Eh");
+[; <" PIR1 equ 0F9Eh ;# ">
+"2653
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2653: __asm("IPR1 equ 0F9Fh");
+[; <" IPR1 equ 0F9Fh ;# ">
+"2730
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2730: __asm("PIE2 equ 0FA0h");
+[; <" PIE2 equ 0FA0h ;# ">
+"2796
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2796: __asm("PIR2 equ 0FA1h");
+[; <" PIR2 equ 0FA1h ;# ">
+"2862
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2862: __asm("IPR2 equ 0FA2h");
+[; <" IPR2 equ 0FA2h ;# ">
+"2928
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2928: __asm("EECON1 equ 0FA6h");
+[; <" EECON1 equ 0FA6h ;# ">
+"2994
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2994: __asm("EECON2 equ 0FA7h");
+[; <" EECON2 equ 0FA7h ;# ">
+"3001
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3001: __asm("EEDATA equ 0FA8h");
+[; <" EEDATA equ 0FA8h ;# ">
+"3008
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3008: __asm("EEADR equ 0FA9h");
+[; <" EEADR equ 0FA9h ;# ">
+"3015
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3015: __asm("EEADRH equ 0FAAh");
+[; <" EEADRH equ 0FAAh ;# ">
+"3022
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3022: __asm("RCSTA equ 0FABh");
+[; <" RCSTA equ 0FABh ;# ">
+"3027
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3027: __asm("RCSTA1 equ 0FABh");
+[; <" RCSTA1 equ 0FABh ;# ">
+"3232
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3232: __asm("TXSTA equ 0FACh");
+[; <" TXSTA equ 0FACh ;# ">
+"3237
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3237: __asm("TXSTA1 equ 0FACh");
+[; <" TXSTA1 equ 0FACh ;# ">
+"3488
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3488: __asm("TXREG equ 0FADh");
+[; <" TXREG equ 0FADh ;# ">
+"3493
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3493: __asm("TXREG1 equ 0FADh");
+[; <" TXREG1 equ 0FADh ;# ">
+"3500
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3500: __asm("RCREG equ 0FAEh");
+[; <" RCREG equ 0FAEh ;# ">
+"3505
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3505: __asm("RCREG1 equ 0FAEh");
+[; <" RCREG1 equ 0FAEh ;# ">
+"3512
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3512: __asm("SPBRG equ 0FAFh");
+[; <" SPBRG equ 0FAFh ;# ">
+"3517
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3517: __asm("SPBRG1 equ 0FAFh");
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3524
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3524: __asm("SPBRGH equ 0FB0h");
+[; <" SPBRGH equ 0FB0h ;# ">
+"3531
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3531: __asm("T3CON equ 0FB1h");
+[; <" T3CON equ 0FB1h ;# ">
+"3643
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3643: __asm("TMR3 equ 0FB2h");
+[; <" TMR3 equ 0FB2h ;# ">
+"3650
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3650: __asm("TMR3L equ 0FB2h");
+[; <" TMR3L equ 0FB2h ;# ">
+"3657
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3657: __asm("TMR3H equ 0FB3h");
+[; <" TMR3H equ 0FB3h ;# ">
+"3664
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3664: __asm("CMCON equ 0FB4h");
+[; <" CMCON equ 0FB4h ;# ">
+"3754
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3754: __asm("CVRCON equ 0FB5h");
+[; <" CVRCON equ 0FB5h ;# ">
+"3833
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3833: __asm("ECCP1AS equ 0FB6h");
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3915
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3915: __asm("PWM1CON equ 0FB7h");
+[; <" PWM1CON equ 0FB7h ;# ">
+"3985
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3985: __asm("BAUDCON equ 0FB8h");
+[; <" BAUDCON equ 0FB8h ;# ">
+"3990
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 3990: __asm("BAUDCTL equ 0FB8h");
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4157
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4157: __asm("CCP2CON equ 0FBAh");
+[; <" CCP2CON equ 0FBAh ;# ">
+"4236
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4236: __asm("CCPR2 equ 0FBBh");
+[; <" CCPR2 equ 0FBBh ;# ">
+"4243
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4243: __asm("CCPR2L equ 0FBBh");
+[; <" CCPR2L equ 0FBBh ;# ">
+"4250
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4250: __asm("CCPR2H equ 0FBCh");
+[; <" CCPR2H equ 0FBCh ;# ">
+"4257
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4257: __asm("CCP1CON equ 0FBDh");
+[; <" CCP1CON equ 0FBDh ;# ">
+"4354
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4354: __asm("CCPR1 equ 0FBEh");
+[; <" CCPR1 equ 0FBEh ;# ">
+"4361
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4361: __asm("CCPR1L equ 0FBEh");
+[; <" CCPR1L equ 0FBEh ;# ">
+"4368
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4368: __asm("CCPR1H equ 0FBFh");
+[; <" CCPR1H equ 0FBFh ;# ">
+"4375
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4375: __asm("ADCON2 equ 0FC0h");
+[; <" ADCON2 equ 0FC0h ;# ">
+"4446
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4446: __asm("ADCON1 equ 0FC1h");
+[; <" ADCON1 equ 0FC1h ;# ">
+"4531
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4531: __asm("ADCON0 equ 0FC2h");
+[; <" ADCON0 equ 0FC2h ;# ">
+"4650
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4650: __asm("ADRES equ 0FC3h");
+[; <" ADRES equ 0FC3h ;# ">
+"4657
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4657: __asm("ADRESL equ 0FC3h");
+[; <" ADRESL equ 0FC3h ;# ">
+"4664
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4664: __asm("ADRESH equ 0FC4h");
+[; <" ADRESH equ 0FC4h ;# ">
+"4671
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4671: __asm("SSPCON2 equ 0FC5h");
+[; <" SSPCON2 equ 0FC5h ;# ">
+"4733
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4733: __asm("SSPCON1 equ 0FC6h");
+[; <" SSPCON1 equ 0FC6h ;# ">
+"4803
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 4803: __asm("SSPSTAT equ 0FC7h");
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5024
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5024: __asm("SSPADD equ 0FC8h");
+[; <" SSPADD equ 0FC8h ;# ">
+"5031
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5031: __asm("SSPBUF equ 0FC9h");
+[; <" SSPBUF equ 0FC9h ;# ">
+"5038
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5038: __asm("T2CON equ 0FCAh");
+[; <" T2CON equ 0FCAh ;# ">
+"5109
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5109: __asm("PR2 equ 0FCBh");
+[; <" PR2 equ 0FCBh ;# ">
+"5114
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5114: __asm("MEMCON equ 0FCBh");
+[; <" MEMCON equ 0FCBh ;# ">
+"5219
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5219: __asm("TMR2 equ 0FCCh");
+[; <" TMR2 equ 0FCCh ;# ">
+"5226
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5226: __asm("T1CON equ 0FCDh");
+[; <" T1CON equ 0FCDh ;# ">
+"5329
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5329: __asm("TMR1 equ 0FCEh");
+[; <" TMR1 equ 0FCEh ;# ">
+"5336
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5336: __asm("TMR1L equ 0FCEh");
+[; <" TMR1L equ 0FCEh ;# ">
+"5343
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5343: __asm("TMR1H equ 0FCFh");
+[; <" TMR1H equ 0FCFh ;# ">
+"5350
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5350: __asm("RCON equ 0FD0h");
+[; <" RCON equ 0FD0h ;# ">
+"5483
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5483: __asm("WDTCON equ 0FD1h");
+[; <" WDTCON equ 0FD1h ;# ">
+"5511
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5511: __asm("HLVDCON equ 0FD2h");
+[; <" HLVDCON equ 0FD2h ;# ">
+"5516
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5516: __asm("LVDCON equ 0FD2h");
+[; <" LVDCON equ 0FD2h ;# ">
+"5781
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5781: __asm("OSCCON equ 0FD3h");
+[; <" OSCCON equ 0FD3h ;# ">
+"5858
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5858: __asm("T0CON equ 0FD5h");
+[; <" T0CON equ 0FD5h ;# ">
+"5935
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5935: __asm("TMR0 equ 0FD6h");
+[; <" TMR0 equ 0FD6h ;# ">
+"5942
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5942: __asm("TMR0L equ 0FD6h");
+[; <" TMR0L equ 0FD6h ;# ">
+"5949
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5949: __asm("TMR0H equ 0FD7h");
+[; <" TMR0H equ 0FD7h ;# ">
+"5956
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5956: __asm("STATUS equ 0FD8h");
+[; <" STATUS equ 0FD8h ;# ">
+"6027
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6027: __asm("FSR2 equ 0FD9h");
+[; <" FSR2 equ 0FD9h ;# ">
+"6034
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6034: __asm("FSR2L equ 0FD9h");
+[; <" FSR2L equ 0FD9h ;# ">
+"6041
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6041: __asm("FSR2H equ 0FDAh");
+[; <" FSR2H equ 0FDAh ;# ">
+"6048
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6048: __asm("PLUSW2 equ 0FDBh");
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6055
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6055: __asm("PREINC2 equ 0FDCh");
+[; <" PREINC2 equ 0FDCh ;# ">
+"6062
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6062: __asm("POSTDEC2 equ 0FDDh");
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6069
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6069: __asm("POSTINC2 equ 0FDEh");
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6076
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6076: __asm("INDF2 equ 0FDFh");
+[; <" INDF2 equ 0FDFh ;# ">
+"6083
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6083: __asm("BSR equ 0FE0h");
+[; <" BSR equ 0FE0h ;# ">
+"6090
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6090: __asm("FSR1 equ 0FE1h");
+[; <" FSR1 equ 0FE1h ;# ">
+"6097
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6097: __asm("FSR1L equ 0FE1h");
+[; <" FSR1L equ 0FE1h ;# ">
+"6104
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6104: __asm("FSR1H equ 0FE2h");
+[; <" FSR1H equ 0FE2h ;# ">
+"6111
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6111: __asm("PLUSW1 equ 0FE3h");
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6118
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6118: __asm("PREINC1 equ 0FE4h");
+[; <" PREINC1 equ 0FE4h ;# ">
+"6125
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6125: __asm("POSTDEC1 equ 0FE5h");
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6132
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6132: __asm("POSTINC1 equ 0FE6h");
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6139
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6139: __asm("INDF1 equ 0FE7h");
+[; <" INDF1 equ 0FE7h ;# ">
+"6146
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6146: __asm("WREG equ 0FE8h");
+[; <" WREG equ 0FE8h ;# ">
+"6158
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6158: __asm("FSR0 equ 0FE9h");
+[; <" FSR0 equ 0FE9h ;# ">
+"6165
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6165: __asm("FSR0L equ 0FE9h");
+[; <" FSR0L equ 0FE9h ;# ">
+"6172
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6172: __asm("FSR0H equ 0FEAh");
+[; <" FSR0H equ 0FEAh ;# ">
+"6179
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6179: __asm("PLUSW0 equ 0FEBh");
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6186
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6186: __asm("PREINC0 equ 0FECh");
+[; <" PREINC0 equ 0FECh ;# ">
+"6193
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6193: __asm("POSTDEC0 equ 0FEDh");
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6200
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6200: __asm("POSTINC0 equ 0FEEh");
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6207
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6207: __asm("INDF0 equ 0FEFh");
+[; <" INDF0 equ 0FEFh ;# ">
+"6214
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6214: __asm("INTCON3 equ 0FF0h");
+[; <" INTCON3 equ 0FF0h ;# ">
+"6306
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6306: __asm("INTCON2 equ 0FF1h");
+[; <" INTCON2 equ 0FF1h ;# ">
+"6376
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6376: __asm("INTCON equ 0FF2h");
+[; <" INTCON equ 0FF2h ;# ">
+"6493
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6493: __asm("PROD equ 0FF3h");
+[; <" PROD equ 0FF3h ;# ">
+"6500
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6500: __asm("PRODL equ 0FF3h");
+[; <" PRODL equ 0FF3h ;# ">
+"6507
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6507: __asm("PRODH equ 0FF4h");
+[; <" PRODH equ 0FF4h ;# ">
+"6514
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6514: __asm("TABLAT equ 0FF5h");
+[; <" TABLAT equ 0FF5h ;# ">
+"6523
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6523: __asm("TBLPTR equ 0FF6h");
+[; <" TBLPTR equ 0FF6h ;# ">
+"6530
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6530: __asm("TBLPTRL equ 0FF6h");
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6537
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6537: __asm("TBLPTRH equ 0FF7h");
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6544
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6544: __asm("TBLPTRU equ 0FF8h");
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6553
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6553: __asm("PCLAT equ 0FF9h");
+[; <" PCLAT equ 0FF9h ;# ">
+"6560
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6560: __asm("PC equ 0FF9h");
+[; <" PC equ 0FF9h ;# ">
+"6567
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6567: __asm("PCL equ 0FF9h");
+[; <" PCL equ 0FF9h ;# ">
+"6574
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6574: __asm("PCLATH equ 0FFAh");
+[; <" PCLATH equ 0FFAh ;# ">
+"6581
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6581: __asm("PCLATU equ 0FFBh");
+[; <" PCLATU equ 0FFBh ;# ">
+"6588
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6588: __asm("STKPTR equ 0FFCh");
+[; <" STKPTR equ 0FFCh ;# ">
+"6694
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6694: __asm("TOS equ 0FFDh");
+[; <" TOS equ 0FFDh ;# ">
+"6701
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6701: __asm("TOSL equ 0FFDh");
+[; <" TOSL equ 0FFDh ;# ">
+"6708
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6708: __asm("TOSH equ 0FFEh");
+[; <" TOSH equ 0FFEh ;# ">
+"6715
+[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
+[; <" TOSU equ 0FFFh ;# ">
 "18 hal_usart.c
 [; ;hal_usart.c: 18:     static void (*USART_TxDefaultInterruptHandler)(void) = ((void*)0);
-[v _USART_TxDefaultInterruptHandler `*F2710 ~T0 @X0 1 s ]
+[v _USART_TxDefaultInterruptHandler `*F2720 ~T0 @X0 1 s ]
 [i _USART_TxDefaultInterruptHandler
--> -> -> 0 `i `*v `*F2711
+-> -> -> 0 `i `*v `*F2721
 ]
 "25
 [; ;hal_usart.c: 25:     static void (*USART_RxDefaultInterruptHandler)(void) = ((void*)0);
-[v _USART_RxDefaultInterruptHandler `*F2713 ~T0 @X0 1 s ]
+[v _USART_RxDefaultInterruptHandler `*F2723 ~T0 @X0 1 s ]
 [i _USART_RxDefaultInterruptHandler
--> -> -> 0 `i `*v `*F2714
+-> -> -> 0 `i `*v `*F2724
 ]
 "26
 [; ;hal_usart.c: 26:     static void (*USART_FramingErrorHandler)(void) = ((void*)0);
-[v _USART_FramingErrorHandler `*F2716 ~T0 @X0 1 s ]
+[v _USART_FramingErrorHandler `*F2726 ~T0 @X0 1 s ]
 [i _USART_FramingErrorHandler
--> -> -> 0 `i `*v `*F2717
+-> -> -> 0 `i `*v `*F2727
 ]
 "27
 [; ;hal_usart.c: 27:     static void (*USART_OverrunErrorHandler)(void) = ((void*)0);
-[v _USART_OverrunErrorHandler `*F2719 ~T0 @X0 1 s ]
+[v _USART_OverrunErrorHandler `*F2729 ~T0 @X0 1 s ]
 [i _USART_OverrunErrorHandler
--> -> -> 0 `i `*v `*F2720
+-> -> -> 0 `i `*v `*F2730
 ]
 "57
 [; ;hal_usart.c: 57: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart)
@@ -949,8 +1126,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_usart.c: 237:             BAUDCONbits.BRG16 = 0;
 [e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
 "238
-[; ;hal_usart.c: 238:             Baud_Rate_Temp_Value = ((4000000 / (float)_usart->baudrate) / 64) - 1;
-[e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 64 `i `f -> -> 1 `i `f ]
+[; ;hal_usart.c: 238:             Baud_Rate_Temp_Value = ((32000000 / (float)_usart->baudrate) / 64) - 1;
+[e = _Baud_Rate_Temp_Value - / / -> -> 32000000 `l `f -> . *U __usart 0 `f -> -> 64 `i `f -> -> 1 `i `f ]
 "239
 [; ;hal_usart.c: 239:         break;
 [e $U 303  ]
@@ -967,8 +1144,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_usart.c: 244:             BAUDCONbits.BRG16 = 0;
 [e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
 "245
-[; ;hal_usart.c: 245:             Baud_Rate_Temp_Value = ((4000000 / (float)_usart->baudrate) / 16) - 1;
-[e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 16 `i `f -> -> 1 `i `f ]
+[; ;hal_usart.c: 245:             Baud_Rate_Temp_Value = ((32000000 / (float)_usart->baudrate) / 16) - 1;
+[e = _Baud_Rate_Temp_Value - / / -> -> 32000000 `l `f -> . *U __usart 0 `f -> -> 16 `i `f -> -> 1 `i `f ]
 "246
 [; ;hal_usart.c: 246:         break;
 [e $U 303  ]
@@ -985,8 +1162,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_usart.c: 251:             BAUDCONbits.BRG16 = 1;
 [e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
 "252
-[; ;hal_usart.c: 252:             Baud_Rate_Temp_Value = ((4000000 / (float)_usart->baudrate) / 16) - 1;
-[e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 16 `i `f -> -> 1 `i `f ]
+[; ;hal_usart.c: 252:             Baud_Rate_Temp_Value = ((32000000 / (float)_usart->baudrate) / 16) - 1;
+[e = _Baud_Rate_Temp_Value - / / -> -> 32000000 `l `f -> . *U __usart 0 `f -> -> 16 `i `f -> -> 1 `i `f ]
 "253
 [; ;hal_usart.c: 253:         break;
 [e $U 303  ]
@@ -1003,8 +1180,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_usart.c: 258:             BAUDCONbits.BRG16 = 1;
 [e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
 "259
-[; ;hal_usart.c: 259:             Baud_Rate_Temp_Value = ((4000000 / (float)_usart->baudrate) / 4) - 1;
-[e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
+[; ;hal_usart.c: 259:             Baud_Rate_Temp_Value = ((32000000 / (float)_usart->baudrate) / 4) - 1;
+[e = _Baud_Rate_Temp_Value - / / -> -> 32000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "260
 [; ;hal_usart.c: 260:         break;
 [e $U 303  ]
@@ -1018,8 +1195,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_usart.c: 264:             BAUDCONbits.BRG16 = 0;
 [e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
 "265
-[; ;hal_usart.c: 265:             Baud_Rate_Temp_Value = ((4000000 / (float)_usart->baudrate) / 4) - 1;
-[e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
+[; ;hal_usart.c: 265:             Baud_Rate_Temp_Value = ((32000000 / (float)_usart->baudrate) / 4) - 1;
+[e = _Baud_Rate_Temp_Value - / / -> -> 32000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "266
 [; ;hal_usart.c: 266:         break;
 [e $U 303  ]
@@ -1033,8 +1210,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;hal_usart.c: 270:             BAUDCONbits.BRG16 = 1;
 [e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
 "271
-[; ;hal_usart.c: 271:             Baud_Rate_Temp_Value = ((4000000 / (float)_usart->baudrate) / 4) - 1;
-[e = _Baud_Rate_Temp_Value - / / -> -> 4000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
+[; ;hal_usart.c: 271:             Baud_Rate_Temp_Value = ((32000000 / (float)_usart->baudrate) / 4) - 1;
+[e = _Baud_Rate_Temp_Value - / / -> -> 32000000 `l `f -> . *U __usart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "272
 [; ;hal_usart.c: 272:         break;
 [e $U 303  ]
@@ -1046,12 +1223,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 303  ]
 [e :U 304 ]
-[e [\ -> . *U __usart 1 `ui , $ -> . `E2648 0 `ui 305
- , $ -> . `E2648 1 `ui 306
- , $ -> . `E2648 2 `ui 307
- , $ -> . `E2648 3 `ui 308
- , $ -> . `E2648 4 `ui 309
- , $ -> . `E2648 5 `ui 310
+[e [\ -> . *U __usart 1 `ui , $ -> . `E2658 0 `ui 305
+ , $ -> . `E2658 1 `ui 306
+ , $ -> . `E2658 2 `ui 307
+ , $ -> . `E2658 3 `ui 308
+ , $ -> . `E2658 4 `ui 309
+ , $ -> . `E2658 5 `ui 310
  311 ]
 [e :U 303 ]
 "276
@@ -1315,7 +1492,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
 "414
 [; ;hal_usart.c: 414:     if(USART_TxDefaultInterruptHandler)
-[e $ ! != _USART_TxDefaultInterruptHandler -> -> 0 `i `*F2773 335  ]
+[e $ ! != _USART_TxDefaultInterruptHandler -> -> 0 `i `*F2783 335  ]
 "415
 [; ;hal_usart.c: 415:     {
 {
@@ -1346,7 +1523,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "426
 [; ;hal_usart.c: 426:   if(USART_RxDefaultInterruptHandler)
-[e $ ! != _USART_RxDefaultInterruptHandler -> -> 0 `i `*F2775 338  ]
+[e $ ! != _USART_RxDefaultInterruptHandler -> -> 0 `i `*F2785 338  ]
 "427
 [; ;hal_usart.c: 427:     {
 {
@@ -1365,7 +1542,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 339 ]
 "432
 [; ;hal_usart.c: 432:   if(USART_FramingErrorHandler)
-[e $ ! != _USART_FramingErrorHandler -> -> 0 `i `*F2776 340  ]
+[e $ ! != _USART_FramingErrorHandler -> -> 0 `i `*F2786 340  ]
 "433
 [; ;hal_usart.c: 433:     {
 {
@@ -1384,7 +1561,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 341 ]
 "438
 [; ;hal_usart.c: 438:   if(USART_OverrunErrorHandler)
-[e $ ! != _USART_OverrunErrorHandler -> -> 0 `i `*F2777 342  ]
+[e $ ! != _USART_OverrunErrorHandler -> -> 0 `i `*F2787 342  ]
 "439
 [; ;hal_usart.c: 439:     {
 {
