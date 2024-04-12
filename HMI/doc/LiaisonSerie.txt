@@ -1,0 +1,16 @@
+Quant à la liaison série, les valeurs génériques pour les paramètres de la communication série dépendent de la configuration de votre matériel. Voici quelques valeurs courantes pour commencer :
+
+    Baud rate : La vitesse de transmission, qui est le nombre de bits transmis par seconde. Des valeurs courantes incluent 9600, 19200, 38400, 57600 et 115200 bauds. 9600 est souvent utilisée par défaut pour la simplicité et la compatibilité.
+
+    Bits de données : Typiquement 8, ce qui signifie que chaque byte transmis est composé de 8 bits.
+
+    Parité : Souvent réglée sur None, mais peut être configurée sur Even ou Odd pour la détection d'erreur.
+
+    Bits de stop : Généralement 1 ou 2, indique la fin d'un byte de données.
+
+    Timeout : Un paramètre optionnel qui définit combien de temps l'interface attend pour une réponse avant de considérer la transmission comme incomplète. Ceci est souvent réglé à 1 seconde dans les applications standards.
+
+devmgmt.msc => gestionnaire de port
+=> Pour afficher les PORT(COM&LPT) => Selectionner "Affichage" -> "Pilotes par types"
+
+Probleme de lecture des ports COM et de liaison avec Putty 

@@ -74,12 +74,11 @@ void Timer1_DefaultInterruptHandler(void)
     if(cpt_ms_temp_management >= 100)
     {
         cpt_ms_temp_management=0;
+        update_system_data(&system_management);
         temp_management(&system_management);
     }
     if(cpt_ms_lcd >=1000)
     {
-        update_system_data(&system_management);
-
         DisplayTimeToLCD(&system_management);
         DisplayDateOnLCD(&system_management);
         cpt_ms_lcd=0;

@@ -13,6 +13,7 @@
 #include "PWM.h"
 #include "led.h"
 #include "heater.h"
+#include "buzzer.h"
 
 
 static uint16_t previous_address_eeprom=8;
@@ -269,11 +270,15 @@ void extract_data_for_days(int number_days)
         SD_MBR_Receive(SDreadBuffer);
         
         // Afficher les données
-        printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", SDreadBuffer[0], SDreadBuffer[1], SDreadBuffer[2], SDreadBuffer[3], SDreadBuffer[4], SDreadBuffer[5], SDreadBuffer[6], SDreadBuffer[7], SDreadBuffer[8], SDreadBuffer[9], SDreadBuffer[10], SDreadBuffer[11], SDreadBuffer[12], SDreadBuffer[13], SDreadBuffer[14], SDreadBuffer[15]);
-        
+        for(int j = 0; j<32;j++)
+        {
+            printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", SDreadBuffer[0+(16*j)], SDreadBuffer[1+(16*j)], SDreadBuffer[2+(16*j)], SDreadBuffer[3+(16*j)], SDreadBuffer[4+(16*j)], SDreadBuffer[5+(16*j)], SDreadBuffer[6+(16*j)], SDreadBuffer[7+(16*j)], SDreadBuffer[8+(16*j)], SDreadBuffer[9+(16*j)], SDreadBuffer[10+(16*j)], SDreadBuffer[11+(16*j)], SDreadBuffer[12+(16*j)], SDreadBuffer[13+(16*j)], SDreadBuffer[14+(16*j)], SDreadBuffer[15+(16*j)]);
+        }
+        /*
         if((i > 0) && (i % 250 == 0)){
             printf(".");
         }
+         */
     }
     SD_MBR_Stop();
     
@@ -296,6 +301,8 @@ void extract_data_for_days(int number_days)
         pSystem_data->error_type = TOO_HOT;
         set_pwm_duty(100);
         heater_set_mode(OFF);
+        //buzzer(3);
+        //A corriger pour faire 1 fois
         //save_in_eeprom(pSystem_data);
     }
     else if(pSystem_data->temperature <= command_temp - 1.0)
@@ -303,6 +310,7 @@ void extract_data_for_days(int number_days)
         pSystem_data->error_type = TOO_COLD;
         heater_set_mode(ON);
         set_pwm_duty(0);
+        //A corriger pour faire 1 fois
         //save_in_eeprom(pSystem_data);
     }
     else

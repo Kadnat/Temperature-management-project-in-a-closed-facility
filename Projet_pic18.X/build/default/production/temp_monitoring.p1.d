@@ -9,4 +9,5 @@ SD_PIC.h  \
 SPI_PIC.h  \
 PWM.h  \
 led.h  \
-heater.h 
+heater.h  \
+buzzer.h 
