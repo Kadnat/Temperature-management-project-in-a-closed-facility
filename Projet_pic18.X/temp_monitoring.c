@@ -298,7 +298,7 @@ void extract_data_for_days(int number_days)
     static uint8_t already_save = 0;
     
     command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
-    printf("temp %f",command_temp);
+    //printf("temp %f",command_temp);
     
     if(pSystem_data->temperature >= command_temp + 1.0)
     {
@@ -334,4 +334,29 @@ void extract_data_for_days(int number_days)
     led_set_mode(pSystem_data);
 
         
+}
+ 
+ void log_system(SystemData* pSystem_data)
+{
+   unsigned char tab[16]={0};
+
+   tab[0] = pSystem_data->year;
+   tab[1] = pSystem_data->month;
+   tab[2] = pSystem_data->day;
+   tab[3] = pSystem_data->hour;
+   tab[4] = pSystem_data->minute;
+   tab[5] = pSystem_data->second;
+   tab[6] = pSystem_data->temp_decimal;
+   tab[7] = pSystem_data->temp_fraction;
+   tab[8] = pSystem_data->error_type;
+   tab[9] = pSystem_data->command_decimal;
+   tab[10] = pSystem_data->command_fraction;
+   tab[11] = 0;
+   tab[12] = 0;//command_decimal; // 
+   tab[13] = 0;//command_fraction; // 
+   tab[14] = 0;//address upper byte; // 
+   tab[15] = 0;//address lower byte; // 
+  
+   printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab[0], tab[1], tab[2], tab[3], tab[4], tab[5], tab[6], tab[7], tab[8], tab[9], tab[10], tab[11], tab[12], tab[13], tab[14], tab[15]);
+    
 }

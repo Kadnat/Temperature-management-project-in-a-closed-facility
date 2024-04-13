@@ -5179,6 +5179,7 @@ void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
+ void log_system(SystemData* pSystem_data);
 # 45 "./DS18B20.h" 2
 # 57 "./DS18B20.h"
 float OneWireTemp(void);

@@ -59,14 +59,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "44 ./temp_monitoring.h
 [; ;./temp_monitoring.h: 44: void update_SD_tab(SystemData* pSystem_data);
 [v _update_SD_tab `(v ~T0 @X0 0 ef1`*S271 ]
-[v F3742 `(v ~T0 @X0 0 tf ]
-"125 main.c
-[; ;main.c: 125:     timer1_t timer_obj;
-[c E2779 0 1 .. ]
-[n E2779 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
+"52
+[; ;./temp_monitoring.h: 52:  void log_system(SystemData* pSystem_data);
+[v _log_system `(v ~T0 @X0 0 ef1`*S271 ]
+[v F3744 `(v ~T0 @X0 0 tf ]
+"126 main.c
+[; ;main.c: 126:     timer1_t timer_obj;
+[c E2781 0 1 .. ]
+[n E2781 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
 "82 ./hal_timer1.h
 [; ;./hal_timer1.h: 82: {
-[s S284 `*F3742 1 `E2779 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
+[s S284 `*F3744 1 `E2781 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
 [n S284 . TMR1_InterruptHandler priority timer1_preload_value timer1_prescaler_value timer1_mode timer1_counter_mode timer1_osc_cfg timer1_reg_rw_mode timer1_reserved ]
 "105
 [; ;./hal_timer1.h: 105: uint8_t Timer1_Init(const timer1_t *_timer);
@@ -110,17 +113,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "31 C:\Program Files\Microchip\xc8\v2.46\pic\include\c99\stdlib.h
 [; ;C:\Program Files\Microchip\xc8\v2.46\pic\include\c99\stdlib.h: 31: float strtof (const char *restrict, char **restrict);
 [v _strtof `(f ~T0 @X0 0 ef2`*Cuc`**uc ]
-"220 main.c
-[; ;main.c: 220:     usart_t usart_obj;
-[c E2783 0 1 2 3 4 5 .. ]
-[n E2783 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
+"221 main.c
+[; ;main.c: 221:     usart_t usart_obj;
+[c E2785 0 1 2 3 4 5 .. ]
+[n E2785 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
 "100 ./hal_usart.h
 [; ;./hal_usart.h: 100: {
-[s S274 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2779 1 ]
+[s S274 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2781 1 ]
 [n S274 . usart_tx_reserved usart_enable_tx usart_enable_tx_interrupt usart_enable_9bit_tx usart_tx_interrupt_priority ]
 "110
 [; ;./hal_usart.h: 110: {
-[s S275 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2779 1 ]
+[s S275 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E2781 1 ]
 [n S275 . usart_rx_reserved usart_enable_rx usart_enable_rx_interrupt usart_enable_9bit_rx usart_rx_interrupt_priority ]
 "122
 [; ;./hal_usart.h: 122:     {
@@ -130,13 +133,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./hal_usart.h: 120: {
 [u S276 `S277 1 `uc 1 ]
 [n S276 . . status ]
-[v F2820 `(v ~T0 @X0 0 tf ]
 [v F2822 `(v ~T0 @X0 0 tf ]
 [v F2824 `(v ~T0 @X0 0 tf ]
 [v F2826 `(v ~T0 @X0 0 tf ]
+[v F2828 `(v ~T0 @X0 0 tf ]
 "132
 [; ;./hal_usart.h: 132: {
-[s S278 `ul 1 `E2783 1 `S274 1 `S275 1 `S276 1 `*F2820 1 `*F2822 1 `*F2824 1 `*F2826 1 ]
+[s S278 `ul 1 `E2785 1 `S274 1 `S275 1 `S276 1 `*F2822 1 `*F2824 1 `*F2826 1 `*F2828 1 ]
 [n S278 . baudrate baudrate_config usart_tx_cfg usart_rx_cfg eusart_error_status USART_TxDefaultInterruptHandler USART_RxDefaultInterruptHandler USART_FramingErrorHandler USART_OverrunErrorHandler ]
 "153
 [; ;./hal_usart.h: 153: uint8_t USART_Asynchronous_Initialize(const usart_t *_usart);
@@ -722,51 +725,51 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "74
 [; ;main.c: 74:     static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_buzzer=0;
-[v F3817 `us ~T0 @X0 1 s cpt_ms_lcd ]
-[i F3817
--> -> 0 `i `us
-]
-[v F3818 `us ~T0 @X0 1 s cpt_ms_oled ]
-[i F3818
--> -> 0 `i `us
-]
-[v F3819 `us ~T0 @X0 1 s cpt_ms_buzzer ]
+[v F3819 `us ~T0 @X0 1 s cpt_ms_lcd ]
 [i F3819
+-> -> 0 `i `us
+]
+[v F3820 `us ~T0 @X0 1 s cpt_ms_oled ]
+[i F3820
+-> -> 0 `i `us
+]
+[v F3821 `us ~T0 @X0 1 s cpt_ms_buzzer ]
+[i F3821
 -> -> 0 `i `us
 ]
 "75
 [; ;main.c: 75:     static uint32_t cpt_ms_sd=0;
-[v F3820 `ul ~T0 @X0 1 s cpt_ms_sd ]
-[i F3820
+[v F3822 `ul ~T0 @X0 1 s cpt_ms_sd ]
+[i F3822
 -> -> -> 0 `i `l `ul
 ]
 "76
 [; ;main.c: 76:     static uint8_t cpt_ms_temp_management=0;
-[v F3821 `uc ~T0 @X0 1 s cpt_ms_temp_management ]
-[i F3821
+[v F3823 `uc ~T0 @X0 1 s cpt_ms_temp_management ]
+[i F3823
 -> -> 0 `i `uc
 ]
 "77
 [; ;main.c: 77:     cpt_ms_lcd++;
-[e ++ F3817 -> -> 1 `i `us ]
+[e ++ F3819 -> -> 1 `i `us ]
 "78
 [; ;main.c: 78:     cpt_ms_oled++;
-[e ++ F3818 -> -> 1 `i `us ]
+[e ++ F3820 -> -> 1 `i `us ]
 "79
 [; ;main.c: 79:     cpt_ms_sd++;
-[e ++ F3820 -> -> -> 1 `i `l `ul ]
+[e ++ F3822 -> -> -> 1 `i `l `ul ]
 "80
 [; ;main.c: 80:     cpt_ms_temp_management++;
-[e ++ F3821 -> -> 1 `i `uc ]
+[e ++ F3823 -> -> 1 `i `uc ]
 "82
 [; ;main.c: 82:     if(cpt_ms_temp_management >= 100)
-[e $ ! >= -> F3821 `i -> 100 `i 291  ]
+[e $ ! >= -> F3823 `i -> 100 `i 291  ]
 "83
 [; ;main.c: 83:     {
 {
 "84
 [; ;main.c: 84:         cpt_ms_temp_management=0;
-[e = F3821 -> -> 0 `i `uc ]
+[e = F3823 -> -> 0 `i `uc ]
 "85
 [; ;main.c: 85:         update_system_data(&system_management);
 [e ( _update_system_data (1 &U _system_management ]
@@ -779,7 +782,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 291 ]
 "88
 [; ;main.c: 88:     if(cpt_ms_lcd >=500)
-[e $ ! >= -> F3817 `ui -> -> 500 `i `ui 292  ]
+[e $ ! >= -> F3819 `ui -> -> 500 `i `ui 292  ]
 "89
 [; ;main.c: 89:     {
 {
@@ -791,7 +794,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _DisplayDateOnLCD (1 &U _system_management ]
 "92
 [; ;main.c: 92:         cpt_ms_lcd=0;
-[e = F3817 -> -> 0 `i `us ]
+[e = F3819 -> -> 0 `i `us ]
 "93
 [; ;main.c: 93:     }
 }
@@ -804,13 +807,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "97
 [; ;main.c: 97:         cpt_ms_buzzer++;
-[e ++ F3819 -> -> 1 `i `us ]
+[e ++ F3821 -> -> 1 `i `us ]
 "98
 [; ;main.c: 98:         buzzer(activate_buzzer);
 [e ( _buzzer (1 _activate_buzzer ]
 "99
 [; ;main.c: 99:         if(cpt_ms_buzzer >= 2000)
-[e $ ! >= -> F3819 `ui -> -> 2000 `i `ui 294  ]
+[e $ ! >= -> F3821 `ui -> -> 2000 `i `ui 294  ]
 "100
 [; ;main.c: 100:         {
 {
@@ -819,7 +822,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _activate_buzzer -> -> 0 `i `uc ]
 "102
 [; ;main.c: 102:             cpt_ms_buzzer = 0;
-[e = F3819 -> -> 0 `i `us ]
+[e = F3821 -> -> 0 `i `us ]
 "103
 [; ;main.c: 103:             buzzer(activate_buzzer);
 [e ( _buzzer (1 _activate_buzzer ]
@@ -833,7 +836,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 293 ]
 "108
 [; ;main.c: 108:     if(cpt_ms_oled >=10000)
-[e $ ! >= -> F3818 `ui -> -> 10000 `i `ui 295  ]
+[e $ ! >= -> F3820 `ui -> -> 10000 `i `ui 295  ]
 "109
 [; ;main.c: 109:     {
 {
@@ -842,14 +845,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _print_temperature (1 &U _system_management ]
 "111
 [; ;main.c: 111:         cpt_ms_oled=0;
-[e = F3818 -> -> 0 `i `us ]
+[e = F3820 -> -> 0 `i `us ]
 "112
 [; ;main.c: 112:     }
 }
 [e :U 295 ]
 "114
 [; ;main.c: 114:     if(cpt_ms_sd >= 30000)
-[e $ ! >= F3820 -> -> -> 30000 `i `l `ul 296  ]
+[e $ ! >= F3822 -> -> -> 30000 `i `l `ul 296  ]
 "115
 [; ;main.c: 115:     {
 {
@@ -857,158 +860,161 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 116:         update_SD_tab(&system_management);
 [e ( _update_SD_tab (1 &U _system_management ]
 "117
-[; ;main.c: 117:         cpt_ms_sd=0;
-[e = F3820 -> -> -> 0 `i `l `ul ]
+[; ;main.c: 117:         log_system(&system_management);
+[e ( _log_system (1 &U _system_management ]
 "118
-[; ;main.c: 118:     }
+[; ;main.c: 118:         cpt_ms_sd=0;
+[e = F3822 -> -> -> 0 `i `l `ul ]
+"119
+[; ;main.c: 119:     }
 }
 [e :U 296 ]
-"121
-[; ;main.c: 121: }
+"122
+[; ;main.c: 122: }
 [e :UE 290 ]
 }
-"123
-[; ;main.c: 123: void timer1_timer_init(void)
-[v _timer1_timer_init `(v ~T0 @X0 1 ef ]
 "124
-[; ;main.c: 124: {
+[; ;main.c: 124: void timer1_timer_init(void)
+[v _timer1_timer_init `(v ~T0 @X0 1 ef ]
+"125
+[; ;main.c: 125: {
 {
 [e :U _timer1_timer_init ]
 [f ]
-"125
-[; ;main.c: 125:     timer1_t timer_obj;
-[v _timer_obj `S284 ~T0 @X0 1 a ]
 "126
-[; ;main.c: 126:     timer_obj.TMR1_InterruptHandler = Timer1_DefaultInterruptHandler;
-[e = . _timer_obj 0 &U _Timer1_DefaultInterruptHandler ]
+[; ;main.c: 126:     timer1_t timer_obj;
+[v _timer_obj `S284 ~T0 @X0 1 a ]
 "127
-[; ;main.c: 127:     timer_obj.priority = INTERRUPT_LOW_PRIORITY;
-[e = . _timer_obj 1 . `E2779 0 ]
+[; ;main.c: 127:     timer_obj.TMR1_InterruptHandler = Timer1_DefaultInterruptHandler;
+[e = . _timer_obj 0 &U _Timer1_DefaultInterruptHandler ]
 "128
-[; ;main.c: 128:     timer_obj.timer1_mode = 0;
-[e = . _timer_obj 4 -> -> 0 `i `uc ]
+[; ;main.c: 128:     timer_obj.priority = INTERRUPT_LOW_PRIORITY;
+[e = . _timer_obj 1 . `E2781 0 ]
 "129
-[; ;main.c: 129:     timer_obj.timer1_prescaler_value = 2;
+[; ;main.c: 129:     timer_obj.timer1_mode = 0;
+[e = . _timer_obj 4 -> -> 0 `i `uc ]
+"130
+[; ;main.c: 130:     timer_obj.timer1_prescaler_value = 2;
 [e = . _timer_obj 3 -> -> 2 `i `uc ]
-"132
-[; ;main.c: 132:     timer_obj.timer1_preload_value = 63536;
-[e = . _timer_obj 2 -> -> 63536 `l `us ]
 "133
-[; ;main.c: 133:     timer_obj.timer1_reg_rw_mode = 1;
-[e = . _timer_obj 7 -> -> 1 `i `uc ]
+[; ;main.c: 133:     timer_obj.timer1_preload_value = 63536;
+[e = . _timer_obj 2 -> -> 63536 `l `us ]
 "134
-[; ;main.c: 134:     Timer1_Init(&timer_obj);
-[e ( _Timer1_Init (1 -> &U _timer_obj `*CS284 ]
+[; ;main.c: 134:     timer_obj.timer1_reg_rw_mode = 1;
+[e = . _timer_obj 7 -> -> 1 `i `uc ]
 "135
-[; ;main.c: 135: }
+[; ;main.c: 135:     Timer1_Init(&timer_obj);
+[e ( _Timer1_Init (1 -> &U _timer_obj `*CS284 ]
+"136
+[; ;main.c: 136: }
 [e :UE 297 ]
 }
-"137
-[; ;main.c: 137: void putch(char c)
-[v _putch `(v ~T0 @X0 1 ef1`uc ]
 "138
-[; ;main.c: 138: {
+[; ;main.c: 138: void putch(char c)
+[v _putch `(v ~T0 @X0 1 ef1`uc ]
+"139
+[; ;main.c: 139: {
 {
 [e :U _putch ]
-"137
-[; ;main.c: 137: void putch(char c)
-[v _c `uc ~T0 @X0 1 r1 ]
 "138
-[; ;main.c: 138: {
-[f ]
+[; ;main.c: 138: void putch(char c)
+[v _c `uc ~T0 @X0 1 r1 ]
 "139
-[; ;main.c: 139:     USART_Asynchronous_WriteByte_Blocking(c);
-[e ( _USART_Asynchronous_WriteByte_Blocking (1 -> _c `uc ]
+[; ;main.c: 139: {
+[f ]
 "140
-[; ;main.c: 140: }
+[; ;main.c: 140:     USART_Asynchronous_WriteByte_Blocking(c);
+[e ( _USART_Asynchronous_WriteByte_Blocking (1 -> _c `uc ]
+"141
+[; ;main.c: 141: }
 [e :UE 298 ]
 }
-"142
-[; ;main.c: 142: void USART_FramingDefaultErrorHandler(void)
-[v _USART_FramingDefaultErrorHandler `(v ~T0 @X0 1 ef ]
 "143
-[; ;main.c: 143: {
+[; ;main.c: 143: void USART_FramingDefaultErrorHandler(void)
+[v _USART_FramingDefaultErrorHandler `(v ~T0 @X0 1 ef ]
+"144
+[; ;main.c: 144: {
 {
 [e :U _USART_FramingDefaultErrorHandler ]
 [f ]
-"144
-[; ;main.c: 144:     uint8_t _data_;
-[v __data_ `uc ~T0 @X0 1 a ]
 "145
-[; ;main.c: 145:     USART_Asynchronous_ReadByte_NonBlocking(&_data_);
-[e ( _USART_Asynchronous_ReadByte_NonBlocking (1 &U __data_ ]
+[; ;main.c: 145:     uint8_t _data_;
+[v __data_ `uc ~T0 @X0 1 a ]
 "146
-[; ;main.c: 146: }
+[; ;main.c: 146:     USART_Asynchronous_ReadByte_NonBlocking(&_data_);
+[e ( _USART_Asynchronous_ReadByte_NonBlocking (1 &U __data_ ]
+"147
+[; ;main.c: 147: }
 [e :UE 299 ]
 }
-"148
-[; ;main.c: 148: void USART_OverrunDefaultErrorHandler(void)
-[v _USART_OverrunDefaultErrorHandler `(v ~T0 @X0 1 ef ]
 "149
-[; ;main.c: 149: {
+[; ;main.c: 149: void USART_OverrunDefaultErrorHandler(void)
+[v _USART_OverrunDefaultErrorHandler `(v ~T0 @X0 1 ef ]
+"150
+[; ;main.c: 150: {
 {
 [e :U _USART_OverrunDefaultErrorHandler ]
 [f ]
-"150
-[; ;main.c: 150:     USART_Asynchronous_Restart_RX();
-[e ( _USART_Asynchronous_Restart_RX ..  ]
 "151
-[; ;main.c: 151: }
+[; ;main.c: 151:     USART_Asynchronous_Restart_RX();
+[e ( _USART_Asynchronous_Restart_RX ..  ]
+"152
+[; ;main.c: 152: }
 [e :UE 300 ]
 }
-"153
-[; ;main.c: 153: void USART_TxDefaultInterruptHandler(void)
-[v _USART_TxDefaultInterruptHandler `(v ~T0 @X0 1 ef ]
 "154
-[; ;main.c: 154: {
+[; ;main.c: 154: void USART_TxDefaultInterruptHandler(void)
+[v _USART_TxDefaultInterruptHandler `(v ~T0 @X0 1 ef ]
+"155
+[; ;main.c: 155: {
 {
 [e :U _USART_TxDefaultInterruptHandler ]
 [f ]
-"155
-[; ;main.c: 155:     valid_usart_tx++;
-[e ++ _valid_usart_tx -> -> 1 `i `Vul ]
 "156
-[; ;main.c: 156: }
+[; ;main.c: 156:     valid_usart_tx++;
+[e ++ _valid_usart_tx -> -> 1 `i `Vul ]
+"157
+[; ;main.c: 157: }
 [e :UE 301 ]
 }
-"158
-[; ;main.c: 158: void USART_RxDefaultInterruptHandler(void)
-[v _USART_RxDefaultInterruptHandler `(v ~T0 @X0 1 ef ]
 "159
-[; ;main.c: 159: {
+[; ;main.c: 159: void USART_RxDefaultInterruptHandler(void)
+[v _USART_RxDefaultInterruptHandler `(v ~T0 @X0 1 ef ]
+"160
+[; ;main.c: 160: {
 {
 [e :U _USART_RxDefaultInterruptHandler ]
 [f ]
-"160
-[; ;main.c: 160:     uint8_t ret = 0;
+"161
+[; ;main.c: 161:     uint8_t ret = 0;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `i `uc ]
-"161
-[; ;main.c: 161:     valid_usart_rx++;
-[e ++ _valid_usart_rx -> -> 1 `i `Vul ]
 "162
-[; ;main.c: 162:     ret = USART_Asynchronous_ReadByte_NonBlocking(&receive_usart_data);
+[; ;main.c: 162:     valid_usart_rx++;
+[e ++ _valid_usart_rx -> -> 1 `i `Vul ]
+"163
+[; ;main.c: 163:     ret = USART_Asynchronous_ReadByte_NonBlocking(&receive_usart_data);
 [e = _ret ( _USART_Asynchronous_ReadByte_NonBlocking (1 &U _receive_usart_data ]
-"165
-[; ;main.c: 165:     if (rx_buffer_index < 100 - 1) {
+"166
+[; ;main.c: 166:     if (rx_buffer_index < 100 - 1) {
 [e $ ! < _rx_buffer_index - -> 100 `i -> 1 `i 303  ]
 {
-"166
-[; ;main.c: 166:         rx_buffer[rx_buffer_index] = receive_usart_data;
-[e = *U + &U _rx_buffer * -> -> _rx_buffer_index `ui `ux -> -> # *U &U _rx_buffer `ui `ux -> _receive_usart_data `uc ]
 "167
-[; ;main.c: 167:         rx_buffer_index++;
-[e ++ _rx_buffer_index -> 1 `i ]
+[; ;main.c: 167:         rx_buffer[rx_buffer_index] = receive_usart_data;
+[e = *U + &U _rx_buffer * -> -> _rx_buffer_index `ui `ux -> -> # *U &U _rx_buffer `ui `ux -> _receive_usart_data `uc ]
 "168
-[; ;main.c: 168:     }
+[; ;main.c: 168:         rx_buffer_index++;
+[e ++ _rx_buffer_index -> 1 `i ]
+"169
+[; ;main.c: 169:     }
 }
 [e :U 303 ]
-"171
-[; ;main.c: 171:     if (strchr(rx_buffer, '\n') != ((void*)0)) {
+"172
+[; ;main.c: 172:     if (strchr(rx_buffer, '\n') != ((void*)0)) {
 [e $ ! != ( _strchr (2 , -> &U _rx_buffer `*Cuc -> -> 10 `ui `i -> -> -> 0 `i `*v `*uc 304  ]
 {
-"173
-[; ;main.c: 173:         for (int i = 0; i < 3; i++) {
+"174
+[; ;main.c: 174:         for (int i = 0; i < 3; i++) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -1016,113 +1022,113 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 306  ]
 [e :U 305 ]
 {
-"174
-[; ;main.c: 174:             if (strncmp(rx_buffer, commands[i], strlen(commands[i])) == 0) {
+"175
+[; ;main.c: 175:             if (strncmp(rx_buffer, commands[i], strlen(commands[i])) == 0) {
 [e $ ! == ( _strncmp (3 , , -> &U _rx_buffer `*Cuc -> *U + &U _commands * -> -> _i `ui `ux -> -> # *U &U _commands `ui `ux `*Cuc ( _strlen (1 -> *U + &U _commands * -> -> _i `ui `ux -> -> # *U &U _commands `ui `ux `*Cuc -> 0 `i 308  ]
 {
-"176
-[; ;main.c: 176:                 printf("command receive\r\n");
-[e ( _printf :s 4C ]
 "177
-[; ;main.c: 177:                 execute_rx_command(i);
-[e ( _execute_rx_command (1 _i ]
+[; ;main.c: 177:                 printf("command receive\r\n");
+[e ( _printf :s 4C ]
 "178
-[; ;main.c: 178:                 break;
-[e $U 306  ]
+[; ;main.c: 178:                 execute_rx_command(i);
+[e ( _execute_rx_command (1 _i ]
 "179
-[; ;main.c: 179:             }
+[; ;main.c: 179:                 break;
+[e $U 306  ]
+"180
+[; ;main.c: 180:             }
 }
 [e :U 308 ]
-"180
-[; ;main.c: 180:         }
+"181
+[; ;main.c: 181:         }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 3 `i 305  ]
 [e :U 306 ]
 }
-"183
-[; ;main.c: 183:         memset(rx_buffer, 0, sizeof(rx_buffer));
-[e ( _memset (3 , , -> &U _rx_buffer `*v -> 0 `i -> # _rx_buffer `ui ]
 "184
-[; ;main.c: 184:         rx_buffer_index = 0;
-[e = _rx_buffer_index -> 0 `i ]
+[; ;main.c: 184:         memset(rx_buffer, 0, sizeof(rx_buffer));
+[e ( _memset (3 , , -> &U _rx_buffer `*v -> 0 `i -> # _rx_buffer `ui ]
 "185
-[; ;main.c: 185:     }
+[; ;main.c: 185:         rx_buffer_index = 0;
+[e = _rx_buffer_index -> 0 `i ]
+"186
+[; ;main.c: 186:     }
 }
 [e :U 304 ]
-"186
-[; ;main.c: 186: }
+"187
+[; ;main.c: 187: }
 [e :UE 302 ]
 }
-"188
-[; ;main.c: 188: void execute_rx_command(int command_index) {
+"189
+[; ;main.c: 189: void execute_rx_command(int command_index) {
 [v _execute_rx_command `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _execute_rx_command ]
 [v _command_index `i ~T0 @X0 1 r1 ]
 [f ]
-"190
-[; ;main.c: 190:     switch (command_index) {
+"191
+[; ;main.c: 191:     switch (command_index) {
 [e $U 311  ]
 {
-"191
-[; ;main.c: 191:         case 0:
-[e :U 312 ]
 "192
-[; ;main.c: 192:             {
+[; ;main.c: 192:         case 0:
+[e :U 312 ]
+"193
+[; ;main.c: 193:             {
 {
-"194
-[; ;main.c: 194:                 int days = atoi(rx_buffer + strlen(commands[0]));
+"195
+[; ;main.c: 195:                 int days = atoi(rx_buffer + strlen(commands[0]));
 [v _days `i ~T0 @X0 1 a ]
 [e = _days ( _atoi (1 -> + &U _rx_buffer * -> ( _strlen (1 -> *U + &U _commands * -> -> -> 0 `i `ui `ux -> -> # *U &U _commands `ui `ux `*Cuc `ux -> -> # *U &U _rx_buffer `ui `ux `*Cuc ]
-"195
-[; ;main.c: 195:                 extract_data_for_days(days);
-[e ( _extract_data_for_days (1 _days ]
 "196
-[; ;main.c: 196:             }
+[; ;main.c: 196:                 extract_data_for_days(days);
+[e ( _extract_data_for_days (1 _days ]
+"197
+[; ;main.c: 197:             }
 }
-"198
-[; ;main.c: 198:             break;
-[e $U 310  ]
 "199
-[; ;main.c: 199:         case 1:
-[e :U 313 ]
-"201
-[; ;main.c: 201:             extract_all_alarms();
-[e ( _extract_all_alarms ..  ]
-"202
-[; ;main.c: 202:             break;
+[; ;main.c: 199:             break;
 [e $U 310  ]
-"204
-[; ;main.c: 204:         case 2:
+"200
+[; ;main.c: 200:         case 1:
+[e :U 313 ]
+"202
+[; ;main.c: 202:             extract_all_alarms();
+[e ( _extract_all_alarms ..  ]
+"203
+[; ;main.c: 203:             break;
+[e $U 310  ]
+"205
+[; ;main.c: 205:         case 2:
 [e :U 314 ]
-"206
-[; ;main.c: 206:         {
-{
 "207
-[; ;main.c: 207:             float temperature = strtof(rx_buffer + strlen(commands[2]),0);
+[; ;main.c: 207:         {
+{
+"208
+[; ;main.c: 208:             float temperature = strtof(rx_buffer + strlen(commands[2]),0);
 [v _temperature `f ~T0 @X0 1 a ]
 [e = _temperature ( _strtof (2 , -> + &U _rx_buffer * -> ( _strlen (1 -> *U + &U _commands * -> -> -> 2 `i `ui `ux -> -> # *U &U _commands `ui `ux `*Cuc `ux -> -> # *U &U _rx_buffer `ui `ux `*Cuc -> -> 0 `i `**uc ]
-"208
-[; ;main.c: 208:             system_management.command_decimal = (uint8_t)temperature;
-[e = . _system_management 8 -> _temperature `uc ]
 "209
-[; ;main.c: 209:             system_management.command_fraction = (temperature - (float)system_management.command_decimal) * 100.0;
-[e = . _system_management 9 -> * -> - _temperature -> . _system_management 8 `f `d .100.0 `uc ]
+[; ;main.c: 209:             system_management.command_decimal = (uint8_t)temperature;
+[e = . _system_management 8 -> _temperature `uc ]
 "210
-[; ;main.c: 210:         }
-}
+[; ;main.c: 210:             system_management.command_fraction = (temperature - (float)system_management.command_decimal) * 100.0;
+[e = . _system_management 9 -> * -> - _temperature -> . _system_management 8 `f `d .100.0 `uc ]
 "211
-[; ;main.c: 211:             break;
-[e $U 310  ]
+[; ;main.c: 211:         }
+}
 "212
-[; ;main.c: 212:         default:
-[e :U 315 ]
-"213
-[; ;main.c: 213:             break;
+[; ;main.c: 212:             break;
 [e $U 310  ]
+"213
+[; ;main.c: 213:         default:
+[e :U 315 ]
 "214
-[; ;main.c: 214:     }
+[; ;main.c: 214:             break;
+[e $U 310  ]
+"215
+[; ;main.c: 215:     }
 }
 [e $U 310  ]
 [e :U 311 ]
@@ -1131,66 +1137,66 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 2 `i 314
  315 ]
 [e :U 310 ]
-"215
-[; ;main.c: 215: }
+"216
+[; ;main.c: 216: }
 [e :UE 309 ]
 }
-"217
-[; ;main.c: 217: void usart_module_init(void)
-[v _usart_module_init `(v ~T0 @X0 1 ef ]
 "218
-[; ;main.c: 218: {
+[; ;main.c: 218: void usart_module_init(void)
+[v _usart_module_init `(v ~T0 @X0 1 ef ]
+"219
+[; ;main.c: 219: {
 {
 [e :U _usart_module_init ]
 [f ]
-"219
-[; ;main.c: 219:     uint8_t ret = 0;
+"220
+[; ;main.c: 220:     uint8_t ret = 0;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 0 `i `uc ]
-"220
-[; ;main.c: 220:     usart_t usart_obj;
+"221
+[; ;main.c: 221:     usart_t usart_obj;
 [v _usart_obj `S278 ~T0 @X0 1 a ]
-"222
-[; ;main.c: 222:     usart_obj.USART_FramingErrorHandler = USART_FramingDefaultErrorHandler;
-[e = . _usart_obj 7 &U _USART_FramingDefaultErrorHandler ]
 "223
-[; ;main.c: 223:     usart_obj.USART_OverrunErrorHandler = USART_OverrunDefaultErrorHandler;
-[e = . _usart_obj 8 &U _USART_OverrunDefaultErrorHandler ]
+[; ;main.c: 223:     usart_obj.USART_FramingErrorHandler = USART_FramingDefaultErrorHandler;
+[e = . _usart_obj 7 &U _USART_FramingDefaultErrorHandler ]
 "224
-[; ;main.c: 224:     usart_obj.USART_RxDefaultInterruptHandler = USART_RxDefaultInterruptHandler;
-[e = . _usart_obj 6 &U _USART_RxDefaultInterruptHandler ]
+[; ;main.c: 224:     usart_obj.USART_OverrunErrorHandler = USART_OverrunDefaultErrorHandler;
+[e = . _usart_obj 8 &U _USART_OverrunDefaultErrorHandler ]
 "225
-[; ;main.c: 225:     usart_obj.USART_TxDefaultInterruptHandler = USART_TxDefaultInterruptHandler;
+[; ;main.c: 225:     usart_obj.USART_RxDefaultInterruptHandler = USART_RxDefaultInterruptHandler;
+[e = . _usart_obj 6 &U _USART_RxDefaultInterruptHandler ]
+"226
+[; ;main.c: 226:     usart_obj.USART_TxDefaultInterruptHandler = USART_TxDefaultInterruptHandler;
 [e = . _usart_obj 5 &U _USART_TxDefaultInterruptHandler ]
-"227
-[; ;main.c: 227:     usart_obj.baudrate = 9600;
-[e = . _usart_obj 0 -> -> -> 9600 `i `l `ul ]
 "228
-[; ;main.c: 228:     usart_obj.baudrate_config = BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED;
-[e = . _usart_obj 1 . `E2783 1 ]
-"230
-[; ;main.c: 230:     usart_obj.usart_tx_cfg.usart_enable_tx = 1;
-[e = . . _usart_obj 2 1 -> -> 1 `i `uc ]
+[; ;main.c: 228:     usart_obj.baudrate = 9600;
+[e = . _usart_obj 0 -> -> -> 9600 `i `l `ul ]
+"229
+[; ;main.c: 229:     usart_obj.baudrate_config = BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED;
+[e = . _usart_obj 1 . `E2785 1 ]
 "231
-[; ;main.c: 231:     usart_obj.usart_tx_cfg.usart_enable_tx_interrupt = 1;
-[e = . . _usart_obj 2 2 -> -> 1 `i `uc ]
+[; ;main.c: 231:     usart_obj.usart_tx_cfg.usart_enable_tx = 1;
+[e = . . _usart_obj 2 1 -> -> 1 `i `uc ]
 "232
-[; ;main.c: 232:     usart_obj.usart_tx_cfg.usart_enable_9bit_tx = 0;
+[; ;main.c: 232:     usart_obj.usart_tx_cfg.usart_enable_tx_interrupt = 1;
+[e = . . _usart_obj 2 2 -> -> 1 `i `uc ]
+"233
+[; ;main.c: 233:     usart_obj.usart_tx_cfg.usart_enable_9bit_tx = 0;
 [e = . . _usart_obj 2 3 -> -> 0 `i `uc ]
-"234
-[; ;main.c: 234:     usart_obj.usart_rx_cfg.usart_enable_rx = 1;
-[e = . . _usart_obj 3 1 -> -> 1 `i `uc ]
 "235
-[; ;main.c: 235:     usart_obj.usart_rx_cfg.usart_enable_rx_interrupt = 1;
-[e = . . _usart_obj 3 2 -> -> 1 `i `uc ]
+[; ;main.c: 235:     usart_obj.usart_rx_cfg.usart_enable_rx = 1;
+[e = . . _usart_obj 3 1 -> -> 1 `i `uc ]
 "236
-[; ;main.c: 236:     usart_obj.usart_rx_cfg.usart_enable_9bit_rx = 0;
+[; ;main.c: 236:     usart_obj.usart_rx_cfg.usart_enable_rx_interrupt = 1;
+[e = . . _usart_obj 3 2 -> -> 1 `i `uc ]
+"237
+[; ;main.c: 237:     usart_obj.usart_rx_cfg.usart_enable_9bit_rx = 0;
 [e = . . _usart_obj 3 3 -> -> 0 `i `uc ]
-"238
-[; ;main.c: 238:     ret = USART_Asynchronous_Initialize(&usart_obj);
-[e = _ret ( _USART_Asynchronous_Initialize (1 -> &U _usart_obj `*CS278 ]
 "239
-[; ;main.c: 239: }
+[; ;main.c: 239:     ret = USART_Asynchronous_Initialize(&usart_obj);
+[e = _ret ( _USART_Asynchronous_Initialize (1 -> &U _usart_obj `*CS278 ]
+"240
+[; ;main.c: 240: }
 [e :UE 316 ]
 }
 [p f _printf 8388608 ]

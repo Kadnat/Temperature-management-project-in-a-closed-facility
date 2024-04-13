@@ -10,7 +10,7 @@ serial_port_lock = Lock()
 class SerialWorker(QObject):
     data_received = pyqtSignal(str)
 
-    def __init__(self, port='COM8', baudrate=9600, timeout=1):
+    def __init__(self, port='COM6', baudrate=9600, timeout=1):
         super().__init__()
         self.serial_port = serial.Serial(port=port, baudrate=baudrate, timeout=timeout)
         self.thread = QThread()
@@ -165,13 +165,19 @@ def encode_temperature(temperature):
     return frame
 
 
-def decode_frame(frame):
-    # Split the frame into a list of bytes
-    byte_list = [frame[i:i+2] for i in range(0, len(frame), 2)]
-
-    # Convert the byte values from hex to decimal
-    data_values = [int(b, 16) if b else 0 for b in byte_list]
-
+def decode_frame(hex_string):
+    # Supprimer les accolades et le retour à la ligne
+    hex_string = hex_string.replace("7b", "").replace("7d", "").replace("0d0a", "")
+    
+    # Convertir les hexa en ASCII
+    ascii_values = [chr(int(hex_string[i:i+2], 16)) for i in range(0, len(hex_string), 2)]
+    
+    # Regrouper les caractères par deux
+    hex_values = [''.join(ascii_values[i:i+2]) for i in range(0, len(ascii_values), 2)]
+    
+    # Convertir les hexa en decimal
+    data_values = [int(hv, 16) for hv in hex_values]
+    
     # Use a helper function to safely get data values with defaults
     def get_value(index, default=0):
         try:
@@ -205,6 +211,28 @@ def decode_frame(frame):
         'command_decimal': command_decimal,
         'command_fraction': command_fraction,
     }
+
+
+
+
+    # Return a dictionary of the values
+    return {
+        'year': year,
+        'month': month,
+        'day': day,
+        'hour': hour,
+        'minute': minute,
+        'second': second,
+        'temperature_decimal': temp_decimal,
+        'temperature_fraction': temp_fraction,
+        'error_type': error_type,
+        'command_decimal': command_decimal,
+        'command_fraction': command_fraction,
+    }
+
+
+
+
 
 if __name__ == "__main__" :
     frame = "180409141c3a16190200000000000000"

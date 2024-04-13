@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\natha\AppData\Local\Temp\xcAs7fg.\driver_tmp_3.o
+ C:\Users\natha\AppData\Local\Temp\xcAsf6g.\driver_tmp_3.o
  -Odist/default/production\Projet_pic18.X.production.hex
  -logfile=dist/default/production\Projet_pic18.X.production.hxl
  -addressing=1
@@ -9,19 +9,19 @@
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\natha\AppData\Local\Temp\xcAs7fg.\driver_tmp_3.o)
-  8h - BFA7h		(C:\Users\natha\AppData\Local\Temp\xcAs7fg.\driver_tmp_3.o)
-  FB52h - FFFEh		(C:\Users\natha\AppData\Local\Temp\xcAs7fg.\driver_tmp_3.o)
-  300000h - 30000Dh		(C:\Users\natha\AppData\Local\Temp\xcAs7fg.\driver_tmp_3.o)
+  0h - 3h		(C:\Users\natha\AppData\Local\Temp\xcAsf6g.\driver_tmp_3.o)
+  8h - C0D9h		(C:\Users\natha\AppData\Local\Temp\xcAsf6g.\driver_tmp_3.o)
+  FB5Ah - FFFEh		(C:\Users\natha\AppData\Local\Temp\xcAsf6g.\driver_tmp_3.o)
+  300000h - 30000Dh		(C:\Users\natha\AppData\Local\Temp\xcAsf6g.\driver_tmp_3.o)
  Unused ranges:
   4h - 7h
-  BFA8h - FB51h
+  C0DAh - FB59h
   FFFFh - 2FFFFFh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\natha\AppData\Local\Temp\xcAs7fg.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\natha\AppData\Local\Temp\xcAsf6g.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -3091,9 +3091,28 @@
 0000BF70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000BF80 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000BF90 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-0000BFA0 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --
+0000BFA0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000BFB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000BFC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000BFD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000BFE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000BFF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C000 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C010 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C020 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C030 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C040 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C050 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C060 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C070 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C080 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C090 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C0A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C0B0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C0C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000C0D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- --
 ----------------------------------------------------------
-0000FB50 | -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000FB50 | -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1
 0000FB60 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000FB70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000FB80 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

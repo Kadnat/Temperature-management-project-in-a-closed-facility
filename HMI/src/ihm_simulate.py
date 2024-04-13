@@ -116,7 +116,7 @@ class MainWindow(QMainWindow):
         self.init_ui()
         self.log_entries = []  # Initialize an empty list to hold the log entries.
         self.max_log_entries = 20  # Set a maximum for the log entries.
-        self.serial_worker = SerialWorker('COM8')
+        self.serial_worker = SerialWorker('COM6')
         self.serial_worker.data_received.connect(self.display_log)
         self.serial_worker.data_received.connect(self.display_temperature)
         self.serial_worker.start()
@@ -374,6 +374,7 @@ class MainWindow(QMainWindow):
         if self.access_level >= 2 :
             # Same as before: decode the incoming data and create the log entry.
             decoded_values = decode_frame(data)
+            print(decoded_values)
             temperature = f"{decoded_values['temperature_decimal']}.{decoded_values['temperature_fraction']}°C"
             log_entry = f"[{decoded_values['hour']}:{decoded_values['minute']}:{decoded_values['second']}] T = {temperature}"
 

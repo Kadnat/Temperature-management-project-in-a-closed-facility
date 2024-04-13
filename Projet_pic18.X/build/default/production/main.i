@@ -4700,6 +4700,7 @@ void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
+ void log_system(SystemData* pSystem_data);
 # 11 "./RTC.h" 2
 # 30 "./RTC.h"
 typedef struct {
@@ -5770,6 +5771,7 @@ void Timer1_DefaultInterruptHandler(void)
     if(cpt_ms_sd >= 30000)
     {
         update_SD_tab(&system_management);
+        log_system(&system_management);
         cpt_ms_sd=0;
     }
 

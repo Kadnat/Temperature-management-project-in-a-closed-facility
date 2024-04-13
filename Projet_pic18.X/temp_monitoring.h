@@ -49,6 +49,7 @@ void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
+ void log_system(SystemData* pSystem_data);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

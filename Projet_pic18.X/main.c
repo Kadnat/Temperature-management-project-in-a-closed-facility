@@ -114,6 +114,7 @@ void Timer1_DefaultInterruptHandler(void)
     if(cpt_ms_sd >= 30000)
     {
         update_SD_tab(&system_management);
+        log_system(&system_management);
         cpt_ms_sd=0;
     }
 
