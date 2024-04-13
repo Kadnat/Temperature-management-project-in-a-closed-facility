@@ -7,7 +7,7 @@ ser = serial.Serial('COM6', 9600)
 # Écrire chaque caractère de 'ALARMS' sur le port série avec un délai de 100 ms
 # et continuer à envoyer jusqu'à ce que 'command receive' soit reçu sur rx
 while True:
-    for char in 'COMMAND:26.5\n':
+    for char in 'HISTORY:1\n':
         ser.write(char.encode())
         time.sleep(0.1)  # attendre 100 ms
         received = ser.read(ser.inWaiting()).decode()  # lire les données entrantes

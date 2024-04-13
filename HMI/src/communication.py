@@ -40,7 +40,74 @@ class SerialWorker(QObject):
                     self.data_received.emit(data_hex)
             except serial.SerialException as e:
                 print(f"Exception série : {e}")
-            
+    
+
+    def send_temp(self, temperature):
+        # Écrire chaque caractère de 'COMMAND:' + temperature sur le port série avec un délai de 100 ms
+        # et continuer à envoyer jusqu'à ce que 'command receive' soit reçu sur rx
+        while True:
+            for char in 'COMMAND:' + temperature + '\n':
+                self.send_data(char.encode())
+                time.sleep(0.1)  # attendre 100 ms
+                received = self.serial_port.read(self.serial_port.inWaiting()).decode()  # lire les données entrantes
+                print(f"Reçu : {received}")  # imprimer les données reçues
+                if 'command receive' in received:
+                    break
+            else:
+                continue
+            break
+
+        print(f"Le message 'COMMAND:{temperature}' a été envoyé avec succès sur COM6 à un débit de 9600 bauds avec un délai de 100 ms entre chaque caractère jusqu'à ce que 'command receive' soit reçu.")
+
+    def send_hist(self, days):
+            ser = self.serial_port
+
+            # Écrire chaque caractère de 'COMMAND:' + temperature sur le port série avec un délai de 100 ms
+            # et continuer à envoyer jusqu'à ce que 'command receive' soit reçu sur rx          
+            while True:
+                for char in 'HISTORY:'+ days +'\n':
+                    ser.write(char.encode())
+                    time.sleep(0.1)  
+                    received = ser.read(ser.inWaiting()).decode()  
+                    print(f"Reçu : {received}")  
+                    if 'command receive' in received:
+                        break
+                else:
+                    continue
+                break
+
+            ser.close()
+            ser = self.serial_port
+
+            # Obtenir la date d'aujourd'hui et la convertir en chaîne de caractères
+            today = datetime.now().strftime('%Y-%m-%d')
+
+            # Ouvrir le fichier CSV en mode écriture
+            with open(f'{today}.csv', 'w', newline='') as file:
+                writer = csv.writer(file)
+                # Écrire l'en-tête du fichier CSV
+                writer.writerow(["Year", "Month", "Day", "Hour", "Minute", "Second", "Temp Decimal", "Temp Fraction", "Error Type", "Command Decimal", "Command Fraction"])
+
+                while True:
+                    # Lire une trame depuis le port série
+                    trame = ser.readline().decode().strip()
+
+                    # Si le mot "sector" est reçu, arrêter de lire
+                    if 'Sec' in trame:
+                        break
+
+                    # Enlever les accolades et convertir en entiers
+                    trame = trame.strip("{}")
+                    resultat = [int(trame[i:i+2], 16) for i in range(0, len(trame), 2)]
+
+                    # Afficher le résultat
+                    print(resultat)
+
+                    # Écrire le résultat dans le fichier CSV
+                    writer.writerow(resultat)
+
+            ser.close()
+
     def send_frame(self, frame):
         with serial_port_lock:
             if not self.serial_port.is_open:

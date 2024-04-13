@@ -245,9 +245,10 @@ void reset_sd_address_in_eeprom(void)
 void extract_data_for_days(int number_days)
 {
     unsigned long i;
-    unsigned short numWrites = number_days * 90; // Nombre de secteurs à lire pour 'days' jours
+    unsigned short numWrites = number_days * 25;//90; // Nombre de secteurs à lire pour 'days' jours
     long firstBlock = sector_address - numWrites; // Calculer le premier bloc à lire
 
+    initSD();
     // Si le nombre de jours demandé est supérieur au nombre de jours de données disponibles,
     // nous commençons à lire à partir du premier bloc de données
     if (firstBlock < 0) {

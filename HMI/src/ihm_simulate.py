@@ -120,7 +120,6 @@ class MainWindow(QMainWindow):
         self.serial_worker.data_received.connect(self.display_log)
         self.serial_worker.data_received.connect(self.display_temperature)
         self.serial_worker.start()
-
         self.commands = Commands()
 
     def init_ui(self):
@@ -399,8 +398,8 @@ class MainWindow(QMainWindow):
         self.commands.send_temp(temperature_str)
 
     def send_history(self):
-        history_str = self.temp_input_history.text()
-        self.commands.send_history(history_str)
+        history_str = self.nbDay.text()
+        self.commands.send_hist(history_str)
         
             
     def display_temperature(self, data):

@@ -5528,8 +5528,8 @@ void save_in_eeprom(SystemData* pSystem_data)
    tab[6] = pSystem_data->temp_decimal;
    tab[7] = pSystem_data->temp_fraction;
    tab[8] = pSystem_data->error_type;
-   tab[9] = 0;
-   tab[10] = 0;
+   tab[9] = pSystem_data->command_decimal;
+   tab[10] = pSystem_data->command_fraction;
    tab[11] = 0;
    tab[12] = 0;
    tab[13] = 0;
@@ -5655,8 +5655,8 @@ void update_SD_tab(SystemData* pSystem_data)
     tab[6] = pSystem_data->temp_decimal;
     tab[7] = pSystem_data->temp_fraction;
     tab[8] = pSystem_data->error_type;
-    tab[9] = 0;
-    tab[10] = 0;
+    tab[9] = pSystem_data->command_decimal;
+    tab[10] = pSystem_data->command_fraction;
     tab[11] = 0;
     tab[12] = 0;
     tab[13] = 0;
@@ -5710,9 +5710,10 @@ void reset_sd_address_in_eeprom(void)
 void extract_data_for_days(int number_days)
 {
     unsigned long i;
-    unsigned short numWrites = number_days * 90;
+    unsigned short numWrites = number_days * 25;
     long firstBlock = sector_address - numWrites;
 
+    initSD();
 
 
     if (firstBlock < 0) {
