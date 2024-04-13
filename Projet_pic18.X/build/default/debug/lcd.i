@@ -4673,23 +4673,23 @@ void LCD_Init(unsigned char I2C_Add)
   I2C_WriteToAddress(i2c_add);
   I2C_WriteByte(0 | BackLight_State);
   I2C_Stop();
-  _delay((unsigned long)((30)*(32000000/1000.0)));
+  _delay((unsigned long)((30)*(32000000/4000.0)));
   LCD_CMD(0x03);
-  _delay((unsigned long)((5)*(32000000/1000.0)));
+  _delay((unsigned long)((5)*(32000000/4000.0)));
   LCD_CMD(0x03);
-  _delay((unsigned long)((5)*(32000000/1000.0)));
+  _delay((unsigned long)((5)*(32000000/4000.0)));
   LCD_CMD(0x03);
-  _delay((unsigned long)((5)*(32000000/1000.0)));
+  _delay((unsigned long)((5)*(32000000/4000.0)));
   LCD_CMD(0x02);
-  _delay((unsigned long)((5)*(32000000/1000.0)));
+  _delay((unsigned long)((5)*(32000000/4000.0)));
   LCD_CMD(0x20 | (2 << 2));
-  _delay((unsigned long)((50)*(32000000/1000.0)));
+  _delay((unsigned long)((50)*(32000000/4000.0)));
   LCD_CMD(0x0C);
-  _delay((unsigned long)((50)*(32000000/1000.0)));
+  _delay((unsigned long)((50)*(32000000/4000.0)));
   LCD_CMD(0x01);
-  _delay((unsigned long)((50)*(32000000/1000.0)));
+  _delay((unsigned long)((50)*(32000000/4000.0)));
   LCD_CMD(0x04 | 0x02);
-  _delay((unsigned long)((50)*(32000000/1000.0)));
+  _delay((unsigned long)((50)*(32000000/4000.0)));
 }
 # 48 "lcd.c"
 void LCD_Write_4Bit(unsigned char Nibble)

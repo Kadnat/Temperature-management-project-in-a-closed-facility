@@ -499,8 +499,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _I2C_Delay ]
 [f ]
 "8
-[; ;i2c_soft.c: 8:  _delay((unsigned long)((10)*(32000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;i2c_soft.c: 8:  _delay((unsigned long)((25)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 25 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
 "9
 [; ;i2c_soft.c: 9:  }
 [e :UE 271 ]

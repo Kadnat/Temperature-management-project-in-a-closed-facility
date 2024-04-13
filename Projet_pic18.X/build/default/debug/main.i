@@ -4686,6 +4686,8 @@ typedef struct{
 
 } SystemData;
 
+extern uint8_t activate_buzzer;
+
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
 void read_eep_address_in_eeprom(void);
@@ -5590,7 +5592,7 @@ void set_pwm_duty(float duty);
 
 
 
-void buzzer(int second);
+void buzzer(uint8_t activate);
 # 12 "main.c" 2
 
 # 1 "./led.h" 1
@@ -5725,7 +5727,7 @@ void main(void) {
 
 void Timer1_DefaultInterruptHandler(void)
 {
-    static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0;
+    static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_buzzer=0;
     static uint32_t cpt_ms_sd=0;
     static uint8_t cpt_ms_temp_management=0;
     cpt_ms_lcd++;
@@ -5739,12 +5741,24 @@ void Timer1_DefaultInterruptHandler(void)
         update_system_data(&system_management);
         temp_management(&system_management);
     }
-    if(cpt_ms_lcd >=1000)
+    if(cpt_ms_lcd >=500)
     {
         DisplayTimeToLCD(&system_management);
         DisplayDateOnLCD(&system_management);
         cpt_ms_lcd=0;
+    }
 
+    if(activate_buzzer == 1)
+    {
+        cpt_ms_buzzer++;
+        buzzer(activate_buzzer);
+        if(cpt_ms_buzzer >= 2000)
+        {
+            activate_buzzer = 0;
+            cpt_ms_buzzer = 0;
+            buzzer(activate_buzzer);
+
+        }
     }
 
     if(cpt_ms_oled >=10000)

@@ -6,13 +6,17 @@
  */
 #include "buzzer.h"
 
-void buzzer(int second) {
+void buzzer(uint8_t activate) {
     TRISEbits.TRISE0=0;
-    PORTE |=0x1;
-    for(int i =0;i<second;i++)
+    
+    if(activate == 1)
     {
-     __delay_ms(1000);   
+        PORTE |=0x1;
+    }
+    else
+    {
+        PORTE &=0xFE;
     }
     
-    PORTE &=0xFE; 
+     
 }

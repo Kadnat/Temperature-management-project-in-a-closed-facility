@@ -45,22 +45,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2432
 [; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2432: extern volatile unsigned char OSCTUNE __attribute__((address(0xF9B)));
 [v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
-"2438
-[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2438:     struct {
-[s S88 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S88 . TUN . PLLEN INTSRC ]
-"2444
-[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2444:     struct {
-[s S89 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S89 . TUN0 TUN1 TUN2 TUN3 TUN4 ]
-"2437
-[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2437: typedef union {
-[u S87 `S88 1 `S89 1 ]
-[n S87 . . . ]
-"2452
-[; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 2452: extern volatile OSCTUNEbits_t OSCTUNEbits __attribute__((address(0xF9B)));
-[v _OSCTUNEbits `VS87 ~T0 @X0 0 e@3995 ]
-"5785
+[v F202 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
+[v __delay `JF202 ~T0 @X0 0 e ]
+[p i __delay ]
+"5785 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5785:     struct {
 [s S247 :2 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
 [n S247 . SCS IOFS OSTS IRCF IDLEN ]
@@ -75,10 +64,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5801
 [; ;C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 5801: extern volatile OSCCONbits_t OSCCONbits __attribute__((address(0xFD3)));
 [v _OSCCONbits `VS246 ~T0 @X0 0 e@4051 ]
-[v F202 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:/Users/natha/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
-[v __delay `JF202 ~T0 @X0 0 e ]
-[p i __delay ]
 "55 ./SPI_PIC.h
 [; ;./SPI_PIC.h: 55: void spiInit(unsigned char divider);
 [v _spiInit `(v ~T0 @X0 0 ef1`uc ]
@@ -1599,15 +1584,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 [v _arr_response `uc ~T0 @X0 -> 16 `i a ]
 [e = _arr_response F2848 ]
-"391
-[; ;SD_PIC.c: 391:     OSCTUNEbits.TUN = 0b000000;
-[e = . . _OSCTUNEbits 0 0 -> -> 0 `i `uc ]
-"392
-[; ;SD_PIC.c: 392:     OSCCONbits.IRCF = 0b110;
-[e = . . _OSCCONbits 0 3 -> -> 6 `i `uc ]
-"393
-[; ;SD_PIC.c: 393:     OSCCONbits.SCS = 0b11;
-[e = . . _OSCCONbits 0 0 -> -> 3 `i `uc ]
 "396
 [; ;SD_PIC.c: 396:     while(!OSCCONbits.IOFS){
 [e $U 369  ]
@@ -1628,8 +1604,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 400:     spiInit(16);
 [e ( _spiInit (1 -> -> 16 `i `uc ]
 "404
-[; ;SD_PIC.c: 404:     _delay((unsigned long)((20)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 404:     _delay((unsigned long)((20)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "407
 [; ;SD_PIC.c: 407:     LATEbits.LATE2 = 1;
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
@@ -2225,8 +2201,8 @@ Version 4.0 HI-TECH Software Intermediate Code
  432 ]
 [e :U 427 ]
 "651
-[; ;SD_PIC.c: 651:             _delay((unsigned long)((500)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 651:             _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "653
 [; ;SD_PIC.c: 653:             printf("BlkSize: %d b\r\n", SDCard.blockSize);
 [e ( _printf , :s 6C -> . _SDCard 10 `ui ]
@@ -2234,8 +2210,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 654:             printf("#Blks: %lu\r\n", SDCard.numBlocks);
 [e ( _printf , :s 7C . _SDCard 11 ]
 "655
-[; ;SD_PIC.c: 655:             _delay((unsigned long)((500)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 655:             _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "657
 [; ;SD_PIC.c: 657:             printf("SD Version: %u\r\n", SDCard.SDversion);
 [e ( _printf , :s 8C -> . _SDCard 0 `i ]
@@ -2243,8 +2219,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 658:             printf("MFG ID: 0x%x\r\n", SDCard.MID);
 [e ( _printf , :s 9C -> . _SDCard 2 `i ]
 "659
-[; ;SD_PIC.c: 659:             _delay((unsigned long)((500)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 659:             _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "661
 [; ;SD_PIC.c: 661:             printf("OEM ID: %c%c\r\n", SDCard.OID >> 8, SDCard.OID & 0xFF);
 [e ( _printf , , :s 10C >> -> . _SDCard 3 `ui -> 8 `i & -> . _SDCard 3 `ui -> -> 255 `i `ui ]
@@ -2267,8 +2243,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 668:             printf("PNM: %c%c%c%c%c\r\n", PNM[4], PNM[3], PNM[2], PNM[1], PNM[0]);
 [e ( _printf , , , , , :s 11C -> *U + &U _PNM * -> -> -> 4 `i `ui `ux -> -> # *U &U _PNM `ui `ux `i -> *U + &U _PNM * -> -> -> 3 `i `ui `ux -> -> # *U &U _PNM `ui `ux `i -> *U + &U _PNM * -> -> -> 2 `i `ui `ux -> -> # *U &U _PNM `ui `ux `i -> *U + &U _PNM * -> -> -> 1 `i `ui `ux -> -> # *U &U _PNM `ui `ux `i -> *U + &U _PNM * -> -> -> 0 `i `ui `ux -> -> # *U &U _PNM `ui `ux `i ]
 "669
-[; ;SD_PIC.c: 669:             _delay((unsigned long)((500)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 669:             _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "671
 [; ;SD_PIC.c: 671:             printf("PRV: %u.%u\r\n", ((SDCard.PRV >> 4) & 0x0F), (SDCard.PRV & 0x0F));
 [e ( _printf , , :s 12C & >> -> . _SDCard 6 `i -> 4 `i -> 15 `i & -> . _SDCard 6 `i -> 15 `i ]
@@ -2279,8 +2255,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 673:             printf("%x\r\n",SDCard.PSN & 0xFFFF);
 [e ( _printf , :s 14C & . _SDCard 7 -> -> 65535 `ui `ul ]
 "674
-[; ;SD_PIC.c: 674:             _delay((unsigned long)((500)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 674:             _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "676
 [; ;SD_PIC.c: 676:             unsigned short year = 2000 + ((SDCard.MDT >> 4) & 0xFF);
 [v _year `us ~T0 @X0 1 a ]
@@ -2296,8 +2272,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 679:             printf("CRC7: %u\r\n", SDCard.CRC);
 [e ( _printf , :s 16C -> . _SDCard 9 `i ]
 "680
-[; ;SD_PIC.c: 680:             _delay((unsigned long)((500)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 680:             _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "682
 [; ;SD_PIC.c: 682:             printf("Number of MB:");
 [e ( _printf :s 17C ]
@@ -2305,8 +2281,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 683:             printf("%.2f \r\n", SDCard.size);
 [e ( _printf , :s 18C . _SDCard 12 ]
 "684
-[; ;SD_PIC.c: 684:             _delay((unsigned long)((500)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 684:             _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "686
 [; ;SD_PIC.c: 686:             printf("Number of blocks:");
 [e ( _printf :s 19C ]
@@ -2314,8 +2290,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 687:             printf("%ul \r\n", SDCard.numBlocks);
 [e ( _printf , :s 20C . _SDCard 11 ]
 "688
-[; ;SD_PIC.c: 688:             _delay((unsigned long)((500)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 688:             _delay((unsigned long)((500)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "689
 [; ;SD_PIC.c: 689:         }
 }
@@ -2418,14 +2394,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 440 ]
 "725
-[; ;SD_PIC.c: 725:     _delay((unsigned long)((1000)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 725:     _delay((unsigned long)((1000)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "727
 [; ;SD_PIC.c: 727:     printf("Reading sector 0\r\n");
 [e ( _printf :s 24C ]
 "728
-[; ;SD_PIC.c: 728:     _delay((unsigned long)((1000)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 728:     _delay((unsigned long)((1000)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "731
 [; ;SD_PIC.c: 731:     if(SD_SingleBlockRead(0, SDreadBuffer)){
 [e $ ! != -> ( _SD_SingleBlockRead (2 , -> -> -> 0 `i `l `ul &U _SDreadBuffer `i -> 0 `i 444  ]
@@ -2449,8 +2425,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 445 ]
 "738
-[; ;SD_PIC.c: 738:     _delay((unsigned long)((1000)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 738:     _delay((unsigned long)((1000)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "739
 [; ;SD_PIC.c: 739: }
 [e :UE 438 ]
@@ -2551,8 +2527,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 768:     printf("Done %lu\r\n", i);
 [e ( _printf , :s 30C _i ]
 "769
-[; ;SD_PIC.c: 769:     _delay((unsigned long)((1000)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 769:     _delay((unsigned long)((1000)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "771
 [; ;SD_PIC.c: 771:     { SSPCON1bits.SSPEN = 1; LATEbits.LATE2 = 0;};
 {
@@ -2717,8 +2693,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SD_PIC.c: 838:     printf("write finished in sector %d\r\n",sector);
 [e ( _printf , :s 37C _sector ]
 "839
-[; ;SD_PIC.c: 839:     _delay((unsigned long)((1000)*(32000000/1000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .1000.0 `ul ]
+[; ;SD_PIC.c: 839:     _delay((unsigned long)((1000)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "840
 [; ;SD_PIC.c: 840: }
 [e :UE 465 ]

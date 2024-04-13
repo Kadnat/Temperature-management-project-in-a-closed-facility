@@ -4648,6 +4648,8 @@ typedef struct{
 
 } SystemData;
 
+extern uint8_t activate_buzzer;
+
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
 void read_eep_address_in_eeprom(void);
@@ -5474,7 +5476,7 @@ void heater_set_mode(BooleanState state);
 
 
 
-void buzzer(int second);
+void buzzer(uint8_t activate);
 # 16 "temp_monitoring.c" 2
 
 
@@ -5482,6 +5484,7 @@ void buzzer(int second);
 static uint16_t previous_address_eeprom=8;
 static uint8_t counter_alarm=0;
 static unsigned long sector_address = 0;
+uint8_t activate_buzzer = 0;
 
 void update_system_data(SystemData* pSystem_data)
 {
@@ -5756,6 +5759,7 @@ void extract_data_for_days(int number_days)
  void temp_management(SystemData* pSystem_data)
 {
     float command_temp = 23.0;
+    static uint8_t already_save = 0;
 
     command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
     printf("temp %f",command_temp);
@@ -5765,23 +5769,31 @@ void extract_data_for_days(int number_days)
         pSystem_data->error_type = TOO_HOT;
         set_pwm_duty(100);
         heater_set_mode(OFF);
-
-
-
+        if(already_save == 0)
+        {
+            save_in_eeprom(pSystem_data);
+            already_save = 1;
+            activate_buzzer = 1;
+        }
     }
     else if(pSystem_data->temperature <= command_temp - 1.0)
     {
         pSystem_data->error_type = TOO_COLD;
         heater_set_mode(ON);
         set_pwm_duty(0);
-
-
+        if(already_save == 0)
+        {
+            save_in_eeprom(pSystem_data);
+            already_save = 1;
+        }
     }
     else
     {
         pSystem_data->error_type = NO_ERROR;
         heater_set_mode(OFF);
         set_pwm_duty(0);
+        already_save = 0;
+        activate_buzzer = 0;
     }
     led_set_mode(pSystem_data);
 

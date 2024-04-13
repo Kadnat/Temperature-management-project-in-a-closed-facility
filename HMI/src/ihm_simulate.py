@@ -4,6 +4,12 @@ from PyQt5.QtGui import QIcon, QTextCursor
 from PyQt5.QtCore import Qt
 from src.communication import SerialWorker, decode_frame
 import json
+import time
+import subprocess
+import serial
+import threading
+from functools import partial
+from src.sendcommands import Commands
 
 from src.simulate_serial import update_current_frame
 
@@ -63,7 +69,7 @@ class LoginWindow(QMainWindow):
 
         layout = QVBoxLayout()
         layout.setSpacing(10)  # Espace entre les widgets
-        layout.setContentsMargins(50, 20, 50, 100)  # Gauche/Haut/Droite/Bas
+        layout.setContentsMargins(50, 20, 50, 100)  # Gauch  e/Haut/Droite/Bas
 
         label_username = QLabel('Nom d’utilisateur:')
         self.username_input = QLineEdit(self)
@@ -110,10 +116,12 @@ class MainWindow(QMainWindow):
         self.init_ui()
         self.log_entries = []  # Initialize an empty list to hold the log entries.
         self.max_log_entries = 20  # Set a maximum for the log entries.
-        self.serial_worker = SerialWorker('COM9')
+        self.serial_worker = SerialWorker('COM8')
         self.serial_worker.data_received.connect(self.display_log)
         self.serial_worker.data_received.connect(self.display_temperature)
         self.serial_worker.start()
+
+        self.commands = Commands()
 
     def init_ui(self):
         # Configuration de la fenêtre
@@ -202,6 +210,14 @@ class MainWindow(QMainWindow):
             self.right_content.setFixedWidth(200)  # Limitez la largeur du QTextEdit à 300 pixels
             self.right_content.setMaximumHeight(600)
             self.right_content.setAlignment(Qt.AlignCenter)
+
+            # Entrée pour définir une nouvelle température
+            self.nbDay = QLineEdit()
+            self.nbDay.setPlaceholderText('Entrez le nombre de jour a récupérer :')
+            
+            # Bouton pour envoyer la nouvelle température
+            self.getHistory = QPushButton('Recuperer historique')
+            self.getHistory.clicked.connect(self.send_history)
             
         else :
             # Title
@@ -229,6 +245,9 @@ class MainWindow(QMainWindow):
         # Display content
         if self.access_level >= 2 :
             right_layout.addWidget(self.right_content)
+            right_layout.addWidget(self.nbDay)
+            right_layout.addWidget(self.getHistory)
+
         else :
             right_layout.addWidget(right_content)
         
@@ -373,17 +392,16 @@ class MainWindow(QMainWindow):
 
     def update_current_temperature(self, temperature):
         self.current_temp_label.setText(f'Température actuelle: {temperature}°C')
-    
-    def send_temperature(self):
-        temperature_str = self.temp_input.text()
-        try:
-            new_temperature = float(temperature_str)  # Convertit en float pour vérification
-            update_current_frame(new_temperature)  # Met à jour la température globale
-            # Met à jour l'affichage de la température actuelle
-            self.update_current_temperature(temperature_str)
-        except ValueError:
-            print("Erreur lors de l'encodage de la température: entrée invalide")
 
+
+    def send_temperature(self):
+        temperature_str = self.temp_input.text()  # Remplacez ceci par la température que vous souhaitez envoyer
+        self.commands.send_temp(temperature_str)
+
+    def send_history(self):
+        history_str = self.temp_input_history.text()
+        self.commands.send_history(history_str)
+        
             
     def display_temperature(self, data):
         decoded_values = decode_frame(data)

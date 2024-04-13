@@ -4,7 +4,7 @@
 
 #include "common.h" // include processor files - each processor file is guarded.  
 
-void buzzer(int second);
+void buzzer(uint8_t activate);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

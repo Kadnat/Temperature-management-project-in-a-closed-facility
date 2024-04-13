@@ -10,7 +10,7 @@ serial_port_lock = Lock()
 class SerialWorker(QObject):
     data_received = pyqtSignal(str)
 
-    def __init__(self, port='COM4', baudrate=9600, timeout=1):
+    def __init__(self, port='COM8', baudrate=9600, timeout=1):
         super().__init__()
         self.serial_port = serial.Serial(port=port, baudrate=baudrate, timeout=timeout)
         self.thread = QThread()
@@ -52,10 +52,21 @@ def send_temperature_frame(port, baudrate, interval):
     with serial.Serial(port, baudrate) as ser:
         try:
             while True:
-                with serial_port_lock:
-                    frame = encode_temperature(str(current_temperature))
-                    ser.write(bytes.fromhex(frame))
-                time.sleep(interval)
+                for char in 'COMMAND:'+current_temperature+'\n':
+                    ser.write(char.encode())
+                    time.sleep(0.1)  # attendre 100 ms
+                    received = ser.read(ser.inWaiting()).decode()  # lire les données entrantes
+                    if 'command receive' in received:
+                        break
+                else:
+                    continue
+                break
+            ser.close()
+            #while True:
+             #   with serial_port_lock:
+              #      frame = encode_temperature(str(current_temperature))
+               #     ser.write(bytes.fromhex(frame))
+               # time.sleep(interval)
         except KeyboardInterrupt:
             print("Arrêt de la simulation sur demande de l'utilisateur.")
         except serial.SerialException as e:
@@ -81,6 +92,8 @@ def encode_temperature(temperature):
     
     # Crée la trame complète
     frame = year_hex + month_hex + day_hex + hour_hex + minute_hex + second_hex + temp_hex + '00' * 9  # Remplir avec des zéros
+
+
     
     return frame
 

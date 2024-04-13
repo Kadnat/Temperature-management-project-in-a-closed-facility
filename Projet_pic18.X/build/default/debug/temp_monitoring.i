@@ -4648,6 +4648,8 @@ typedef struct{
 
 } SystemData;
 
+extern uint8_t activate_buzzer;
+
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
 void read_eep_address_in_eeprom(void);
@@ -5474,7 +5476,7 @@ void heater_set_mode(BooleanState state);
 
 
 
-void buzzer(int second);
+void buzzer(uint8_t activate);
 # 16 "temp_monitoring.c" 2
 
 
@@ -5482,6 +5484,7 @@ void buzzer(int second);
 static uint16_t previous_address_eeprom=8;
 static uint8_t counter_alarm=0;
 static unsigned long sector_address = 0;
+uint8_t activate_buzzer = 0;
 
 void update_system_data(SystemData* pSystem_data)
 {
@@ -5542,14 +5545,14 @@ void save_in_eeprom(SystemData* pSystem_data)
 
 
    write_one_page_in_eeprom(tab, previous_address_eeprom);
-   _delay((unsigned long)((100)*(32000000/1000.0)));
+   _delay((unsigned long)((100)*(32000000/4000.0)));
    write_one_page_in_eeprom(&tab[8], previous_address_eeprom+8);
-   _delay((unsigned long)((100)*(32000000/1000.0)));
+   _delay((unsigned long)((100)*(32000000/4000.0)));
 
 
    previous_address_eeprom += 16;
    counter_alarm++;
-   _delay((unsigned long)((100)*(32000000/1000.0)));
+   _delay((unsigned long)((100)*(32000000/4000.0)));
    save_eep_address_in_eeprom();
 
    if(counter_alarm == 254)
@@ -5566,11 +5569,11 @@ void save_eep_address_in_eeprom(void)
     addressL = (previous_address_eeprom & 0xFF);
 
     write_one_byte_in_eeprom(addressH, 1);
-    _delay((unsigned long)((10)*(32000000/1000.0)));
+    _delay((unsigned long)((10)*(32000000/4000.0)));
     write_one_byte_in_eeprom(addressL, 0);
-    _delay((unsigned long)((10)*(32000000/1000.0)));
+    _delay((unsigned long)((10)*(32000000/4000.0)));
     write_one_byte_in_eeprom(counter_alarm, 2);
-     _delay((unsigned long)((10)*(32000000/1000.0)));
+     _delay((unsigned long)((10)*(32000000/4000.0)));
 
 
 }
@@ -5580,9 +5583,9 @@ void read_eep_address_in_eeprom(void)
     unsigned char addressH=0, addressL=0;
 
     addressH = read_one_byte_in_eeprom(1);
-    _delay((unsigned long)((100)*(32000000/1000.0)));
+    _delay((unsigned long)((100)*(32000000/4000.0)));
     addressL = read_one_byte_in_eeprom(0);
-    _delay((unsigned long)((100)*(32000000/1000.0)));
+    _delay((unsigned long)((100)*(32000000/4000.0)));
     counter_alarm = read_one_byte_in_eeprom(2);
 
     previous_address_eeprom = (addressH<<8) | addressL;
@@ -5604,9 +5607,9 @@ void reset_eep_address_in_eeprom(void)
     addressL = (previous_address_eeprom & 0xFF);
 
     write_one_byte_in_eeprom(addressH, 1);
-    _delay((unsigned long)((100)*(32000000/1000.0)));
+    _delay((unsigned long)((100)*(32000000/4000.0)));
     write_one_byte_in_eeprom(addressL, 0);
-    _delay((unsigned long)((100)*(32000000/1000.0)));
+    _delay((unsigned long)((100)*(32000000/4000.0)));
     write_one_byte_in_eeprom(counter_alarm, 2);
 }
 
@@ -5623,10 +5626,10 @@ void extract_all_alarms(void)
     {
         read_one_page_in_eeprom(previous_address_counter,tab2);
         previous_address_counter += 8;
-        _delay((unsigned long)((10)*(32000000/1000.0)));
+        _delay((unsigned long)((10)*(32000000/4000.0)));
         read_one_page_in_eeprom(previous_address_counter,&tab2[8]);
         previous_address_counter += 8;
-        _delay((unsigned long)((10)*(32000000/1000.0)));
+        _delay((unsigned long)((10)*(32000000/4000.0)));
 
 
         printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7], tab2[8], tab2[9], tab2[10], tab2[11], tab2[12], tab2[13], tab2[14], tab2[15]);
@@ -5684,7 +5687,7 @@ void save_sd_address_in_eeprom(void)
 {
     for(int i = 0; i < 4; i++) {
         write_one_byte_in_eeprom((sector_address >> (i * 8)) & 0xFF, 3 + i);
-        _delay((unsigned long)((10)*(32000000/1000.0)));
+        _delay((unsigned long)((10)*(32000000/4000.0)));
     }
 }
 
@@ -5692,7 +5695,7 @@ void read_sd_address_in_eeprom(void)
 {
     for(int i = 0; i < 4; i++) {
         sector_address |= ((unsigned long)read_one_byte_in_eeprom(6 - i)) << ((3 - i) * 8);
-        _delay((unsigned long)((10)*(32000000/1000.0)));
+        _delay((unsigned long)((10)*(32000000/4000.0)));
     }
 }
 
@@ -5700,7 +5703,7 @@ void reset_sd_address_in_eeprom(void)
 {
     for(int i = 0; i < 4; i++) {
         write_one_byte_in_eeprom(0, 3 + i);
-        _delay((unsigned long)((10)*(32000000/1000.0)));
+        _delay((unsigned long)((10)*(32000000/4000.0)));
     }
 }
 
@@ -5756,6 +5759,7 @@ void extract_data_for_days(int number_days)
  void temp_management(SystemData* pSystem_data)
 {
     float command_temp = 23.0;
+    static uint8_t already_save = 0;
 
     command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
     printf("temp %f",command_temp);
@@ -5765,23 +5769,31 @@ void extract_data_for_days(int number_days)
         pSystem_data->error_type = TOO_HOT;
         set_pwm_duty(100);
         heater_set_mode(OFF);
-
-
-
+        activate_buzzer = 1;
+        if(already_save == 0)
+        {
+            save_in_eeprom(pSystem_data);
+            already_save = 1;
+        }
     }
     else if(pSystem_data->temperature <= command_temp - 1.0)
     {
         pSystem_data->error_type = TOO_COLD;
         heater_set_mode(ON);
         set_pwm_duty(0);
-
-
+        if(already_save == 0)
+        {
+            save_in_eeprom(pSystem_data);
+            already_save = 1;
+        }
     }
     else
     {
         pSystem_data->error_type = NO_ERROR;
         heater_set_mode(OFF);
         set_pwm_duty(0);
+        already_save = 0;
+        activate_buzzer = 0;
     }
     led_set_mode(pSystem_data);
 

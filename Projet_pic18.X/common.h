@@ -97,11 +97,6 @@ typedef enum {
 }BooleanState;
 
 
-// NOTE: To use the macros below, YOU must have previously defined _XTAL_FREQ
-#define ___delay_us(x) _delay((unsigned long)((x)*(_XTAL_FREQ/1000000.0)))
-#define ___delay_ms(x) _delay((unsigned long)((x)*(_XTAL_FREQ/1000.0)))
-#define ___delaywdt_us(x) _delaywdt((unsigned long)((x)*(_XTAL_FREQ/1000000.0)))
-#define ___delaywdt_ms(x) _delaywdt((unsigned long)((x)*(_XTAL_FREQ/1000.0)))
 
 
 #ifdef	__cplusplus

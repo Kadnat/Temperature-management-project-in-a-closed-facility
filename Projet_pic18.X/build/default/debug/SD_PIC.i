@@ -5187,15 +5187,7 @@ void initSD(void){
     const unsigned char last_OSCTUNE = OSCTUNE;
     unsigned char response;
     unsigned char arr_response[16] = {0};
-
-
-
-
-    OSCTUNEbits.TUN = 0b000000;
-    OSCCONbits.IRCF = 0b110;
-    OSCCONbits.SCS = 0b11;
-
-
+# 396 "SD_PIC.c"
     while(!OSCCONbits.IOFS){
         _delay((unsigned long)((20)*(32000000/4000000.0)));
     }
@@ -5204,7 +5196,7 @@ void initSD(void){
 
 
 
-    _delay((unsigned long)((20)*(32000000/1000.0)));
+    _delay((unsigned long)((20)*(32000000/4000.0)));
 
 
     LATEbits.LATE2 = 1;
@@ -5451,15 +5443,15 @@ void read_init_sd_card(void)
                     printf("Type: Unknown\r\n");
                     break;
             }
-            _delay((unsigned long)((500)*(32000000/1000.0)));
+            _delay((unsigned long)((500)*(32000000/4000.0)));
 
             printf("BlkSize: %d b\r\n", SDCard.blockSize);
             printf("#Blks: %lu\r\n", SDCard.numBlocks);
-            _delay((unsigned long)((500)*(32000000/1000.0)));
+            _delay((unsigned long)((500)*(32000000/4000.0)));
 
             printf("SD Version: %u\r\n", SDCard.SDversion);
             printf("MFG ID: 0x%x\r\n", SDCard.MID);
-            _delay((unsigned long)((500)*(32000000/1000.0)));
+            _delay((unsigned long)((500)*(32000000/4000.0)));
 
             printf("OEM ID: %c%c\r\n", SDCard.OID >> 8, SDCard.OID & 0xFF);
 
@@ -5469,26 +5461,26 @@ void read_init_sd_card(void)
             PNM[3] = (SDCard.PHML >> 24) & 0xFF;
             PNM[4] = SDCard.PHMH;
             printf("PNM: %c%c%c%c%c\r\n", PNM[4], PNM[3], PNM[2], PNM[1], PNM[0]);
-            _delay((unsigned long)((500)*(32000000/1000.0)));
+            _delay((unsigned long)((500)*(32000000/4000.0)));
 
             printf("PRV: %u.%u\r\n", ((SDCard.PRV >> 4) & 0x0F), (SDCard.PRV & 0x0F));
             printf("PSN: 0x%x\r\n", (SDCard.PSN >> 16));
             printf("%x\r\n",SDCard.PSN & 0xFFFF);
-            _delay((unsigned long)((500)*(32000000/1000.0)));
+            _delay((unsigned long)((500)*(32000000/4000.0)));
 
             unsigned short year = 2000 + ((SDCard.MDT >> 4) & 0xFF);
             unsigned char month = SDCard.MDT & 0xF;
             printf("MDT: %u/%u\r\n", month, year);
             printf("CRC7: %u\r\n", SDCard.CRC);
-            _delay((unsigned long)((500)*(32000000/1000.0)));
+            _delay((unsigned long)((500)*(32000000/4000.0)));
 
             printf("Number of MB:");
             printf("%.2f \r\n", SDCard.size);
-            _delay((unsigned long)((500)*(32000000/1000.0)));
+            _delay((unsigned long)((500)*(32000000/4000.0)));
 
             printf("Number of blocks:");
             printf("%ul \r\n", SDCard.numBlocks);
-            _delay((unsigned long)((500)*(32000000/1000.0)));
+            _delay((unsigned long)((500)*(32000000/4000.0)));
         }
         else{
             printf("SD init failed!\r\n");
@@ -5525,10 +5517,10 @@ void single_block_read(void)
         printf("Init failed\r\n");
         while(1);
     }
-    _delay((unsigned long)((1000)*(32000000/1000.0)));
+    _delay((unsigned long)((1000)*(32000000/4000.0)));
 
     printf("Reading sector 0\r\n");
-    _delay((unsigned long)((1000)*(32000000/1000.0)));
+    _delay((unsigned long)((1000)*(32000000/4000.0)));
 
 
     if(SD_SingleBlockRead(0, SDreadBuffer)){
@@ -5538,7 +5530,7 @@ void single_block_read(void)
 
         printf("Failure!\r\n");
     }
-    _delay((unsigned long)((1000)*(32000000/1000.0)));
+    _delay((unsigned long)((1000)*(32000000/4000.0)));
 }
 
 void multiple_block_write(void)
@@ -5569,7 +5561,7 @@ void multiple_block_write(void)
     { LATEbits.LATE2 = 1; SSPCON1bits.SSPEN = 0;};
     printf("Done MBW!\r\n");
     printf("Done %lu\r\n", i);
-    _delay((unsigned long)((1000)*(32000000/1000.0)));
+    _delay((unsigned long)((1000)*(32000000/4000.0)));
 
     { SSPCON1bits.SSPEN = 1; LATEbits.LATE2 = 0;};
 
@@ -5639,5 +5631,5 @@ void single_block_write(unsigned long sector)
     printf("Single block\r\n");
 
     printf("write finished in sector %d\r\n",sector);
-    _delay((unsigned long)((1000)*(32000000/1000.0)));
+    _delay((unsigned long)((1000)*(32000000/4000.0)));
 }

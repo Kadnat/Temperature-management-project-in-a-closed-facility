@@ -19,6 +19,7 @@
 static uint16_t previous_address_eeprom=8;
 static uint8_t counter_alarm=0;
 static unsigned long sector_address = 0;
+uint8_t activate_buzzer = 0;
 
 void update_system_data(SystemData* pSystem_data)
 {
@@ -62,8 +63,8 @@ void save_in_eeprom(SystemData* pSystem_data)
    tab[6] = pSystem_data->temp_decimal;
    tab[7] = pSystem_data->temp_fraction;
    tab[8] = pSystem_data->error_type;
-   tab[9] = 0;
-   tab[10] = 0;
+   tab[9] = pSystem_data->command_decimal;
+   tab[10] = pSystem_data->command_fraction;
    tab[11] = 0;
    tab[12] = 0;//command_decimal; // 
    tab[13] = 0;//command_fraction; // 
@@ -189,8 +190,8 @@ void update_SD_tab(SystemData* pSystem_data)
     tab[6] = pSystem_data->temp_decimal;
     tab[7] = pSystem_data->temp_fraction;
     tab[8] = pSystem_data->error_type;
-    tab[9] = 0;
-    tab[10] = 0;
+    tab[9] = pSystem_data->command_decimal;
+    tab[10] = pSystem_data->command_fraction;
     tab[11] = 0;
     tab[12] = 0; // command_decimal
     tab[13] = 0; // command_fraction
@@ -293,6 +294,7 @@ void extract_data_for_days(int number_days)
  void temp_management(SystemData* pSystem_data)
 {
     float command_temp = 23.0;
+    static uint8_t already_save = 0;
     
     command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
     printf("temp %f",command_temp);
@@ -302,23 +304,31 @@ void extract_data_for_days(int number_days)
         pSystem_data->error_type = TOO_HOT;
         set_pwm_duty(100);
         heater_set_mode(OFF);
-        //buzzer(3);
-        //A corriger pour faire 1 fois
-        //save_in_eeprom(pSystem_data);
+        if(already_save == 0)
+        {
+            save_in_eeprom(pSystem_data);
+            already_save = 1;
+            activate_buzzer = 1;
+        }
     }
     else if(pSystem_data->temperature <= command_temp - 1.0)
     {
         pSystem_data->error_type = TOO_COLD;
         heater_set_mode(ON);
         set_pwm_duty(0);
-        //A corriger pour faire 1 fois
-        //save_in_eeprom(pSystem_data);
+        if(already_save == 0)
+        {
+            save_in_eeprom(pSystem_data);
+            already_save = 1;
+        }
     }
     else
     {
         pSystem_data->error_type = NO_ERROR;
         heater_set_mode(OFF);
         set_pwm_duty(0);
+        already_save = 0;
+        activate_buzzer = 0;
     }
     led_set_mode(pSystem_data);
 

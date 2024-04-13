@@ -71,7 +71,7 @@ void main(void) {
 
 void Timer1_DefaultInterruptHandler(void)
 {
-    static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0;
+    static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_buzzer=0;
     static uint32_t cpt_ms_sd=0;
     static uint8_t cpt_ms_temp_management=0;
     cpt_ms_lcd++;
@@ -89,8 +89,20 @@ void Timer1_DefaultInterruptHandler(void)
     {
         DisplayTimeToLCD(&system_management);
         DisplayDateOnLCD(&system_management);
-        cpt_ms_lcd=0;
- 
+        cpt_ms_lcd=0; 
+    }
+    
+    if(activate_buzzer == 1)
+    {
+        cpt_ms_buzzer++;
+        buzzer(activate_buzzer);
+        if(cpt_ms_buzzer >= 2000)
+        {
+            activate_buzzer = 0;
+            cpt_ms_buzzer = 0;
+            buzzer(activate_buzzer);
+            
+        }
     }
     
     if(cpt_ms_oled >=10000)

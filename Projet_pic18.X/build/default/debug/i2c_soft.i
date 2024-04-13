@@ -4647,7 +4647,7 @@ typedef enum {
 
 void I2C_Delay(){
 
- _delay((unsigned long)((10)*(32000000/4000000.0)));
+ _delay((unsigned long)((25)*(32000000/4000000.0)));
  }
 
 

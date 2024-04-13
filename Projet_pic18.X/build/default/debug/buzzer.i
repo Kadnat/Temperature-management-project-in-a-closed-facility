@@ -4626,17 +4626,21 @@ typedef enum {
 # 5 "./buzzer.h" 2
 
 
-void buzzer(int second);
+void buzzer(uint8_t activate);
 # 7 "buzzer.c" 2
 
 
-void buzzer(int second) {
+void buzzer(uint8_t activate) {
     TRISEbits.TRISE0=0;
-    PORTE |=0x1;
-    for(int i =0;i<second;i++)
+
+    if(activate == 1)
     {
-     _delay((unsigned long)((1000)*(32000000/1000.0)));
+        PORTE |=0x1;
+    }
+    else
+    {
+        PORTE &=0xFE;
     }
 
-    PORTE &=0xFE;
+
 }

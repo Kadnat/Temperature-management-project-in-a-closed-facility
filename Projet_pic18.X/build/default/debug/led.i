@@ -4652,6 +4652,8 @@ typedef struct{
 
 } SystemData;
 
+extern uint8_t activate_buzzer;
+
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
 void read_eep_address_in_eeprom(void);
