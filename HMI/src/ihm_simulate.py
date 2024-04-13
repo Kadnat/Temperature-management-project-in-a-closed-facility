@@ -396,11 +396,18 @@ class MainWindow(QMainWindow):
 
     def send_temperature(self):
         temperature_str = self.temp_input.text()  # Remplacez ceci par la température que vous souhaitez envoyer
+        self.serial_worker.stop()
         self.commands.send_temp(temperature_str)
+        self.serial_worker.data_received.connect(self.display_log)
+        self.serial_worker.data_received.connect(self.display_temperature)
+        
 
     def send_history(self):
         history_str = self.nbDay.text()
+        self.serial_worker.stop()
         self.commands.send_hist(history_str)
+        self.serial_worker.data_received.connect(self.display_log)
+        self.serial_worker.data_received.connect(self.display_temperature)
         
             
     def display_temperature(self, data):

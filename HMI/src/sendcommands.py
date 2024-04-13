@@ -3,6 +3,7 @@ import serial
 import time
 from datetime import datetime
 import csv
+from src.communication import SerialWorker, decode_frame
 
 # Créer un objet série
 class Commands:
@@ -25,6 +26,7 @@ class Commands:
 
         # Fermer le port série
         ser.close()
+
 
         print(f"Le message 'COMMAND:{temperature}' a été envoyé avec succès sur COM6 à un débit de 9600 bauds avec un délai de 100 ms entre chaque caractère jusqu'à ce que 'command receive' soit reçu.")
 
