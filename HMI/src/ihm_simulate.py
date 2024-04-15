@@ -116,7 +116,7 @@ class MainWindow(QMainWindow):
         self.init_ui()
         self.log_entries = []  # Initialize an empty list to hold the log entries.
         self.max_log_entries = 20  # Set a maximum for the log entries.
-        self.serial_worker = SerialWorker('COM6')
+        self.serial_worker = SerialWorker('COM7')
         self.serial_worker.data_received.connect(self.display_log)
         self.serial_worker.data_received.connect(self.display_temperature)
         self.serial_worker.start()
@@ -217,6 +217,10 @@ class MainWindow(QMainWindow):
             # Bouton pour envoyer la nouvelle température
             self.getHistory = QPushButton('Recuperer historique')
             self.getHistory.clicked.connect(self.send_history)
+         
+            # Bouton pour envoyer la nouvelle température
+            self.alarms = QPushButton('Recuperer les alarmes')
+            self.alarms.clicked.connect(self.send_alarms)
             
         else :
             # Title
@@ -246,6 +250,7 @@ class MainWindow(QMainWindow):
             right_layout.addWidget(self.right_content)
             right_layout.addWidget(self.nbDay)
             right_layout.addWidget(self.getHistory)
+            right_layout.addWidget(self.alarms)
 
         else :
             right_layout.addWidget(right_content)
@@ -398,16 +403,16 @@ class MainWindow(QMainWindow):
         temperature_str = self.temp_input.text()  # Remplacez ceci par la température que vous souhaitez envoyer
         self.serial_worker.stop()
         self.commands.send_temp(temperature_str)
-        self.serial_worker.data_received.connect(self.display_log)
-        self.serial_worker.data_received.connect(self.display_temperature)
         
 
     def send_history(self):
         history_str = self.nbDay.text()
         self.serial_worker.stop()
         self.commands.send_hist(history_str)
-        self.serial_worker.data_received.connect(self.display_log)
-        self.serial_worker.data_received.connect(self.display_temperature)
+
+    def send_alarms(self):
+        self.serial_worker.stop()
+        self.commands.send_alarms()
         
             
     def display_temperature(self, data):

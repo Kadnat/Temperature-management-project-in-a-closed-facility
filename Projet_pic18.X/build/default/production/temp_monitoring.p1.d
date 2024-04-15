@@ -10,4 +10,5 @@ SPI_PIC.h  \
 PWM.h  \
 led.h  \
 heater.h  \
-buzzer.h 
+buzzer.h  \
+lcd.h 

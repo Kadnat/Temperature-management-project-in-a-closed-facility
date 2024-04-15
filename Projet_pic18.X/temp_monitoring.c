@@ -14,6 +14,7 @@
 #include "led.h"
 #include "heater.h"
 #include "buzzer.h"
+#include "lcd.h"
 
 
 static uint16_t previous_address_eeprom=8;
@@ -71,12 +72,6 @@ void save_in_eeprom(SystemData* pSystem_data)
    tab[14] = 0;//address upper byte; // 
    tab[15] = 0;//address lower byte; // 
   
-    printf("Tableau avant écriture dans l'EEPROM:\n");
-    for (int i = 0; i < 16; i++) {
-        printf("%02x ", tab[i]);
-    }
-    printf("\n");
-   
    // Écrire les données dans l'EEPROM
     
    write_one_page_in_eeprom(tab, previous_address_eeprom);
@@ -110,7 +105,6 @@ void save_eep_address_in_eeprom(void)
     write_one_byte_in_eeprom(counter_alarm, 2);
      __delay_ms(10);
 
-    //printf("previous add  save %u\r\n", previous_address_eeprom);
 }
 
 void read_eep_address_in_eeprom(void)
@@ -124,10 +118,6 @@ void read_eep_address_in_eeprom(void)
     counter_alarm = read_one_byte_in_eeprom(2);     
     
     previous_address_eeprom = (addressH<<8) | addressL;
-    
-    //printf("previous add read %u\r\n", previous_address_eeprom);
-    //printf("counter alarm %u\r\n", counter_alarm);
-    
 
 }
 
@@ -151,12 +141,21 @@ void reset_eep_address_in_eeprom(void)
 void extract_all_alarms(void)
 {
     unsigned char tab2[16]={0};
-    
+    char buffer_lcd[15];
+
     // Commencer à l'adresse 8
     uint16_t previous_address_counter = 8;
     
-    
-    
+        
+    LCD_Clear();
+    LCD_Set_Cursor(1,1);
+    sprintf(buffer_lcd,"Transmission");
+    LCD_Write_String(buffer_lcd);
+    LCD_Set_Cursor(2,1);
+    sprintf(buffer_lcd,"Alarme      ");
+    LCD_Write_String(buffer_lcd);
+    __delay_ms(4000);
+
     for(int j=0; j<counter_alarm; j++)
     {
         read_one_page_in_eeprom(previous_address_counter,tab2);
@@ -247,6 +246,17 @@ void extract_data_for_days(int number_days)
     unsigned long i;
     unsigned short numWrites = number_days * 25;//90; // Nombre de secteurs à lire pour 'days' jours
     long firstBlock = sector_address - numWrites; // Calculer le premier bloc à lire
+    char buffer_lcd[15];
+    
+    LCD_Clear();
+    LCD_Set_Cursor(1,1);
+    sprintf(buffer_lcd,"Transmission");
+    LCD_Write_String(buffer_lcd);
+    LCD_Set_Cursor(2,1);
+    sprintf(buffer_lcd,"Historique  ");
+    LCD_Write_String(buffer_lcd);
+    __delay_ms(4000);
+    
 
     initSD();
     // Si le nombre de jours demandé est supérieur au nombre de jours de données disponibles,
@@ -260,34 +270,31 @@ void extract_data_for_days(int number_days)
         // Clear buffer to prove we are reading from the card
         SDreadBuffer[i] = 0;
     }
-    
+
     // Start multiple block read (MBR) from the calculated block address
     SD_MBR_Start(firstBlock);
-    
+
     printf("Reading sectors ");
     printf("%d-%d\r\n", firstBlock, firstBlock + numWrites - 1);
-    
+
     for(i = 0; i < numWrites; i++)
     {
         // Read the sector and store it in SDreadBuffer
         SD_MBR_Receive(SDreadBuffer);
-        
+
         // Afficher les données
         for(int j = 0; j<32;j++)
         {
             printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", SDreadBuffer[0+(16*j)], SDreadBuffer[1+(16*j)], SDreadBuffer[2+(16*j)], SDreadBuffer[3+(16*j)], SDreadBuffer[4+(16*j)], SDreadBuffer[5+(16*j)], SDreadBuffer[6+(16*j)], SDreadBuffer[7+(16*j)], SDreadBuffer[8+(16*j)], SDreadBuffer[9+(16*j)], SDreadBuffer[10+(16*j)], SDreadBuffer[11+(16*j)], SDreadBuffer[12+(16*j)], SDreadBuffer[13+(16*j)], SDreadBuffer[14+(16*j)], SDreadBuffer[15+(16*j)]);
         }
-        /*
-        if((i > 0) && (i % 250 == 0)){
-            printf(".");
-        }
-         */
+
     }
     SD_MBR_Stop();
-    
+
     sd_stop(); // Stop SPI and deselect SD card
-    
+
     printf("Sec %d-%d\r\n", (int)firstBlock, (int)(firstBlock + numWrites - 1));
+
 }
 
 // TEMP MANAGEMENT FUNCTIONS
@@ -298,9 +305,8 @@ void extract_data_for_days(int number_days)
     static uint8_t already_save = 0;
     
     command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
-    //printf("temp %f",command_temp);
     
-    if(pSystem_data->temperature >= command_temp + 1.0)
+    if(pSystem_data->temperature >= command_temp + 1.00)
     {
         pSystem_data->error_type = TOO_HOT;
         set_pwm_duty(100);
@@ -312,7 +318,7 @@ void extract_data_for_days(int number_days)
             activate_buzzer = 1;
         }
     }
-    else if(pSystem_data->temperature <= command_temp - 1.0)
+    else if(pSystem_data->temperature <= command_temp - 1.00)
     {
         pSystem_data->error_type = TOO_COLD;
         heater_set_mode(ON);

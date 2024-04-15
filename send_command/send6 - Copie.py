@@ -3,10 +3,10 @@ import csv
 import time
 from datetime import datetime
 
-ser = serial.Serial('COM6', 9600)
+ser = serial.Serial('COM7', 9600)
 
 while True:
-    for char in 'HISTORY:1\n':
+    for char in 'ALARMS\n':
         ser.write(char.encode())
         time.sleep(0.1)  
         try:
@@ -22,7 +22,7 @@ while True:
     break
 
 ser.close()
-ser = serial.Serial('COM6', 9600)
+ser = serial.Serial('COM7', 9600)
 
 # Obtenir la date d'aujourd'hui et la convertir en chaîne de caractères
 today = datetime.now().strftime('%Y-%m-%d')

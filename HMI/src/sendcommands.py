@@ -8,7 +8,7 @@ from src.communication import SerialWorker, decode_frame
 # Créer un objet série
 class Commands:
     def send_temp(self, temperature):
-        ser = serial.Serial('COM6', 9600)
+        ser = serial.Serial('COM7', 9600)
 
         # Écrire chaque caractère de 'COMMAND:' + temperature sur le port série avec un délai de 100 ms
         # et continuer à envoyer jusqu'à ce que 'command receive' soit reçu sur rx
@@ -26,12 +26,55 @@ class Commands:
 
         # Fermer le port série
         ser.close()
+    
+    def send_alarms(self):
+        ser = serial.Serial('COM7', 9600)
 
+        # Écrire chaque caractère de 'COMMAND:' + temperature sur le port série avec un délai de 100 ms
+        # et continuer à envoyer jusqu'à ce que 'command receive' soit reçu sur rx          
+        while True:
+            for char in 'ALARMS\n':
+                ser.write(char.encode())
+                time.sleep(0.1)  
+                received = ser.read(ser.inWaiting()).decode()  
+                print(f"Reçu : {received}")  
+                if 'command receive' in received:
+                    break
+            else:
+                continue
+            break
 
-        print(f"Le message 'COMMAND:{temperature}' a été envoyé avec succès sur COM6 à un débit de 9600 bauds avec un délai de 100 ms entre chaque caractère jusqu'à ce que 'command receive' soit reçu.")
+        ser.close()
+        ser = serial.Serial('COM7', 9600)
+
+        # Obtenir la date d'aujourd'hui et la convertir en chaîne de caractères
+        today = datetime.now().strftime('%Y-%m-%d')
+
+        # Ouvrir le fichier CSV en mode écriture
+        with open(f'{today}_alarms.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            # Écrire l'en-tête du fichier CSV
+            writer.writerow(["Year", "Month", "Day", "Hour", "Minute", "Second", "Temp Decimal", "Temp Fraction", "Error Type", "Command Decimal", "Command Fraction"])
+
+            while True:
+                # Lire une trame depuis le port série
+                trame = ser.readline().decode().strip()
+
+                # Enlever les accolades et convertir en entiers
+                trame = trame.strip("{}")
+                resultat = [int(trame[i:i+2], 16) for i in range(0, len(trame), 2)]
+
+                # Afficher le résultat
+                print(resultat)
+
+                # Écrire le résultat dans le fichier CSV
+                writer.writerow(resultat)
+
+        ser.close()
+
 
     def send_hist(self, days):
-        ser = serial.Serial('COM6', 9600)
+        ser = serial.Serial('COM7', 9600)
 
         # Écrire chaque caractère de 'COMMAND:' + temperature sur le port série avec un délai de 100 ms
         # et continuer à envoyer jusqu'à ce que 'command receive' soit reçu sur rx          
@@ -48,7 +91,7 @@ class Commands:
             break
 
         ser.close()
-        ser = serial.Serial('COM6', 9600)
+        ser = serial.Serial('COM7', 9600)
 
         # Obtenir la date d'aujourd'hui et la convertir en chaîne de caractères
         today = datetime.now().strftime('%Y-%m-%d')

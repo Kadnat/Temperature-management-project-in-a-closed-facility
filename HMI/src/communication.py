@@ -10,7 +10,7 @@ serial_port_lock = Lock()
 class SerialWorker(QObject):
     data_received = pyqtSignal(str)
 
-    def __init__(self, port='COM6', baudrate=9600, timeout=1):
+    def __init__(self, port='COM7', baudrate=9600, timeout=1):
         super().__init__()
         self.serial_port = serial.Serial(port=port, baudrate=baudrate, timeout=timeout)
         self.thread = QThread()
@@ -159,8 +159,6 @@ def encode_temperature(temperature):
     
     # Crée la trame complète
     frame = year_hex + month_hex + day_hex + hour_hex + minute_hex + second_hex + temp_hex + '00' * 9  # Remplir avec des zéros
-
-
     
     return frame
 
@@ -211,27 +209,6 @@ def decode_frame(hex_string):
         'command_decimal': command_decimal,
         'command_fraction': command_fraction,
     }
-
-
-
-
-    # Return a dictionary of the values
-    return {
-        'year': year,
-        'month': month,
-        'day': day,
-        'hour': hour,
-        'minute': minute,
-        'second': second,
-        'temperature_decimal': temp_decimal,
-        'temperature_fraction': temp_fraction,
-        'error_type': error_type,
-        'command_decimal': command_decimal,
-        'command_fraction': command_fraction,
-    }
-
-
-
 
 
 if __name__ == "__main__" :

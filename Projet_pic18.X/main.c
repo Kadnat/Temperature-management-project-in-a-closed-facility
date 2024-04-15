@@ -45,12 +45,10 @@ void execute_rx_command(int command_index);
 void main(void) {
     OSCILLATOR = 0x70;
     PLL = 0x40;
-    //OSCTUNEbits.TUN = 0b000000;
-    //OSCCONbits.IRCF = 0b111; // Configure internal oscillator to 4 MHz
-    //OSCCONbits.SCS = 0b11; // Use internal oscillator
-    //Set_DS1307_RTC_Time(TwentyFourHoursMode,01,39,45 );
+
     uint8_t ret=0;
     volatile uint16_t timer1_counter_val;
+    
     usart_module_init();
     timer1_timer_init();
     
@@ -60,7 +58,6 @@ void main(void) {
     start_pwm();
     LCD_Init(0x27); // start LCD function
 
-    read_init_sd_card();
             
     while(1)
     {
@@ -74,6 +71,7 @@ void Timer1_DefaultInterruptHandler(void)
     static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_buzzer=0;
     static uint32_t cpt_ms_sd=0;
     static uint8_t cpt_ms_temp_management=0;
+    
     cpt_ms_lcd++;
     cpt_ms_oled++;
     cpt_ms_sd++;
@@ -105,16 +103,16 @@ void Timer1_DefaultInterruptHandler(void)
         }
     }
     
-    if(cpt_ms_oled >=10000)
+    if(cpt_ms_oled >=3000)
     {
         print_temperature(&system_management);
+        log_system(&system_management);
         cpt_ms_oled=0;
     }
     
     if(cpt_ms_sd >= 30000)
     {
         update_SD_tab(&system_management);
-        log_system(&system_management);
         cpt_ms_sd=0;
     }
 

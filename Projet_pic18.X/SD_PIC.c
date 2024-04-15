@@ -328,10 +328,13 @@ void SD_MBR_Receive(unsigned char* bufReceive){
     CS_SD = 0; // Select card
     
     // Wait for 0xFE, the token signifying the start of a data block
-    while(spiReceive() != START_BLOCK){
+    while(spiReceive() != 0xFF){
         continue;
     }
     
+    while(spiReceive() != START_BLOCK){
+        continue;
+    }
     // Receive the data block
     for(unsigned short i = 0; i < 512; i++){
         bufReceive[i] = spiReceive();
