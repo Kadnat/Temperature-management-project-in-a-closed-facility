@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Temperature regulation is essential in many fields. This project aims to design a temperature regulation system using a microcontroller, with heating and ventilation, to maintain a target temperature. The PIC18F4620 microcontroller is integrated for its processing capacity and real-time control features. The display is ensured by an SSD1306 screen and an I2C LCD, allowing a clear and precise visualization of temperature data. The temperature data is also transmitted to a computer via a Python script, thus allowing the extraction and analysis of data on a computer platform, ensuring remote monitoring and proactive management of the temperature regulation system.
+Temperature regulation is essential in many fields. This project aims to design a temperature regulation system using a microcontroller, with heating and ventilation, to maintain a target temperature. The PIC18F4620 microcontroller is integrated for its processing capacity. The display is ensured by an SSD1306 screen and an I2C LCD, allowing a clear and precise visualization of temperature data. The temperature data is also transmitted to a computer via a Python script, thus allowing the extraction and analysis of data on a computer platform, ensuring remote monitoring and proactive management of the temperature regulation system.
+
+![TempMaster](https://github.com/Kadnat/Temperature-management-project-in-a-closed-facility/tree/main/images/tempmaster.jpg)
 
 ## Components used
 
@@ -23,16 +25,22 @@ Two display options are used to provide the user with a user-friendly and inform
 A Python human-machine interface (HMI) has been developed to allow users to access various features based on their access rights. Users must authenticate by providing their identifiers. Three access levels are defined: Simple User, Supervisor, and Administrator.
 
 - **Simple User**: This user can view the current temperature and the status of the system (heating, cooling, or stable). They can also access the history of temperature data but cannot make any changes to the system settings.
+![User screen](https://github.com/Kadnat/Temperature-management-project-in-a-closed-facility/tree/main/images/User.jpg)
 
-- **Supervisor**: In addition to the capabilities of a Simple User, the Supervisor can adjust the target temperature within a predefined range. They can also access more detailed historical data, including alarm events.
+- **Supervisor**: In addition to the capabilities of a Simple User, the Supervisor can also access more detailed historical data, including alarm events.
+![Supervisor screen](https://github.com/Kadnat/Temperature-management-project-in-a-closed-facility/tree/main/images/Supervisor.jpg)
 
 - **Administrator**: The Administrator has full control over the system. They can adjust all system parameters, including the target temperature range. They can also manage user accounts, adding or removing users and changing their access level. The Administrator has access to all historical data and can export this data for further analysis.
+![Administrator screen](https://github.com/Kadnat/Temperature-management-project-in-a-closed-facility/tree/main/images/Administrator.jpg)
 
 These different access levels ensure that the system can be used effectively and safely, with changes to system parameters controlled by authorized personnel. The history function allows all users to understand the performance of the system over time, while providing detailed data for troubleshooting and system optimization.
 
 ## Project Operation
 
 The blue led means that the temperature is too low so the heating starts. If the temperature is too high, the led lights up in red and the fan does its cooling work. When the led lights up in green it means that the temperature corresponds to the expected one with an accuracy of 1 degree up or down.
+![too cold](https://github.com/Kadnat/Temperature-management-project-in-a-closed-facility/tree/main/images/blue.jpg)
+![too hot](https://github.com/Kadnat/Temperature-management-project-in-a-closed-facility/tree/main/images/red.jpg)
+![normal](https://github.com/Kadnat/Temperature-management-project-in-a-closed-facility/tree/main/images/green.jpg)
 
 ## Link to the code
 
@@ -42,5 +50,6 @@ The code is located in : [Github](https://github.com/Kadnat/Temperature-manageme
 
 - [DataSheet PIC](https://www.microchip.com/en-us/product/pic18f4620)
 - [Led Screen](https://www.digikey.com/htmldatasheets/production/2047793/0/0/1/ssd1306.html)
-- Datasheet of the I2C 1602 LCD in pdf
-- Darasheet L298N STmicroelectronics in pdf
+- [I2C Module LCD](https://handsontec.com/dataspecs/module/I2C_1602_LCD.pdf)
+- [DataSheet L298N](https://www.alldatasheet.com/datasheet-pdf/pdf/22440/STMICROELECTRONICS/L298N.html)
+- [AT24C32 EEPROM](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0336.pdf)
