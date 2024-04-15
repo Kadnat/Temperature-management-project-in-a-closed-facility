@@ -1,6 +1,6 @@
 /*
  * File:   temp_monitoring.c
- * Author: Nathanael
+ * Author: Nathanaël BLAVO BALLARIN
  *
  * Created on 1 avril 2024, 11:31
  */
@@ -22,6 +22,12 @@ static uint8_t counter_alarm=0;
 static unsigned long sector_address = 0;
 uint8_t activate_buzzer = 0;
 
+
+/*
+ * @Brief              : To update system data.
+ * @Param pSystem_data : Pointer to the data structure.
+ * @Return None.        
+ */
 void update_system_data(SystemData* pSystem_data)
 {
    float temp = OneWireTemp();
@@ -51,6 +57,11 @@ void update_system_data(SystemData* pSystem_data)
 
 // EEPROM MAGAGEMENTS FUNCTIONS
 
+/*
+ * @Brief              : To save data in eeprom AT24C32.
+ * @Param pSystem_data : Pointer to the data structure.
+ * @Return None.        
+ */
 void save_in_eeprom(SystemData* pSystem_data)
 {
    unsigned char tab[16]={0};
@@ -67,19 +78,17 @@ void save_in_eeprom(SystemData* pSystem_data)
    tab[9] = pSystem_data->command_decimal;
    tab[10] = pSystem_data->command_fraction;
    tab[11] = 0;
-   tab[12] = 0;//command_decimal; // 
-   tab[13] = 0;//command_fraction; // 
-   tab[14] = 0;//address upper byte; // 
-   tab[15] = 0;//address lower byte; // 
-  
-   // Écrire les données dans l'EEPROM
+   tab[12] = 0;
+   tab[13] = 0;
+   tab[14] = 0;
+   tab[15] = 0;
     
    write_one_page_in_eeprom(tab, previous_address_eeprom);
    __delay_ms(100);
    write_one_page_in_eeprom(&tab[8], previous_address_eeprom+8);
    __delay_ms(100);
    
-   // Mettre à jour l'adresse pour la prochaine écriture
+   // Update address for next entry
    previous_address_eeprom += 16;
    counter_alarm++;
    __delay_ms(100);
@@ -91,6 +100,11 @@ void save_in_eeprom(SystemData* pSystem_data)
    }
 }
 
+/*
+ * @Brief              : To save the various addresses in the eeprom.
+ * @Param  None.
+ * @Return None.        
+ */
 void save_eep_address_in_eeprom(void)
 {   
     unsigned char addressH=0, addressL=0;
@@ -107,6 +121,11 @@ void save_eep_address_in_eeprom(void)
 
 }
 
+/*
+ * @Brief              : To read the various addresses in the eeprom.
+ * @Param  None.
+ * @Return None.        
+ */
 void read_eep_address_in_eeprom(void)
 {   
     unsigned char addressH=0, addressL=0;
@@ -121,6 +140,11 @@ void read_eep_address_in_eeprom(void)
 
 }
 
+/*
+ * @Brief              : To reset the various addresses in the eeprom.
+ * @Param  None.
+ * @Return None.        
+ */
 void reset_eep_address_in_eeprom(void)
 {   
     unsigned char addressH=0, addressL=0;
@@ -138,12 +162,17 @@ void reset_eep_address_in_eeprom(void)
     write_one_byte_in_eeprom(counter_alarm, 2);
 }
 
+/*
+ * @Brief              : To read the various addresses in the eeprom.
+ * @Param pSystem_data : Pointer to the data structure.
+ * @Return None.        
+ */
 void extract_all_alarms(void)
 {
     unsigned char tab2[16]={0};
     char buffer_lcd[15];
 
-    // Commencer à l'adresse 8
+    // Begin at address 8
     uint16_t previous_address_counter = 8;
     
         
@@ -165,7 +194,6 @@ void extract_all_alarms(void)
         previous_address_counter += 8;
         __delay_ms(10);
         
-        // Afficher les données penser à envoyer par interruption haute priorité
         printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7], tab2[8], tab2[9], tab2[10], tab2[11], tab2[12], tab2[13], tab2[14], tab2[15]);
     
     }
