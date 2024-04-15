@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"18 led.c
-[; ;led.c: 18: void led_set_mode(SystemData *psystem_state)
+"19 led.c
+[; ;led.c: 19: void led_set_mode(SystemData *psystem_state)
 [c E2644 0 1 2 .. ]
 [n E2644 . NO_ERROR TOO_HOT TOO_COLD  ]
 "23 ./temp_monitoring.h
@@ -522,96 +522,96 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"18 led.c
-[; ;led.c: 18: void led_set_mode(SystemData *psystem_state)
+"19 led.c
+[; ;led.c: 19: void led_set_mode(SystemData *psystem_state)
 [v _led_set_mode `(v ~T0 @X0 1 ef1`*S271 ]
-"19
-[; ;led.c: 19: {
+"20
+[; ;led.c: 20: {
 {
 [e :U _led_set_mode ]
-"18
-[; ;led.c: 18: void led_set_mode(SystemData *psystem_state)
-[v _psystem_state `*S271 ~T0 @X0 1 r1 ]
 "19
-[; ;led.c: 19: {
-[f ]
+[; ;led.c: 19: void led_set_mode(SystemData *psystem_state)
+[v _psystem_state `*S271 ~T0 @X0 1 r1 ]
 "20
-[; ;led.c: 20:     TRISDbits.TRISD3 = 0;
-[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
+[; ;led.c: 20: {
+[f ]
 "21
-[; ;led.c: 21:     TRISDbits.TRISD2 = 0;
-[e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
+[; ;led.c: 21:     TRISDbits.TRISD3 = 0;
+[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
 "22
-[; ;led.c: 22:     TRISDbits.TRISD5 = 0;
-[e = . . _TRISDbits 0 5 -> -> 0 `i `uc ]
+[; ;led.c: 22:     TRISDbits.TRISD2 = 0;
+[e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
 "23
-[; ;led.c: 23:     switch(psystem_state->error_type)
-[e $U 274  ]
+[; ;led.c: 23:     TRISDbits.TRISD5 = 0;
+[e = . . _TRISDbits 0 5 -> -> 0 `i `uc ]
 "24
-[; ;led.c: 24:     {
-{
+[; ;led.c: 24:     switch(psystem_state->error_type)
+[e $U 274  ]
 "25
-[; ;led.c: 25:         case NO_ERROR:
-[e :U 275 ]
+[; ;led.c: 25:     {
+{
 "26
-[; ;led.c: 26:             PORTDbits.RD2 = 1;
-[e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
+[; ;led.c: 26:         case NO_ERROR:
+[e :U 275 ]
 "27
-[; ;led.c: 27:             PORTDbits.RD3 = 0;
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+[; ;led.c: 27:             PORTDbits.RD2 = 1;
+[e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
 "28
-[; ;led.c: 28:             PORTDbits.RD5 = 0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+[; ;led.c: 28:             PORTDbits.RD3 = 0;
+[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
 "29
-[; ;led.c: 29:             break;
+[; ;led.c: 29:             PORTDbits.RD5 = 0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+"30
+[; ;led.c: 30:             break;
 [e $U 273  ]
-"31
-[; ;led.c: 31:         case TOO_COLD:
-[e :U 276 ]
 "32
-[; ;led.c: 32:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
+[; ;led.c: 32:         case TOO_COLD:
+[e :U 276 ]
 "33
-[; ;led.c: 33:             PORTDbits.RD3 = 0;
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+[; ;led.c: 33:             PORTDbits.RD2 = 0;
+[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
 "34
-[; ;led.c: 34:             PORTDbits.RD5 = 1;
-[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-"35
-[; ;led.c: 35:             break;
-[e $U 273  ]
-"37
-[; ;led.c: 37:         case TOO_HOT:
-[e :U 277 ]
-"38
-[; ;led.c: 38:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
-"39
-[; ;led.c: 39:             PORTDbits.RD3 = 1;
-[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
-"40
-[; ;led.c: 40:             PORTDbits.RD5 = 0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
-"41
-[; ;led.c: 41:             break;
-[e $U 273  ]
-"43
-[; ;led.c: 43:         default:
-[e :U 278 ]
-"44
-[; ;led.c: 44:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
-"45
-[; ;led.c: 45:             PORTDbits.RD3 = 0;
+[; ;led.c: 34:             PORTDbits.RD3 = 0;
 [e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
-"46
-[; ;led.c: 46:             PORTDbits.RD5 = 0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
-"47
-[; ;led.c: 47:             break;
+"35
+[; ;led.c: 35:             PORTDbits.RD5 = 1;
+[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
+"36
+[; ;led.c: 36:             break;
 [e $U 273  ]
+"38
+[; ;led.c: 38:         case TOO_HOT:
+[e :U 277 ]
+"39
+[; ;led.c: 39:             PORTDbits.RD2 = 0;
+[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
+"40
+[; ;led.c: 40:             PORTDbits.RD3 = 1;
+[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
+"41
+[; ;led.c: 41:             PORTDbits.RD5 = 0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+"42
+[; ;led.c: 42:             break;
+[e $U 273  ]
+"44
+[; ;led.c: 44:         default:
+[e :U 278 ]
+"45
+[; ;led.c: 45:             PORTDbits.RD2 = 0;
+[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
+"46
+[; ;led.c: 46:             PORTDbits.RD3 = 0;
+[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+"47
+[; ;led.c: 47:             PORTDbits.RD5 = 0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
 "48
-[; ;led.c: 48:     }
+[; ;led.c: 48:             break;
+[e $U 273  ]
+"49
+[; ;led.c: 49:     }
 }
 [e $U 273  ]
 [e :U 274 ]
@@ -620,7 +620,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E2644 1 `ui 277
  278 ]
 [e :U 273 ]
-"49
-[; ;led.c: 49: }
+"50
+[; ;led.c: 50: }
 [e :UE 272 ]
 }

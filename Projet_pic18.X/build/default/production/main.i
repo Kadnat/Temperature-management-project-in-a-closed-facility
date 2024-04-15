@@ -7,6 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
+# 10 "main.c"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4599,10 +4600,10 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 1 "main.c" 2
+# 10 "main.c" 2
 
 # 1 "./lcd.h" 1
-# 50 "./lcd.h"
+# 51 "./lcd.h"
 void LCD_Init(unsigned char I2C_Add);
 
 
@@ -4665,10 +4666,10 @@ void LCD_SR();
 
 
 void LCD_Clear();
-# 2 "main.c" 2
+# 11 "main.c" 2
 
 # 1 "./i2c_soft.h" 1
-# 21 "./i2c_soft.h"
+# 29 "./i2c_soft.h"
 char I2C_ReadRegister(char deviceAddress, char registerAddress);
 void I2C_WriteRegister(char deviceAddress, char registerAddress, char data);
 
@@ -4693,7 +4694,7 @@ char I2C_ReadResult_withAck();
 void I2C_WriteToAddress(char deviceAddress);
 void I2C_ReadFromAddress(char deviceAddress);
 void I2C_Test();
-# 3 "main.c" 2
+# 12 "main.c" 2
 
 # 1 "./RTC.h" 1
 # 15 "./RTC.h"
@@ -4725,23 +4726,100 @@ typedef struct {
 
 
 extern uint8_t activate_buzzer;
-
-
-
+# 51 "./temp_monitoring.h"
 void save_in_eeprom(SystemData* pSystem_data);
+
+
+
+
+
+
 void update_system_data(SystemData* pSystem_data);
+
+
+
+
+
+
 void read_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void save_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void update_SD_tab(SystemData* pSystem_data);
+
+
+
+
+
+
 void save_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void read_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void reset_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_all_alarms(void);
+
+
+
+
+
+
 void reset_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_data_for_days(int number_days);
+
+
+
+
+
+
 void temp_management(SystemData* pSystem_data);
+
+
+
+
+
+
 void log_system(SystemData* pSystem_data);
+
+
+
+
+
+
 void launch_screen(void);
+
 
 
 
@@ -4787,7 +4865,7 @@ extern unsigned char Temp;
 
 void DisplayDateOnLCD(SystemData *pDate);
 void DisplayTimeToLCD(SystemData *pTime);
-# 4 "main.c" 2
+# 13 "main.c" 2
 
 # 1 "./hal_usart.h" 1
 # 14 "./hal_usart.h"
@@ -4877,7 +4955,7 @@ uint8_t USART_Asynchronous_WriteByte_Blocking(uint8_t _data);
 uint8_t USART_Asynchronous_WriteByte_NonBlocking(uint8_t _data);
 # 213 "./hal_usart.h"
 uint8_t USART_Asynchronous_WriteString_Blocking(uint8_t *_data, uint16_t str_length);
-# 5 "main.c" 2
+# 14 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 3
@@ -5023,10 +5101,10 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 6 "main.c" 2
+# 15 "main.c" 2
 
 # 1 "./ds18b20.h" 1
-# 43 "./ds18b20.h"
+# 45 "./ds18b20.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\math.h" 1 3
 # 15 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\math.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -5396,8 +5474,8 @@ double jn(int, double);
 double y0(double);
 double y1(double);
 double yn(int, double);
-# 43 "./ds18b20.h" 2
-# 64 "./ds18b20.h"
+# 45 "./ds18b20.h" 2
+# 66 "./ds18b20.h"
 float OneWireTemp(void);
 
 
@@ -5451,7 +5529,7 @@ void OneWireHigh(void);
 
 
 void OneWireRelease(void);
-# 7 "main.c" 2
+# 16 "main.c" 2
 
 # 1 "./SD_PIC.h" 1
 # 17 "./SD_PIC.h"
@@ -5683,11 +5761,11 @@ void multiple_block_read(void);
 
 
 void single_block_write(unsigned long sector);
-# 8 "main.c" 2
+# 17 "main.c" 2
 
 
 # 1 "./AT24C32.h" 1
-# 29 "./AT24C32.h"
+# 32 "./AT24C32.h"
 void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address);
 
 
@@ -5713,7 +5791,7 @@ unsigned char read_one_byte_in_eeprom(uint16_t register_address);
 
 
 void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
-# 10 "main.c" 2
+# 19 "main.c" 2
 
 # 1 "./PWM.h" 1
 # 20 "./PWM.h"
@@ -5725,17 +5803,17 @@ void start_pwm(void);
 
 
 void set_pwm_duty(float duty);
-# 11 "main.c" 2
+# 20 "main.c" 2
 
 # 1 "./buzzer.h" 1
-# 22 "./buzzer.h"
+# 26 "./buzzer.h"
 void buzzer(uint8_t activate);
-# 12 "main.c" 2
+# 21 "main.c" 2
 
 # 1 "./led.h" 1
-# 37 "./led.h"
+# 38 "./led.h"
 void led_set_mode(SystemData *psystem_state);
-# 13 "main.c" 2
+# 22 "main.c" 2
 
 # 1 "./hal_timer1.h" 1
 # 81 "./hal_timer1.h"
@@ -5761,7 +5839,7 @@ uint8_t Timer1_DeInit(const timer1_t *_timer);
 uint8_t Timer1_Write_Value(const timer1_t *_timer, uint16_t _value);
 # 134 "./hal_timer1.h"
 uint8_t Timer1_Read_Value(const timer1_t *_timer, uint16_t *_value);
-# 14 "main.c" 2
+# 23 "main.c" 2
 
 # 1 "./hal_timer0.h" 1
 # 68 "./hal_timer0.h"
@@ -5800,24 +5878,18 @@ uint8_t Timer0_DeInit(const timer0_t *_timer);
 uint8_t Timer0_Write_Value(const timer0_t *_timer, uint16_t _value);
 # 134 "./hal_timer0.h"
 uint8_t Timer0_Read_Value(const timer0_t *_timer, uint16_t *_value);
-# 15 "main.c" 2
+# 24 "main.c" 2
 
 
 # 1 "./heater.h" 1
-# 23 "./heater.h"
+# 32 "./heater.h"
 void heater_set_mode(BooleanState state);
-# 17 "main.c" 2
-
-
-
-
-
-
-
-
+# 26 "main.c" 2
+# 36 "main.c"
 char rx_buffer[100];
 int rx_buffer_index = 0;
 char* commands[3] = {"HISTORY:", "ALARMS", "COMMAND:"};
+
 
 uint8_t receive_usart_data;
 
@@ -5825,6 +5897,8 @@ volatile uint32_t valid_usart_tx;
 volatile uint32_t valid_usart_rx;
 
 SystemData system_management;
+
+
 
 void putch(char c);
 void USART_FramingDefaultErrorHandler(void);
@@ -5834,6 +5908,7 @@ void USART_RxDefaultInterruptHandler(void);
 void usart_module_init(void);
 void timer1_timer_init(void);
 void execute_rx_command(int command_index);
+
 
 void main(void) {
     OSCCON = 0x70;
@@ -5861,6 +5936,7 @@ void main(void) {
      }
 
 }
+
 
 void Timer1_DefaultInterruptHandler(void)
 {
@@ -5908,12 +5984,13 @@ void Timer1_DefaultInterruptHandler(void)
 
     if(cpt_ms_sd >= 30000)
     {
-        update_SD_tab(&system_management);
+
         cpt_ms_sd=0;
     }
 
 
 }
+
 
 void timer1_timer_init(void)
 {
@@ -5922,17 +5999,17 @@ void timer1_timer_init(void)
     timer_obj.priority = INTERRUPT_LOW_PRIORITY;
     timer_obj.timer1_mode = 0;
     timer_obj.timer1_prescaler_value = 2;
-
-
     timer_obj.timer1_preload_value = 63536;
     timer_obj.timer1_reg_rw_mode = 1;
     Timer1_Init(&timer_obj);
 }
 
+
 void putch(char c)
 {
     USART_Asynchronous_WriteByte_Blocking(c);
 }
+
 
 void USART_FramingDefaultErrorHandler(void)
 {
@@ -5945,10 +6022,13 @@ void USART_OverrunDefaultErrorHandler(void)
     USART_Asynchronous_Restart_RX();
 }
 
+
+
 void USART_TxDefaultInterruptHandler(void)
 {
     valid_usart_tx++;
 }
+
 
 void USART_RxDefaultInterruptHandler(void)
 {
@@ -5980,6 +6060,7 @@ void USART_RxDefaultInterruptHandler(void)
     }
 }
 
+
 void execute_rx_command(int command_index) {
 
     switch (command_index) {
@@ -6008,6 +6089,7 @@ void execute_rx_command(int command_index) {
             break;
     }
 }
+
 
 void usart_module_init(void)
 {

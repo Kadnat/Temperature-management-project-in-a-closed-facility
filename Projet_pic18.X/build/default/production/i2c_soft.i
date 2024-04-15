@@ -7,8 +7,16 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "i2c_soft.c" 2
+
+
+
+
+
+
+
+
 # 1 "./i2c_soft.h" 1
-# 21 "./i2c_soft.h"
+# 29 "./i2c_soft.h"
 char I2C_ReadRegister(char deviceAddress, char registerAddress);
 void I2C_WriteRegister(char deviceAddress, char registerAddress, char data);
 
@@ -33,7 +41,7 @@ char I2C_ReadResult_withAck();
 void I2C_WriteToAddress(char deviceAddress);
 void I2C_ReadFromAddress(char deviceAddress);
 void I2C_Test();
-# 1 "i2c_soft.c" 2
+# 9 "i2c_soft.c" 2
 
 # 1 "./common.h" 1
 # 20 "./common.h"
@@ -4627,15 +4635,13 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 2 "i2c_soft.c" 2
-
-
-
-
+# 10 "i2c_soft.c" 2
+# 19 "i2c_soft.c"
 void I2C_Delay(){
 
  _delay((unsigned long)((25)*(32000000/4000000.0)));
  }
+
 
 
 
@@ -4645,19 +4651,27 @@ void SCL_Low()
  TRISA = TRISA & 0b11101111;
  }
 
+
+
+
 void SCL_High(){
  TRISA = TRISA | 0b00010000;
  }
+
+
+
 
 void SDA_Low(){
  PORTA = PORTA & 0b11011111;
  TRISA = TRISA & 0b11011111;
  }
 
+
+
+
 void SDA_High(){
  TRISA = TRISA | 0b00100000;
  }
-
 
 
 
@@ -4670,6 +4684,9 @@ void I2C_SendZero(){
  SCL_Low();
  }
 
+
+
+
 void I2C_SendOne(){
  SCL_Low();
  SDA_High();
@@ -4677,6 +4694,9 @@ void I2C_SendOne(){
  I2C_Delay();
  SCL_Low();
  }
+
+
+
 
 void I2C_Start(){
  SDA_High();
@@ -4687,6 +4707,8 @@ void I2C_Start(){
  SCL_Low();
  I2C_Delay();
  }
+
+
 
 
 void I2C_Stop(){
@@ -4700,6 +4722,10 @@ void I2C_Stop(){
  I2C_Delay();
  }
 
+
+
+
+
 void I2C_WriteByte(char theByte){
  char temp = theByte;
 
@@ -4712,6 +4738,9 @@ void I2C_WriteByte(char theByte){
  I2C_SendOne();
 
  }
+
+
+
 
 
 char I2C_ReadResult(){
@@ -4735,13 +4764,13 @@ char I2C_ReadResult(){
 
  I2C_Delay();
 
-
-
-
-
  SDA_High();
  return(readback);
  }
+
+
+
+
 
 char I2C_ReadResult_withAck(){
 
@@ -4762,7 +4791,6 @@ char I2C_ReadResult_withAck(){
  I2C_Delay();
  SCL_High();
 
-
  I2C_Delay();
     SDA_Low();
     I2C_Delay();
@@ -4773,6 +4801,9 @@ char I2C_ReadResult_withAck(){
  }
 
 
+
+
+
 void I2C_WriteToAddress(char deviceAddress){
  char temp;
  temp = deviceAddress << 1;
@@ -4780,9 +4811,18 @@ void I2C_WriteToAddress(char deviceAddress){
  I2C_WriteByte(temp);
  }
 
+
+
+
+
 void I2C_ReadFromAddress(char deviceAddress){
  I2C_WriteByte((deviceAddress << 1) | 0x01);
  }
+
+
+
+
+
 
 
 char I2C_ReadRegister(char deviceAddress, char registerAddress){
@@ -4799,6 +4839,12 @@ char I2C_ReadRegister(char deviceAddress, char registerAddress){
  return(result);
  }
 
+
+
+
+
+
+
 void I2C_WriteRegister(char deviceAddress, char registerAddress, char data){
  char result;
 
@@ -4808,12 +4854,3 @@ void I2C_WriteRegister(char deviceAddress, char registerAddress, char data){
  I2C_WriteByte(data);
  I2C_Stop();
  }
-
-void I2C_Test(void){
-
-    I2C_Start();
-    for (int i = 0; i != 256; i++) {
-        I2C_WriteByte(i);
-    }
-    I2C_Stop();
-}

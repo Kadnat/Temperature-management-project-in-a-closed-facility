@@ -1,3 +1,12 @@
+/************************** Main.c **************************/
+/*
+ * File:   main.c
+ * Author: Nathanaël BLAVO BALLARIN
+ *
+ * Created on March 24, 2024, 16:55
+ */
+
+/******************* Includes Section ********************/
 #include "common.h"
 #include "lcd.h"  
 #include "i2c_soft.h" 
@@ -15,16 +24,19 @@
 #include "hal_timer0.h"
 #include "temp_monitoring.h"
 #include "heater.h"
+/***********************************************************/
 
+/********************************** Macros ***********************************/
 #define MAX_BUFFER_SIZE 100
 #define NUM_COMMANDS 3
+/***********************************************************/
 
 
-
-
+/******************* Global Variables *******************/
 char rx_buffer[MAX_BUFFER_SIZE];
 int rx_buffer_index = 0;
 char* commands[NUM_COMMANDS] = {"HISTORY:", "ALARMS", "COMMAND:"};
+
 
 uint8_t receive_usart_data;
 
@@ -32,7 +44,9 @@ volatile uint32_t valid_usart_tx;
 volatile uint32_t valid_usart_rx;
 
 SystemData system_management;
+/*********************************************************/
 
+/******************* Function Prototypes *******************/
 void putch(char c);
 void USART_FramingDefaultErrorHandler(void);
 void USART_OverrunDefaultErrorHandler(void);
@@ -41,14 +55,15 @@ void USART_RxDefaultInterruptHandler(void);
 void usart_module_init(void);
 void timer1_timer_init(void);
 void execute_rx_command(int command_index);
+/*********************************************************/
 
 void main(void) {
     OSCILLATOR = 0x70;
-    PLL = 0x40;
+    PLL = 0x40; //32 MHz clock
 
     uint8_t ret=0;
     volatile uint16_t timer1_counter_val;
-    
+
     launch_screen();
     
     usart_module_init();
@@ -69,6 +84,7 @@ void main(void) {
 
 }
 
+/******************* Timer1 Interrupt Handler *******************/
 void Timer1_DefaultInterruptHandler(void)
 {
     static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_buzzer=0;
@@ -122,6 +138,7 @@ void Timer1_DefaultInterruptHandler(void)
 
 }
 
+/******************* Timer1 Initialization *******************/
 void timer1_timer_init(void)
 {
     timer1_t timer_obj;
@@ -129,18 +146,18 @@ void timer1_timer_init(void)
     timer_obj.priority = INTERRUPT_LOW_PRIORITY;
     timer_obj.timer1_mode = TIMER1_TIMER_MODE;
     timer_obj.timer1_prescaler_value = TIMER1_PRESCALER_DIV_BY_4;
-    //timer_obj.timer1_preload_value = 15536;400 ms
-    //timer_obj.timer1_preload_value = 65286;//1 ms = (4*Presc*(65536-TMR1))/Fosc
     timer_obj.timer1_preload_value = 63536;//1 ms = (4*Presc*(65536-TMR1))/Fosc
     timer_obj.timer1_reg_rw_mode = TIMER1_RW_16BIT_REGISTER_MODE;
     Timer1_Init(&timer_obj);
 }
 
+/******************* USART Transmit Function *******************/
 void putch(char c)
 {
     USART_Asynchronous_WriteByte_Blocking(c);
 }
 
+/******************* USART Error Handlers *******************/
 void USART_FramingDefaultErrorHandler(void)
 {
     uint8_t _data_;
@@ -152,11 +169,14 @@ void USART_OverrunDefaultErrorHandler(void)
     USART_Asynchronous_Restart_RX();
 }
 
+
+/******************* USART Transmit Interrupt Handler *******************/
 void USART_TxDefaultInterruptHandler(void)
 {
     valid_usart_tx++;
 }
 
+/******************* USART Receive Interrupt Handler *******************/
 void USART_RxDefaultInterruptHandler(void)
 {
     uint8_t ret = 0;
@@ -187,6 +207,7 @@ void USART_RxDefaultInterruptHandler(void)
     }
 }
 
+/******************* Execute Received Command *******************/
 void execute_rx_command(int command_index) {
     // Exécuter l'action correspondante à la commande
     switch (command_index) {
@@ -216,6 +237,7 @@ void execute_rx_command(int command_index) {
     }
 }
 
+/******************* USART Module Initialization *******************/
 void usart_module_init(void)
 {
     uint8_t ret = 0;

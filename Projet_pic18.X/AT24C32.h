@@ -1,3 +1,4 @@
+/************************** AT24C32 header file **************************/
 /* 
  * File:   AT24C32.h
  * Author: Nathanaël BLAVO BALLARIN
@@ -10,7 +11,9 @@
 #ifndef AT24C32_H
 #define	AT24C32_H
 
-#include "common.h" // include processor files - each processor file is guarded.  
+/******************** Includes Section ********************/
+#include "common.h" 
+/**********************************************************/
 
 /******************* Macros and Definitions *******************/
 

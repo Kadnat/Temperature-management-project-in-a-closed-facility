@@ -7,6 +7,7 @@
  * See example.c for implementation of the library
  * Sample Product: https://www.sparkfun.com/products/11050
  * Created on April 20, 2016, 9:08 AM
+ * Modified by Nathanaël BLAVO BALLARIN
  
 License Information:
 This is free and unencumbered software released into the public domain.
@@ -34,11 +35,16 @@ OTHER DEALINGS IN THE SOFTWARE.
  
  
  */
- 
+/******************* Includes Section ********************/
  #include "DS18B20.h"
 #include "common.h"
+/***********************************************************/
 
-
+/**
+ * @brief Reads the temperature from the DS18B20 sensor.
+ * 
+ * @return The temperature in Celsius.
+ */
 float OneWireTemp(){
     
     OneWireReset(); // Reset Pulse 
@@ -57,20 +63,36 @@ float OneWireTemp(){
    
 }
 
+/**
+ * @brief Sets the OneWire bus high.
+ */
 void OneWireHigh(){
     BUSDIR = 0; // Set as output
     BUSOUT = 1; // Set high 
 }
 
+/**
+ * @brief Releases the OneWire bus.
+ */
 void OneWireRelease(){
     BUSDIR = 0; // Set as output
     BUSOUT = 0; // Set low 
 }
 
+/**
+ * @brief Reads the current status of the OneWire bus.
+ * 
+ * @return The status of the bus.
+ */
 unsigned char OneWireRead(){
     return BUSIN;
 }
 
+/**
+ * @brief Sends a reset pulse to the DS18B20 sensor.
+ * 
+ * @return 0 if the sensor responds with a presence pulse, 1 otherwise.
+ */
 unsigned int OneWireReset(){
     OneWireRelease();
     __delay_us(240); // 480uS Delay
@@ -84,7 +106,11 @@ unsigned int OneWireReset(){
     return OW; 
 }
 
-
+/**
+ * @brief Writes a single bit to the OneWire bus.
+ * 
+ * @param bit The bit to write (0 or 1).
+ */
 void OneWireWriteBit(unsigned char b){
     if(b){
         OneWireRelease();
@@ -100,6 +126,11 @@ void OneWireWriteBit(unsigned char b){
     }
 }
 
+/**
+ * @brief Reads a single bit from the OneWire bus.
+ * 
+ * @return The bit read (0 or 1).
+ */
 unsigned char OneWireReadBit(){
     OneWireRelease();
     __delay_us(6); // wait 6uS
@@ -110,6 +141,11 @@ unsigned char OneWireReadBit(){
     return out;
 }
 
+/**
+ * @brief Writes a byte to the OneWire bus.
+ * 
+ * @param byte The byte to write.
+ */
 void OneWireWriteByte(unsigned char b){
     for(int i = 0; i < 8; i++){
         OneWireWriteBit(b & 0x01); // send LS bit first 
@@ -117,6 +153,11 @@ void OneWireWriteByte(unsigned char b){
     }
 }
 
+/**
+ * @brief Reads a byte from the OneWire bus.
+ * 
+ * @return The byte read.
+ */
 unsigned char OneWireReadByte(void){
     unsigned char out; 
     for(int i = 0; i < 8; i++){ // read in LS bit first

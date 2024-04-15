@@ -7,9 +7,9 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "ds18b20.c" 2
-# 38 "ds18b20.c"
+# 39 "ds18b20.c"
 # 1 "./DS18B20.h" 1
-# 41 "./DS18B20.h"
+# 43 "./DS18B20.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 1 3
 
 
@@ -173,7 +173,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 41 "./DS18B20.h" 2
+# 43 "./DS18B20.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 1 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 3
@@ -238,7 +238,7 @@ typedef struct { unsigned int quot, rem; } udiv_t;
 typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
-# 42 "./DS18B20.h" 2
+# 44 "./DS18B20.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\math.h" 1 3
 # 10 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\math.h" 3
@@ -700,7 +700,7 @@ double jn(int, double);
 double y0(double);
 double y1(double);
 double yn(int, double);
-# 43 "./DS18B20.h" 2
+# 45 "./DS18B20.h" 2
 
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
@@ -4992,7 +4992,7 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 44 "./DS18B20.h" 2
+# 46 "./DS18B20.h" 2
 
 # 1 "./temp_monitoring.h" 1
 # 13 "./temp_monitoring.h"
@@ -5145,22 +5145,98 @@ typedef struct {
 
 
 extern uint8_t activate_buzzer;
-
-
-
+# 51 "./temp_monitoring.h"
 void save_in_eeprom(SystemData* pSystem_data);
+
+
+
+
+
+
 void update_system_data(SystemData* pSystem_data);
+
+
+
+
+
+
 void read_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void save_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void update_SD_tab(SystemData* pSystem_data);
+
+
+
+
+
+
 void save_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void read_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void reset_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_all_alarms(void);
+
+
+
+
+
+
 void reset_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_data_for_days(int number_days);
+
+
+
+
+
+
 void temp_management(SystemData* pSystem_data);
+
+
+
+
+
+
 void log_system(SystemData* pSystem_data);
+
+
+
+
+
+
 void launch_screen(void);
 
 
@@ -5168,9 +5244,10 @@ void launch_screen(void);
 
 
 
+
 float print_temperature(SystemData* pSystem_data);
-# 45 "./DS18B20.h" 2
-# 64 "./DS18B20.h"
+# 47 "./DS18B20.h" 2
+# 66 "./DS18B20.h"
 float OneWireTemp(void);
 
 
@@ -5224,11 +5301,8 @@ void OneWireHigh(void);
 
 
 void OneWireRelease(void);
-# 38 "ds18b20.c" 2
-
-
-
-
+# 39 "ds18b20.c" 2
+# 48 "ds18b20.c"
 float OneWireTemp(){
 
     OneWireReset();
@@ -5247,19 +5321,35 @@ float OneWireTemp(){
 
 }
 
+
+
+
 void OneWireHigh(){
     LATAbits.LA1 = 0;
     TRISAbits.RA1 = 1;
 }
+
+
+
 
 void OneWireRelease(){
     LATAbits.LA1 = 0;
     TRISAbits.RA1 = 0;
 }
 
+
+
+
+
+
 unsigned char OneWireRead(){
     return PORTCbits.RC1;
 }
+
+
+
+
+
 
 unsigned int OneWireReset(){
     OneWireRelease();
@@ -5273,6 +5363,10 @@ unsigned int OneWireReset(){
     OneWireHigh();
     return OW;
 }
+
+
+
+
 
 
 void OneWireWriteBit(unsigned char b){
@@ -5290,6 +5384,11 @@ void OneWireWriteBit(unsigned char b){
     }
 }
 
+
+
+
+
+
 unsigned char OneWireReadBit(){
     OneWireRelease();
     _delay((unsigned long)((6)*(32000000/4000000.0)));
@@ -5300,12 +5399,22 @@ unsigned char OneWireReadBit(){
     return out;
 }
 
+
+
+
+
+
 void OneWireWriteByte(unsigned char b){
     for(int i = 0; i < 8; i++){
         OneWireWriteBit(b & 0x01);
         b = b >> 1;
     }
 }
+
+
+
+
+
 
 unsigned char OneWireReadByte(void){
     unsigned char out;

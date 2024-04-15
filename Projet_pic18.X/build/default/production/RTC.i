@@ -239,7 +239,7 @@ uldiv_t uldiv (unsigned long, unsigned long);
 # 11 "RTC.c" 2
 
 # 1 "./lcd.h" 1
-# 50 "./lcd.h"
+# 51 "./lcd.h"
 void LCD_Init(unsigned char I2C_Add);
 
 
@@ -4806,7 +4806,7 @@ typedef enum {
 # 13 "RTC.c" 2
 
 # 1 "./i2c_soft.h" 1
-# 21 "./i2c_soft.h"
+# 29 "./i2c_soft.h"
 char I2C_ReadRegister(char deviceAddress, char registerAddress);
 void I2C_WriteRegister(char deviceAddress, char registerAddress, char data);
 
@@ -4863,23 +4863,100 @@ typedef struct {
 
 
 extern uint8_t activate_buzzer;
-
-
-
+# 51 "./temp_monitoring.h"
 void save_in_eeprom(SystemData* pSystem_data);
+
+
+
+
+
+
 void update_system_data(SystemData* pSystem_data);
+
+
+
+
+
+
 void read_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void save_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void update_SD_tab(SystemData* pSystem_data);
+
+
+
+
+
+
 void save_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void read_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void reset_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_all_alarms(void);
+
+
+
+
+
+
 void reset_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_data_for_days(int number_days);
+
+
+
+
+
+
 void temp_management(SystemData* pSystem_data);
+
+
+
+
+
+
 void log_system(SystemData* pSystem_data);
+
+
+
+
+
+
 void launch_screen(void);
+
 
 
 
@@ -4930,8 +5007,10 @@ void DisplayTimeToLCD(SystemData *pTime);
 
 
 
+
 unsigned char pRTCArray[4];
 unsigned char Temp;
+
 
 
 

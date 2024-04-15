@@ -1,9 +1,9 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"71 ./DS18B20.h
-[; ;./DS18B20.h: 71: unsigned int OneWireReset(void);
+"73 ./DS18B20.h
+[; ;./DS18B20.h: 73: unsigned int OneWireReset(void);
 [v _OneWireReset `(ui ~T0 @X0 0 ef ]
-"92
-[; ;./DS18B20.h: 92: void OneWireWriteByte(unsigned char byte);
+"94
+[; ;./DS18B20.h: 94: void OneWireWriteByte(unsigned char byte);
 [v _OneWireWriteByte `(v ~T0 @X0 0 ef1`uc ]
 "366 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 366:     struct {
@@ -32,8 +32,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "405
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 405: extern volatile PORTCbits_t PORTCbits __attribute__((address(0xF82)));
 [v _PORTCbits `VS22 ~T0 @X0 0 e@3970 ]
-"99 ./DS18B20.h
-[; ;./DS18B20.h: 99: unsigned char OneWireReadByte(void);
+"101 ./DS18B20.h
+[; ;./DS18B20.h: 101: unsigned char OneWireReadByte(void);
 [v _OneWireReadByte `(uc ~T0 @X0 0 ef ]
 "886 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 886:     struct {
@@ -546,245 +546,245 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR3  =  OFF       ]
 "72
 [p x EBTRB  =  OFF       ]
-"42 ds18b20.c
-[; ;ds18b20.c: 42: float OneWireTemp(){
+"48 ds18b20.c
+[; ;ds18b20.c: 48: float OneWireTemp(){
 [v _OneWireTemp `(f ~T0 @X0 1 ef ]
 {
 [e :U _OneWireTemp ]
 [f ]
-"44
-[; ;ds18b20.c: 44:     OneWireReset();
+"50
+[; ;ds18b20.c: 50:     OneWireReset();
 [e ( _OneWireReset ..  ]
-"45
-[; ;ds18b20.c: 45:     OneWireWriteByte(0xCC);
+"51
+[; ;ds18b20.c: 51:     OneWireWriteByte(0xCC);
 [e ( _OneWireWriteByte (1 -> -> 204 `i `uc ]
-"46
-[; ;ds18b20.c: 46:     OneWireWriteByte(0x44);
+"52
+[; ;ds18b20.c: 52:     OneWireWriteByte(0x44);
 [e ( _OneWireWriteByte (1 -> -> 68 `i `uc ]
-"47
-[; ;ds18b20.c: 47:     while(!PORTCbits.RC1);
+"53
+[; ;ds18b20.c: 53:     while(!PORTCbits.RC1);
 [e $U 275  ]
 [e :U 276 ]
 [e :U 275 ]
 [e $ ! != -> . . _PORTCbits 0 1 `i -> 0 `i 276  ]
 [e :U 277 ]
-"48
-[; ;ds18b20.c: 48:     OneWireReset();
+"54
+[; ;ds18b20.c: 54:     OneWireReset();
 [e ( _OneWireReset ..  ]
-"49
-[; ;ds18b20.c: 49:     OneWireWriteByte(0xCC);
+"55
+[; ;ds18b20.c: 55:     OneWireWriteByte(0xCC);
 [e ( _OneWireWriteByte (1 -> -> 204 `i `uc ]
-"50
-[; ;ds18b20.c: 50:     OneWireWriteByte(0xBE);
+"56
+[; ;ds18b20.c: 56:     OneWireWriteByte(0xBE);
 [e ( _OneWireWriteByte (1 -> -> 190 `i `uc ]
-"51
-[; ;ds18b20.c: 51:     unsigned char LSB = OneWireReadByte();
+"57
+[; ;ds18b20.c: 57:     unsigned char LSB = OneWireReadByte();
 [v _LSB `uc ~T0 @X0 1 a ]
 [e = _LSB ( _OneWireReadByte ..  ]
-"52
-[; ;ds18b20.c: 52:     unsigned char MSB = OneWireReadByte();
+"58
+[; ;ds18b20.c: 58:     unsigned char MSB = OneWireReadByte();
 [v _MSB `uc ~T0 @X0 1 a ]
 [e = _MSB ( _OneWireReadByte ..  ]
-"53
-[; ;ds18b20.c: 53:     OneWireReset();
+"59
+[; ;ds18b20.c: 59:     OneWireReset();
 [e ( _OneWireReset ..  ]
-"54
-[; ;ds18b20.c: 54:     unsigned int data = MSB;
+"60
+[; ;ds18b20.c: 60:     unsigned int data = MSB;
 [v _data `ui ~T0 @X0 1 a ]
 [e = _data -> _MSB `ui ]
-"55
-[; ;ds18b20.c: 55:     float temperature = (data << 8) | LSB;
+"61
+[; ;ds18b20.c: 61:     float temperature = (data << 8) | LSB;
 [v _temperature `f ~T0 @X0 1 a ]
 [e = _temperature -> | << _data -> 8 `i -> _LSB `ui `f ]
-"56
-[; ;ds18b20.c: 56:     return (temperature/16);
+"62
+[; ;ds18b20.c: 62:     return (temperature/16);
 [e ) / _temperature -> -> 16 `i `f ]
 [e $UE 274  ]
-"58
-[; ;ds18b20.c: 58: }
+"64
+[; ;ds18b20.c: 64: }
 [e :UE 274 ]
 }
-"60
-[; ;ds18b20.c: 60: void OneWireHigh(){
+"69
+[; ;ds18b20.c: 69: void OneWireHigh(){
 [v _OneWireHigh `(v ~T0 @X0 1 ef ]
 {
 [e :U _OneWireHigh ]
 [f ]
-"61
-[; ;ds18b20.c: 61:     LATAbits.LA1 = 0;
+"70
+[; ;ds18b20.c: 70:     LATAbits.LA1 = 0;
 [e = . . _LATAbits 1 1 -> -> 0 `i `uc ]
-"62
-[; ;ds18b20.c: 62:     TRISAbits.RA1 = 1;
+"71
+[; ;ds18b20.c: 71:     TRISAbits.RA1 = 1;
 [e = . . _TRISAbits 1 1 -> -> 1 `i `uc ]
-"63
-[; ;ds18b20.c: 63: }
+"72
+[; ;ds18b20.c: 72: }
 [e :UE 278 ]
 }
-"65
-[; ;ds18b20.c: 65: void OneWireRelease(){
+"77
+[; ;ds18b20.c: 77: void OneWireRelease(){
 [v _OneWireRelease `(v ~T0 @X0 1 ef ]
 {
 [e :U _OneWireRelease ]
 [f ]
-"66
-[; ;ds18b20.c: 66:     LATAbits.LA1 = 0;
+"78
+[; ;ds18b20.c: 78:     LATAbits.LA1 = 0;
 [e = . . _LATAbits 1 1 -> -> 0 `i `uc ]
-"67
-[; ;ds18b20.c: 67:     TRISAbits.RA1 = 0;
+"79
+[; ;ds18b20.c: 79:     TRISAbits.RA1 = 0;
 [e = . . _TRISAbits 1 1 -> -> 0 `i `uc ]
-"68
-[; ;ds18b20.c: 68: }
+"80
+[; ;ds18b20.c: 80: }
 [e :UE 279 ]
 }
-"70
-[; ;ds18b20.c: 70: unsigned char OneWireRead(){
+"87
+[; ;ds18b20.c: 87: unsigned char OneWireRead(){
 [v _OneWireRead `(uc ~T0 @X0 1 ef ]
 {
 [e :U _OneWireRead ]
 [f ]
-"71
-[; ;ds18b20.c: 71:     return PORTCbits.RC1;
+"88
+[; ;ds18b20.c: 88:     return PORTCbits.RC1;
 [e ) . . _PORTCbits 0 1 ]
 [e $UE 280  ]
-"72
-[; ;ds18b20.c: 72: }
+"89
+[; ;ds18b20.c: 89: }
 [e :UE 280 ]
 }
-"74
-[; ;ds18b20.c: 74: unsigned int OneWireReset(){
+"96
+[; ;ds18b20.c: 96: unsigned int OneWireReset(){
 [v _OneWireReset `(ui ~T0 @X0 1 ef ]
 {
 [e :U _OneWireReset ]
 [f ]
-"75
-[; ;ds18b20.c: 75:     OneWireRelease();
+"97
+[; ;ds18b20.c: 97:     OneWireRelease();
 [e ( _OneWireRelease ..  ]
-"76
-[; ;ds18b20.c: 76:     _delay((unsigned long)((240)*(32000000/4000000.0)));
+"98
+[; ;ds18b20.c: 98:     _delay((unsigned long)((240)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 240 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"77
-[; ;ds18b20.c: 77:     _delay((unsigned long)((240)*(32000000/4000000.0)));
+"99
+[; ;ds18b20.c: 99:     _delay((unsigned long)((240)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 240 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"78
-[; ;ds18b20.c: 78:     OneWireHigh();
+"100
+[; ;ds18b20.c: 100:     OneWireHigh();
 [e ( _OneWireHigh ..  ]
-"79
-[; ;ds18b20.c: 79:     _delay((unsigned long)((70)*(32000000/4000000.0)));
+"101
+[; ;ds18b20.c: 101:     _delay((unsigned long)((70)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 70 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"80
-[; ;ds18b20.c: 80:     unsigned int OW = OneWireRead();
+"102
+[; ;ds18b20.c: 102:     unsigned int OW = OneWireRead();
 [v _OW `ui ~T0 @X0 1 a ]
 [e = _OW -> ( _OneWireRead ..  `ui ]
-"81
-[; ;ds18b20.c: 81:     _delay((unsigned long)((205)*(32000000/4000000.0)));
+"103
+[; ;ds18b20.c: 103:     _delay((unsigned long)((205)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 205 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"82
-[; ;ds18b20.c: 82:     _delay((unsigned long)((205)*(32000000/4000000.0)));
+"104
+[; ;ds18b20.c: 104:     _delay((unsigned long)((205)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 205 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"83
-[; ;ds18b20.c: 83:     OneWireHigh();
+"105
+[; ;ds18b20.c: 105:     OneWireHigh();
 [e ( _OneWireHigh ..  ]
-"84
-[; ;ds18b20.c: 84:     return OW;
+"106
+[; ;ds18b20.c: 106:     return OW;
 [e ) _OW ]
 [e $UE 281  ]
-"85
-[; ;ds18b20.c: 85: }
+"107
+[; ;ds18b20.c: 107: }
 [e :UE 281 ]
 }
-"88
-[; ;ds18b20.c: 88: void OneWireWriteBit(unsigned char b){
+"114
+[; ;ds18b20.c: 114: void OneWireWriteBit(unsigned char b){
 [v _OneWireWriteBit `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _OneWireWriteBit ]
 [v _b `uc ~T0 @X0 1 r1 ]
 [f ]
-"89
-[; ;ds18b20.c: 89:     if(b){
+"115
+[; ;ds18b20.c: 115:     if(b){
 [e $ ! != -> _b `i -> 0 `i 283  ]
 {
-"90
-[; ;ds18b20.c: 90:         OneWireRelease();
+"116
+[; ;ds18b20.c: 116:         OneWireRelease();
 [e ( _OneWireRelease ..  ]
-"91
-[; ;ds18b20.c: 91:         _delay((unsigned long)((6)*(32000000/4000000.0)));
+"117
+[; ;ds18b20.c: 117:         _delay((unsigned long)((6)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 6 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"92
-[; ;ds18b20.c: 92:         OneWireHigh();
+"118
+[; ;ds18b20.c: 118:         OneWireHigh();
 [e ( _OneWireHigh ..  ]
-"93
-[; ;ds18b20.c: 93:         _delay((unsigned long)((64)*(32000000/4000000.0)));
+"119
+[; ;ds18b20.c: 119:         _delay((unsigned long)((64)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 64 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"94
-[; ;ds18b20.c: 94:     }
+"120
+[; ;ds18b20.c: 120:     }
 }
 [e $U 284  ]
-"95
-[; ;ds18b20.c: 95:     else{
+"121
+[; ;ds18b20.c: 121:     else{
 [e :U 283 ]
 {
-"96
-[; ;ds18b20.c: 96:         OneWireRelease();
+"122
+[; ;ds18b20.c: 122:         OneWireRelease();
 [e ( _OneWireRelease ..  ]
-"97
-[; ;ds18b20.c: 97:         _delay((unsigned long)((60)*(32000000/4000000.0)));
+"123
+[; ;ds18b20.c: 123:         _delay((unsigned long)((60)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 60 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"98
-[; ;ds18b20.c: 98:         OneWireHigh();
+"124
+[; ;ds18b20.c: 124:         OneWireHigh();
 [e ( _OneWireHigh ..  ]
-"99
-[; ;ds18b20.c: 99:         _delay((unsigned long)((10)*(32000000/4000000.0)));
+"125
+[; ;ds18b20.c: 125:         _delay((unsigned long)((10)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"100
-[; ;ds18b20.c: 100:     }
+"126
+[; ;ds18b20.c: 126:     }
 }
 [e :U 284 ]
-"101
-[; ;ds18b20.c: 101: }
+"127
+[; ;ds18b20.c: 127: }
 [e :UE 282 ]
 }
-"103
-[; ;ds18b20.c: 103: unsigned char OneWireReadBit(){
+"134
+[; ;ds18b20.c: 134: unsigned char OneWireReadBit(){
 [v _OneWireReadBit `(uc ~T0 @X0 1 ef ]
 {
 [e :U _OneWireReadBit ]
 [f ]
-"104
-[; ;ds18b20.c: 104:     OneWireRelease();
+"135
+[; ;ds18b20.c: 135:     OneWireRelease();
 [e ( _OneWireRelease ..  ]
-"105
-[; ;ds18b20.c: 105:     _delay((unsigned long)((6)*(32000000/4000000.0)));
+"136
+[; ;ds18b20.c: 136:     _delay((unsigned long)((6)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 6 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"106
-[; ;ds18b20.c: 106:     OneWireHigh();
+"137
+[; ;ds18b20.c: 137:     OneWireHigh();
 [e ( _OneWireHigh ..  ]
-"107
-[; ;ds18b20.c: 107:     _delay((unsigned long)((9)*(32000000/4000000.0)));
+"138
+[; ;ds18b20.c: 138:     _delay((unsigned long)((9)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 9 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"108
-[; ;ds18b20.c: 108:     unsigned char out = OneWireRead();
+"139
+[; ;ds18b20.c: 139:     unsigned char out = OneWireRead();
 [v _out `uc ~T0 @X0 1 a ]
 [e = _out ( _OneWireRead ..  ]
-"109
-[; ;ds18b20.c: 109:     _delay((unsigned long)((55)*(32000000/4000000.0)));
+"140
+[; ;ds18b20.c: 140:     _delay((unsigned long)((55)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 55 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"110
-[; ;ds18b20.c: 110:     return out;
+"141
+[; ;ds18b20.c: 141:     return out;
 [e ) _out ]
 [e $UE 285  ]
-"111
-[; ;ds18b20.c: 111: }
+"142
+[; ;ds18b20.c: 142: }
 [e :UE 285 ]
 }
-"113
-[; ;ds18b20.c: 113: void OneWireWriteByte(unsigned char b){
+"149
+[; ;ds18b20.c: 149: void OneWireWriteByte(unsigned char b){
 [v _OneWireWriteByte `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _OneWireWriteByte ]
 [v _b `uc ~T0 @X0 1 r1 ]
 [f ]
-"114
-[; ;ds18b20.c: 114:     for(int i = 0; i < 8; i++){
+"150
+[; ;ds18b20.c: 150:     for(int i = 0; i < 8; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -792,34 +792,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 288  ]
 [e :U 287 ]
 {
-"115
-[; ;ds18b20.c: 115:         OneWireWriteBit(b & 0x01);
+"151
+[; ;ds18b20.c: 151:         OneWireWriteBit(b & 0x01);
 [e ( _OneWireWriteBit (1 -> & -> _b `i -> 1 `i `uc ]
-"116
-[; ;ds18b20.c: 116:         b = b >> 1;
+"152
+[; ;ds18b20.c: 152:         b = b >> 1;
 [e = _b -> >> -> _b `i -> 1 `i `uc ]
-"117
-[; ;ds18b20.c: 117:     }
+"153
+[; ;ds18b20.c: 153:     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 8 `i 287  ]
 [e :U 288 ]
 }
-"118
-[; ;ds18b20.c: 118: }
+"154
+[; ;ds18b20.c: 154: }
 [e :UE 286 ]
 }
-"120
-[; ;ds18b20.c: 120: unsigned char OneWireReadByte(void){
+"161
+[; ;ds18b20.c: 161: unsigned char OneWireReadByte(void){
 [v _OneWireReadByte `(uc ~T0 @X0 1 ef ]
 {
 [e :U _OneWireReadByte ]
 [f ]
-"121
-[; ;ds18b20.c: 121:     unsigned char out;
+"162
+[; ;ds18b20.c: 162:     unsigned char out;
 [v _out `uc ~T0 @X0 1 a ]
-"122
-[; ;ds18b20.c: 122:     for(int i = 0; i < 8; i++){
+"163
+[; ;ds18b20.c: 163:     for(int i = 0; i < 8; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -827,28 +827,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 292  ]
 [e :U 291 ]
 {
-"123
-[; ;ds18b20.c: 123:         out = out >> 1;
+"164
+[; ;ds18b20.c: 164:         out = out >> 1;
 [e = _out -> >> -> _out `i -> 1 `i `uc ]
-"124
-[; ;ds18b20.c: 124:         if(OneWireReadBit() & 0x01)
+"165
+[; ;ds18b20.c: 165:         if(OneWireReadBit() & 0x01)
 [e $ ! != & -> ( _OneWireReadBit ..  `i -> 1 `i -> 0 `i 294  ]
-"125
-[; ;ds18b20.c: 125:             out = out | 0x80;
+"166
+[; ;ds18b20.c: 166:             out = out | 0x80;
 [e = _out -> | -> _out `i -> 128 `i `uc ]
 [e :U 294 ]
-"126
-[; ;ds18b20.c: 126:     }
+"167
+[; ;ds18b20.c: 167:     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 8 `i 291  ]
 [e :U 292 ]
 }
-"127
-[; ;ds18b20.c: 127:     return out;
+"168
+[; ;ds18b20.c: 168:     return out;
 [e ) _out ]
 [e $UE 290  ]
-"128
-[; ;ds18b20.c: 128: }
+"169
+[; ;ds18b20.c: 169: }
 [e :UE 290 ]
 }

@@ -1,6 +1,7 @@
+/************************** LED Header File**************************/
 /*
  * File:   led.h
- * Author: Nathanael
+ * Author: Nathanaël BLAVO BALLARIN
  *
  * Created on March 24, 2024, 16:55
  */

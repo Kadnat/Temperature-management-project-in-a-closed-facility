@@ -1,8 +1,8 @@
 /* 
  * File:   common.h
- * Author: hammond
+ * Author: Nathanaël BLAVO BALLARIN
  *
- * Created on 11 May 2019, 4:14 PM
+ * Created on 22 March 2024
  */
 
 #ifndef COMMON_H

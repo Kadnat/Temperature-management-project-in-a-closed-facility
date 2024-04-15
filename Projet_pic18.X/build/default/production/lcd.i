@@ -7,14 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "lcd.c" 2
-
-
-
-
-
-
-
-
+# 10 "lcd.c"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4607,10 +4600,10 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 9 "lcd.c" 2
+# 10 "lcd.c" 2
 
 # 1 "./lcd.h" 1
-# 50 "./lcd.h"
+# 51 "./lcd.h"
 void LCD_Init(unsigned char I2C_Add);
 
 
@@ -4673,10 +4666,10 @@ void LCD_SR();
 
 
 void LCD_Clear();
-# 10 "lcd.c" 2
+# 11 "lcd.c" 2
 
 # 1 "./i2c_soft.h" 1
-# 21 "./i2c_soft.h"
+# 29 "./i2c_soft.h"
 char I2C_ReadRegister(char deviceAddress, char registerAddress);
 void I2C_WriteRegister(char deviceAddress, char registerAddress, char data);
 
@@ -4701,13 +4694,13 @@ char I2C_ReadResult_withAck();
 void I2C_WriteToAddress(char deviceAddress);
 void I2C_ReadFromAddress(char deviceAddress);
 void I2C_Test();
-# 11 "lcd.c" 2
+# 12 "lcd.c" 2
 
 
 
 
 unsigned char RS, i2c_add, BackLight_State = 0x08;
-# 28 "lcd.c"
+# 29 "lcd.c"
 void LCD_Init(unsigned char I2C_Add)
 {
   i2c_add = I2C_Add;

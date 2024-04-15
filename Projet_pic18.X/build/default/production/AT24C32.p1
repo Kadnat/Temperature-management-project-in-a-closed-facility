@@ -1,24 +1,24 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"34 ./i2c_soft.h
-[; ;./i2c_soft.h: 34: void I2C_Start();
+"42 ./i2c_soft.h
+[; ;./i2c_soft.h: 42: void I2C_Start();
 [v _I2C_Start `(v ~T0 @X0 0 e? ]
-"42
-[; ;./i2c_soft.h: 42: void I2C_WriteToAddress(char deviceAddress);
+"50
+[; ;./i2c_soft.h: 50: void I2C_WriteToAddress(char deviceAddress);
 [v _I2C_WriteToAddress `(v ~T0 @X0 0 ef1`uc ]
-"39
-[; ;./i2c_soft.h: 39: void I2C_WriteByte(char);
+"47
+[; ;./i2c_soft.h: 47: void I2C_WriteByte(char);
 [v _I2C_WriteByte `(v ~T0 @X0 0 ef1`uc ]
-"35
-[; ;./i2c_soft.h: 35: void I2C_Stop();
-[v _I2C_Stop `(v ~T0 @X0 0 e? ]
 "43
-[; ;./i2c_soft.h: 43: void I2C_ReadFromAddress(char deviceAddress);
+[; ;./i2c_soft.h: 43: void I2C_Stop();
+[v _I2C_Stop `(v ~T0 @X0 0 e? ]
+"51
+[; ;./i2c_soft.h: 51: void I2C_ReadFromAddress(char deviceAddress);
 [v _I2C_ReadFromAddress `(v ~T0 @X0 0 ef1`uc ]
-"40
-[; ;./i2c_soft.h: 40: char I2C_ReadResult();
+"48
+[; ;./i2c_soft.h: 48: char I2C_ReadResult();
 [v _I2C_ReadResult `(uc ~T0 @X0 0 e? ]
-"41
-[; ;./i2c_soft.h: 41: char I2C_ReadResult_withAck();
+"49
+[; ;./i2c_soft.h: 49: char I2C_ReadResult_withAck();
 [v _I2C_ReadResult_withAck `(uc ~T0 @X0 0 e? ]
 "20 ./common.h
 [p x OSC  =  INTIO67          ]
@@ -497,239 +497,239 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"19 AT24C32.c
-[; ;AT24C32.c: 19: void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address)
+"21 AT24C32.c
+[; ;AT24C32.c: 21: void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address)
 [v _write_one_byte_in_eeprom `(v ~T0 @X0 1 ef2`uc`us ]
-"20
-[; ;AT24C32.c: 20: {
+"22
+[; ;AT24C32.c: 22: {
 {
 [e :U _write_one_byte_in_eeprom ]
-"19
-[; ;AT24C32.c: 19: void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address)
+"21
+[; ;AT24C32.c: 21: void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address)
 [v _c `uc ~T0 @X0 1 r1 ]
 [v _register_address `us ~T0 @X0 1 r2 ]
-"20
-[; ;AT24C32.c: 20: {
+"22
+[; ;AT24C32.c: 22: {
 [f ]
-"21
-[; ;AT24C32.c: 21:     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
+"23
+[; ;AT24C32.c: 23:     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
 [v _address_upper_byte `uc ~T0 @X0 1 a ]
 [e = _address_upper_byte -> >> & -> _register_address `ui -> -> 3840 `i `ui -> 8 `i `uc ]
-"22
-[; ;AT24C32.c: 22:     unsigned char address_lower_byte = (register_address & 0xFF);
+"24
+[; ;AT24C32.c: 24:     unsigned char address_lower_byte = (register_address & 0xFF);
 [v _address_lower_byte `uc ~T0 @X0 1 a ]
 [e = _address_lower_byte -> & -> _register_address `ui -> -> 255 `i `ui `uc ]
-"25
-[; ;AT24C32.c: 25:     I2C_Start();
-[e ( _I2C_Start ..  ]
-"26
-[; ;AT24C32.c: 26:     I2C_WriteToAddress(0x50);
-[e ( _I2C_WriteToAddress (1 -> -> 80 `i `uc ]
 "27
-[; ;AT24C32.c: 27:     I2C_WriteByte(address_upper_byte);
-[e ( _I2C_WriteByte (1 -> _address_upper_byte `uc ]
+[; ;AT24C32.c: 27:     I2C_Start();
+[e ( _I2C_Start ..  ]
 "28
-[; ;AT24C32.c: 28:     I2C_WriteByte(address_lower_byte);
-[e ( _I2C_WriteByte (1 -> _address_lower_byte `uc ]
+[; ;AT24C32.c: 28:     I2C_WriteToAddress(0x50);
+[e ( _I2C_WriteToAddress (1 -> -> 80 `i `uc ]
 "29
-[; ;AT24C32.c: 29:     I2C_WriteByte(c);
-[e ( _I2C_WriteByte (1 -> _c `uc ]
+[; ;AT24C32.c: 29:     I2C_WriteByte(address_upper_byte);
+[e ( _I2C_WriteByte (1 -> _address_upper_byte `uc ]
 "30
-[; ;AT24C32.c: 30:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
+[; ;AT24C32.c: 30:     I2C_WriteByte(address_lower_byte);
+[e ( _I2C_WriteByte (1 -> _address_lower_byte `uc ]
 "31
-[; ;AT24C32.c: 31: }
+[; ;AT24C32.c: 31:     I2C_WriteByte(c);
+[e ( _I2C_WriteByte (1 -> _c `uc ]
+"32
+[; ;AT24C32.c: 32:     I2C_Stop();
+[e ( _I2C_Stop ..  ]
+"33
+[; ;AT24C32.c: 33: }
 [e :UE 271 ]
 }
-"39
-[; ;AT24C32.c: 39: void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address)
+"41
+[; ;AT24C32.c: 41: void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address)
 [v _write_one_page_in_eeprom `(v ~T0 @X0 1 ef2`*uc`us ]
-"40
-[; ;AT24C32.c: 40: {
+"42
+[; ;AT24C32.c: 42: {
 {
 [e :U _write_one_page_in_eeprom ]
-"39
-[; ;AT24C32.c: 39: void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address)
+"41
+[; ;AT24C32.c: 41: void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address)
 [v _c `*uc ~T0 @X0 1 r1 ]
 [v _register_address `us ~T0 @X0 1 r2 ]
-"40
-[; ;AT24C32.c: 40: {
+"42
+[; ;AT24C32.c: 42: {
 [f ]
-"41
-[; ;AT24C32.c: 41:     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
+"43
+[; ;AT24C32.c: 43:     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
 [v _address_upper_byte `uc ~T0 @X0 1 a ]
 [e = _address_upper_byte -> >> & -> _register_address `ui -> -> 3840 `i `ui -> 8 `i `uc ]
-"42
-[; ;AT24C32.c: 42:     unsigned char address_lower_byte = (register_address & 0xFF);
+"44
+[; ;AT24C32.c: 44:     unsigned char address_lower_byte = (register_address & 0xFF);
 [v _address_lower_byte `uc ~T0 @X0 1 a ]
 [e = _address_lower_byte -> & -> _register_address `ui -> -> 255 `i `ui `uc ]
-"45
-[; ;AT24C32.c: 45:     I2C_Start();
-[e ( _I2C_Start ..  ]
-"46
-[; ;AT24C32.c: 46:     I2C_WriteToAddress(0x50);
-[e ( _I2C_WriteToAddress (1 -> -> 80 `i `uc ]
 "47
-[; ;AT24C32.c: 47:     I2C_WriteByte(address_upper_byte);
-[e ( _I2C_WriteByte (1 -> _address_upper_byte `uc ]
+[; ;AT24C32.c: 47:     I2C_Start();
+[e ( _I2C_Start ..  ]
 "48
-[; ;AT24C32.c: 48:     I2C_WriteByte(address_lower_byte);
-[e ( _I2C_WriteByte (1 -> _address_lower_byte `uc ]
+[; ;AT24C32.c: 48:     I2C_WriteToAddress(0x50);
+[e ( _I2C_WriteToAddress (1 -> -> 80 `i `uc ]
 "49
-[; ;AT24C32.c: 49:     for(int i=0;i<8;i++)
+[; ;AT24C32.c: 49:     I2C_WriteByte(address_upper_byte);
+[e ( _I2C_WriteByte (1 -> _address_upper_byte `uc ]
+"50
+[; ;AT24C32.c: 50:     I2C_WriteByte(address_lower_byte);
+[e ( _I2C_WriteByte (1 -> _address_lower_byte `uc ]
+"51
+[; ;AT24C32.c: 51:     for(int i=0;i<8;i++)
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
 [e $ < _i -> 8 `i 273  ]
 [e $U 274  ]
 [e :U 273 ]
-"50
-[; ;AT24C32.c: 50:     {
-{
-"51
-[; ;AT24C32.c: 51:       I2C_WriteByte(c[i]);
-[e ( _I2C_WriteByte (1 -> *U + _c * -> _i `x -> -> # *U _c `i `x `uc ]
 "52
-[; ;AT24C32.c: 52:     }
+[; ;AT24C32.c: 52:     {
+{
+"53
+[; ;AT24C32.c: 53:       I2C_WriteByte(c[i]);
+[e ( _I2C_WriteByte (1 -> *U + _c * -> _i `x -> -> # *U _c `i `x `uc ]
+"54
+[; ;AT24C32.c: 54:     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 8 `i 273  ]
 [e :U 274 ]
 }
-"53
-[; ;AT24C32.c: 53:     I2C_Stop();
+"55
+[; ;AT24C32.c: 55:     I2C_Stop();
 [e ( _I2C_Stop ..  ]
-"54
-[; ;AT24C32.c: 54: }
+"56
+[; ;AT24C32.c: 56: }
 [e :UE 272 ]
 }
-"62
-[; ;AT24C32.c: 62: unsigned char read_one_byte_in_eeprom(uint16_t register_address)
+"64
+[; ;AT24C32.c: 64: unsigned char read_one_byte_in_eeprom(uint16_t register_address)
 [v _read_one_byte_in_eeprom `(uc ~T0 @X0 1 ef1`us ]
-"63
-[; ;AT24C32.c: 63: {
+"65
+[; ;AT24C32.c: 65: {
 {
 [e :U _read_one_byte_in_eeprom ]
-"62
-[; ;AT24C32.c: 62: unsigned char read_one_byte_in_eeprom(uint16_t register_address)
-[v _register_address `us ~T0 @X0 1 r1 ]
-"63
-[; ;AT24C32.c: 63: {
-[f ]
 "64
-[; ;AT24C32.c: 64:     unsigned char c;
-[v _c `uc ~T0 @X0 1 a ]
+[; ;AT24C32.c: 64: unsigned char read_one_byte_in_eeprom(uint16_t register_address)
+[v _register_address `us ~T0 @X0 1 r1 ]
 "65
-[; ;AT24C32.c: 65:     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
+[; ;AT24C32.c: 65: {
+[f ]
+"66
+[; ;AT24C32.c: 66:     unsigned char c;
+[v _c `uc ~T0 @X0 1 a ]
+"67
+[; ;AT24C32.c: 67:     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
 [v _address_upper_byte `uc ~T0 @X0 1 a ]
 [e = _address_upper_byte -> >> & -> _register_address `ui -> -> 3840 `i `ui -> 8 `i `uc ]
-"66
-[; ;AT24C32.c: 66:     unsigned char address_lower_byte = (register_address & 0xFF);
+"68
+[; ;AT24C32.c: 68:     unsigned char address_lower_byte = (register_address & 0xFF);
 [v _address_lower_byte `uc ~T0 @X0 1 a ]
 [e = _address_lower_byte -> & -> _register_address `ui -> -> 255 `i `ui `uc ]
-"69
-[; ;AT24C32.c: 69:     I2C_Start();
-[e ( _I2C_Start ..  ]
-"70
-[; ;AT24C32.c: 70:     I2C_WriteToAddress(0x50);
-[e ( _I2C_WriteToAddress (1 -> -> 80 `i `uc ]
 "71
-[; ;AT24C32.c: 71:     I2C_WriteByte(address_upper_byte);
-[e ( _I2C_WriteByte (1 -> _address_upper_byte `uc ]
-"72
-[; ;AT24C32.c: 72:     I2C_WriteByte(address_lower_byte);
-[e ( _I2C_WriteByte (1 -> _address_lower_byte `uc ]
-"73
-[; ;AT24C32.c: 73:     I2C_Start();
+[; ;AT24C32.c: 71:     I2C_Start();
 [e ( _I2C_Start ..  ]
+"72
+[; ;AT24C32.c: 72:     I2C_WriteToAddress(0x50);
+[e ( _I2C_WriteToAddress (1 -> -> 80 `i `uc ]
+"73
+[; ;AT24C32.c: 73:     I2C_WriteByte(address_upper_byte);
+[e ( _I2C_WriteByte (1 -> _address_upper_byte `uc ]
 "74
-[; ;AT24C32.c: 74:     I2C_ReadFromAddress(0x50);
-[e ( _I2C_ReadFromAddress (1 -> -> 80 `i `uc ]
+[; ;AT24C32.c: 74:     I2C_WriteByte(address_lower_byte);
+[e ( _I2C_WriteByte (1 -> _address_lower_byte `uc ]
 "75
-[; ;AT24C32.c: 75:     c = I2C_ReadResult();
-[e = _c -> ( _I2C_ReadResult ..  `uc ]
+[; ;AT24C32.c: 75:     I2C_Start();
+[e ( _I2C_Start ..  ]
 "76
-[; ;AT24C32.c: 76:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
+[; ;AT24C32.c: 76:     I2C_ReadFromAddress(0x50);
+[e ( _I2C_ReadFromAddress (1 -> -> 80 `i `uc ]
 "77
-[; ;AT24C32.c: 77:     return c;
+[; ;AT24C32.c: 77:     c = I2C_ReadResult();
+[e = _c -> ( _I2C_ReadResult ..  `uc ]
+"78
+[; ;AT24C32.c: 78:     I2C_Stop();
+[e ( _I2C_Stop ..  ]
+"79
+[; ;AT24C32.c: 79:     return c;
 [e ) _c ]
 [e $UE 276  ]
-"78
-[; ;AT24C32.c: 78: }
+"80
+[; ;AT24C32.c: 80: }
 [e :UE 276 ]
 }
-"86
-[; ;AT24C32.c: 86: void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
+"88
+[; ;AT24C32.c: 88: void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
 [v _read_one_page_in_eeprom `(v ~T0 @X0 1 ef2`us`*uc ]
-"87
-[; ;AT24C32.c: 87: {
+"89
+[; ;AT24C32.c: 89: {
 {
 [e :U _read_one_page_in_eeprom ]
-"86
-[; ;AT24C32.c: 86: void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
+"88
+[; ;AT24C32.c: 88: void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
 [v _register_address `us ~T0 @X0 1 r1 ]
 [v _data `*uc ~T0 @X0 1 r2 ]
-"87
-[; ;AT24C32.c: 87: {
-[f ]
-"88
-[; ;AT24C32.c: 88:     unsigned char c;
-[v _c `uc ~T0 @X0 1 a ]
 "89
-[; ;AT24C32.c: 89:     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
+[; ;AT24C32.c: 89: {
+[f ]
+"90
+[; ;AT24C32.c: 90:     unsigned char c;
+[v _c `uc ~T0 @X0 1 a ]
+"91
+[; ;AT24C32.c: 91:     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
 [v _address_upper_byte `uc ~T0 @X0 1 a ]
 [e = _address_upper_byte -> >> & -> _register_address `ui -> -> 3840 `i `ui -> 8 `i `uc ]
-"90
-[; ;AT24C32.c: 90:     unsigned char address_lower_byte = (register_address & 0xFF);
+"92
+[; ;AT24C32.c: 92:     unsigned char address_lower_byte = (register_address & 0xFF);
 [v _address_lower_byte `uc ~T0 @X0 1 a ]
 [e = _address_lower_byte -> & -> _register_address `ui -> -> 255 `i `ui `uc ]
-"93
-[; ;AT24C32.c: 93:     I2C_Start();
-[e ( _I2C_Start ..  ]
-"94
-[; ;AT24C32.c: 94:     I2C_WriteToAddress(0x50);
-[e ( _I2C_WriteToAddress (1 -> -> 80 `i `uc ]
 "95
-[; ;AT24C32.c: 95:     I2C_WriteByte(address_upper_byte);
-[e ( _I2C_WriteByte (1 -> _address_upper_byte `uc ]
-"96
-[; ;AT24C32.c: 96:     I2C_WriteByte(address_lower_byte);
-[e ( _I2C_WriteByte (1 -> _address_lower_byte `uc ]
-"97
-[; ;AT24C32.c: 97:     I2C_Start();
+[; ;AT24C32.c: 95:     I2C_Start();
 [e ( _I2C_Start ..  ]
+"96
+[; ;AT24C32.c: 96:     I2C_WriteToAddress(0x50);
+[e ( _I2C_WriteToAddress (1 -> -> 80 `i `uc ]
+"97
+[; ;AT24C32.c: 97:     I2C_WriteByte(address_upper_byte);
+[e ( _I2C_WriteByte (1 -> _address_upper_byte `uc ]
 "98
-[; ;AT24C32.c: 98:     I2C_ReadFromAddress(0x50);
-[e ( _I2C_ReadFromAddress (1 -> -> 80 `i `uc ]
+[; ;AT24C32.c: 98:     I2C_WriteByte(address_lower_byte);
+[e ( _I2C_WriteByte (1 -> _address_lower_byte `uc ]
 "99
-[; ;AT24C32.c: 99:     for(int i=0;i<7;i++)
+[; ;AT24C32.c: 99:     I2C_Start();
+[e ( _I2C_Start ..  ]
+"100
+[; ;AT24C32.c: 100:     I2C_ReadFromAddress(0x50);
+[e ( _I2C_ReadFromAddress (1 -> -> 80 `i `uc ]
+"101
+[; ;AT24C32.c: 101:     for(int i=0;i<7;i++)
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
 [e $ < _i -> 7 `i 278  ]
 [e $U 279  ]
 [e :U 278 ]
-"100
-[; ;AT24C32.c: 100:     {
-{
-"101
-[; ;AT24C32.c: 101:         data[i] = I2C_ReadResult_withAck();
-[e = *U + _data * -> _i `x -> -> # *U _data `i `x -> ( _I2C_ReadResult_withAck ..  `uc ]
 "102
-[; ;AT24C32.c: 102:     }
+[; ;AT24C32.c: 102:     {
+{
+"103
+[; ;AT24C32.c: 103:         data[i] = I2C_ReadResult_withAck();
+[e = *U + _data * -> _i `x -> -> # *U _data `i `x -> ( _I2C_ReadResult_withAck ..  `uc ]
+"104
+[; ;AT24C32.c: 104:     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 7 `i 278  ]
 [e :U 279 ]
 }
-"103
-[; ;AT24C32.c: 103:     data[7] = I2C_ReadResult();
-[e = *U + _data * -> -> 7 `i `x -> -> # *U _data `i `x -> ( _I2C_ReadResult ..  `uc ]
-"104
-[; ;AT24C32.c: 104:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
 "105
-[; ;AT24C32.c: 105: }
+[; ;AT24C32.c: 105:     data[7] = I2C_ReadResult();
+[e = *U + _data * -> -> 7 `i `x -> -> # *U _data `i `x -> ( _I2C_ReadResult ..  `uc ]
+"106
+[; ;AT24C32.c: 106:     I2C_Stop();
+[e ( _I2C_Stop ..  ]
+"107
+[; ;AT24C32.c: 107: }
 [e :UE 277 ]
 }

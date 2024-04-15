@@ -14,8 +14,9 @@
 
 
 
+
 # 1 "./buzzer.h" 1
-# 11 "./buzzer.h"
+# 14 "./buzzer.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4608,11 +4609,11 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 11 "./buzzer.h" 2
-# 22 "./buzzer.h"
+# 14 "./buzzer.h" 2
+# 26 "./buzzer.h"
 void buzzer(uint8_t activate);
-# 8 "buzzer.c" 2
-# 17 "buzzer.c"
+# 9 "buzzer.c" 2
+# 18 "buzzer.c"
 void buzzer(uint8_t activate) {
     TRISEbits.TRISE0=0;
 

@@ -1,3 +1,5 @@
+/************************** Buzzer header file **************************/
+
 /*
  * File:   buzzer.h
  * Author: Nathanaël BLAVO BALLARIN
@@ -8,7 +10,9 @@
 #ifndef BUZZER_H
 #define	BUZZER_H
 
+/******************** Includes Section ********************/
 #include "common.h" 
+/**********************************************************/
 
 /******************* Function Prototypes *******************/
 

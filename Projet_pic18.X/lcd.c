@@ -1,3 +1,4 @@
+/************************** lcd.c **************************/
 /*
  * File:   lcd.c
  * Author: https://microdigisoft.com

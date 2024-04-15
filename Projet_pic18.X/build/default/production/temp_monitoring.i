@@ -7,13 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "temp_monitoring.c" 2
-
-
-
-
-
-
-
+# 10 "temp_monitoring.c"
 # 1 "./temp_monitoring.h" 1
 # 13 "./temp_monitoring.h"
 # 1 "./common.h" 1
@@ -4639,22 +4633,98 @@ typedef struct {
 
 
 extern uint8_t activate_buzzer;
-
-
-
+# 51 "./temp_monitoring.h"
 void save_in_eeprom(SystemData* pSystem_data);
+
+
+
+
+
+
 void update_system_data(SystemData* pSystem_data);
+
+
+
+
+
+
 void read_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void save_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void update_SD_tab(SystemData* pSystem_data);
+
+
+
+
+
+
 void save_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void read_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void reset_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_all_alarms(void);
+
+
+
+
+
+
 void reset_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_data_for_days(int number_days);
+
+
+
+
+
+
 void temp_management(SystemData* pSystem_data);
+
+
+
+
+
+
 void log_system(SystemData* pSystem_data);
+
+
+
+
+
+
 void launch_screen(void);
 
 
@@ -4662,11 +4732,12 @@ void launch_screen(void);
 
 
 
+
 float print_temperature(SystemData* pSystem_data);
-# 8 "temp_monitoring.c" 2
+# 10 "temp_monitoring.c" 2
 
 # 1 "./ds18b20.h" 1
-# 41 "./ds18b20.h"
+# 43 "./ds18b20.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4811,7 +4882,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 41 "./ds18b20.h" 2
+# 43 "./ds18b20.h" 2
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\math.h" 1 3
@@ -5183,8 +5254,8 @@ double jn(int, double);
 double y0(double);
 double y1(double);
 double yn(int, double);
-# 43 "./ds18b20.h" 2
-# 64 "./ds18b20.h"
+# 45 "./ds18b20.h" 2
+# 66 "./ds18b20.h"
 float OneWireTemp(void);
 
 
@@ -5238,7 +5309,7 @@ void OneWireHigh(void);
 
 
 void OneWireRelease(void);
-# 9 "temp_monitoring.c" 2
+# 11 "temp_monitoring.c" 2
 
 # 1 "./RTC.h" 1
 # 38 "./RTC.h"
@@ -5278,10 +5349,10 @@ extern unsigned char Temp;
 
 void DisplayDateOnLCD(SystemData *pDate);
 void DisplayTimeToLCD(SystemData *pTime);
-# 10 "temp_monitoring.c" 2
+# 12 "temp_monitoring.c" 2
 
 # 1 "./AT24C32.h" 1
-# 29 "./AT24C32.h"
+# 32 "./AT24C32.h"
 void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address);
 
 
@@ -5307,7 +5378,7 @@ unsigned char read_one_byte_in_eeprom(uint16_t register_address);
 
 
 void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
-# 11 "temp_monitoring.c" 2
+# 13 "temp_monitoring.c" 2
 
 # 1 "./SD_PIC.h" 1
 # 17 "./SD_PIC.h"
@@ -5539,7 +5610,7 @@ void multiple_block_read(void);
 
 
 void single_block_write(unsigned long sector);
-# 12 "temp_monitoring.c" 2
+# 14 "temp_monitoring.c" 2
 
 # 1 "./PWM.h" 1
 # 20 "./PWM.h"
@@ -5551,25 +5622,25 @@ void start_pwm(void);
 
 
 void set_pwm_duty(float duty);
-# 13 "temp_monitoring.c" 2
-
-# 1 "./led.h" 1
-# 37 "./led.h"
-void led_set_mode(SystemData *psystem_state);
-# 14 "temp_monitoring.c" 2
-
-# 1 "./heater.h" 1
-# 23 "./heater.h"
-void heater_set_mode(BooleanState state);
 # 15 "temp_monitoring.c" 2
 
-# 1 "./buzzer.h" 1
-# 22 "./buzzer.h"
-void buzzer(uint8_t activate);
+# 1 "./led.h" 1
+# 38 "./led.h"
+void led_set_mode(SystemData *psystem_state);
 # 16 "temp_monitoring.c" 2
 
+# 1 "./heater.h" 1
+# 32 "./heater.h"
+void heater_set_mode(BooleanState state);
+# 17 "temp_monitoring.c" 2
+
+# 1 "./buzzer.h" 1
+# 26 "./buzzer.h"
+void buzzer(uint8_t activate);
+# 18 "temp_monitoring.c" 2
+
 # 1 "./lcd.h" 1
-# 50 "./lcd.h"
+# 51 "./lcd.h"
 void LCD_Init(unsigned char I2C_Add);
 
 
@@ -5632,12 +5703,12 @@ void LCD_SR();
 
 
 void LCD_Clear();
-# 17 "temp_monitoring.c" 2
+# 19 "temp_monitoring.c" 2
 
 # 1 "./ssd1306_unbuffered.h" 1
 # 18 "./ssd1306_unbuffered.h"
 # 1 "./i2c_soft.h" 1
-# 21 "./i2c_soft.h"
+# 29 "./i2c_soft.h"
 char I2C_ReadRegister(char deviceAddress, char registerAddress);
 void I2C_WriteRegister(char deviceAddress, char registerAddress, char data);
 
@@ -6155,13 +6226,17 @@ void oled_puts(const char* c, uint8_t size) {
         c++;
     }
 }
-# 18 "temp_monitoring.c" 2
+# 20 "temp_monitoring.c" 2
+
 
 
 
 static uint16_t previous_address_eeprom=8;
 static uint8_t counter_alarm=0;
 static unsigned long sector_address = 0;
+
+
+
 uint8_t activate_buzzer = 0;
 
 
@@ -6192,11 +6267,8 @@ void update_system_data(SystemData* pSystem_data)
     pSystem_data->temp_decimal = temp_int;
     pSystem_data->temp_fraction = temp_frac;
 
-
-
-
 }
-# 66 "temp_monitoring.c"
+# 69 "temp_monitoring.c"
 void save_in_eeprom(SystemData* pSystem_data)
 {
    unsigned char tab[16]={0};
@@ -6334,7 +6406,7 @@ void extract_all_alarms(void)
     }
     reset_eep_address_in_eeprom();
 }
-# 211 "temp_monitoring.c"
+# 214 "temp_monitoring.c"
 void update_SD_tab(SystemData* pSystem_data)
 {
     static int counter = 0;
@@ -6472,7 +6544,7 @@ void extract_data_for_days(int number_days)
     printf("Sec %d-%d\r\n", (int)firstBlock, (int)(firstBlock + numWrites - 1));
 
 }
-# 356 "temp_monitoring.c"
+# 359 "temp_monitoring.c"
  void temp_management(SystemData* pSystem_data)
 {
     float command_temp = 23.0;
@@ -6545,7 +6617,7 @@ void log_system(SystemData* pSystem_data)
    printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab[0], tab[1], tab[2], tab[3], tab[4], tab[5], tab[6], tab[7], tab[8], tab[9], tab[10], tab[11], tab[12], tab[13], tab[14], tab[15]);
 
 }
-# 436 "temp_monitoring.c"
+# 439 "temp_monitoring.c"
 void launch_screen(void)
 {
     char buffer_lcd[15], buffer_temp[15];
@@ -6569,6 +6641,12 @@ void launch_screen(void)
     _delay((unsigned long)((4000)*(32000000/4000.0)));
 
 }
+
+
+
+
+
+
 
 float print_temperature(SystemData* pSystem_data)
 {

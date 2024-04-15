@@ -7,17 +7,9 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "heater.c" 2
-
-
-
-
-
-
-
+# 10 "heater.c"
 # 1 "./heater.h" 1
-
-
-
+# 12 "./heater.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4610,11 +4602,11 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 4 "./heater.h" 2
-# 23 "./heater.h"
+# 12 "./heater.h" 2
+# 32 "./heater.h"
 void heater_set_mode(BooleanState state);
-# 8 "heater.c" 2
-# 18 "heater.c"
+# 10 "heater.c" 2
+# 21 "heater.c"
 void heater_set_mode(BooleanState state)
 {
     TRISDbits.TRISD4 = 0;

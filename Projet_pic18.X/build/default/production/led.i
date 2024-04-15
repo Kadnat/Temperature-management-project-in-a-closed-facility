@@ -14,8 +14,9 @@
 
 
 
+
 # 1 "./led.h" 1
-# 12 "./led.h"
+# 13 "./led.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4608,7 +4609,7 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 12 "./led.h" 2
+# 13 "./led.h" 2
 
 # 1 "./temp_monitoring.h" 1
 # 17 "./temp_monitoring.h"
@@ -4638,22 +4639,98 @@ typedef struct {
 
 
 extern uint8_t activate_buzzer;
-
-
-
+# 51 "./temp_monitoring.h"
 void save_in_eeprom(SystemData* pSystem_data);
+
+
+
+
+
+
 void update_system_data(SystemData* pSystem_data);
+
+
+
+
+
+
 void read_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void save_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void update_SD_tab(SystemData* pSystem_data);
+
+
+
+
+
+
 void save_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void read_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void reset_eep_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_all_alarms(void);
+
+
+
+
+
+
 void reset_sd_address_in_eeprom(void);
+
+
+
+
+
+
 void extract_data_for_days(int number_days);
+
+
+
+
+
+
 void temp_management(SystemData* pSystem_data);
+
+
+
+
+
+
 void log_system(SystemData* pSystem_data);
+
+
+
+
+
+
 void launch_screen(void);
 
 
@@ -4661,12 +4738,13 @@ void launch_screen(void);
 
 
 
+
 float print_temperature(SystemData* pSystem_data);
-# 13 "./led.h" 2
-# 37 "./led.h"
+# 14 "./led.h" 2
+# 38 "./led.h"
 void led_set_mode(SystemData *psystem_state);
-# 8 "led.c" 2
-# 18 "led.c"
+# 9 "led.c" 2
+# 19 "led.c"
 void led_set_mode(SystemData *psystem_state)
 {
     TRISDbits.TRISD3 = 0;

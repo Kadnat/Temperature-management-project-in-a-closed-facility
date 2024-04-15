@@ -1,3 +1,4 @@
+/************************** temp_monitoring.c **************************/
 /*
  * File:   temp_monitoring.c
  * Author: Nathanaël BLAVO BALLARIN
@@ -5,6 +6,7 @@
  * Created on 1 avril 2024, 11:31
  */
 
+/******************** Includes Section ********************/
 #include "temp_monitoring.h"
 #include "ds18b20.h"
 #include "RTC.h"
@@ -16,13 +18,17 @@
 #include "buzzer.h"
 #include "lcd.h"
 #include "ssd1306_unbuffered.h"
+/**********************************************************/
 
-
+/******************** Private Variables Declarations Section ********************/
 static uint16_t previous_address_eeprom=8;
 static uint8_t counter_alarm=0;
 static unsigned long sector_address = 0;
-uint8_t activate_buzzer = 0;
+/**********************************************************************/
 
+/******************** Global Variables Declarations Section ********************/
+uint8_t activate_buzzer = 0;
+/**********************************************************************/
 
 /*
  * @Brief              : To update system data.
@@ -44,16 +50,13 @@ void update_system_data(SystemData* pSystem_data)
     pSystem_data->second = time.second;
     
     pSystem_data->temperature = temp;
-    // Convertir la température en deux valeurs entières
+
     uint8_t temp_int = (uint8_t)temp;
     uint8_t temp_frac = (temp - (float)temp_int) * 100.0;
     
     pSystem_data->temp_decimal = temp_int;
     pSystem_data->temp_fraction = temp_frac;
 
-    // Mettre à jour command_decimal et command_fraction
-    //pSystem_data->command_decimal = command_decimal;
-    //pSystem_data->command_fraction = command_fraction;
 }
 
 // EEPROM MAGAGEMENTS FUNCTIONS
@@ -457,6 +460,12 @@ void launch_screen(void)
     
 }
 
+/**
+ * @brief Reads the temperature from the DS18B20 sensor and prints it.
+ * 
+ * @param pSystem_data Pointer to the system data structure.
+ * @return The temperature in Celsius.
+ */
 float print_temperature(SystemData* pSystem_data)
 {
     char buffer_temp[7];

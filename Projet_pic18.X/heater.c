@@ -1,3 +1,4 @@
+/************************** heater.c **************************/
 /*
  * File:   heater.c
  * Author: Nathanael
@@ -5,7 +6,9 @@
  * Created on April 8, 2024, 9:32 PM
  */
 
+/******************** Includes Section ********************/
 #include "heater.h"
+/**********************************************************/
 
 /**
  * @brief Sets the mode of the heater relay.

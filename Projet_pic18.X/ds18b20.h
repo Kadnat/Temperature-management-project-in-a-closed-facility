@@ -7,6 +7,7 @@
  * See example.c for implementation of the library
  * Sample Product: https://www.sparkfun.com/products/11050
  * Created on April 20, 2016, 9:08 AM
+ * Modified by Nathanaël BLAVO BALLARIN
  
 License Information:
 This is free and unencumbered software released into the public domain.
@@ -38,12 +39,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 #ifndef DS18B20_H
 #define DS18B20_H
 
+/******************** Includes Section ********************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <xc.h>
 #include "temp_monitoring.h"
-
+/**********************************************************/
 
 /******************* Macros and Definitions *******************/
 

@@ -16,8 +16,10 @@
 #include "temp_monitoring.h"
 /**********************************************************/
 
+/******************** Global Variables Declarations Section ********************/
 unsigned char pRTCArray[4];
 unsigned char Temp;
+/**********************************************************/
 /*
  * 
  */

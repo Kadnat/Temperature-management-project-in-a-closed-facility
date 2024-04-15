@@ -492,207 +492,207 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"6 i2c_soft.c
-[; ;i2c_soft.c: 6: void I2C_Delay(){
+"19 i2c_soft.c
+[; ;i2c_soft.c: 19: void I2C_Delay(){
 [v _I2C_Delay `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_Delay ]
 [f ]
-"8
-[; ;i2c_soft.c: 8:  _delay((unsigned long)((25)*(32000000/4000000.0)));
+"21
+[; ;i2c_soft.c: 21:  _delay((unsigned long)((25)*(32000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 25 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-"9
-[; ;i2c_soft.c: 9:  }
+"22
+[; ;i2c_soft.c: 22:  }
 [e :UE 271 ]
 }
-"13
-[; ;i2c_soft.c: 13: void SCL_Low()
+"27
+[; ;i2c_soft.c: 27: void SCL_Low()
 [v _SCL_Low `(v ~T0 @X0 1 ef ]
-"14
-[; ;i2c_soft.c: 14:         {
+"28
+[; ;i2c_soft.c: 28:         {
 {
 [e :U _SCL_Low ]
 [f ]
-"15
-[; ;i2c_soft.c: 15:  PORTA = PORTA & 0b11101111;
+"29
+[; ;i2c_soft.c: 29:  PORTA = PORTA & 0b11101111;
 [e = _PORTA -> & -> _PORTA `i -> 239 `i `uc ]
-"16
-[; ;i2c_soft.c: 16:  TRISA = TRISA & 0b11101111;
+"30
+[; ;i2c_soft.c: 30:  TRISA = TRISA & 0b11101111;
 [e = _TRISA -> & -> _TRISA `i -> 239 `i `uc ]
-"17
-[; ;i2c_soft.c: 17:  }
+"31
+[; ;i2c_soft.c: 31:  }
 [e :UE 272 ]
 }
-"19
-[; ;i2c_soft.c: 19: void SCL_High(){
+"36
+[; ;i2c_soft.c: 36: void SCL_High(){
 [v _SCL_High `(v ~T0 @X0 1 ef ]
 {
 [e :U _SCL_High ]
 [f ]
-"20
-[; ;i2c_soft.c: 20:  TRISA = TRISA | 0b00010000;
+"37
+[; ;i2c_soft.c: 37:  TRISA = TRISA | 0b00010000;
 [e = _TRISA -> | -> _TRISA `i -> 16 `i `uc ]
-"21
-[; ;i2c_soft.c: 21:  }
+"38
+[; ;i2c_soft.c: 38:  }
 [e :UE 273 ]
 }
-"23
-[; ;i2c_soft.c: 23: void SDA_Low(){
+"43
+[; ;i2c_soft.c: 43: void SDA_Low(){
 [v _SDA_Low `(v ~T0 @X0 1 ef ]
 {
 [e :U _SDA_Low ]
 [f ]
-"24
-[; ;i2c_soft.c: 24:  PORTA = PORTA & 0b11011111;
+"44
+[; ;i2c_soft.c: 44:  PORTA = PORTA & 0b11011111;
 [e = _PORTA -> & -> _PORTA `i -> 223 `i `uc ]
-"25
-[; ;i2c_soft.c: 25:  TRISA = TRISA & 0b11011111;
+"45
+[; ;i2c_soft.c: 45:  TRISA = TRISA & 0b11011111;
 [e = _TRISA -> & -> _TRISA `i -> 223 `i `uc ]
-"26
-[; ;i2c_soft.c: 26:  }
+"46
+[; ;i2c_soft.c: 46:  }
 [e :UE 274 ]
 }
-"28
-[; ;i2c_soft.c: 28: void SDA_High(){
+"51
+[; ;i2c_soft.c: 51: void SDA_High(){
 [v _SDA_High `(v ~T0 @X0 1 ef ]
 {
 [e :U _SDA_High ]
 [f ]
-"29
-[; ;i2c_soft.c: 29:  TRISA = TRISA | 0b00100000;
+"52
+[; ;i2c_soft.c: 52:  TRISA = TRISA | 0b00100000;
 [e = _TRISA -> | -> _TRISA `i -> 32 `i `uc ]
-"30
-[; ;i2c_soft.c: 30:  }
+"53
+[; ;i2c_soft.c: 53:  }
 [e :UE 275 ]
 }
-"36
-[; ;i2c_soft.c: 36: void I2C_SendZero(){
+"58
+[; ;i2c_soft.c: 58: void I2C_SendZero(){
 [v _I2C_SendZero `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_SendZero ]
 [f ]
-"37
-[; ;i2c_soft.c: 37:  SCL_Low();
+"59
+[; ;i2c_soft.c: 59:  SCL_Low();
 [e ( _SCL_Low ..  ]
-"38
-[; ;i2c_soft.c: 38:  SDA_Low();
+"60
+[; ;i2c_soft.c: 60:  SDA_Low();
 [e ( _SDA_Low ..  ]
-"39
-[; ;i2c_soft.c: 39:  SCL_High();
+"61
+[; ;i2c_soft.c: 61:  SCL_High();
 [e ( _SCL_High ..  ]
-"40
-[; ;i2c_soft.c: 40:  I2C_Delay();
+"62
+[; ;i2c_soft.c: 62:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"41
-[; ;i2c_soft.c: 41:  SCL_Low();
+"63
+[; ;i2c_soft.c: 63:  SCL_Low();
 [e ( _SCL_Low ..  ]
-"42
-[; ;i2c_soft.c: 42:  }
+"64
+[; ;i2c_soft.c: 64:  }
 [e :UE 276 ]
 }
-"44
-[; ;i2c_soft.c: 44: void I2C_SendOne(){
+"69
+[; ;i2c_soft.c: 69: void I2C_SendOne(){
 [v _I2C_SendOne `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_SendOne ]
 [f ]
-"45
-[; ;i2c_soft.c: 45:  SCL_Low();
+"70
+[; ;i2c_soft.c: 70:  SCL_Low();
 [e ( _SCL_Low ..  ]
-"46
-[; ;i2c_soft.c: 46:  SDA_High();
+"71
+[; ;i2c_soft.c: 71:  SDA_High();
 [e ( _SDA_High ..  ]
-"47
-[; ;i2c_soft.c: 47:  SCL_High();
+"72
+[; ;i2c_soft.c: 72:  SCL_High();
 [e ( _SCL_High ..  ]
-"48
-[; ;i2c_soft.c: 48:  I2C_Delay();
+"73
+[; ;i2c_soft.c: 73:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"49
-[; ;i2c_soft.c: 49:  SCL_Low();
+"74
+[; ;i2c_soft.c: 74:  SCL_Low();
 [e ( _SCL_Low ..  ]
-"50
-[; ;i2c_soft.c: 50:  }
+"75
+[; ;i2c_soft.c: 75:  }
 [e :UE 277 ]
 }
-"52
-[; ;i2c_soft.c: 52: void I2C_Start(){
+"80
+[; ;i2c_soft.c: 80: void I2C_Start(){
 [v _I2C_Start `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_Start ]
 [f ]
-"53
-[; ;i2c_soft.c: 53:  SDA_High();
+"81
+[; ;i2c_soft.c: 81:  SDA_High();
 [e ( _SDA_High ..  ]
-"54
-[; ;i2c_soft.c: 54:  SCL_High();
+"82
+[; ;i2c_soft.c: 82:  SCL_High();
 [e ( _SCL_High ..  ]
-"55
-[; ;i2c_soft.c: 55:  I2C_Delay();
+"83
+[; ;i2c_soft.c: 83:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"56
-[; ;i2c_soft.c: 56:  SDA_Low();
+"84
+[; ;i2c_soft.c: 84:  SDA_Low();
 [e ( _SDA_Low ..  ]
-"57
-[; ;i2c_soft.c: 57:  I2C_Delay();
+"85
+[; ;i2c_soft.c: 85:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"58
-[; ;i2c_soft.c: 58:  SCL_Low();
+"86
+[; ;i2c_soft.c: 86:  SCL_Low();
 [e ( _SCL_Low ..  ]
-"59
-[; ;i2c_soft.c: 59:  I2C_Delay();
+"87
+[; ;i2c_soft.c: 87:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"60
-[; ;i2c_soft.c: 60:  }
+"88
+[; ;i2c_soft.c: 88:  }
 [e :UE 278 ]
 }
-"63
-[; ;i2c_soft.c: 63: void I2C_Stop(){
+"93
+[; ;i2c_soft.c: 93: void I2C_Stop(){
 [v _I2C_Stop `(v ~T0 @X0 1 ef ]
 {
 [e :U _I2C_Stop ]
 [f ]
-"64
-[; ;i2c_soft.c: 64:  SCL_Low();
+"94
+[; ;i2c_soft.c: 94:  SCL_Low();
 [e ( _SCL_Low ..  ]
-"65
-[; ;i2c_soft.c: 65:  I2C_Delay();
+"95
+[; ;i2c_soft.c: 95:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"66
-[; ;i2c_soft.c: 66:  SDA_Low();
+"96
+[; ;i2c_soft.c: 96:  SDA_Low();
 [e ( _SDA_Low ..  ]
-"67
-[; ;i2c_soft.c: 67:  I2C_Delay();
+"97
+[; ;i2c_soft.c: 97:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"68
-[; ;i2c_soft.c: 68:  SCL_High();
+"98
+[; ;i2c_soft.c: 98:  SCL_High();
 [e ( _SCL_High ..  ]
-"69
-[; ;i2c_soft.c: 69:  I2C_Delay();
+"99
+[; ;i2c_soft.c: 99:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"70
-[; ;i2c_soft.c: 70:  SDA_High();
+"100
+[; ;i2c_soft.c: 100:  SDA_High();
 [e ( _SDA_High ..  ]
-"71
-[; ;i2c_soft.c: 71:  I2C_Delay();
+"101
+[; ;i2c_soft.c: 101:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"72
-[; ;i2c_soft.c: 72:  }
+"102
+[; ;i2c_soft.c: 102:  }
 [e :UE 279 ]
 }
-"74
-[; ;i2c_soft.c: 74: void I2C_WriteByte(char theByte){
+"108
+[; ;i2c_soft.c: 108: void I2C_WriteByte(char theByte){
 [v _I2C_WriteByte `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _I2C_WriteByte ]
 [v _theByte `uc ~T0 @X0 1 r1 ]
 [f ]
-"75
-[; ;i2c_soft.c: 75:  char temp = theByte;
+"109
+[; ;i2c_soft.c: 109:  char temp = theByte;
 [v _temp `uc ~T0 @X0 1 a ]
 [e = _temp _theByte ]
-"77
-[; ;i2c_soft.c: 77:  for(int x=0;x<8;x++){
+"111
+[; ;i2c_soft.c: 111:  for(int x=0;x<8;x++){
 {
 [v _x `i ~T0 @X0 1 a ]
 [e = _x -> 0 `i ]
@@ -700,55 +700,55 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 282  ]
 [e :U 281 ]
 {
-"78
-[; ;i2c_soft.c: 78:   if((temp & 0x80) == 0x80){I2C_SendOne();}
+"112
+[; ;i2c_soft.c: 112:   if((temp & 0x80) == 0x80){I2C_SendOne();}
 [e $ ! == & -> _temp `i -> 128 `i -> 128 `i 284  ]
 {
 [e ( _I2C_SendOne ..  ]
 }
 [e $U 285  ]
-"79
-[; ;i2c_soft.c: 79:    else{I2C_SendZero();}
+"113
+[; ;i2c_soft.c: 113:    else{I2C_SendZero();}
 [e :U 284 ]
 {
 [e ( _I2C_SendZero ..  ]
 }
 [e :U 285 ]
-"80
-[; ;i2c_soft.c: 80:   temp = temp << 1;
+"114
+[; ;i2c_soft.c: 114:   temp = temp << 1;
 [e = _temp -> << -> _temp `i -> 1 `i `uc ]
-"81
-[; ;i2c_soft.c: 81:   }
+"115
+[; ;i2c_soft.c: 115:   }
 }
 [e ++ _x -> 1 `i ]
 [e $ < _x -> 8 `i 281  ]
 [e :U 282 ]
 }
-"83
-[; ;i2c_soft.c: 83:  I2C_SendOne();
+"117
+[; ;i2c_soft.c: 117:  I2C_SendOne();
 [e ( _I2C_SendOne ..  ]
-"85
-[; ;i2c_soft.c: 85:  }
+"119
+[; ;i2c_soft.c: 119:  }
 [e :UE 280 ]
 }
-"88
-[; ;i2c_soft.c: 88: char I2C_ReadResult(){
+"125
+[; ;i2c_soft.c: 125: char I2C_ReadResult(){
 [v _I2C_ReadResult `(uc ~T0 @X0 1 ef ]
 {
 [e :U _I2C_ReadResult ]
 [f ]
-"90
-[; ;i2c_soft.c: 90:  char readback = 0x00;
+"127
+[; ;i2c_soft.c: 127:  char readback = 0x00;
 [v _readback `uc ~T0 @X0 1 a ]
 [e = _readback -> -> 0 `i `uc ]
-"91
-[; ;i2c_soft.c: 91:     TRISD |= 0b00000001;
+"128
+[; ;i2c_soft.c: 128:     TRISD |= 0b00000001;
 [e =| _TRISD -> -> 1 `i `Vuc ]
-"93
-[; ;i2c_soft.c: 93:  SDA_High();
+"130
+[; ;i2c_soft.c: 130:  SDA_High();
 [e ( _SDA_High ..  ]
-"94
-[; ;i2c_soft.c: 94:  for(int x=0;x<8;x++){
+"131
+[; ;i2c_soft.c: 131:  for(int x=0;x<8;x++){
 {
 [v _x `i ~T0 @X0 1 a ]
 [e = _x -> 0 `i ]
@@ -756,76 +756,76 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 288  ]
 [e :U 287 ]
 {
-"95
-[; ;i2c_soft.c: 95:   readback = (readback << 1) & 0xFE;
+"132
+[; ;i2c_soft.c: 132:   readback = (readback << 1) & 0xFE;
 [e = _readback -> & << -> _readback `i -> 1 `i -> 254 `i `uc ]
-"96
-[; ;i2c_soft.c: 96:   SCL_High();
+"133
+[; ;i2c_soft.c: 133:   SCL_High();
 [e ( _SCL_High ..  ]
-"98
-[; ;i2c_soft.c: 98:   if((PORTD & 0b00000001)){readback++;}
+"135
+[; ;i2c_soft.c: 135:   if((PORTD & 0b00000001)){readback++;}
 [e $ ! != & -> _PORTD `i -> 1 `i -> 0 `i 290  ]
 {
 [e ++ _readback -> -> 1 `i `uc ]
 }
 [e :U 290 ]
-"99
-[; ;i2c_soft.c: 99:   I2C_Delay();
+"136
+[; ;i2c_soft.c: 136:   I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"100
-[; ;i2c_soft.c: 100:   SCL_Low();
+"137
+[; ;i2c_soft.c: 137:   SCL_Low();
 [e ( _SCL_Low ..  ]
-"101
-[; ;i2c_soft.c: 101:   I2C_Delay();
+"138
+[; ;i2c_soft.c: 138:   I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"102
-[; ;i2c_soft.c: 102:   }
+"139
+[; ;i2c_soft.c: 139:   }
 }
 [e ++ _x -> 1 `i ]
 [e $ < _x -> 8 `i 287  ]
 [e :U 288 ]
 }
-"103
-[; ;i2c_soft.c: 103:  SDA_Low();
+"140
+[; ;i2c_soft.c: 140:  SDA_Low();
 [e ( _SDA_Low ..  ]
-"104
-[; ;i2c_soft.c: 104:  I2C_Delay();
+"141
+[; ;i2c_soft.c: 141:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"105
-[; ;i2c_soft.c: 105:  SCL_High();
+"142
+[; ;i2c_soft.c: 142:  SCL_High();
 [e ( _SCL_High ..  ]
-"107
-[; ;i2c_soft.c: 107:  I2C_Delay();
+"144
+[; ;i2c_soft.c: 144:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"113
-[; ;i2c_soft.c: 113:  SDA_High();
+"146
+[; ;i2c_soft.c: 146:  SDA_High();
 [e ( _SDA_High ..  ]
-"114
-[; ;i2c_soft.c: 114:  return(readback);
+"147
+[; ;i2c_soft.c: 147:  return(readback);
 [e ) _readback ]
 [e $UE 286  ]
-"115
-[; ;i2c_soft.c: 115:  }
+"148
+[; ;i2c_soft.c: 148:  }
 [e :UE 286 ]
 }
-"117
-[; ;i2c_soft.c: 117: char I2C_ReadResult_withAck(){
+"154
+[; ;i2c_soft.c: 154: char I2C_ReadResult_withAck(){
 [v _I2C_ReadResult_withAck `(uc ~T0 @X0 1 ef ]
 {
 [e :U _I2C_ReadResult_withAck ]
 [f ]
-"119
-[; ;i2c_soft.c: 119:  char readback = 0x00;
+"156
+[; ;i2c_soft.c: 156:  char readback = 0x00;
 [v _readback `uc ~T0 @X0 1 a ]
 [e = _readback -> -> 0 `i `uc ]
-"120
-[; ;i2c_soft.c: 120:     TRISD |= 0b00000001;
+"157
+[; ;i2c_soft.c: 157:     TRISD |= 0b00000001;
 [e =| _TRISD -> -> 1 `i `Vuc ]
-"122
-[; ;i2c_soft.c: 122:  SDA_High();
+"159
+[; ;i2c_soft.c: 159:  SDA_High();
 [e ( _SDA_High ..  ]
-"123
-[; ;i2c_soft.c: 123:  for(int x=0;x<8;x++){
+"160
+[; ;i2c_soft.c: 160:  for(int x=0;x<8;x++){
 {
 [v _x `i ~T0 @X0 1 a ]
 [e = _x -> 0 `i ]
@@ -833,140 +833,140 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 293  ]
 [e :U 292 ]
 {
-"124
-[; ;i2c_soft.c: 124:   readback = (readback << 1) & 0xFE;
+"161
+[; ;i2c_soft.c: 161:   readback = (readback << 1) & 0xFE;
 [e = _readback -> & << -> _readback `i -> 1 `i -> 254 `i `uc ]
-"125
-[; ;i2c_soft.c: 125:   SCL_High();
+"162
+[; ;i2c_soft.c: 162:   SCL_High();
 [e ( _SCL_High ..  ]
-"127
-[; ;i2c_soft.c: 127:   if(PORTD & 0b00000001){readback++;}
+"164
+[; ;i2c_soft.c: 164:   if(PORTD & 0b00000001){readback++;}
 [e $ ! != & -> _PORTD `i -> 1 `i -> 0 `i 295  ]
 {
 [e ++ _readback -> -> 1 `i `uc ]
 }
 [e :U 295 ]
-"128
-[; ;i2c_soft.c: 128:   I2C_Delay();
+"165
+[; ;i2c_soft.c: 165:   I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"129
-[; ;i2c_soft.c: 129:   SCL_Low();
+"166
+[; ;i2c_soft.c: 166:   SCL_Low();
 [e ( _SCL_Low ..  ]
-"130
-[; ;i2c_soft.c: 130:   I2C_Delay();
+"167
+[; ;i2c_soft.c: 167:   I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"131
-[; ;i2c_soft.c: 131:   }
+"168
+[; ;i2c_soft.c: 168:   }
 }
 [e ++ _x -> 1 `i ]
 [e $ < _x -> 8 `i 292  ]
 [e :U 293 ]
 }
-"132
-[; ;i2c_soft.c: 132:  SDA_Low();
+"169
+[; ;i2c_soft.c: 169:  SDA_Low();
 [e ( _SDA_Low ..  ]
-"133
-[; ;i2c_soft.c: 133:  I2C_Delay();
+"170
+[; ;i2c_soft.c: 170:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"134
-[; ;i2c_soft.c: 134:  SCL_High();
+"171
+[; ;i2c_soft.c: 171:  SCL_High();
 [e ( _SCL_High ..  ]
-"137
-[; ;i2c_soft.c: 137:  I2C_Delay();
+"173
+[; ;i2c_soft.c: 173:  I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"138
-[; ;i2c_soft.c: 138:     SDA_Low();
+"174
+[; ;i2c_soft.c: 174:     SDA_Low();
 [e ( _SDA_Low ..  ]
-"139
-[; ;i2c_soft.c: 139:     I2C_Delay();
+"175
+[; ;i2c_soft.c: 175:     I2C_Delay();
 [e ( _I2C_Delay ..  ]
-"140
-[; ;i2c_soft.c: 140:     SCL_Low();
+"176
+[; ;i2c_soft.c: 176:     SCL_Low();
 [e ( _SCL_Low ..  ]
-"143
-[; ;i2c_soft.c: 143:  return(readback);
+"179
+[; ;i2c_soft.c: 179:  return(readback);
 [e ) _readback ]
 [e $UE 291  ]
-"144
-[; ;i2c_soft.c: 144:  }
+"180
+[; ;i2c_soft.c: 180:  }
 [e :UE 291 ]
 }
-"147
-[; ;i2c_soft.c: 147: void I2C_WriteToAddress(char deviceAddress){
+"186
+[; ;i2c_soft.c: 186: void I2C_WriteToAddress(char deviceAddress){
 [v _I2C_WriteToAddress `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _I2C_WriteToAddress ]
 [v _deviceAddress `uc ~T0 @X0 1 r1 ]
 [f ]
-"148
-[; ;i2c_soft.c: 148:  char temp;
+"187
+[; ;i2c_soft.c: 187:  char temp;
 [v _temp `uc ~T0 @X0 1 a ]
-"149
-[; ;i2c_soft.c: 149:  temp = deviceAddress << 1;
+"188
+[; ;i2c_soft.c: 188:  temp = deviceAddress << 1;
 [e = _temp -> << -> _deviceAddress `i -> 1 `i `uc ]
-"150
-[; ;i2c_soft.c: 150:  temp = temp & 0xFE;
+"189
+[; ;i2c_soft.c: 189:  temp = temp & 0xFE;
 [e = _temp -> & -> _temp `i -> 254 `i `uc ]
-"151
-[; ;i2c_soft.c: 151:  I2C_WriteByte(temp);
+"190
+[; ;i2c_soft.c: 190:  I2C_WriteByte(temp);
 [e ( _I2C_WriteByte (1 _temp ]
-"152
-[; ;i2c_soft.c: 152:  }
+"191
+[; ;i2c_soft.c: 191:  }
 [e :UE 296 ]
 }
-"154
-[; ;i2c_soft.c: 154: void I2C_ReadFromAddress(char deviceAddress){
+"197
+[; ;i2c_soft.c: 197: void I2C_ReadFromAddress(char deviceAddress){
 [v _I2C_ReadFromAddress `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _I2C_ReadFromAddress ]
 [v _deviceAddress `uc ~T0 @X0 1 r1 ]
 [f ]
-"155
-[; ;i2c_soft.c: 155:  I2C_WriteByte((deviceAddress << 1) | 0x01);
+"198
+[; ;i2c_soft.c: 198:  I2C_WriteByte((deviceAddress << 1) | 0x01);
 [e ( _I2C_WriteByte (1 -> | << -> _deviceAddress `i -> 1 `i -> 1 `i `uc ]
-"156
-[; ;i2c_soft.c: 156:  }
+"199
+[; ;i2c_soft.c: 199:  }
 [e :UE 297 ]
 }
-"159
-[; ;i2c_soft.c: 159: char I2C_ReadRegister(char deviceAddress, char registerAddress){
+"207
+[; ;i2c_soft.c: 207: char I2C_ReadRegister(char deviceAddress, char registerAddress){
 [v _I2C_ReadRegister `(uc ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _I2C_ReadRegister ]
 [v _deviceAddress `uc ~T0 @X0 1 r1 ]
 [v _registerAddress `uc ~T0 @X0 1 r2 ]
 [f ]
-"160
-[; ;i2c_soft.c: 160:  char result;
+"208
+[; ;i2c_soft.c: 208:  char result;
 [v _result `uc ~T0 @X0 1 a ]
-"162
-[; ;i2c_soft.c: 162:  I2C_Start();
+"210
+[; ;i2c_soft.c: 210:  I2C_Start();
 [e ( _I2C_Start ..  ]
-"163
-[; ;i2c_soft.c: 163:  I2C_WriteToAddress(deviceAddress);
+"211
+[; ;i2c_soft.c: 211:  I2C_WriteToAddress(deviceAddress);
 [e ( _I2C_WriteToAddress (1 _deviceAddress ]
-"164
-[; ;i2c_soft.c: 164:  I2C_WriteByte(registerAddress);
+"212
+[; ;i2c_soft.c: 212:  I2C_WriteByte(registerAddress);
 [e ( _I2C_WriteByte (1 _registerAddress ]
-"167
-[; ;i2c_soft.c: 167:  I2C_Start();
+"215
+[; ;i2c_soft.c: 215:  I2C_Start();
 [e ( _I2C_Start ..  ]
-"168
-[; ;i2c_soft.c: 168:  I2C_ReadFromAddress(deviceAddress);
+"216
+[; ;i2c_soft.c: 216:  I2C_ReadFromAddress(deviceAddress);
 [e ( _I2C_ReadFromAddress (1 _deviceAddress ]
-"169
-[; ;i2c_soft.c: 169:  result = I2C_ReadResult();
+"217
+[; ;i2c_soft.c: 217:  result = I2C_ReadResult();
 [e = _result ( _I2C_ReadResult ..  ]
-"170
-[; ;i2c_soft.c: 170:  return(result);
+"218
+[; ;i2c_soft.c: 218:  return(result);
 [e ) _result ]
 [e $UE 298  ]
-"171
-[; ;i2c_soft.c: 171:  }
+"219
+[; ;i2c_soft.c: 219:  }
 [e :UE 298 ]
 }
-"173
-[; ;i2c_soft.c: 173: void I2C_WriteRegister(char deviceAddress, char registerAddress, char data){
+"227
+[; ;i2c_soft.c: 227: void I2C_WriteRegister(char deviceAddress, char registerAddress, char data){
 [v _I2C_WriteRegister `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 {
 [e :U _I2C_WriteRegister ]
@@ -974,60 +974,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _registerAddress `uc ~T0 @X0 1 r2 ]
 [v _data `uc ~T0 @X0 1 r3 ]
 [f ]
-"174
-[; ;i2c_soft.c: 174:  char result;
+"228
+[; ;i2c_soft.c: 228:  char result;
 [v _result `uc ~T0 @X0 1 a ]
-"176
-[; ;i2c_soft.c: 176:  I2C_Start();
+"230
+[; ;i2c_soft.c: 230:  I2C_Start();
 [e ( _I2C_Start ..  ]
-"177
-[; ;i2c_soft.c: 177:  I2C_WriteToAddress(deviceAddress);
+"231
+[; ;i2c_soft.c: 231:  I2C_WriteToAddress(deviceAddress);
 [e ( _I2C_WriteToAddress (1 _deviceAddress ]
-"178
-[; ;i2c_soft.c: 178:  I2C_WriteByte(registerAddress);
+"232
+[; ;i2c_soft.c: 232:  I2C_WriteByte(registerAddress);
 [e ( _I2C_WriteByte (1 _registerAddress ]
-"179
-[; ;i2c_soft.c: 179:  I2C_WriteByte(data);
+"233
+[; ;i2c_soft.c: 233:  I2C_WriteByte(data);
 [e ( _I2C_WriteByte (1 _data ]
-"180
-[; ;i2c_soft.c: 180:  I2C_Stop();
+"234
+[; ;i2c_soft.c: 234:  I2C_Stop();
 [e ( _I2C_Stop ..  ]
-"181
-[; ;i2c_soft.c: 181:  }
+"235
+[; ;i2c_soft.c: 235:  }
 [e :UE 299 ]
-}
-"183
-[; ;i2c_soft.c: 183: void I2C_Test(void){
-[v _I2C_Test `(v ~T0 @X0 1 ef ]
-{
-[e :U _I2C_Test ]
-[f ]
-"185
-[; ;i2c_soft.c: 185:     I2C_Start();
-[e ( _I2C_Start ..  ]
-"186
-[; ;i2c_soft.c: 186:     for (int i = 0; i != 256; i++) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ != _i -> 256 `i 301  ]
-[e $U 302  ]
-[e :U 301 ]
-{
-"187
-[; ;i2c_soft.c: 187:         I2C_WriteByte(i);
-[e ( _I2C_WriteByte (1 -> _i `uc ]
-"188
-[; ;i2c_soft.c: 188:     }
-}
-[e ++ _i -> 1 `i ]
-[e $ != _i -> 256 `i 301  ]
-[e :U 302 ]
-}
-"189
-[; ;i2c_soft.c: 189:     I2C_Stop();
-[e ( _I2C_Stop ..  ]
-"190
-[; ;i2c_soft.c: 190: }
-[e :UE 300 ]
 }

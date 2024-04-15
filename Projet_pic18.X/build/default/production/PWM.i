@@ -7,14 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "PWM.c" 2
-
-
-
-
-
-
-
-
+# 10 "PWM.c"
 # 1 "./PWM.h" 1
 # 12 "./PWM.h"
 # 1 "./common.h" 1
@@ -4626,7 +4619,8 @@ void start_pwm(void);
 
 
 void set_pwm_duty(float duty);
-# 9 "PWM.c" 2
+# 10 "PWM.c" 2
+
 
 
 

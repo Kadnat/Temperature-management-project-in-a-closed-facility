@@ -1,3 +1,4 @@
+/************************** LCD Header file **************************/
 /*
  * File:   LCD.h
  * Author: https://microdigisoft.com

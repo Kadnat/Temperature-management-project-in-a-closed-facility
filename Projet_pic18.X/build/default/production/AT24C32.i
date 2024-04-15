@@ -14,8 +14,9 @@
 
 
 
+
 # 1 "./i2c_soft.h" 1
-# 21 "./i2c_soft.h"
+# 29 "./i2c_soft.h"
 char I2C_ReadRegister(char deviceAddress, char registerAddress);
 void I2C_WriteRegister(char deviceAddress, char registerAddress, char data);
 
@@ -40,10 +41,10 @@ char I2C_ReadResult_withAck();
 void I2C_WriteToAddress(char deviceAddress);
 void I2C_ReadFromAddress(char deviceAddress);
 void I2C_Test();
-# 8 "AT24C32.c" 2
+# 9 "AT24C32.c" 2
 
 # 1 "./AT24C32.h" 1
-# 13 "./AT24C32.h"
+# 15 "./AT24C32.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4636,8 +4637,8 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 13 "./AT24C32.h" 2
-# 29 "./AT24C32.h"
+# 15 "./AT24C32.h" 2
+# 32 "./AT24C32.h"
 void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address);
 
 
@@ -4663,8 +4664,8 @@ unsigned char read_one_byte_in_eeprom(uint16_t register_address);
 
 
 void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
-# 9 "AT24C32.c" 2
-# 19 "AT24C32.c"
+# 10 "AT24C32.c" 2
+# 21 "AT24C32.c"
 void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address)
 {
     unsigned char address_upper_byte = (register_address & 0xF00)>>8;

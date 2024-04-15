@@ -1,7 +1,16 @@
+/************************** Heater header file **************************/
+/*
+ * File:   heater.h
+ * Author: Nathanaël BLAVO BALLARIN
+ *
+ * Created on March 23, 2024, 10:59
+ */
 #ifndef HEATER_H
 #define	HEATER_H
 
+/******************** Includes Section ********************/
 #include "common.h"  
+/**********************************************************/
 
 /******************* Macros and Definitions *******************/
 
