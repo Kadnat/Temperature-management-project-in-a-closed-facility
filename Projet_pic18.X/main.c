@@ -1,7 +1,7 @@
-#include "common.h" // Send PIC 16f877a configuration
-#include "lcd.h"  //call LCD Functons
-#include "i2c_soft.h"  // Call I2C Functions
-#include"RTC.h"  // Call RTC functions
+#include "common.h"
+#include "lcd.h"  
+#include "i2c_soft.h" 
+#include"RTC.h"  
 #include "hal_usart.h"
 #include <stdio.h>
 #include "ds18b20.h"

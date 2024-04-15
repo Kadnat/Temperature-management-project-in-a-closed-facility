@@ -3,7 +3,7 @@
  * @author Tyler Gamvrelis
  *
  * Created on July 21, 2017, 3:52 PM
- *
+ * Modified by Nathanaël BLAVO BALLARIN, 28 march 2024
  * @defgroup SD
  * @brief SD card driver that uses SPI to transfer bits
  * @{
@@ -224,12 +224,47 @@ void SD_EraseBlocks(unsigned long firstBlock, unsigned long lastBlock);
  */
 void initSD(void);
 
-
+/**
+ * @brief Read init of SD Card
+ * @param None
+ * @return None
+ */
 void read_init_sd_card(void);
+
+/**
+ * @brief Computes the average of the first n elements of a byte array
+ * @param array Pointer to the start of the array to be averaged
+ * @param n The size of the array to be averaged
+ * @return The average of the first n elements in the array
+ */
 unsigned char average(unsigned char* array, unsigned short n);
+
+/**
+ * @brief Read one block of data in SD Card
+ * @param None
+ * @return None
+ */
 void single_block_read(void);
+
+/**
+ * @brief Write multiple blocks of data in SD Card
+ * @param None
+ * @return None
+ */
 void multiple_block_write(void);
+
+/**
+ * @brief Read multiple blocks of data in SD Card
+ * @param None
+ * @return None
+ */
 void multiple_block_read(void);
+
+/**
+ * @brief Write one block of data in SD Card
+ * @param Sector number
+ * @return None
+ */
 void single_block_write(unsigned long sector);
 /**
  * @}

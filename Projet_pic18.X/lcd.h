@@ -2,22 +2,21 @@
  * File:   LCD.h
  * Author: https://microdigisoft.com
  *
- * Created on 9 August, 2020, 5:11 PM
+ * Created on August 9, 2020, 5:11 PM
+ * Modified by Nathanaël BLAVO BALLARIN, March 22, 2024
  */
- 
 
-#ifndef lcd_H
-#define	lcd_H
-
-
-
+#ifndef LCD_H
+#define	LCD_H
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
+
+/******************* Macros and Definitions *******************/
+
 #define FirstLine   0x80
 #define SecondLine  0xC0
-
 
 #define LCD_BACKLIGHT          0x08
 #define LCD_NOBACKLIGHT        0x00
@@ -39,28 +38,82 @@ extern "C" {
 #define LCD_SHIFT_RIGHT        0x1E
 #define LCD_TYPE               2       // 0 -> 5x7 | 1 -> 5x10 | 2 -> 2 lines
 
+/***************************************************************/
 
-/*----------------------------------------------------------------------------*/
+/******************* Function Prototypes *******************/
 
-    //---[ LCD Routines ]---
+/**
+ * @brief Initializes the LCD module.
+ * 
+ * @param I2C_Add The I2C address of the LCD module.
+ */
+void LCD_Init(unsigned char I2C_Add);
 
-    void LCD_Init(unsigned char I2C_Add);
-    //void IO_Expander_Write(unsigned char Data);
-    void LCD_Write_4Bit(unsigned char Nibble);
-    void LCD_CMD(unsigned char CMD);
-    void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
-    void LCD_Write_Char(char);
-    void LCD_Write_String(char* Str);
-    void Backlight();
-    void noBacklight();
-    void LCD_SR();
-    void LCD_SL();
-    void LCD_Clear();
+/**
+ * @brief Writes a 4-bit value to the LCD.
+ * 
+ * @param Nibble The 4-bit value to write.
+ */
+void LCD_Write_4Bit(unsigned char Nibble);
 
+/**
+ * @brief Sends a command to the LCD.
+ * 
+ * @param CMD The command to send.
+ */
+void LCD_CMD(unsigned char CMD);
+
+/**
+ * @brief Sets the cursor position on the LCD.
+ * 
+ * @param ROW The row number (1 to 4).
+ * @param COL The column number (1 to 20).
+ */
+void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
+
+/**
+ * @brief Writes a character to the LCD.
+ * 
+ * @param Data The character to write.
+ */
+void LCD_Write_Char(char Data);
+
+/**
+ * @brief Writes a string to the LCD.
+ * 
+ * @param Str The string to write.
+ */
+void LCD_Write_String(char* Str);
+
+/**
+ * @brief Turns on the backlight of the LCD.
+ */
+void Backlight();
+
+/**
+ * @brief Turns off the backlight of the LCD.
+ */
+void noBacklight();
+
+/**
+ * @brief Shifts the display to the left.
+ */
+void LCD_SL();
+
+/**
+ * @brief Shifts the display to the right.
+ */
+void LCD_SR();
+
+/**
+ * @brief Clears the display of the LCD.
+ */
+void LCD_Clear();
+
+/**************************************************************/
 
 #ifdef	__cplusplus
 }
 #endif
 
 #endif	/* LCD_H */
-

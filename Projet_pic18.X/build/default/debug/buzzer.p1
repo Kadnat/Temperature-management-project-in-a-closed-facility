@@ -494,43 +494,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"9 buzzer.c
-[; ;buzzer.c: 9: void buzzer(uint8_t activate) {
+"17 buzzer.c
+[; ;buzzer.c: 17: void buzzer(uint8_t activate) {
 [v _buzzer `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _buzzer ]
 [v _activate `uc ~T0 @X0 1 r1 ]
 [f ]
-"10
-[; ;buzzer.c: 10:     TRISEbits.TRISE0=0;
+"18
+[; ;buzzer.c: 18:     TRISEbits.TRISE0=0;
 [e = . . _TRISEbits 0 0 -> -> 0 `i `uc ]
-"12
-[; ;buzzer.c: 12:     if(activate == 1)
+"20
+[; ;buzzer.c: 20:     if(activate == 1)
 [e $ ! == -> _activate `i -> 1 `i 272  ]
-"13
-[; ;buzzer.c: 13:     {
+"21
+[; ;buzzer.c: 21:     {
 {
-"14
-[; ;buzzer.c: 14:         PORTE |=0x1;
+"22
+[; ;buzzer.c: 22:         PORTE |=0x1;
 [e =| _PORTE -> -> 1 `i `Vuc ]
-"15
-[; ;buzzer.c: 15:     }
+"23
+[; ;buzzer.c: 23:     }
 }
 [e $U 273  ]
-"16
-[; ;buzzer.c: 16:     else
+"24
+[; ;buzzer.c: 24:     else
 [e :U 272 ]
-"17
-[; ;buzzer.c: 17:     {
+"25
+[; ;buzzer.c: 25:     {
 {
-"18
-[; ;buzzer.c: 18:         PORTE &=0xFE;
+"26
+[; ;buzzer.c: 26:         PORTE &=0xFE;
 [e =& _PORTE -> -> 254 `i `Vuc ]
-"19
-[; ;buzzer.c: 19:     }
+"27
+[; ;buzzer.c: 27:     }
 }
 [e :U 273 ]
-"22
-[; ;buzzer.c: 22: }
+"28
+[; ;buzzer.c: 28: }
 [e :UE 271 ]
 }

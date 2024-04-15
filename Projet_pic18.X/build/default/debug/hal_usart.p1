@@ -13,28 +13,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E2648 . BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_8BIT_HIGH_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_LOW_SPEED BAUDRATE_ASYNCHRONOUS_MODE_16BIT_HIGH_SPEED BAUDRATE_SYNCHRONOUS_MODE_8BIT BAUDRATE_SYNCHRONOUS_MODE_16BIT  ]
 [c E36 0 1 .. ]
 [n E36 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
-"100 ./hal_usart.h
-[; ;./hal_usart.h: 100: {
+"97 ./hal_usart.h
+[; ;./hal_usart.h: 97: {
 [s S271 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E36 1 ]
 [n S271 . usart_tx_reserved usart_enable_tx usart_enable_tx_interrupt usart_enable_9bit_tx usart_tx_interrupt_priority ]
-"110
-[; ;./hal_usart.h: 110: {
+"107
+[; ;./hal_usart.h: 107: {
 [s S272 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `E36 1 ]
 [n S272 . usart_rx_reserved usart_enable_rx usart_enable_rx_interrupt usart_enable_9bit_rx usart_rx_interrupt_priority ]
-"122
-[; ;./hal_usart.h: 122:     {
+"119
+[; ;./hal_usart.h: 119:     {
 [s S274 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S274 . usart_tx_reserved usart_ferr usart_oerr ]
-"120
-[; ;./hal_usart.h: 120: {
+"117
+[; ;./hal_usart.h: 117: {
 [u S273 `S274 1 `uc 1 ]
 [n S273 . . status ]
 [v F2685 `(v ~T0 @X0 0 tf ]
 [v F2687 `(v ~T0 @X0 0 tf ]
 [v F2689 `(v ~T0 @X0 0 tf ]
 [v F2691 `(v ~T0 @X0 0 tf ]
-"132
-[; ;./hal_usart.h: 132: {
+"129
+[; ;./hal_usart.h: 129: {
 [s S275 `ul 1 `E2648 1 `S271 1 `S272 1 `S273 1 `*F2685 1 `*F2687 1 `*F2689 1 `*F2691 1 ]
 [n S275 . baudrate baudrate_config usart_tx_cfg usart_rx_cfg eusart_error_status USART_TxDefaultInterruptHandler USART_RxDefaultInterruptHandler USART_FramingErrorHandler USART_OverrunErrorHandler ]
 "3031 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h

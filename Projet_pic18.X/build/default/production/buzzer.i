@@ -13,11 +13,9 @@
 
 
 
+
 # 1 "./buzzer.h" 1
-
-
-
-
+# 11 "./buzzer.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4610,13 +4608,11 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 5 "./buzzer.h" 2
-
-
+# 11 "./buzzer.h" 2
+# 22 "./buzzer.h"
 void buzzer(uint8_t activate);
-# 7 "buzzer.c" 2
-
-
+# 8 "buzzer.c" 2
+# 17 "buzzer.c"
 void buzzer(uint8_t activate) {
     TRISEbits.TRISE0=0;
 
@@ -4628,6 +4624,4 @@ void buzzer(uint8_t activate) {
     {
         PORTE &=0xFE;
     }
-
-
 }

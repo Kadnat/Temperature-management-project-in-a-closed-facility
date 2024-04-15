@@ -4995,7 +4995,7 @@ unsigned char __t3rd16on(void);
 # 44 "./DS18B20.h" 2
 
 # 1 "./temp_monitoring.h" 1
-# 12 "./temp_monitoring.h"
+# 13 "./temp_monitoring.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -5114,16 +5114,18 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 12 "./temp_monitoring.h" 2
+# 13 "./temp_monitoring.h" 2
+
+
 
 
 typedef enum {
-            NO_ERROR,
-            TOO_HOT,
-            TOO_COLD,
+    NO_ERROR,
+    TOO_HOT,
+    TOO_COLD,
 } ErrorType;
 
-typedef struct{
+typedef struct {
     uint8_t day;
     uint8_t month;
     uint8_t year;
@@ -5138,10 +5140,13 @@ typedef struct{
     unsigned char mode;
     unsigned char weekday;
     ErrorType error_type;
-
 } SystemData;
 
+
+
 extern uint8_t activate_buzzer;
+
+
 
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
@@ -5155,18 +5160,69 @@ void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
- void log_system(SystemData* pSystem_data);
+void log_system(SystemData* pSystem_data);
 # 45 "./DS18B20.h" 2
-# 57 "./DS18B20.h"
+# 63 "./DS18B20.h"
 float OneWireTemp(void);
+
+
+
+
+
+
 unsigned int OneWireReset(void);
-void OneWireWriteBit(unsigned char);
+
+
+
+
+
+
+void OneWireWriteBit(unsigned char bit);
+
+
+
+
+
+
 unsigned char OneWireReadBit(void);
-void OneWireWriteByte(unsigned char);
+
+
+
+
+
+
+void OneWireWriteByte(unsigned char byte);
+
+
+
+
+
+
 unsigned char OneWireReadByte(void);
+
+
+
+
+
+
 unsigned char OneWireRead(void);
+
+
+
+
 void OneWireHigh(void);
+
+
+
+
 void OneWireRelease(void);
+
+
+
+
+
+
+
 float print_temperature(SystemData* pSystem_data);
 # 38 "ds18b20.c" 2
 
@@ -5199,7 +5255,7 @@ char I2C_ReadResult_withAck();
 void I2C_WriteToAddress(char deviceAddress);
 void I2C_ReadFromAddress(char deviceAddress);
 void I2C_Test();
-# 19 "./ssd1306_unbuffered.h" 2
+# 18 "./ssd1306_unbuffered.h" 2
 # 85 "./ssd1306_unbuffered.h"
 uint8_t _i2caddr, _vccstate, x_pos = 1, y_pos = 1;
 

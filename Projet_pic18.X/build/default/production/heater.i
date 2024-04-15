@@ -14,9 +14,7 @@
 
 
 
-
 # 1 "./heater.h" 1
-
 
 
 
@@ -4612,16 +4610,11 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 5 "./heater.h" 2
-
-
-
-
-
+# 4 "./heater.h" 2
+# 23 "./heater.h"
 void heater_set_mode(BooleanState state);
-# 9 "heater.c" 2
-
-
+# 8 "heater.c" 2
+# 18 "heater.c"
 void heater_set_mode(BooleanState state)
 {
     TRISDbits.TRISD4 = 0;

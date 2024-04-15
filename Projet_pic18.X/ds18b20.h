@@ -44,27 +44,87 @@ OTHER DEALINGS IN THE SOFTWARE.
 #include <xc.h>
 #include "temp_monitoring.h"
 
-
+/******************* Macros and Definitions *******************/
 
 // This configuration is required to make a PIC be in open drain 
 #define BUSDIR LATAbits.LA1 // Set direction: input or output
 #define BUSOUT TRISAbits.RA1 // Set output: high or low 
-//#define BUSIN PORTAbits.RA1 // Read input 
 #define BUSIN PORTCbits.RC1 // Read input 
 
+/***************************************************************/
 
-// Available Functions:
-float OneWireTemp(void); // Returns the temperature in celsius 
-unsigned int OneWireReset(void); // Sends a reset pulse to the sensor 
-void OneWireWriteBit(unsigned char); // write a single bit to the OneWire
-unsigned char OneWireReadBit(void); // reads a single bit 
-void OneWireWriteByte(unsigned char); // writes a byte 
-unsigned char OneWireReadByte(void); // reads a byte 
-unsigned char OneWireRead(void); // reads the current status of the bus
-void OneWireHigh(void); // sets the bus high
-void OneWireRelease(void); // releases the bus 
+/******************* Function Prototypes *******************/
+
+/**
+ * @brief Reads the temperature from the DS18B20 sensor.
+ * 
+ * @return The temperature in Celsius.
+ */
+float OneWireTemp(void);
+
+/**
+ * @brief Sends a reset pulse to the DS18B20 sensor.
+ * 
+ * @return 0 if the sensor responds with a presence pulse, 1 otherwise.
+ */
+unsigned int OneWireReset(void);
+
+/**
+ * @brief Writes a single bit to the OneWire bus.
+ * 
+ * @param bit The bit to write (0 or 1).
+ */
+void OneWireWriteBit(unsigned char bit);
+
+/**
+ * @brief Reads a single bit from the OneWire bus.
+ * 
+ * @return The bit read (0 or 1).
+ */
+unsigned char OneWireReadBit(void);
+
+/**
+ * @brief Writes a byte to the OneWire bus.
+ * 
+ * @param byte The byte to write.
+ */
+void OneWireWriteByte(unsigned char byte);
+
+/**
+ * @brief Reads a byte from the OneWire bus.
+ * 
+ * @return The byte read.
+ */
+unsigned char OneWireReadByte(void);
+
+/**
+ * @brief Reads the current status of the OneWire bus.
+ * 
+ * @return The status of the bus.
+ */
+unsigned char OneWireRead(void);
+
+/**
+ * @brief Sets the OneWire bus high.
+ */
+void OneWireHigh(void);
+
+/**
+ * @brief Releases the OneWire bus.
+ */
+void OneWireRelease(void);
+
+/**
+ * @brief Reads the temperature from the DS18B20 sensor and prints it.
+ * 
+ * @param pSystem_data Pointer to the system data structure.
+ * @return The temperature in Celsius.
+ */
 float print_temperature(SystemData* pSystem_data);
 
+/***************************************************************/
+
 #endif // DS18B20_H
+
 
 

@@ -5,6 +5,7 @@
  * Created on July 21, 2017, 3:52 PM
  *
  * @ingroup SD
+ * Modified by Nathanaël BLAVO BALLARIN, 28 march 2024
  */
 
 /********************************* Includes **********************************/
@@ -634,6 +635,11 @@ void initSD(void){
 
 //SD control functions
 
+/**
+ * @brief Read init of SD Card
+ * @param None
+ * @return None
+ */
 void read_init_sd_card(void)
 {
     unsigned char PNM[5];

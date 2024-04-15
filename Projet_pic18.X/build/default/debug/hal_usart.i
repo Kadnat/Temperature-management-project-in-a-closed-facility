@@ -9,7 +9,7 @@
 # 1 "hal_usart.c" 2
 # 10 "hal_usart.c"
 # 1 "./hal_usart.h" 1
-# 15 "./hal_usart.h"
+# 13 "./hal_usart.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 1 3
 
 
@@ -116,8 +116,7 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 2 3
-# 15 "./hal_usart.h" 2
-
+# 13 "./hal_usart.h" 2
 
 # 1 "./mcal_internal_interrupt.h" 1
 # 87 "./mcal_internal_interrupt.h"
@@ -126,7 +125,7 @@ typedef enum
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 }interrupt_priority_cfg;
-# 17 "./hal_usart.h" 2
+# 14 "./hal_usart.h" 2
 
 # 1 "./common.h" 1
 # 20 "./common.h"
@@ -4621,8 +4620,8 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 18 "./hal_usart.h" 2
-# 88 "./hal_usart.h"
+# 15 "./hal_usart.h" 2
+# 85 "./hal_usart.h"
 typedef enum
 {
     BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED,
@@ -4678,13 +4677,13 @@ typedef struct
     void (*USART_FramingErrorHandler)(void);
     void (*USART_OverrunErrorHandler)(void);
 }usart_t;
-# 153 "./hal_usart.h"
+# 150 "./hal_usart.h"
 uint8_t USART_Asynchronous_Initialize(const usart_t *_usart);
-# 162 "./hal_usart.h"
+# 159 "./hal_usart.h"
 uint8_t USART_Asynchronous_DeInitialize(const usart_t *_usart);
-# 171 "./hal_usart.h"
+# 168 "./hal_usart.h"
 uint8_t USART_Asynchronous_ReadByte_Blocking(uint8_t *_data);
-# 180 "./hal_usart.h"
+# 177 "./hal_usart.h"
 uint8_t USART_Asynchronous_ReadByte_NonBlocking(uint8_t *_data);
 
 
@@ -4694,11 +4693,11 @@ uint8_t USART_Asynchronous_ReadByte_NonBlocking(uint8_t *_data);
 
 
 uint8_t USART_Asynchronous_Restart_RX(void);
-# 197 "./hal_usart.h"
+# 194 "./hal_usart.h"
 uint8_t USART_Asynchronous_WriteByte_Blocking(uint8_t _data);
-# 206 "./hal_usart.h"
+# 203 "./hal_usart.h"
 uint8_t USART_Asynchronous_WriteByte_NonBlocking(uint8_t _data);
-# 216 "./hal_usart.h"
+# 213 "./hal_usart.h"
 uint8_t USART_Asynchronous_WriteString_Blocking(uint8_t *_data, uint16_t str_length);
 # 10 "hal_usart.c" 2
 

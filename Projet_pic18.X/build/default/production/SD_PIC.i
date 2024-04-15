@@ -7,7 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "SD_PIC.c" 2
-# 11 "SD_PIC.c"
+# 12 "SD_PIC.c"
 # 1 "./SD_PIC.h" 1
 # 16 "./SD_PIC.h"
 # 1 "./common.h" 1
@@ -4602,7 +4602,8 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 17 "./SD_PIC.h" 2
+# 16 "./SD_PIC.h" 2
+
 # 1 "./SPI_PIC.h" 1
 # 35 "./SPI_PIC.h"
 unsigned char spiTransfer(unsigned char byteToSend);
@@ -4636,7 +4637,7 @@ void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len);
 uint8_t SPI_exchangeByte(uint8_t data);
 
 void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len);
-# 18 "./SD_PIC.h" 2
+# 17 "./SD_PIC.h" 2
 # 43 "./SD_PIC.h"
 extern const unsigned char CMD0;
 extern const unsigned char CMD0CRC;
@@ -4790,13 +4791,48 @@ void SD_EraseBlocks(unsigned long firstBlock, unsigned long lastBlock);
 void initSD(void);
 
 
+
+
+
+
 void read_init_sd_card(void);
+
+
+
+
+
+
+
 unsigned char average(unsigned char* array, unsigned short n);
+
+
+
+
+
+
 void single_block_read(void);
+
+
+
+
+
+
 void multiple_block_write(void);
+
+
+
+
+
+
 void multiple_block_read(void);
+
+
+
+
+
+
 void single_block_write(unsigned long sector);
-# 11 "SD_PIC.c" 2
+# 12 "SD_PIC.c" 2
 
 
 
@@ -5176,7 +5212,7 @@ void initSD(void){
     const unsigned char last_OSCTUNE = OSCTUNE;
     unsigned char response;
     unsigned char arr_response[16] = {0};
-# 399 "SD_PIC.c"
+# 400 "SD_PIC.c"
     while(!OSCCONbits.IOFS){
         _delay((unsigned long)((20)*(32000000/4000000.0)));
     }
@@ -5412,9 +5448,7 @@ void initSD(void){
 
     SDCard.init = 1;
 }
-
-
-
+# 643 "SD_PIC.c"
 void read_init_sd_card(void)
 {
     unsigned char PNM[5];

@@ -2,12 +2,19 @@
  * File:   led.c
  * Author: Nathanael
  *
- * Created on 24 mars 2024, 16:55
+ * Created on March 24, 2024, 16:55
  */
-
 
 #include "led.h"
 
+/**
+ * @brief Sets the mode of the LEDs based on the system state.
+ * 
+ * This function sets the mode of the LEDs (red, green, and blue) based on the
+ * error type specified in the system state.
+ * 
+ * @param psystem_state A pointer to the system state containing the error type.
+ */
 void led_set_mode(SystemData *psystem_state)
 {
     TRIS_RED_LED = 0;

@@ -7,13 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "RTC.c" 2
-
-
-
-
-
-
-
+# 10 "RTC.c"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 1 3
 
 
@@ -177,7 +171,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 8 "RTC.c" 2
+# 10 "RTC.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 1 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 3
@@ -242,23 +236,73 @@ typedef struct { unsigned int quot, rem; } udiv_t;
 typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
-# 9 "RTC.c" 2
+# 11 "RTC.c" 2
 
 # 1 "./lcd.h" 1
-# 47 "./lcd.h"
-    void LCD_Init(unsigned char I2C_Add);
+# 50 "./lcd.h"
+void LCD_Init(unsigned char I2C_Add);
 
-    void LCD_Write_4Bit(unsigned char Nibble);
-    void LCD_CMD(unsigned char CMD);
-    void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
-    void LCD_Write_Char(char);
-    void LCD_Write_String(char* Str);
-    void Backlight();
-    void noBacklight();
-    void LCD_SR();
-    void LCD_SL();
-    void LCD_Clear();
-# 10 "RTC.c" 2
+
+
+
+
+
+void LCD_Write_4Bit(unsigned char Nibble);
+
+
+
+
+
+
+void LCD_CMD(unsigned char CMD);
+
+
+
+
+
+
+
+void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
+
+
+
+
+
+
+void LCD_Write_Char(char Data);
+
+
+
+
+
+
+void LCD_Write_String(char* Str);
+
+
+
+
+void Backlight();
+
+
+
+
+void noBacklight();
+
+
+
+
+void LCD_SL();
+
+
+
+
+void LCD_SR();
+
+
+
+
+void LCD_Clear();
+# 12 "RTC.c" 2
 
 # 1 "./common.h" 1
 # 20 "./common.h"
@@ -4759,7 +4803,7 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 11 "RTC.c" 2
+# 13 "RTC.c" 2
 
 # 1 "./i2c_soft.h" 1
 # 21 "./i2c_soft.h"
@@ -4787,19 +4831,19 @@ char I2C_ReadResult_withAck();
 void I2C_WriteToAddress(char deviceAddress);
 void I2C_ReadFromAddress(char deviceAddress);
 void I2C_Test();
-# 12 "RTC.c" 2
+# 14 "RTC.c" 2
 
 # 1 "./RTC.h" 1
-# 11 "./RTC.h"
+# 15 "./RTC.h"
 # 1 "./temp_monitoring.h" 1
-# 14 "./temp_monitoring.h"
+# 17 "./temp_monitoring.h"
 typedef enum {
-            NO_ERROR,
-            TOO_HOT,
-            TOO_COLD,
+    NO_ERROR,
+    TOO_HOT,
+    TOO_COLD,
 } ErrorType;
 
-typedef struct{
+typedef struct {
     uint8_t day;
     uint8_t month;
     uint8_t year;
@@ -4814,10 +4858,13 @@ typedef struct{
     unsigned char mode;
     unsigned char weekday;
     ErrorType error_type;
-
 } SystemData;
 
+
+
 extern uint8_t activate_buzzer;
+
+
 
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
@@ -4831,9 +4878,9 @@ void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
- void log_system(SystemData* pSystem_data);
-# 11 "./RTC.h" 2
-# 30 "./RTC.h"
+void log_system(SystemData* pSystem_data);
+# 15 "./RTC.h" 2
+# 38 "./RTC.h"
 typedef struct {
     unsigned char day;
     unsigned char month;
@@ -4850,26 +4897,33 @@ typedef struct {
 
 
 
+
 void Write_Byte_To_DS1307_RTC(unsigned char, unsigned char);
 unsigned char Read_Byte_From_DS1307_RTC(unsigned char);
-void Write_Bytes_To_DS1307_RTC(unsigned char,unsigned char*,unsigned char);
-void Read_Bytes_From_DS1307_RTC(unsigned char,unsigned char*,unsigned int);
-void Set_DS1307_RTC_Time(unsigned char,unsigned char,unsigned char,unsigned char);
-
-void Set_DS1307_RTC_Date(unsigned char,unsigned char,unsigned char,unsigned char);
-
+void Write_Bytes_To_DS1307_RTC(unsigned char, unsigned char*, unsigned char);
+void Read_Bytes_From_DS1307_RTC(unsigned char, unsigned char*, unsigned int);
+void Set_DS1307_RTC_Time(unsigned char, unsigned char, unsigned char, unsigned char);
+void Set_DS1307_RTC_Date(unsigned char, unsigned char, unsigned char, unsigned char);
 Date Get_DS1307_RTC_Date(void);
 Time Get_DS1307_RTC_Time(void);
 
-unsigned char pRTCArray[4];
-unsigned char Temp;
+
+
+
+extern unsigned char pRTCArray[4];
+extern unsigned char Temp;
+
 
 
 void DisplayDateOnLCD(SystemData *pDate);
 void DisplayTimeToLCD(SystemData *pTime);
-# 13 "RTC.c" 2
+# 15 "RTC.c" 2
 
 
+
+
+unsigned char pRTCArray[4];
+unsigned char Temp;
 
 
 
@@ -4885,6 +4939,7 @@ void Write_Byte_To_DS1307_RTC(unsigned char Address, unsigned char DataByte)
     I2C_WriteByte(DataByte);
      I2C_Stop();
 }
+
 
 
 unsigned char Read_Byte_From_DS1307_RTC(unsigned char Address)
@@ -4905,6 +4960,7 @@ unsigned char Read_Byte_From_DS1307_RTC(unsigned char Address)
 
 
 
+
 void Write_Bytes_To_DS1307_RTC(unsigned char Address,unsigned char* pData,unsigned char NoOfBytes)
 {
     unsigned int i;
@@ -4920,9 +4976,9 @@ void Write_Bytes_To_DS1307_RTC(unsigned char Address,unsigned char* pData,unsign
 
 
 
+
 void Read_Bytes_From_DS1307_RTC(unsigned char Address, unsigned char* pData, unsigned int NoOfBytes)
 {
-# 84 "RTC.c"
     unsigned int i;
 
     pData[0] = I2C_ReadRegister(0x68,Address);
@@ -4932,6 +4988,7 @@ void Read_Bytes_From_DS1307_RTC(unsigned char Address, unsigned char* pData, uns
     }
 
 }
+
 
 
 
@@ -4955,7 +5012,12 @@ void Set_DS1307_RTC_Time(unsigned char Mode, unsigned char Hours, unsigned char 
 
  Write_Bytes_To_DS1307_RTC(0x00, pRTCArray, 3);
 }
-# 160 "RTC.c"
+
+
+
+
+
+
 Time Get_DS1307_RTC_Time(void) {
 
     Time currentTime;
@@ -5008,7 +5070,12 @@ void Set_DS1307_RTC_Date(unsigned char Date, unsigned char Month, unsigned char 
 
  Write_Bytes_To_DS1307_RTC(0x03, pRTCArray, 4);
 }
-# 242 "RTC.c"
+
+
+
+
+
+
 Date Get_DS1307_RTC_Date(void) {
 
     Date currentDate;
@@ -5037,7 +5104,12 @@ Date Get_DS1307_RTC_Date(void) {
 
     return currentDate;
 }
-# 375 "RTC.c"
+
+
+
+
+
+
 void DisplayDateOnLCD(SystemData *pDate) {
 
     unsigned char tens, units;
@@ -5085,8 +5157,13 @@ void DisplayDateOnLCD(SystemData *pDate) {
 
     LCD_Set_Cursor(2, 9);
     LCD_Write_Char(' ');
-# 451 "RTC.c"
+
 }
+
+
+
+
+
 
 void DisplayTimeToLCD(SystemData *pTime) {
 
@@ -5136,5 +5213,5 @@ void DisplayTimeToLCD(SystemData *pTime) {
 
     LCD_Set_Cursor(1, 9);
     LCD_Write_Char(' ');
-# 517 "RTC.c"
+
 }

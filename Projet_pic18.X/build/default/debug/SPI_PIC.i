@@ -4602,7 +4602,7 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 17 "./SPI_PIC.h" 2
+# 16 "./SPI_PIC.h" 2
 # 35 "./SPI_PIC.h"
 unsigned char spiTransfer(unsigned char byteToSend);
 
@@ -4635,7 +4635,8 @@ void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len);
 uint8_t SPI_exchangeByte(uint8_t data);
 
 void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len);
-# 12 "SPI_PIC.c" 2
+# 11 "SPI_PIC.c" 2
+
 
 
 unsigned char spiTransfer(unsigned char byteToTransfer){

@@ -1,10 +1,10 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"11 led.c
-[; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
+"18 led.c
+[; ;led.c: 18: void led_set_mode(SystemData *psystem_state)
 [c E2644 0 1 2 .. ]
 [n E2644 . NO_ERROR TOO_HOT TOO_COLD  ]
-"20 ./temp_monitoring.h
-[; ;./temp_monitoring.h: 20: typedef struct{
+"23 ./temp_monitoring.h
+[; ;./temp_monitoring.h: 23: typedef struct {
 [s S271 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E2644 1 ]
 [n S271 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
 "2057 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
@@ -522,96 +522,96 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"11 led.c
-[; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
+"18 led.c
+[; ;led.c: 18: void led_set_mode(SystemData *psystem_state)
 [v _led_set_mode `(v ~T0 @X0 1 ef1`*S271 ]
-"12
-[; ;led.c: 12: {
+"19
+[; ;led.c: 19: {
 {
 [e :U _led_set_mode ]
-"11
-[; ;led.c: 11: void led_set_mode(SystemData *psystem_state)
-[v _psystem_state `*S271 ~T0 @X0 1 r1 ]
-"12
-[; ;led.c: 12: {
-[f ]
-"13
-[; ;led.c: 13:     TRISDbits.TRISD3 = 0;
-[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
-"14
-[; ;led.c: 14:     TRISDbits.TRISD2 = 0;
-[e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
-"15
-[; ;led.c: 15:     TRISDbits.TRISD5 = 0;
-[e = . . _TRISDbits 0 5 -> -> 0 `i `uc ]
-"16
-[; ;led.c: 16:     switch(psystem_state->error_type)
-[e $U 274  ]
-"17
-[; ;led.c: 17:     {
-{
 "18
-[; ;led.c: 18:         case NO_ERROR:
-[e :U 275 ]
+[; ;led.c: 18: void led_set_mode(SystemData *psystem_state)
+[v _psystem_state `*S271 ~T0 @X0 1 r1 ]
 "19
-[; ;led.c: 19:             PORTDbits.RD2 = 1;
-[e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
+[; ;led.c: 19: {
+[f ]
 "20
-[; ;led.c: 20:             PORTDbits.RD3 = 0;
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+[; ;led.c: 20:     TRISDbits.TRISD3 = 0;
+[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
 "21
-[; ;led.c: 21:             PORTDbits.RD5 = 0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+[; ;led.c: 21:     TRISDbits.TRISD2 = 0;
+[e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
 "22
-[; ;led.c: 22:             break;
-[e $U 273  ]
+[; ;led.c: 22:     TRISDbits.TRISD5 = 0;
+[e = . . _TRISDbits 0 5 -> -> 0 `i `uc ]
+"23
+[; ;led.c: 23:     switch(psystem_state->error_type)
+[e $U 274  ]
 "24
-[; ;led.c: 24:         case TOO_COLD:
-[e :U 276 ]
+[; ;led.c: 24:     {
+{
 "25
-[; ;led.c: 25:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
+[; ;led.c: 25:         case NO_ERROR:
+[e :U 275 ]
 "26
-[; ;led.c: 26:             PORTDbits.RD3 = 0;
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+[; ;led.c: 26:             PORTDbits.RD2 = 1;
+[e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
 "27
-[; ;led.c: 27:             PORTDbits.RD5 = 1;
-[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-"28
-[; ;led.c: 28:             break;
-[e $U 273  ]
-"30
-[; ;led.c: 30:         case TOO_HOT:
-[e :U 277 ]
-"31
-[; ;led.c: 31:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
-"32
-[; ;led.c: 32:             PORTDbits.RD3 = 1;
-[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
-"33
-[; ;led.c: 33:             PORTDbits.RD5 = 0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
-"34
-[; ;led.c: 34:             break;
-[e $U 273  ]
-"36
-[; ;led.c: 36:         default:
-[e :U 278 ]
-"37
-[; ;led.c: 37:             PORTDbits.RD2 = 0;
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
-"38
-[; ;led.c: 38:             PORTDbits.RD3 = 0;
+[; ;led.c: 27:             PORTDbits.RD3 = 0;
 [e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
-"39
-[; ;led.c: 39:             PORTDbits.RD5 = 0;
+"28
+[; ;led.c: 28:             PORTDbits.RD5 = 0;
 [e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
-"40
-[; ;led.c: 40:             break;
+"29
+[; ;led.c: 29:             break;
 [e $U 273  ]
+"31
+[; ;led.c: 31:         case TOO_COLD:
+[e :U 276 ]
+"32
+[; ;led.c: 32:             PORTDbits.RD2 = 0;
+[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
+"33
+[; ;led.c: 33:             PORTDbits.RD3 = 0;
+[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+"34
+[; ;led.c: 34:             PORTDbits.RD5 = 1;
+[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
+"35
+[; ;led.c: 35:             break;
+[e $U 273  ]
+"37
+[; ;led.c: 37:         case TOO_HOT:
+[e :U 277 ]
+"38
+[; ;led.c: 38:             PORTDbits.RD2 = 0;
+[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
+"39
+[; ;led.c: 39:             PORTDbits.RD3 = 1;
+[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
+"40
+[; ;led.c: 40:             PORTDbits.RD5 = 0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
 "41
-[; ;led.c: 41:     }
+[; ;led.c: 41:             break;
+[e $U 273  ]
+"43
+[; ;led.c: 43:         default:
+[e :U 278 ]
+"44
+[; ;led.c: 44:             PORTDbits.RD2 = 0;
+[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
+"45
+[; ;led.c: 45:             PORTDbits.RD3 = 0;
+[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+"46
+[; ;led.c: 46:             PORTDbits.RD5 = 0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+"47
+[; ;led.c: 47:             break;
+[e $U 273  ]
+"48
+[; ;led.c: 48:     }
 }
 [e $U 273  ]
 [e :U 274 ]
@@ -620,7 +620,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E2644 1 `ui 277
  278 ]
 [e :U 273 ]
-"42
-[; ;led.c: 42: }
+"49
+[; ;led.c: 49: }
 [e :UE 272 ]
 }

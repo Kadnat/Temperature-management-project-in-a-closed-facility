@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"11 heater.c
-[; ;heater.c: 11: void heater_set_mode(BooleanState state)
+"18 heater.c
+[; ;heater.c: 18: void heater_set_mode(BooleanState state)
 [c E2640 0 1 .. ]
 [n E2640 . OFF ON  ]
 "2057 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
@@ -518,57 +518,57 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"11 heater.c
-[; ;heater.c: 11: void heater_set_mode(BooleanState state)
+"18 heater.c
+[; ;heater.c: 18: void heater_set_mode(BooleanState state)
 [v _heater_set_mode `(v ~T0 @X0 1 ef1`E2640 ]
-"12
-[; ;heater.c: 12: {
+"19
+[; ;heater.c: 19: {
 {
 [e :U _heater_set_mode ]
-"11
-[; ;heater.c: 11: void heater_set_mode(BooleanState state)
-[v _state `E2640 ~T0 @X0 1 r1 ]
-"12
-[; ;heater.c: 12: {
-[f ]
-"13
-[; ;heater.c: 13:     TRISDbits.TRISD4 = 0;
-[e = . . _TRISDbits 0 4 -> -> 0 `i `uc ]
-"14
-[; ;heater.c: 14:     switch(state)
-[e $U 273  ]
-"15
-[; ;heater.c: 15:     {
-{
-"16
-[; ;heater.c: 16:         case OFF:
-[e :U 274 ]
-"17
-[; ;heater.c: 17:             PORTDbits.RD4 = 1;
-[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
 "18
-[; ;heater.c: 18:             break;
-[e $U 272  ]
+[; ;heater.c: 18: void heater_set_mode(BooleanState state)
+[v _state `E2640 ~T0 @X0 1 r1 ]
+"19
+[; ;heater.c: 19: {
+[f ]
 "20
-[; ;heater.c: 20:         case ON:
-[e :U 275 ]
+[; ;heater.c: 20:     TRISDbits.TRISD4 = 0;
+[e = . . _TRISDbits 0 4 -> -> 0 `i `uc ]
 "21
-[; ;heater.c: 21:             PORTDbits.RD4 = 0;
-[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
+[; ;heater.c: 21:     switch(state)
+[e $U 273  ]
 "22
-[; ;heater.c: 22:             break;
-[e $U 272  ]
+[; ;heater.c: 22:     {
+{
+"23
+[; ;heater.c: 23:         case OFF:
+[e :U 274 ]
 "24
-[; ;heater.c: 24:         default:
-[e :U 276 ]
-"25
-[; ;heater.c: 25:             PORTDbits.RD4 = 1;
+[; ;heater.c: 24:             PORTDbits.RD4 = 1;
 [e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
-"26
-[; ;heater.c: 26:             break;
+"25
+[; ;heater.c: 25:             break;
 [e $U 272  ]
 "27
-[; ;heater.c: 27:     }
+[; ;heater.c: 27:         case ON:
+[e :U 275 ]
+"28
+[; ;heater.c: 28:             PORTDbits.RD4 = 0;
+[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
+"29
+[; ;heater.c: 29:             break;
+[e $U 272  ]
+"31
+[; ;heater.c: 31:         default:
+[e :U 276 ]
+"32
+[; ;heater.c: 32:             PORTDbits.RD4 = 1;
+[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
+"33
+[; ;heater.c: 33:             break;
+[e $U 272  ]
+"34
+[; ;heater.c: 34:     }
 }
 [e $U 272  ]
 [e :U 273 ]
@@ -576,7 +576,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E2640 1 `ui 275
  276 ]
 [e :U 272 ]
-"28
-[; ;heater.c: 28: }
+"35
+[; ;heater.c: 35: }
 [e :UE 271 ]
 }

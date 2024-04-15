@@ -85,8 +85,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ds18b20.c: 141: float print_temperature(SystemData* pSystem_data)
 [c E3386 0 1 2 .. ]
 [n E3386 . NO_ERROR TOO_HOT TOO_COLD  ]
-"20 ./temp_monitoring.h
-[; ;./temp_monitoring.h: 20: typedef struct{
+"23 ./temp_monitoring.h
+[; ;./temp_monitoring.h: 23: typedef struct {
 [s S273 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `f 1 `uc 1 `uc 1 `E3386 1 ]
 [n S273 . day month year hour minute second temp_decimal temp_fraction command_decimal command_fraction temperature mode weekday error_type ]
 "111 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdio.h

@@ -4602,19 +4602,69 @@ typedef enum {
 # 1 "main.c" 2
 
 # 1 "./lcd.h" 1
-# 47 "./lcd.h"
-    void LCD_Init(unsigned char I2C_Add);
+# 50 "./lcd.h"
+void LCD_Init(unsigned char I2C_Add);
 
-    void LCD_Write_4Bit(unsigned char Nibble);
-    void LCD_CMD(unsigned char CMD);
-    void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
-    void LCD_Write_Char(char);
-    void LCD_Write_String(char* Str);
-    void Backlight();
-    void noBacklight();
-    void LCD_SR();
-    void LCD_SL();
-    void LCD_Clear();
+
+
+
+
+
+void LCD_Write_4Bit(unsigned char Nibble);
+
+
+
+
+
+
+void LCD_CMD(unsigned char CMD);
+
+
+
+
+
+
+
+void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
+
+
+
+
+
+
+void LCD_Write_Char(char Data);
+
+
+
+
+
+
+void LCD_Write_String(char* Str);
+
+
+
+
+void Backlight();
+
+
+
+
+void noBacklight();
+
+
+
+
+void LCD_SL();
+
+
+
+
+void LCD_SR();
+
+
+
+
+void LCD_Clear();
 # 2 "main.c" 2
 
 # 1 "./i2c_soft.h" 1
@@ -4646,16 +4696,16 @@ void I2C_Test();
 # 3 "main.c" 2
 
 # 1 "./RTC.h" 1
-# 11 "./RTC.h"
+# 15 "./RTC.h"
 # 1 "./temp_monitoring.h" 1
-# 14 "./temp_monitoring.h"
+# 17 "./temp_monitoring.h"
 typedef enum {
-            NO_ERROR,
-            TOO_HOT,
-            TOO_COLD,
+    NO_ERROR,
+    TOO_HOT,
+    TOO_COLD,
 } ErrorType;
 
-typedef struct{
+typedef struct {
     uint8_t day;
     uint8_t month;
     uint8_t year;
@@ -4670,10 +4720,13 @@ typedef struct{
     unsigned char mode;
     unsigned char weekday;
     ErrorType error_type;
-
 } SystemData;
 
+
+
 extern uint8_t activate_buzzer;
+
+
 
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
@@ -4687,9 +4740,9 @@ void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
- void log_system(SystemData* pSystem_data);
-# 11 "./RTC.h" 2
-# 30 "./RTC.h"
+void log_system(SystemData* pSystem_data);
+# 15 "./RTC.h" 2
+# 38 "./RTC.h"
 typedef struct {
     unsigned char day;
     unsigned char month;
@@ -4706,19 +4759,22 @@ typedef struct {
 
 
 
+
 void Write_Byte_To_DS1307_RTC(unsigned char, unsigned char);
 unsigned char Read_Byte_From_DS1307_RTC(unsigned char);
-void Write_Bytes_To_DS1307_RTC(unsigned char,unsigned char*,unsigned char);
-void Read_Bytes_From_DS1307_RTC(unsigned char,unsigned char*,unsigned int);
-void Set_DS1307_RTC_Time(unsigned char,unsigned char,unsigned char,unsigned char);
-
-void Set_DS1307_RTC_Date(unsigned char,unsigned char,unsigned char,unsigned char);
-
+void Write_Bytes_To_DS1307_RTC(unsigned char, unsigned char*, unsigned char);
+void Read_Bytes_From_DS1307_RTC(unsigned char, unsigned char*, unsigned int);
+void Set_DS1307_RTC_Time(unsigned char, unsigned char, unsigned char, unsigned char);
+void Set_DS1307_RTC_Date(unsigned char, unsigned char, unsigned char, unsigned char);
 Date Get_DS1307_RTC_Date(void);
 Time Get_DS1307_RTC_Time(void);
 
-unsigned char pRTCArray[4];
-unsigned char Temp;
+
+
+
+extern unsigned char pRTCArray[4];
+extern unsigned char Temp;
+
 
 
 void DisplayDateOnLCD(SystemData *pDate);
@@ -4726,7 +4782,7 @@ void DisplayTimeToLCD(SystemData *pTime);
 # 4 "main.c" 2
 
 # 1 "./hal_usart.h" 1
-# 17 "./hal_usart.h"
+# 14 "./hal_usart.h"
 # 1 "./mcal_internal_interrupt.h" 1
 # 87 "./mcal_internal_interrupt.h"
 typedef enum
@@ -4734,8 +4790,8 @@ typedef enum
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 }interrupt_priority_cfg;
-# 17 "./hal_usart.h" 2
-# 88 "./hal_usart.h"
+# 14 "./hal_usart.h" 2
+# 85 "./hal_usart.h"
 typedef enum
 {
     BAUDRATE_ASYNCHRONOUS_MODE_8BIT_LOW_SPEED,
@@ -4791,13 +4847,13 @@ typedef struct
     void (*USART_FramingErrorHandler)(void);
     void (*USART_OverrunErrorHandler)(void);
 }usart_t;
-# 153 "./hal_usart.h"
+# 150 "./hal_usart.h"
 uint8_t USART_Asynchronous_Initialize(const usart_t *_usart);
-# 162 "./hal_usart.h"
+# 159 "./hal_usart.h"
 uint8_t USART_Asynchronous_DeInitialize(const usart_t *_usart);
-# 171 "./hal_usart.h"
+# 168 "./hal_usart.h"
 uint8_t USART_Asynchronous_ReadByte_Blocking(uint8_t *_data);
-# 180 "./hal_usart.h"
+# 177 "./hal_usart.h"
 uint8_t USART_Asynchronous_ReadByte_NonBlocking(uint8_t *_data);
 
 
@@ -4807,11 +4863,11 @@ uint8_t USART_Asynchronous_ReadByte_NonBlocking(uint8_t *_data);
 
 
 uint8_t USART_Asynchronous_Restart_RX(void);
-# 197 "./hal_usart.h"
+# 194 "./hal_usart.h"
 uint8_t USART_Asynchronous_WriteByte_Blocking(uint8_t _data);
-# 206 "./hal_usart.h"
+# 203 "./hal_usart.h"
 uint8_t USART_Asynchronous_WriteByte_NonBlocking(uint8_t _data);
-# 216 "./hal_usart.h"
+# 213 "./hal_usart.h"
 uint8_t USART_Asynchronous_WriteString_Blocking(uint8_t *_data, uint16_t str_length);
 # 5 "main.c" 2
 
@@ -5333,16 +5389,67 @@ double y0(double);
 double y1(double);
 double yn(int, double);
 # 43 "./ds18b20.h" 2
-# 57 "./ds18b20.h"
+# 63 "./ds18b20.h"
 float OneWireTemp(void);
+
+
+
+
+
+
 unsigned int OneWireReset(void);
-void OneWireWriteBit(unsigned char);
+
+
+
+
+
+
+void OneWireWriteBit(unsigned char bit);
+
+
+
+
+
+
 unsigned char OneWireReadBit(void);
-void OneWireWriteByte(unsigned char);
+
+
+
+
+
+
+void OneWireWriteByte(unsigned char byte);
+
+
+
+
+
+
 unsigned char OneWireReadByte(void);
+
+
+
+
+
+
 unsigned char OneWireRead(void);
+
+
+
+
 void OneWireHigh(void);
+
+
+
+
 void OneWireRelease(void);
+
+
+
+
+
+
+
 float print_temperature(SystemData* pSystem_data);
 # 7 "main.c" 2
 
@@ -5381,7 +5488,7 @@ void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len);
 uint8_t SPI_exchangeByte(uint8_t data);
 
 void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len);
-# 18 "./SD_PIC.h" 2
+# 17 "./SD_PIC.h" 2
 # 43 "./SD_PIC.h"
 extern const unsigned char CMD0;
 extern const unsigned char CMD0CRC;
@@ -5535,45 +5642,98 @@ void SD_EraseBlocks(unsigned long firstBlock, unsigned long lastBlock);
 void initSD(void);
 
 
+
+
+
+
 void read_init_sd_card(void);
+
+
+
+
+
+
+
 unsigned char average(unsigned char* array, unsigned short n);
+
+
+
+
+
+
 void single_block_read(void);
+
+
+
+
+
+
 void multiple_block_write(void);
+
+
+
+
+
+
 void multiple_block_read(void);
+
+
+
+
+
+
 void single_block_write(unsigned long sector);
 # 8 "main.c" 2
 
 
 # 1 "./AT24C32.h" 1
-# 18 "./AT24C32.h"
+# 29 "./AT24C32.h"
 void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address);
+
+
+
+
+
+
+
 void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address);
+
+
+
+
+
+
+
 unsigned char read_one_byte_in_eeprom(uint16_t register_address);
+
+
+
+
+
+
+
 void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
 # 10 "main.c" 2
 
 # 1 "./PWM.h" 1
-
-
-
-
-
+# 20 "./PWM.h"
 void start_pwm(void);
+
+
+
+
+
+
 void set_pwm_duty(float duty);
 # 11 "main.c" 2
 
 # 1 "./buzzer.h" 1
-
-
-
-
-
-
+# 22 "./buzzer.h"
 void buzzer(uint8_t activate);
 # 12 "main.c" 2
 
 # 1 "./led.h" 1
-# 15 "./led.h"
+# 37 "./led.h"
 void led_set_mode(SystemData *psystem_state);
 # 13 "main.c" 2
 
@@ -5644,7 +5804,7 @@ uint8_t Timer0_Read_Value(const timer0_t *_timer, uint16_t *_value);
 
 
 # 1 "./heater.h" 1
-# 10 "./heater.h"
+# 23 "./heater.h"
 void heater_set_mode(BooleanState state);
 # 17 "main.c" 2
 
@@ -5679,11 +5839,9 @@ void main(void) {
     OSCCON = 0x70;
     OSCTUNE = 0x40;
 
-
-
-
     uint8_t ret=0;
     volatile uint16_t timer1_counter_val;
+
     usart_module_init();
     timer1_timer_init();
 
@@ -5692,7 +5850,6 @@ void main(void) {
 
     start_pwm();
     LCD_Init(0x27);
-
 
 
     while(1)
@@ -5707,6 +5864,7 @@ void Timer1_DefaultInterruptHandler(void)
     static uint16_t cpt_ms_lcd=0, cpt_ms_oled=0, cpt_ms_buzzer=0;
     static uint32_t cpt_ms_sd=0;
     static uint8_t cpt_ms_temp_management=0;
+
     cpt_ms_lcd++;
     cpt_ms_oled++;
     cpt_ms_sd++;
@@ -5738,16 +5896,16 @@ void Timer1_DefaultInterruptHandler(void)
         }
     }
 
-    if(cpt_ms_oled >=10000)
+    if(cpt_ms_oled >=3000)
     {
         print_temperature(&system_management);
+        log_system(&system_management);
         cpt_ms_oled=0;
     }
 
     if(cpt_ms_sd >= 30000)
     {
         update_SD_tab(&system_management);
-        log_system(&system_management);
         cpt_ms_sd=0;
     }
 

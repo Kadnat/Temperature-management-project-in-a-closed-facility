@@ -7,9 +7,9 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "mcal_interrupt_manager.c" 2
-# 10 "mcal_interrupt_manager.c"
+# 11 "mcal_interrupt_manager.c"
 # 1 "./mcal_interrupt_manager.h" 1
-# 13 "./mcal_interrupt_manager.h"
+# 14 "./mcal_interrupt_manager.h"
 # 1 "./mcal_internal_interrupt.h" 1
 # 87 "./mcal_internal_interrupt.h"
 typedef enum
@@ -17,8 +17,8 @@ typedef enum
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 }interrupt_priority_cfg;
-# 13 "./mcal_interrupt_manager.h" 2
-# 32 "./mcal_interrupt_manager.h"
+# 14 "./mcal_interrupt_manager.h" 2
+# 33 "./mcal_interrupt_manager.h"
 void TMR0_ISR(void);
 
 
@@ -32,7 +32,7 @@ void USART_TX_ISR(void);
 
 
 void USART_RX_ISR(void);
-# 10 "mcal_interrupt_manager.c" 2
+# 11 "mcal_interrupt_manager.c" 2
 
 # 1 "./common.h" 1
 # 20 "./common.h"
@@ -4626,8 +4626,8 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 11 "mcal_interrupt_manager.c" 2
-# 45 "mcal_interrupt_manager.c"
+# 12 "mcal_interrupt_manager.c" 2
+# 46 "mcal_interrupt_manager.c"
 void __attribute__((picinterrupt(("")))) InterruptManager(void)
 {
 

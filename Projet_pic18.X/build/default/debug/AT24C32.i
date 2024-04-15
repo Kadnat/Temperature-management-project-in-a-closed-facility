@@ -43,7 +43,7 @@ void I2C_Test();
 # 8 "AT24C32.c" 2
 
 # 1 "./AT24C32.h" 1
-# 14 "./AT24C32.h"
+# 13 "./AT24C32.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4636,46 +4636,77 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 14 "./AT24C32.h" 2
-
-
-
-
+# 13 "./AT24C32.h" 2
+# 29 "./AT24C32.h"
 void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address);
+
+
+
+
+
+
+
 void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address);
+
+
+
+
+
+
+
 unsigned char read_one_byte_in_eeprom(uint16_t register_address);
+
+
+
+
+
+
+
 void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
 # 9 "AT24C32.c" 2
-
-
+# 19 "AT24C32.c"
 void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address)
 {
     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
     unsigned char address_lower_byte = (register_address & 0xFF);
 
+
     I2C_Start();
- I2C_WriteToAddress(0x50);
- I2C_WriteByte(address_upper_byte);
+    I2C_WriteToAddress(0x50);
+    I2C_WriteByte(address_upper_byte);
     I2C_WriteByte(address_lower_byte);
- I2C_WriteByte(c);
- I2C_Stop();
+    I2C_WriteByte(c);
+    I2C_Stop();
 }
+
+
+
+
+
+
 
 void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address)
 {
     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
     unsigned char address_lower_byte = (register_address & 0xFF);
 
+
     I2C_Start();
- I2C_WriteToAddress(0x50);
- I2C_WriteByte(address_upper_byte);
+    I2C_WriteToAddress(0x50);
+    I2C_WriteByte(address_upper_byte);
     I2C_WriteByte(address_lower_byte);
     for(int i=0;i<8;i++)
     {
       I2C_WriteByte(c[i]);
     }
- I2C_Stop();
+    I2C_Stop();
 }
+
+
+
+
+
+
 
 unsigned char read_one_byte_in_eeprom(uint16_t register_address)
 {
@@ -4683,16 +4714,23 @@ unsigned char read_one_byte_in_eeprom(uint16_t register_address)
     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
     unsigned char address_lower_byte = (register_address & 0xFF);
 
-   I2C_Start();
-   I2C_WriteToAddress(0x50);
- I2C_WriteByte(address_upper_byte);
+
+    I2C_Start();
+    I2C_WriteToAddress(0x50);
+    I2C_WriteByte(address_upper_byte);
     I2C_WriteByte(address_lower_byte);
-   I2C_Start();
-   I2C_ReadFromAddress(0x50);
-   c = I2C_ReadResult();
-   I2C_Stop();
-   return c;
+    I2C_Start();
+    I2C_ReadFromAddress(0x50);
+    c = I2C_ReadResult();
+    I2C_Stop();
+    return c;
 }
+
+
+
+
+
+
 
 void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
 {
@@ -4700,17 +4738,17 @@ void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data)
     unsigned char address_upper_byte = (register_address & 0xF00)>>8;
     unsigned char address_lower_byte = (register_address & 0xFF);
 
-   I2C_Start();
-   I2C_WriteToAddress(0x50);
- I2C_WriteByte(address_upper_byte);
+
+    I2C_Start();
+    I2C_WriteToAddress(0x50);
+    I2C_WriteByte(address_upper_byte);
     I2C_WriteByte(address_lower_byte);
-   I2C_Start();
-   I2C_ReadFromAddress(0x50);
+    I2C_Start();
+    I2C_ReadFromAddress(0x50);
     for(int i=0;i<7;i++)
     {
         data[i] = I2C_ReadResult_withAck();
-   }
+    }
     data[7] = I2C_ReadResult();
     I2C_Stop();
-
 }

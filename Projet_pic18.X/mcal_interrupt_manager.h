@@ -4,6 +4,7 @@
  * LinkedIn : https://www.linkedin.com/in/mohamed-abdel-wahab-162413253/
  * Github   : https://github.com/moabdelwahab6611
  * Created on June 2, 2023, 9:36 PM
+ * Modified by Nathanaël BLAVO BALLARIN, 26 March 2024
  */
 
 #ifndef MCAL_INTERRUPT_MANAGER_H

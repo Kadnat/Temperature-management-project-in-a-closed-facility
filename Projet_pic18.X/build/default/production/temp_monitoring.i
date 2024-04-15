@@ -15,7 +15,7 @@
 
 
 # 1 "./temp_monitoring.h" 1
-# 12 "./temp_monitoring.h"
+# 13 "./temp_monitoring.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4608,16 +4608,18 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 12 "./temp_monitoring.h" 2
+# 13 "./temp_monitoring.h" 2
+
+
 
 
 typedef enum {
-            NO_ERROR,
-            TOO_HOT,
-            TOO_COLD,
+    NO_ERROR,
+    TOO_HOT,
+    TOO_COLD,
 } ErrorType;
 
-typedef struct{
+typedef struct {
     uint8_t day;
     uint8_t month;
     uint8_t year;
@@ -4632,10 +4634,13 @@ typedef struct{
     unsigned char mode;
     unsigned char weekday;
     ErrorType error_type;
-
 } SystemData;
 
+
+
 extern uint8_t activate_buzzer;
+
+
 
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
@@ -4649,7 +4654,7 @@ void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
- void log_system(SystemData* pSystem_data);
+void log_system(SystemData* pSystem_data);
 # 8 "temp_monitoring.c" 2
 
 # 1 "./ds18b20.h" 1
@@ -5171,21 +5176,72 @@ double y0(double);
 double y1(double);
 double yn(int, double);
 # 43 "./ds18b20.h" 2
-# 57 "./ds18b20.h"
+# 63 "./ds18b20.h"
 float OneWireTemp(void);
+
+
+
+
+
+
 unsigned int OneWireReset(void);
-void OneWireWriteBit(unsigned char);
+
+
+
+
+
+
+void OneWireWriteBit(unsigned char bit);
+
+
+
+
+
+
 unsigned char OneWireReadBit(void);
-void OneWireWriteByte(unsigned char);
+
+
+
+
+
+
+void OneWireWriteByte(unsigned char byte);
+
+
+
+
+
+
 unsigned char OneWireReadByte(void);
+
+
+
+
+
+
 unsigned char OneWireRead(void);
+
+
+
+
 void OneWireHigh(void);
+
+
+
+
 void OneWireRelease(void);
+
+
+
+
+
+
+
 float print_temperature(SystemData* pSystem_data);
 # 9 "temp_monitoring.c" 2
 
 # 1 "./RTC.h" 1
-# 30 "./RTC.h"
+# 38 "./RTC.h"
 typedef struct {
     unsigned char day;
     unsigned char month;
@@ -5202,19 +5258,22 @@ typedef struct {
 
 
 
+
 void Write_Byte_To_DS1307_RTC(unsigned char, unsigned char);
 unsigned char Read_Byte_From_DS1307_RTC(unsigned char);
-void Write_Bytes_To_DS1307_RTC(unsigned char,unsigned char*,unsigned char);
-void Read_Bytes_From_DS1307_RTC(unsigned char,unsigned char*,unsigned int);
-void Set_DS1307_RTC_Time(unsigned char,unsigned char,unsigned char,unsigned char);
-
-void Set_DS1307_RTC_Date(unsigned char,unsigned char,unsigned char,unsigned char);
-
+void Write_Bytes_To_DS1307_RTC(unsigned char, unsigned char*, unsigned char);
+void Read_Bytes_From_DS1307_RTC(unsigned char, unsigned char*, unsigned int);
+void Set_DS1307_RTC_Time(unsigned char, unsigned char, unsigned char, unsigned char);
+void Set_DS1307_RTC_Date(unsigned char, unsigned char, unsigned char, unsigned char);
 Date Get_DS1307_RTC_Date(void);
 Time Get_DS1307_RTC_Time(void);
 
-unsigned char pRTCArray[4];
-unsigned char Temp;
+
+
+
+extern unsigned char pRTCArray[4];
+extern unsigned char Temp;
+
 
 
 void DisplayDateOnLCD(SystemData *pDate);
@@ -5222,10 +5281,31 @@ void DisplayTimeToLCD(SystemData *pTime);
 # 10 "temp_monitoring.c" 2
 
 # 1 "./AT24C32.h" 1
-# 18 "./AT24C32.h"
+# 29 "./AT24C32.h"
 void write_one_byte_in_eeprom(unsigned char c, uint16_t register_address);
+
+
+
+
+
+
+
 void write_one_page_in_eeprom(unsigned char* c, uint16_t register_address);
+
+
+
+
+
+
+
 unsigned char read_one_byte_in_eeprom(uint16_t register_address);
+
+
+
+
+
+
+
 void read_one_page_in_eeprom(uint16_t register_address, unsigned char* data);
 # 11 "temp_monitoring.c" 2
 
@@ -5264,7 +5344,7 @@ void SPI_exchangeBytes(uint8_t* txData, uint8_t* rxData, uint8_t len);
 uint8_t SPI_exchangeByte(uint8_t data);
 
 void SPI_receiveBytesTransmitFF(uint8_t* rxData, uint16_t len);
-# 18 "./SD_PIC.h" 2
+# 17 "./SD_PIC.h" 2
 # 43 "./SD_PIC.h"
 extern const unsigned char CMD0;
 extern const unsigned char CMD0CRC;
@@ -5418,58 +5498,140 @@ void SD_EraseBlocks(unsigned long firstBlock, unsigned long lastBlock);
 void initSD(void);
 
 
+
+
+
+
 void read_init_sd_card(void);
+
+
+
+
+
+
+
 unsigned char average(unsigned char* array, unsigned short n);
+
+
+
+
+
+
 void single_block_read(void);
+
+
+
+
+
+
 void multiple_block_write(void);
+
+
+
+
+
+
 void multiple_block_read(void);
+
+
+
+
+
+
 void single_block_write(unsigned long sector);
 # 12 "temp_monitoring.c" 2
 
 # 1 "./PWM.h" 1
-
-
-
-
-
+# 20 "./PWM.h"
 void start_pwm(void);
+
+
+
+
+
+
 void set_pwm_duty(float duty);
 # 13 "temp_monitoring.c" 2
 
 # 1 "./led.h" 1
-# 15 "./led.h"
+# 37 "./led.h"
 void led_set_mode(SystemData *psystem_state);
 # 14 "temp_monitoring.c" 2
 
 # 1 "./heater.h" 1
-# 10 "./heater.h"
+# 23 "./heater.h"
 void heater_set_mode(BooleanState state);
 # 15 "temp_monitoring.c" 2
 
 # 1 "./buzzer.h" 1
-
-
-
-
-
-
+# 22 "./buzzer.h"
 void buzzer(uint8_t activate);
 # 16 "temp_monitoring.c" 2
 
 # 1 "./lcd.h" 1
-# 47 "./lcd.h"
-    void LCD_Init(unsigned char I2C_Add);
+# 50 "./lcd.h"
+void LCD_Init(unsigned char I2C_Add);
 
-    void LCD_Write_4Bit(unsigned char Nibble);
-    void LCD_CMD(unsigned char CMD);
-    void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
-    void LCD_Write_Char(char);
-    void LCD_Write_String(char* Str);
-    void Backlight();
-    void noBacklight();
-    void LCD_SR();
-    void LCD_SL();
-    void LCD_Clear();
+
+
+
+
+
+void LCD_Write_4Bit(unsigned char Nibble);
+
+
+
+
+
+
+void LCD_CMD(unsigned char CMD);
+
+
+
+
+
+
+
+void LCD_Set_Cursor(unsigned char ROW, unsigned char COL);
+
+
+
+
+
+
+void LCD_Write_Char(char Data);
+
+
+
+
+
+
+void LCD_Write_String(char* Str);
+
+
+
+
+void Backlight();
+
+
+
+
+void noBacklight();
+
+
+
+
+void LCD_SL();
+
+
+
+
+void LCD_SR();
+
+
+
+
+void LCD_Clear();
 # 17 "temp_monitoring.c" 2
 
 
@@ -5478,6 +5640,12 @@ static uint16_t previous_address_eeprom=8;
 static uint8_t counter_alarm=0;
 static unsigned long sector_address = 0;
 uint8_t activate_buzzer = 0;
+
+
+
+
+
+
 
 void update_system_data(SystemData* pSystem_data)
 {
@@ -5505,9 +5673,7 @@ void update_system_data(SystemData* pSystem_data)
 
 
 }
-
-
-
+# 65 "temp_monitoring.c"
 void save_in_eeprom(SystemData* pSystem_data)
 {
    unsigned char tab[16]={0};
@@ -5529,8 +5695,6 @@ void save_in_eeprom(SystemData* pSystem_data)
    tab[14] = 0;
    tab[15] = 0;
 
-
-
    write_one_page_in_eeprom(tab, previous_address_eeprom);
    _delay((unsigned long)((100)*(32000000/4000.0)));
    write_one_page_in_eeprom(&tab[8], previous_address_eeprom+8);
@@ -5548,6 +5712,11 @@ void save_in_eeprom(SystemData* pSystem_data)
    }
 }
 
+
+
+
+
+
 void save_eep_address_in_eeprom(void)
 {
     unsigned char addressH=0, addressL=0;
@@ -5564,6 +5733,11 @@ void save_eep_address_in_eeprom(void)
 
 }
 
+
+
+
+
+
 void read_eep_address_in_eeprom(void)
 {
     unsigned char addressH=0, addressL=0;
@@ -5577,6 +5751,11 @@ void read_eep_address_in_eeprom(void)
     previous_address_eeprom = (addressH<<8) | addressL;
 
 }
+
+
+
+
+
 
 void reset_eep_address_in_eeprom(void)
 {
@@ -5594,6 +5773,11 @@ void reset_eep_address_in_eeprom(void)
     _delay((unsigned long)((100)*(32000000/4000.0)));
     write_one_byte_in_eeprom(counter_alarm, 2);
 }
+
+
+
+
+
 
 void extract_all_alarms(void)
 {
@@ -5622,16 +5806,12 @@ void extract_all_alarms(void)
         previous_address_counter += 8;
         _delay((unsigned long)((10)*(32000000/4000.0)));
 
-
         printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab2[0], tab2[1], tab2[2], tab2[3], tab2[4], tab2[5], tab2[6], tab2[7], tab2[8], tab2[9], tab2[10], tab2[11], tab2[12], tab2[13], tab2[14], tab2[15]);
 
     }
     reset_eep_address_in_eeprom();
 }
-
-
-
-
+# 210 "temp_monitoring.c"
 void update_SD_tab(SystemData* pSystem_data)
 {
     static int counter = 0;
@@ -5654,7 +5834,6 @@ void update_SD_tab(SystemData* pSystem_data)
     tab[14] = 0;
     tab[15] = 0;
 
-
     memcpy(&SDwriteBuffer[counter], tab, 16);
 
     counter += 16;
@@ -5674,6 +5853,10 @@ void update_SD_tab(SystemData* pSystem_data)
 }
 
 
+
+
+
+
 void save_sd_address_in_eeprom(void)
 {
     for(int i = 0; i < 4; i++) {
@@ -5681,6 +5864,11 @@ void save_sd_address_in_eeprom(void)
         _delay((unsigned long)((10)*(32000000/4000.0)));
     }
 }
+
+
+
+
+
 
 void read_sd_address_in_eeprom(void)
 {
@@ -5690,6 +5878,11 @@ void read_sd_address_in_eeprom(void)
     }
 }
 
+
+
+
+
+
 void reset_sd_address_in_eeprom(void)
 {
     for(int i = 0; i < 4; i++) {
@@ -5697,6 +5890,11 @@ void reset_sd_address_in_eeprom(void)
         _delay((unsigned long)((10)*(32000000/4000.0)));
     }
 }
+
+
+
+
+
 
 void extract_data_for_days(int number_days)
 {
@@ -5716,8 +5914,6 @@ void extract_data_for_days(int number_days)
 
 
     initSD();
-
-
     if (firstBlock < 0) {
         firstBlock = 0;
     }
@@ -5753,9 +5949,7 @@ void extract_data_for_days(int number_days)
     printf("Sec %d-%d\r\n", (int)firstBlock, (int)(firstBlock + numWrites - 1));
 
 }
-
-
-
+# 355 "temp_monitoring.c"
  void temp_management(SystemData* pSystem_data)
 {
     float command_temp = 23.0;
@@ -5799,7 +5993,12 @@ void extract_data_for_days(int number_days)
 
 }
 
- void log_system(SystemData* pSystem_data)
+
+
+
+
+
+void log_system(SystemData* pSystem_data)
 {
    unsigned char tab[16]={0};
 

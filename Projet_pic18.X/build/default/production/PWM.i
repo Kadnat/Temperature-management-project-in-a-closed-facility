@@ -13,10 +13,10 @@
 
 
 
+
+
 # 1 "./PWM.h" 1
-
-
-
+# 12 "./PWM.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4609,12 +4609,27 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 4 "./PWM.h" 2
+# 12 "./PWM.h" 2
+
+
+
+
+
+
 
 
 void start_pwm(void);
+
+
+
+
+
+
 void set_pwm_duty(float duty);
-# 7 "PWM.c" 2
+# 9 "PWM.c" 2
+
+
+
 
 
 void start_pwm(void)
@@ -4623,18 +4638,18 @@ void start_pwm(void)
 }
 
 
- void set_pwm_duty(float duty)
-{
 
+
+
+
+void set_pwm_duty(float duty)
+{
     float calcul=0, duty1 = 100- duty;
     TRISCbits.TRISC2=0;
     CCP1CON=0x0F;
     PR2=254;
     calcul = (PR2 + 1)*((float)duty1/100);
     CCPR1L= (char)calcul;
-
     T2CON = 0b00000100;
-
     TMR2=0;
-
 }

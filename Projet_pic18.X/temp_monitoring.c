@@ -163,8 +163,8 @@ void reset_eep_address_in_eeprom(void)
 }
 
 /*
- * @Brief              : To read the various addresses in the eeprom.
- * @Param pSystem_data : Pointer to the data structure.
+ * @Brief  : Extracts all alarms stored in the eeprom
+ * @Param  None.
  * @Return None.        
  */
 void extract_all_alarms(void)
@@ -202,10 +202,14 @@ void extract_all_alarms(void)
 
 // SD MANAGEMENT FUNCTIONS
 
-
+/*
+ * @Brief              : To write data in SD Card.
+ * @Param pSystem_data : Pointer to the data structure.
+ * @Return None.        
+ */
 void update_SD_tab(SystemData* pSystem_data)
 {
-    static int counter = 0; // Compteur pour suivre la position actuelle dans le tableau
+    static int counter = 0;
     unsigned char tab[16] = {0};
 
     tab[0] = pSystem_data->year;
@@ -220,17 +224,16 @@ void update_SD_tab(SystemData* pSystem_data)
     tab[9] = pSystem_data->command_decimal;
     tab[10] = pSystem_data->command_fraction;
     tab[11] = 0;
-    tab[12] = 0; // command_decimal
-    tab[13] = 0; // command_fraction
-    tab[14] = 0; // address upper byte
-    tab[15] = 0; // address lower byte
+    tab[12] = 0;  
+    tab[13] = 0;  
+    tab[14] = 0; 
+    tab[15] = 0; 
 
-    // Assurez-vous que le tableau SDwriteBuffer est accessible
-    memcpy(&SDwriteBuffer[counter], tab, 16); // Copie les données du tableau 'tab' dans 'SDwriteBuffer' à la position actuelle du compteur
+    memcpy(&SDwriteBuffer[counter], tab, 16); // Copies data from 'tab' array to 'SDwriteBuffer' at current counter position
 
-    counter += 16; // Augmente le compteur de 16 pour le prochain appel de la fonction
+    counter += 16;
 
-    // Réinitialise le compteur si nous avons atteint la fin du tableau SDwriteBuffer
+    // Resets the counter if we have reached the end of the SDwriteBuffer array
     if (counter >= 512) {
         single_block_write(sector_address);
         sector_address++;
@@ -244,7 +247,11 @@ void update_SD_tab(SystemData* pSystem_data)
     }
 }
 
-
+/*
+ * @Brief              : To save SD last write address in eeprom AT24C32.
+ * @Param  None.
+ * @Return None.        
+ */
 void save_sd_address_in_eeprom(void)
 {      
     for(int i = 0; i < 4; i++) {
@@ -253,6 +260,11 @@ void save_sd_address_in_eeprom(void)
     }
 }
 
+/*
+ * @Brief              : To read SD last write address in eeprom AT24C32.
+ * @Param  None.
+ * @Return None.        
+ */
 void read_sd_address_in_eeprom(void)
 {   
     for(int i = 0; i < 4; i++) {
@@ -261,6 +273,11 @@ void read_sd_address_in_eeprom(void)
     }
 }
 
+/*
+ * @Brief              : To reset SD last write address in eeprom AT24C32.
+ * @Param  None.
+ * @Return None.        
+ */
 void reset_sd_address_in_eeprom(void)
 {
     for(int i = 0; i < 4; i++) {
@@ -269,6 +286,11 @@ void reset_sd_address_in_eeprom(void)
     }
 }
 
+/*
+ * @Brief              : Send data for X days to HMI.
+ * @Param  number_days : Number of days to extract.
+ * @Return None.        
+ */
 void extract_data_for_days(int number_days)
 {
     unsigned long i;
@@ -287,8 +309,6 @@ void extract_data_for_days(int number_days)
     
 
     initSD();
-    // Si le nombre de jours demandé est supérieur au nombre de jours de données disponibles,
-    // nous commençons à lire à partir du premier bloc de données
     if (firstBlock < 0) {
         firstBlock = 0;
     }
@@ -310,7 +330,7 @@ void extract_data_for_days(int number_days)
         // Read the sector and store it in SDreadBuffer
         SD_MBR_Receive(SDreadBuffer);
 
-        // Afficher les données
+        // Print data
         for(int j = 0; j<32;j++)
         {
             printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", SDreadBuffer[0+(16*j)], SDreadBuffer[1+(16*j)], SDreadBuffer[2+(16*j)], SDreadBuffer[3+(16*j)], SDreadBuffer[4+(16*j)], SDreadBuffer[5+(16*j)], SDreadBuffer[6+(16*j)], SDreadBuffer[7+(16*j)], SDreadBuffer[8+(16*j)], SDreadBuffer[9+(16*j)], SDreadBuffer[10+(16*j)], SDreadBuffer[11+(16*j)], SDreadBuffer[12+(16*j)], SDreadBuffer[13+(16*j)], SDreadBuffer[14+(16*j)], SDreadBuffer[15+(16*j)]);
@@ -327,6 +347,11 @@ void extract_data_for_days(int number_days)
 
 // TEMP MANAGEMENT FUNCTIONS
 
+/*
+ * @Brief               : Temperature management function .
+ * @Param  pSystem_data : Pointer to the data structure.
+ * @Return None.        
+ */
  void temp_management(SystemData* pSystem_data)
 {
     float command_temp = 23.0;
@@ -370,7 +395,12 @@ void extract_data_for_days(int number_days)
         
 }
  
- void log_system(SystemData* pSystem_data)
+/*
+ * @Brief              : Send current system status to HMI.
+ * @Param  None.
+ * @Return None.        
+ */
+void log_system(SystemData* pSystem_data)
 {
    unsigned char tab[16]={0};
 
@@ -386,10 +416,10 @@ void extract_data_for_days(int number_days)
    tab[9] = pSystem_data->command_decimal;
    tab[10] = pSystem_data->command_fraction;
    tab[11] = 0;
-   tab[12] = 0;//command_decimal; // 
-   tab[13] = 0;//command_fraction; // 
-   tab[14] = 0;//address upper byte; // 
-   tab[15] = 0;//address lower byte; // 
+   tab[12] = 0;
+   tab[13] = 0;
+   tab[14] = 0;
+   tab[15] = 0;
   
    printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab[0], tab[1], tab[2], tab[3], tab[4], tab[5], tab[6], tab[7], tab[8], tab[9], tab[10], tab[11], tab[12], tab[13], tab[14], tab[15]);
     

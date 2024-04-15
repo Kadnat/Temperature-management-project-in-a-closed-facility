@@ -14,11 +14,8 @@
 
 
 
-
 # 1 "./led.h" 1
-
-
-
+# 12 "./led.h"
 # 1 "./common.h" 1
 # 20 "./common.h"
 #pragma config OSC = INTIO67
@@ -4611,17 +4608,17 @@ typedef enum {
     OFF = 0,
     ON = 1,
 }BooleanState;
-# 4 "./led.h" 2
+# 12 "./led.h" 2
 
 # 1 "./temp_monitoring.h" 1
-# 14 "./temp_monitoring.h"
+# 17 "./temp_monitoring.h"
 typedef enum {
-            NO_ERROR,
-            TOO_HOT,
-            TOO_COLD,
+    NO_ERROR,
+    TOO_HOT,
+    TOO_COLD,
 } ErrorType;
 
-typedef struct{
+typedef struct {
     uint8_t day;
     uint8_t month;
     uint8_t year;
@@ -4636,10 +4633,13 @@ typedef struct{
     unsigned char mode;
     unsigned char weekday;
     ErrorType error_type;
-
 } SystemData;
 
+
+
 extern uint8_t activate_buzzer;
+
+
 
 void save_in_eeprom(SystemData* pSystem_data);
 void update_system_data(SystemData* pSystem_data);
@@ -4653,13 +4653,12 @@ void extract_all_alarms(void);
 void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
- void log_system(SystemData* pSystem_data);
-# 5 "./led.h" 2
-# 15 "./led.h"
+void log_system(SystemData* pSystem_data);
+# 13 "./led.h" 2
+# 37 "./led.h"
 void led_set_mode(SystemData *psystem_state);
-# 9 "led.c" 2
-
-
+# 8 "led.c" 2
+# 18 "led.c"
 void led_set_mode(SystemData *psystem_state)
 {
     TRISDbits.TRISD3 = 0;

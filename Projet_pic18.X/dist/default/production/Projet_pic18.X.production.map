@@ -5,9 +5,9 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.36\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Projet_pic18.X.production.sym \
   --cmf=dist/default/production\Projet_pic18.X.production.cmf -z -Q18F4620 \
-  -oC:\Users\NATHAN~1\AppData\Local\Temp\xcAsdq8.5 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\NATHAN~1\AppData\Local\Temp\xcAsfcc.4 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Projet_pic18.X.production.map \
-  --md=C:\Users\NATHAN~1\AppData\Local\Temp\xcAsdq8.dat -E1 \
+  --md=C:\Users\NATHAN~1\AppData\Local\Temp\xcAsfcc.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
   -ACOMRAM=01h-07Fh -AABS1=00h-0F7Fh -ABIGRAM=01h-0F7Fh \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\NATHAN~1\AppData\Local\Temp\xcAsdq8.o \
+  C:\Users\NATHAN~1\AppData\Local\Temp\xcAsfcc.o \
   dist/default/production\Projet_pic18.X.production.o 
 
 Object code version is 3.11
@@ -36,7 +36,7 @@ Machine type is 18F4620
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\NATHAN~1\AppData\Local\Temp\xcAsdq8.o
+C:\Users\NATHAN~1\AppData\Local\Temp\xcAsfcc.o
                 config                           300000   300000        E        0       4
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
@@ -652,13 +652,13 @@ SSD1306_Init@vccstate                                 cstackCOMRAM 000009
 SSD1306_PutStretchC@F3513                             bssBANK2     000258
 SSD1306_PutStretchC@b                                 cstackCOMRAM 000011
 SSD1306_PutStretchC@bn                                cstackCOMRAM 000016
-SSD1306_PutStretchC@bn_1371                           cstackCOMRAM 00001B
+SSD1306_PutStretchC@bn_1369                           cstackCOMRAM 00001B
 SSD1306_PutStretchC@c                                 cstackCOMRAM 00001E
 SSD1306_PutStretchC@font_c                            cstackCOMRAM 000019
 SSD1306_PutStretchC@i                                 cstackCOMRAM 000017
-SSD1306_PutStretchC@i_1362                            cstackCOMRAM 00001D
-SSD1306_PutStretchC@i_1366                            cstackCOMRAM 00001F
-SSD1306_PutStretchC@i_1370                            cstackCOMRAM 000018
+SSD1306_PutStretchC@i_1360                            cstackCOMRAM 00001D
+SSD1306_PutStretchC@i_1364                            cstackCOMRAM 00001F
+SSD1306_PutStretchC@i_1368                            cstackCOMRAM 000018
 SSD1306_PutStretchC@offs                              cstackCOMRAM 00001A
 SSD1306_PutStretchC@p                                 cstackCOMRAM 00001C
 SSD1306_PutStretchC@pos                               cstackCOMRAM 000015
@@ -798,17 +798,17 @@ _USART_Asynchronous_ReadByte_NonBlocking              text61       009D88
 _USART_Asynchronous_Restart_RX                        text59       00A196
 _USART_Asynchronous_WriteByte_Blocking                text140      00A008
 _USART_Baud_Rate_Calculation                          text3        0037A4
-_USART_Baud_Rate_Calculation$4465                     cstackBANK3  00037F
+_USART_Baud_Rate_Calculation$4461                     cstackBANK3  00037F
 _USART_FramingDefaultErrorHandler                     text60       00A0F0
 _USART_FramingErrorHandler                            bssBANK1     0001A0
 _USART_OverrunDefaultErrorHandler                     text58       00A190
 _USART_OverrunErrorHandler                            bssBANK1     00019E
 _USART_RX_ISR                                         text36       0089A2
 _USART_RxDefaultInterruptHandler                      text37       007150
-_USART_RxDefaultInterruptHandler@hal_usart$F947       bssBANK1     0001A2
+_USART_RxDefaultInterruptHandler@hal_usart$F945       bssBANK1     0001A2
 _USART_TX_ISR                                         text34       009CA0
 _USART_TxDefaultInterruptHandler                      text35       00A0B4
-_USART_TxDefaultInterruptHandler@hal_usart$F942       bssBANK1     0001A4
+_USART_TxDefaultInterruptHandler@hal_usart$F940       bssBANK1     0001A4
 __HRAM                                                (abs)        000000
 __Habs1                                               abs1         000000
 __Hbank0                                              bank0        000000
@@ -1815,11 +1815,11 @@ _commands                                             dataBANK2    0002FA
 _counter_alarm                                        bssBANK1     0001A9
 _dbuf                                                 bssBANK2     000274
 _dtoa                                                 text134      005098
-_dtoa$3677                                            cstackCOMRAM 000030
+_dtoa$3673                                            cstackCOMRAM 000030
 _efgtoa                                               text120      0010AA
-_efgtoa$3701                                          cstackBANK0  000080
-_efgtoa$3708                                          cstackBANK0  000082
-_efgtoa$3709                                          cstackBANK0  000084
+_efgtoa$3697                                          cstackBANK0  000080
+_efgtoa$3704                                          cstackBANK0  000082
+_efgtoa$3705                                          cstackBANK0  000084
 _errno                                                bssBANK2     00026A
 _execute_rx_command                                   text40       007292
 _extract_all_alarms                                   text48       005FBE
@@ -1835,10 +1835,10 @@ _isalpha                                              text118      009A78
 _isdigit                                              text146      009BCE
 _islower                                              text117      009B26
 _isspace                                              text145      0095A8
-_isspace$3539                                         cstackCOMRAM 000007
+_isspace$3535                                         cstackCOMRAM 000007
 _isupper                                              text124      009B5E
 _isxdigit                                             text56       008EEE
-_isxdigit$3950                                        cstackCOMRAM 00000D
+_isxdigit$3946                                        cstackCOMRAM 00000D
 _led_set_mode                                         text99       008E7C
 _log_system                                           text111      006BD8
 _main                                                 text0        009D5E
@@ -1870,7 +1870,7 @@ _sector_address                                       bssBANK1     00018E
 _set_pwm_duty                                         text93       007DC8
 _single_block_write                                   text81       00855E
 _snprintf                                             text103      0073C6
-_snprintf$3594                                        cstackBANK0  0000E1
+_snprintf$3590                                        cstackBANK0  0000E1
 _spiInit                                              text43       0091DA
 _spiReceive                                           text87       00A16C
 _spiSend                                              text86       00A13E
@@ -2020,16 +2020,16 @@ initSD@F2838                                          bssBANK2     000240
 initSD@argument                                       cstackBANK0  000080
 initSD@arr_response                                   cstackBANK0  00008A
 initSD@i                                              cstackBANK0  00009A
-initSD@i_1739                                         cstackBANK0  00009C
-initSD@i_1740                                         cstackBANK0  00009D
-initSD@i_1742                                         cstackBANK0  00009B
-initSD@i_1743                                         cstackBANK0  00009E
-initSD@i_1746                                         cstackBANK0  00009F
+initSD@i_1737                                         cstackBANK0  00009C
+initSD@i_1738                                         cstackBANK0  00009D
+initSD@i_1740                                         cstackBANK0  00009B
+initSD@i_1741                                         cstackBANK0  00009E
+initSD@i_1744                                         cstackBANK0  00009F
 initSD@last_OSCCON                                    cstackBANK0  000084
 initSD@last_OSCTUNE                                   cstackBANK0  000085
 initSD@response                                       cstackBANK0  0000A4
 initSD@tempSize                                       cstackBANK0  000086
-initSD@tempSize_1745                                  cstackBANK0  0000A0
+initSD@tempSize_1743                                  cstackBANK0  0000A0
 int$flags                                             temp         00007F
 int_func                                              intcode_body 007AFE
 intlevel0                                             text         000000

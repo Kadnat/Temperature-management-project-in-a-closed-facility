@@ -521,62 +521,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"9 PWM.c
-[; ;PWM.c: 9: void start_pwm(void)
+"14 PWM.c
+[; ;PWM.c: 14: void start_pwm(void)
 [v _start_pwm `(v ~T0 @X0 1 ef ]
-"10
-[; ;PWM.c: 10: {
+"15
+[; ;PWM.c: 15: {
 {
 [e :U _start_pwm ]
 [f ]
-"11
-[; ;PWM.c: 11:     T2CONbits.TMR2ON=1;
+"16
+[; ;PWM.c: 16:     T2CONbits.TMR2ON=1;
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-"12
-[; ;PWM.c: 12: }
+"17
+[; ;PWM.c: 17: }
 [e :UE 271 ]
 }
-"15
-[; ;PWM.c: 15:  void set_pwm_duty(float duty)
+"24
+[; ;PWM.c: 24: void set_pwm_duty(float duty)
 [v _set_pwm_duty `(v ~T0 @X0 1 ef1`f ]
-"16
-[; ;PWM.c: 16: {
+"25
+[; ;PWM.c: 25: {
 {
 [e :U _set_pwm_duty ]
-"15
-[; ;PWM.c: 15:  void set_pwm_duty(float duty)
+"24
+[; ;PWM.c: 24: void set_pwm_duty(float duty)
 [v _duty `f ~T0 @X0 1 r1 ]
-"16
-[; ;PWM.c: 16: {
+"25
+[; ;PWM.c: 25: {
 [f ]
-"18
-[; ;PWM.c: 18:     float calcul=0, duty1 = 100- duty;
+"26
+[; ;PWM.c: 26:     float calcul=0, duty1 = 100- duty;
 [v _calcul `f ~T0 @X0 1 a ]
 [e = _calcul -> -> 0 `i `f ]
 [v _duty1 `f ~T0 @X0 1 a ]
 [e = _duty1 - -> -> 100 `i `f _duty ]
-"19
-[; ;PWM.c: 19:     TRISCbits.TRISC2=0;
-[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
-"20
-[; ;PWM.c: 20:     CCP1CON=0x0F;
-[e = _CCP1CON -> -> 15 `i `uc ]
-"21
-[; ;PWM.c: 21:     PR2=254;
-[e = _PR2 -> -> 254 `i `uc ]
-"22
-[; ;PWM.c: 22:     calcul = (PR2 + 1)*((float)duty1/100);
-[e = _calcul * -> + -> _PR2 `i -> 1 `i `f / _duty1 -> -> 100 `i `f ]
-"23
-[; ;PWM.c: 23:     CCPR1L= (char)calcul;
-[e = _CCPR1L -> -> _calcul `uc `uc ]
-"25
-[; ;PWM.c: 25:     T2CON = 0b00000100;
-[e = _T2CON -> -> 4 `i `uc ]
 "27
-[; ;PWM.c: 27:     TMR2=0;
-[e = _TMR2 -> -> 0 `i `uc ]
+[; ;PWM.c: 27:     TRISCbits.TRISC2=0;
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+"28
+[; ;PWM.c: 28:     CCP1CON=0x0F;
+[e = _CCP1CON -> -> 15 `i `uc ]
 "29
-[; ;PWM.c: 29: }
+[; ;PWM.c: 29:     PR2=254;
+[e = _PR2 -> -> 254 `i `uc ]
+"30
+[; ;PWM.c: 30:     calcul = (PR2 + 1)*((float)duty1/100);
+[e = _calcul * -> + -> _PR2 `i -> 1 `i `f / _duty1 -> -> 100 `i `f ]
+"31
+[; ;PWM.c: 31:     CCPR1L= (char)calcul;
+[e = _CCPR1L -> -> _calcul `uc `uc ]
+"32
+[; ;PWM.c: 32:     T2CON = 0b00000100;
+[e = _T2CON -> -> 4 `i `uc ]
+"33
+[; ;PWM.c: 33:     TMR2=0;
+[e = _TMR2 -> -> 0 `i `uc ]
+"34
+[; ;PWM.c: 34: }
 [e :UE 272 ]
 }
