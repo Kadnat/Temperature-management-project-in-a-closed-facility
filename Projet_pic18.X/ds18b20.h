@@ -44,6 +44,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 #include <xc.h>
 #include "temp_monitoring.h"
 
+
 /******************* Macros and Definitions *******************/
 
 // This configuration is required to make a PIC be in open drain 
@@ -114,13 +115,6 @@ void OneWireHigh(void);
  */
 void OneWireRelease(void);
 
-/**
- * @brief Reads the temperature from the DS18B20 sensor and prints it.
- * 
- * @param pSystem_data Pointer to the system data structure.
- * @return The temperature in Celsius.
- */
-float print_temperature(SystemData* pSystem_data);
 
 /***************************************************************/
 

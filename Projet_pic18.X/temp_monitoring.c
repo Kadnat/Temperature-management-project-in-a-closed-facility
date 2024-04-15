@@ -15,6 +15,7 @@
 #include "heater.h"
 #include "buzzer.h"
 #include "lcd.h"
+#include "ssd1306_unbuffered.h"
 
 
 static uint16_t previous_address_eeprom=8;
@@ -423,4 +424,58 @@ void log_system(SystemData* pSystem_data)
   
    printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab[0], tab[1], tab[2], tab[3], tab[4], tab[5], tab[6], tab[7], tab[8], tab[9], tab[10], tab[11], tab[12], tab[13], tab[14], tab[15]);
     
+}
+
+// LAUNCH SCREEN
+
+/*
+ * @Brief              : Launch screen.
+ * @Param  None.
+ * @Return None.        
+ */
+void launch_screen(void)
+{
+    char buffer_lcd[15], buffer_temp[15];
+    
+    LCD_Init(0x27);
+    LCD_Clear();
+    LCD_Set_Cursor(1,1);
+    sprintf(buffer_lcd,"Welcome to");
+    LCD_Write_String(buffer_lcd);
+    LCD_Set_Cursor(2,1);
+    sprintf(buffer_lcd,"TempMaster");
+    LCD_Write_String(buffer_lcd);
+    
+    SSD1306_Init(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
+    SSD1306_ClearDisplay();
+    SSD1306_GotoXY(1,2);
+    oled_puts("TempMaster",2);
+    SSD1306_GotoXY(1,4);
+    oled_puts("V 1.0.0",2);
+
+    __delay_ms(4000);
+    
+}
+
+float print_temperature(SystemData* pSystem_data)
+{
+    char buffer_temp[7];
+    char buffer_command[7];
+    float command_temp = 0.0;
+    
+    command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
+
+    snprintf(buffer_temp,7,"%0.1fC",pSystem_data->temperature);
+    snprintf(buffer_command,7,"%0.1fC",command_temp);
+    SSD1306_Init(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
+    SSD1306_ClearDisplay();
+    SSD1306_GotoXY(1,2);
+    oled_puts("T :", 2);
+    SSD1306_GotoXY(8,2);
+    oled_puts(buffer_temp, 2);
+    SSD1306_GotoXY(1,5);
+    oled_puts("C :", 2);
+    SSD1306_GotoXY(8,5);
+    oled_puts(buffer_command, 2);
+    return pSystem_data->temperature;
 }

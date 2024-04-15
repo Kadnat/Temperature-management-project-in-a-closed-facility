@@ -4879,6 +4879,14 @@ void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
 void log_system(SystemData* pSystem_data);
+void launch_screen(void);
+
+
+
+
+
+
+float print_temperature(SystemData* pSystem_data);
 # 15 "./RTC.h" 2
 # 38 "./RTC.h"
 typedef struct {

@@ -4655,6 +4655,14 @@ void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
 void log_system(SystemData* pSystem_data);
+void launch_screen(void);
+
+
+
+
+
+
+float print_temperature(SystemData* pSystem_data);
 # 8 "temp_monitoring.c" 2
 
 # 1 "./ds18b20.h" 1
@@ -5176,7 +5184,7 @@ double y0(double);
 double y1(double);
 double yn(int, double);
 # 43 "./ds18b20.h" 2
-# 63 "./ds18b20.h"
+# 64 "./ds18b20.h"
 float OneWireTemp(void);
 
 
@@ -5230,14 +5238,6 @@ void OneWireHigh(void);
 
 
 void OneWireRelease(void);
-
-
-
-
-
-
-
-float print_temperature(SystemData* pSystem_data);
 # 9 "temp_monitoring.c" 2
 
 # 1 "./RTC.h" 1
@@ -5634,6 +5634,529 @@ void LCD_SR();
 void LCD_Clear();
 # 17 "temp_monitoring.c" 2
 
+# 1 "./ssd1306_unbuffered.h" 1
+# 18 "./ssd1306_unbuffered.h"
+# 1 "./i2c_soft.h" 1
+# 21 "./i2c_soft.h"
+char I2C_ReadRegister(char deviceAddress, char registerAddress);
+void I2C_WriteRegister(char deviceAddress, char registerAddress, char data);
+
+
+
+
+void I2C_Delay();
+void SCL_Low();
+void SCL_High();
+void SDA_Low();
+void SDA_High();
+void I2C_SendZero();
+void I2C_SendOne();
+void I2C_Start();
+void I2C_Stop();
+
+
+
+void I2C_WriteByte(char);
+char I2C_ReadResult();
+char I2C_ReadResult_withAck();
+void I2C_WriteToAddress(char deviceAddress);
+void I2C_ReadFromAddress(char deviceAddress);
+void I2C_Test();
+# 18 "./ssd1306_unbuffered.h" 2
+# 85 "./ssd1306_unbuffered.h"
+uint8_t _i2caddr, _vccstate, x_pos = 1, y_pos = 1;
+
+
+
+char wrap = 1;
+
+const char Font[255] = {
+0x00, 0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x5F, 0x00, 0x00,
+0x00, 0x07, 0x00, 0x07, 0x00,
+0x14, 0x7F, 0x14, 0x7F, 0x14,
+0x24, 0x2A, 0x7F, 0x2A, 0x12,
+0x23, 0x13, 0x08, 0x64, 0x62,
+0x36, 0x49, 0x56, 0x20, 0x50,
+0x00, 0x08, 0x07, 0x03, 0x00,
+0x00, 0x1C, 0x22, 0x41, 0x00,
+0x00, 0x41, 0x22, 0x1C, 0x00,
+0x2A, 0x1C, 0x7F, 0x1C, 0x2A,
+0x08, 0x08, 0x3E, 0x08, 0x08,
+0x00, 0x80, 0x70, 0x30, 0x00,
+0x08, 0x08, 0x08, 0x08, 0x08,
+0x00, 0x00, 0x60, 0x60, 0x00,
+0x20, 0x10, 0x08, 0x04, 0x02,
+0x3E, 0x51, 0x49, 0x45, 0x3E,
+0x00, 0x42, 0x7F, 0x40, 0x00,
+0x72, 0x49, 0x49, 0x49, 0x46,
+0x21, 0x41, 0x49, 0x4D, 0x33,
+0x18, 0x14, 0x12, 0x7F, 0x10,
+0x27, 0x45, 0x45, 0x45, 0x39,
+0x3C, 0x4A, 0x49, 0x49, 0x31,
+0x41, 0x21, 0x11, 0x09, 0x07,
+0x36, 0x49, 0x49, 0x49, 0x36,
+0x46, 0x49, 0x49, 0x29, 0x1E,
+0x00, 0x00, 0x14, 0x00, 0x00,
+0x00, 0x40, 0x34, 0x00, 0x00,
+0x00, 0x08, 0x14, 0x22, 0x41,
+0x14, 0x14, 0x14, 0x14, 0x14,
+0x00, 0x41, 0x22, 0x14, 0x08,
+0x02, 0x01, 0x59, 0x09, 0x06,
+0x3E, 0x41, 0x5D, 0x59, 0x4E,
+0x7C, 0x12, 0x11, 0x12, 0x7C,
+0x7F, 0x49, 0x49, 0x49, 0x36,
+0x3E, 0x41, 0x41, 0x41, 0x22,
+0x7F, 0x41, 0x41, 0x41, 0x3E,
+0x7F, 0x49, 0x49, 0x49, 0x41,
+0x7F, 0x09, 0x09, 0x09, 0x01,
+0x3E, 0x41, 0x41, 0x51, 0x73,
+0x7F, 0x08, 0x08, 0x08, 0x7F,
+0x00, 0x41, 0x7F, 0x41, 0x00,
+0x20, 0x40, 0x41, 0x3F, 0x01,
+0x7F, 0x08, 0x14, 0x22, 0x41,
+0x7F, 0x40, 0x40, 0x40, 0x40,
+0x7F, 0x02, 0x1C, 0x02, 0x7F,
+0x7F, 0x04, 0x08, 0x10, 0x7F,
+0x3E, 0x41, 0x41, 0x41, 0x3E,
+0x7F, 0x09, 0x09, 0x09, 0x06,
+0x3E, 0x41, 0x51, 0x21, 0x5E,
+0x7F, 0x09, 0x19, 0x29, 0x46
+};
+const char Font2[220] = {
+0x26, 0x49, 0x49, 0x49, 0x32,
+0x03, 0x01, 0x7F, 0x01, 0x03,
+0x3F, 0x40, 0x40, 0x40, 0x3F,
+0x1F, 0x20, 0x40, 0x20, 0x1F,
+0x3F, 0x40, 0x38, 0x40, 0x3F,
+0x63, 0x14, 0x08, 0x14, 0x63,
+0x03, 0x04, 0x78, 0x04, 0x03,
+0x61, 0x59, 0x49, 0x4D, 0x43,
+0x00, 0x7F, 0x41, 0x41, 0x41,
+0x02, 0x04, 0x08, 0x10, 0x20,
+0x00, 0x41, 0x41, 0x41, 0x7F,
+0x04, 0x02, 0x01, 0x02, 0x04,
+0x40, 0x40, 0x40, 0x40, 0x40,
+0x00, 0x03, 0x07, 0x08, 0x00,
+0x20, 0x54, 0x54, 0x78, 0x40,
+0x7F, 0x28, 0x44, 0x44, 0x38,
+0x38, 0x44, 0x44, 0x44, 0x28,
+0x38, 0x44, 0x44, 0x28, 0x7F,
+0x38, 0x54, 0x54, 0x54, 0x18,
+0x00, 0x08, 0x7E, 0x09, 0x02,
+0x18, 0xA4, 0xA4, 0x9C, 0x78,
+0x7F, 0x08, 0x04, 0x04, 0x78,
+0x00, 0x44, 0x7D, 0x40, 0x00,
+0x20, 0x40, 0x40, 0x3D, 0x00,
+0x7F, 0x10, 0x28, 0x44, 0x00,
+0x00, 0x41, 0x7F, 0x40, 0x00,
+0x7C, 0x04, 0x78, 0x04, 0x78,
+0x7C, 0x08, 0x04, 0x04, 0x78,
+0x38, 0x44, 0x44, 0x44, 0x38,
+0xFC, 0x18, 0x24, 0x24, 0x18,
+0x18, 0x24, 0x24, 0x18, 0xFC,
+0x7C, 0x08, 0x04, 0x04, 0x08,
+0x48, 0x54, 0x54, 0x54, 0x24,
+0x04, 0x04, 0x3F, 0x44, 0x24,
+0x3C, 0x40, 0x40, 0x20, 0x7C,
+0x1C, 0x20, 0x40, 0x20, 0x1C,
+0x3C, 0x40, 0x30, 0x40, 0x3C,
+0x44, 0x28, 0x10, 0x28, 0x44,
+0x4C, 0x90, 0x90, 0x90, 0x7C,
+0x44, 0x64, 0x54, 0x4C, 0x44,
+0x00, 0x08, 0x36, 0x41, 0x00,
+0x00, 0x00, 0x77, 0x00, 0x00,
+0x00, 0x41, 0x36, 0x08, 0x00,
+0x02, 0x01, 0x02, 0x04, 0x02
+};
+
+
+void ssd1306_command(uint8_t c) {
+    uint8_t control = 0x00;
+
+    I2C_Start();
+    I2C_WriteToAddress(_i2caddr);
+    I2C_WriteByte(control);
+    I2C_WriteByte(c);
+    I2C_Stop();
+
+
+
+
+
+
+}
+
+
+void SSD1306_Init(uint8_t vccstate, uint8_t i2caddr) {
+  _vccstate = vccstate;
+  _i2caddr = i2caddr;
+
+
+
+
+
+
+
+  ssd1306_command(0xAE);
+  ssd1306_command(0xD5);
+  ssd1306_command(0x80);
+
+  ssd1306_command(0xA8);
+  ssd1306_command(64 - 1);
+
+  ssd1306_command(0xD3);
+  ssd1306_command(0x0);
+  ssd1306_command(0x40 | 0x0);
+  ssd1306_command(0x8D);
+  if (vccstate == 0x01)
+    { ssd1306_command(0x10); }
+  else
+    { ssd1306_command(0x14); }
+  ssd1306_command(0x20);
+  ssd1306_command(0x00);
+  ssd1306_command(0xA0 | 0x1);
+  ssd1306_command(0xC8);
+# 246 "./ssd1306_unbuffered.h"
+  ssd1306_command(0xDA);
+  ssd1306_command(0x12);
+  ssd1306_command(0x81);
+  if (vccstate == 0x01)
+    { ssd1306_command(0x9F); }
+  else
+    { ssd1306_command(0xCF); }
+# 265 "./ssd1306_unbuffered.h"
+  ssd1306_command(0xD9);
+  if (vccstate == 0x01)
+    { ssd1306_command(0x22); }
+  else
+    { ssd1306_command(0xF1); }
+  ssd1306_command(0xDB);
+  ssd1306_command(0x40);
+  ssd1306_command(0xA4);
+  ssd1306_command(0xA6);
+
+  ssd1306_command(0x2E);
+
+  ssd1306_command(0xAF);
+}
+
+void SSD1306_StartScrollRight(uint8_t start, uint8_t stop) {
+  ssd1306_command(0x26);
+  ssd1306_command(0X00);
+  ssd1306_command(start);
+  ssd1306_command(0X00);
+  ssd1306_command(stop);
+  ssd1306_command(0X00);
+  ssd1306_command(0XFF);
+  ssd1306_command(0x2F);
+}
+
+void SSD1306_StartScrollLeft(uint8_t start, uint8_t stop) {
+  ssd1306_command(0x27);
+  ssd1306_command(0X00);
+  ssd1306_command(start);
+  ssd1306_command(0X00);
+  ssd1306_command(stop);
+  ssd1306_command(0X00);
+  ssd1306_command(0XFF);
+  ssd1306_command(0x2F);
+}
+
+void SSD1306_StartScrollDiagRight(uint8_t start, uint8_t stop) {
+  ssd1306_command(0xA3);
+  ssd1306_command(0X00);
+  ssd1306_command(64);
+  ssd1306_command(0x29);
+  ssd1306_command(0X00);
+  ssd1306_command(start);
+  ssd1306_command(0X00);
+  ssd1306_command(stop);
+  ssd1306_command(0X01);
+  ssd1306_command(0x2F);
+}
+
+void SSD1306_StartScrollDiagLeft(uint8_t start, uint8_t stop) {
+  ssd1306_command(0xA3);
+  ssd1306_command(0X00);
+  ssd1306_command(64);
+  ssd1306_command(0x2A);
+  ssd1306_command(0X00);
+  ssd1306_command(start);
+  ssd1306_command(0X00);
+  ssd1306_command(stop);
+  ssd1306_command(0X01);
+  ssd1306_command(0x2F);
+}
+
+void SSD1306_StopScroll(void) {
+  ssd1306_command(0x2E);
+}
+
+void SSD1306_Dim(char dim) {
+  uint8_t contrast;
+  if (dim)
+    contrast = 0;
+  else {
+    if (_vccstate == 0x01)
+      contrast = 0x9F;
+    else
+      contrast = 0xCF;
+  }
+
+
+  ssd1306_command(0x81);
+  ssd1306_command(contrast);
+}
+
+void SSD1306_SetTextWrap(char w) {
+  wrap = w;
+}
+
+void SSD1306_InvertDisplay(char i) {
+  if (i)
+    ssd1306_command(0xA7);
+  else
+    ssd1306_command(0xA6);
+}
+
+void SSD1306_GotoXY(uint8_t x, uint8_t y) {
+  if((x > 21) || y > 8)
+    return;
+  x_pos = x;
+  y_pos = y;
+}
+
+void SSD1306_PutC(uint8_t c) {
+  uint8_t font_c;
+
+
+  if((c < ' ') || (c > '~'))
+    c = '?';
+  ssd1306_command(0x21);
+  ssd1306_command(6 * (x_pos - 1));
+  ssd1306_command(6 * (x_pos - 1) + 4);
+
+  ssd1306_command(0x22);
+  ssd1306_command(y_pos - 1);
+  ssd1306_command(y_pos - 1);
+
+ I2C_Start();
+  I2C_WriteToAddress(_i2caddr);
+  I2C_WriteByte(0x40);
+
+  for(uint8_t i = 0; i < 5; i++ ) {
+    uint8_t offs;
+    if(c < 'S') {
+        offs = (c - 32)*5;
+        font_c = Font[offs + i];
+    } else {
+        offs = (c - 'S')*5;
+        font_c = Font2[offs + i];
+    }
+
+    I2C_WriteByte(font_c);
+  }
+  I2C_Stop();
+
+  x_pos = x_pos % 21 + 1;
+  if (wrap && (x_pos == 1))
+    y_pos = y_pos % 8 + 1;
+
+}
+
+void SSD1306_PutStretchC(uint8_t c, uint8_t size_mult) {
+  uint8_t font_c;
+
+  ssd1306_command(0x20);
+  ssd1306_command(0x01);
+
+  if((c < ' ') || (c > '~'))
+    c = '?';
+
+
+  if(size_mult < 1 || size_mult > 4) {
+      size_mult = 1;
+  }
+
+  for(uint8_t i=0; i<(size_mult - 1); i++) {
+      if(x_pos % size_mult != 1) {
+        x_pos++;
+      } else {
+          break;
+      }
+  }
+
+  if(x_pos > 21) {
+      x_pos = 1;
+      if(wrap) {
+          y_pos+=size_mult;
+      }
+  }
+  ssd1306_command(0x21);
+  ssd1306_command(6 * (x_pos - 1));
+  ssd1306_command(6 * (x_pos - 1) + (size_mult*5 - 1));
+
+  ssd1306_command(0x22);
+  ssd1306_command(y_pos - 1);
+  ssd1306_command((y_pos - 1)+(size_mult - 1));
+
+ I2C_Start();
+  I2C_WriteToAddress(_i2caddr);
+  I2C_WriteByte(0x40);
+
+  for(uint8_t i = 0; i < 5; i++ ) {
+
+    uint8_t offs;
+    uint8_t b[4] = {0};
+
+    if(c < 'S') {
+        offs = (c - 32)*5;
+        font_c = Font[offs + i];
+    } else {
+        offs = (c - 'S')*5;
+        font_c = Font2[offs + i];
+    }
+
+    if(size_mult == 1) {
+
+        I2C_WriteByte(font_c);
+    } else {
+
+
+        for(uint8_t i = 0; i < 8; i++) {
+            if(font_c & (1 << i)) {
+                for(uint8_t p = 0; p < size_mult; p++) {
+
+                    uint8_t pos = (i*size_mult + p) % 8;
+                    uint8_t bn = (i*size_mult + p) / 8;
+
+                    b[bn] |= (1 << pos);
+
+                }
+            }
+        }
+
+
+        for(uint8_t i = 0; i < size_mult; i++) {
+            for(uint8_t bn = 0; bn < size_mult; bn++) {
+                I2C_WriteByte(b[bn]);
+            }
+        }
+    }
+  }
+  I2C_Stop();
+
+  x_pos += size_mult;
+  if(x_pos > 21) {
+      x_pos = 1;
+      if(wrap) {
+          y_pos+=size_mult;
+      }
+  }
+
+
+  ssd1306_command(0x20);
+  ssd1306_command(0x00);
+
+}
+
+void SSD1306_PutCustomC(char *c) {
+  uint8_t line;
+  ssd1306_command(0x21);
+  ssd1306_command(6 * (x_pos - 1));
+  ssd1306_command(6 * (x_pos - 1) + 4);
+
+  ssd1306_command(0x22);
+  ssd1306_command(y_pos - 1);
+  ssd1306_command(y_pos - 1);
+
+ I2C_Start();
+  I2C_WriteToAddress(_i2caddr);
+  I2C_WriteByte(0x40);
+
+  for(uint8_t i = 0; i < 5; i++ ) {
+    line = c[i];
+    I2C_WriteByte(line);
+  }
+  I2C_Stop();
+
+  x_pos = x_pos % 21 + 1;
+  if (wrap && (x_pos == 1))
+    y_pos = y_pos % 8 + 1;
+
+}
+
+void SSD1306_ClearDisplay() {
+
+  ssd1306_command(0x21);
+  ssd1306_command(0);
+
+  ssd1306_command(127);
+
+
+
+
+  ssd1306_command(0x22);
+  ssd1306_command(0);
+
+  ssd1306_command(7);
+
+
+
+
+
+
+ I2C_Start();
+  I2C_WriteToAddress(_i2caddr);
+  I2C_WriteByte(0x40);
+
+  for(uint16_t i = 0; i < 64 * 128 / 8; i++ )
+    I2C_WriteByte(0);
+
+  I2C_Stop();
+
+}
+
+void SSD1306_FillScreen() {
+
+  ssd1306_command(0x21);
+  ssd1306_command(0);
+
+  ssd1306_command(127);
+
+
+
+
+  ssd1306_command(0x22);
+  ssd1306_command(0);
+
+  ssd1306_command(7);
+
+
+
+
+
+
+ I2C_Start();
+  I2C_WriteToAddress(_i2caddr);
+  I2C_WriteByte(0x40);
+
+  for(uint16_t i = 0; i < 64 * 128 / 8; i++ )
+    I2C_WriteByte(0xFF);
+
+  I2C_Stop();
+
+}
+
+void oled_puts(const char* c, uint8_t size) {
+    while(*c != '\0') {
+        SSD1306_PutStretchC(*c, size);
+        c++;
+    }
+}
+# 18 "temp_monitoring.c" 2
+
 
 
 static uint16_t previous_address_eeprom=8;
@@ -5673,7 +6196,7 @@ void update_system_data(SystemData* pSystem_data)
 
 
 }
-# 65 "temp_monitoring.c"
+# 66 "temp_monitoring.c"
 void save_in_eeprom(SystemData* pSystem_data)
 {
    unsigned char tab[16]={0};
@@ -5811,7 +6334,7 @@ void extract_all_alarms(void)
     }
     reset_eep_address_in_eeprom();
 }
-# 210 "temp_monitoring.c"
+# 211 "temp_monitoring.c"
 void update_SD_tab(SystemData* pSystem_data)
 {
     static int counter = 0;
@@ -5949,7 +6472,7 @@ void extract_data_for_days(int number_days)
     printf("Sec %d-%d\r\n", (int)firstBlock, (int)(firstBlock + numWrites - 1));
 
 }
-# 355 "temp_monitoring.c"
+# 356 "temp_monitoring.c"
  void temp_management(SystemData* pSystem_data)
 {
     float command_temp = 23.0;
@@ -6021,4 +6544,51 @@ void log_system(SystemData* pSystem_data)
 
    printf("{%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x}\r\n", tab[0], tab[1], tab[2], tab[3], tab[4], tab[5], tab[6], tab[7], tab[8], tab[9], tab[10], tab[11], tab[12], tab[13], tab[14], tab[15]);
 
+}
+# 436 "temp_monitoring.c"
+void launch_screen(void)
+{
+    char buffer_lcd[15], buffer_temp[15];
+
+    LCD_Init(0x27);
+    LCD_Clear();
+    LCD_Set_Cursor(1,1);
+    sprintf(buffer_lcd,"Welcome to");
+    LCD_Write_String(buffer_lcd);
+    LCD_Set_Cursor(2,1);
+    sprintf(buffer_lcd,"TempMaster");
+    LCD_Write_String(buffer_lcd);
+
+    SSD1306_Init(0x02, 0x3C);
+    SSD1306_ClearDisplay();
+    SSD1306_GotoXY(1,2);
+    oled_puts("TempMaster",2);
+    SSD1306_GotoXY(1,4);
+    oled_puts("V 1.0.0",4);
+
+    _delay((unsigned long)((4000)*(32000000/4000.0)));
+
+}
+
+float print_temperature(SystemData* pSystem_data)
+{
+    char buffer_temp[7];
+    char buffer_command[7];
+    float command_temp = 0.0;
+
+    command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
+
+    snprintf(buffer_temp,7,"%0.1fC",pSystem_data->temperature);
+    snprintf(buffer_command,7,"%0.1fC",command_temp);
+    SSD1306_Init(0x02, 0x3C);
+    SSD1306_ClearDisplay();
+    SSD1306_GotoXY(1,2);
+    oled_puts("T :", 2);
+    SSD1306_GotoXY(8,2);
+    oled_puts(buffer_temp, 2);
+    SSD1306_GotoXY(1,5);
+    oled_puts("C :", 2);
+    SSD1306_GotoXY(8,5);
+    oled_puts(buffer_command, 2);
+    return pSystem_data->temperature;
 }

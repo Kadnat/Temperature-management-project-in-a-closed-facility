@@ -4741,6 +4741,14 @@ void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
 void log_system(SystemData* pSystem_data);
+void launch_screen(void);
+
+
+
+
+
+
+float print_temperature(SystemData* pSystem_data);
 # 15 "./RTC.h" 2
 # 38 "./RTC.h"
 typedef struct {
@@ -5389,7 +5397,7 @@ double y0(double);
 double y1(double);
 double yn(int, double);
 # 43 "./ds18b20.h" 2
-# 63 "./ds18b20.h"
+# 64 "./ds18b20.h"
 float OneWireTemp(void);
 
 
@@ -5443,14 +5451,6 @@ void OneWireHigh(void);
 
 
 void OneWireRelease(void);
-
-
-
-
-
-
-
-float print_temperature(SystemData* pSystem_data);
 # 7 "main.c" 2
 
 # 1 "./SD_PIC.h" 1
@@ -5842,6 +5842,8 @@ void main(void) {
     uint8_t ret=0;
     volatile uint16_t timer1_counter_val;
 
+    launch_screen();
+
     usart_module_init();
     timer1_timer_init();
 
@@ -5849,7 +5851,8 @@ void main(void) {
     read_sd_address_in_eeprom();
 
     start_pwm();
-    LCD_Init(0x27);
+
+
 
 
     while(1)

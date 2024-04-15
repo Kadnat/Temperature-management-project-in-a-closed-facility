@@ -49,6 +49,8 @@ void main(void) {
     uint8_t ret=0;
     volatile uint16_t timer1_counter_val;
     
+    launch_screen();
+    
     usart_module_init();
     timer1_timer_init();
     
@@ -56,7 +58,8 @@ void main(void) {
     read_sd_address_in_eeprom();
 
     start_pwm();
-    LCD_Init(0x27); // start LCD function
+    
+    
 
             
     while(1)

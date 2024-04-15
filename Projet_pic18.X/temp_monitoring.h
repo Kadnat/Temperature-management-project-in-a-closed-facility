@@ -56,6 +56,14 @@ void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
 void log_system(SystemData* pSystem_data);
+void launch_screen(void);
+/**
+ * @brief Reads the temperature from the DS18B20 sensor and prints it.
+ * 
+ * @param pSystem_data Pointer to the system data structure.
+ * @return The temperature in Celsius.
+ */
+float print_temperature(SystemData* pSystem_data);
 /**********************************************************************/
 
 #endif	/* TEMP_MONITORING_H */

@@ -4654,6 +4654,14 @@ void reset_sd_address_in_eeprom(void);
 void extract_data_for_days(int number_days);
 void temp_management(SystemData* pSystem_data);
 void log_system(SystemData* pSystem_data);
+void launch_screen(void);
+
+
+
+
+
+
+float print_temperature(SystemData* pSystem_data);
 # 13 "./led.h" 2
 # 37 "./led.h"
 void led_set_mode(SystemData *psystem_state);

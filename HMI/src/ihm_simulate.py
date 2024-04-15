@@ -16,38 +16,39 @@ from src.simulate_serial import update_current_frame
 def apply_stylesheet(app):
     stylesheet = ("""
         QMainWindow {
-                background-color: #34495e;
-            }
-            QLabel {
-                font-size: 16px;
-                color: #ecf0f1;
-                padding-top: 50px;
-                margin: 0px;
-            }
-            QLineEdit {
-                border: 2px solid #2980b9;
-                border-radius: 10px;
-                padding: 5px;
-                font-size: 14px;
-                color: #ecf0f1;
-                background: #2c3e50;
-                margin-bottom: 15px;
-            }
-            QPushButton {
-                background-color: #2980b9;
-                border-style: none;
-                padding: 10px;
-                margin-top: 50px;
-                border-radius: 5px;
-                color: #ecf0f1;
-                font-size: 16px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #3498db;
-            }
-        """)
+            background-color: #242423; /* Noir mat */
+        }
+        QLabel {
+            font-size: 16px;
+            color: #FFFFFF; /* Blanc pour le texte */
+            padding-top: 50px;
+            margin: 0px;
+        }
+        QLineEdit {
+            border: 2px solid #FFFFFF; /* Bordure blanche */
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 14px;
+            color: #FFFFFF; /* Texte blanc */
+            background: #242423; /* Noir mat */
+            margin-bottom: 15px;
+        }
+        QPushButton {
+            background-color: #FFFFFF; /* Blanc */
+            border-style: none;
+            padding: 10px;
+            margin-top: 50px;
+            border-radius: 5px;
+            color: #000000; /* Noir pour le texte */
+            font-size: 16px;
+            font-weight: bold;
+        }
+        QPushButton:hover {
+            background-color: #A9A9A9; /* Gris clair au survol */
+        }
+    """)
     app.setStyleSheet(stylesheet)
+
     
 # Chargement des données d'authentification à partir d'un fichier JSON
 def load_credentials():
@@ -144,8 +145,8 @@ class MainWindow(QMainWindow):
 
         # Stylisation du cadre de bienvenue
         welcome_frame.setStyleSheet("""
-            background-color: #5e4934;
-            color: #FFFFFF;
+            background-color: #333533;
+            color: #E8EDDF;
             font-size: 32px;
             padding: 0px;
             margin-bottom: 20px;
@@ -179,7 +180,7 @@ class MainWindow(QMainWindow):
         # Frame
         right_frame = QFrame()
         right_frame.setStyleSheet("""
-                                    background-color: #4d6072;
+                                    background-color: #939597;
                                     padding: 10px;
                                     margin: 0px;
                                 """)
@@ -263,7 +264,7 @@ class MainWindow(QMainWindow):
         
         center_frame = QFrame()
         center_frame.setStyleSheet("""
-                                    background-color: #4d6072;
+                                    background-color: #939597;
                                     padding: 10px;
                                     margin: 0px;
                                   """)
@@ -326,7 +327,7 @@ class MainWindow(QMainWindow):
         # Frame
         left_frame = QFrame()
         left_frame.setStyleSheet("""
-                                    background-color: #4d6072;
+                                    background-color: #939597;
                                     padding: 10px;
                                     margin: 0px;
                                 """)

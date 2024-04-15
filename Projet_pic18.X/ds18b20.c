@@ -37,17 +37,6 @@ OTHER DEALINGS IN THE SOFTWARE.
  
  #include "DS18B20.h"
 #include "common.h"
-#include "ssd1306_unbuffered.h"
-// Available Functions:
-float OneWireTemp(void); // Returns the temperature in celsius 
-unsigned int OneWireReset(void); // Sends a reset pulse to the sensor 
-void OneWireWriteBit(unsigned char); // write a single bit to the OneWire
-unsigned char OneWireReadBit(void); // reads a single bit 
-void OneWireWriteByte(unsigned char); // writes a byte 
-unsigned char OneWireReadByte(void); // reads a byte 
-unsigned char OneWireRead(void); // reads the current status of the bus
-void OneWireHigh(void); // sets the bus high
-void OneWireRelease(void); // releases the bus 
 
 
 float OneWireTemp(){
@@ -138,25 +127,3 @@ unsigned char OneWireReadByte(void){
     return out;
 }
 
-float print_temperature(SystemData* pSystem_data)
-{
-    char buffer_temp[7];
-    char buffer_command[7];
-    float command_temp = 0.0;
-    
-    command_temp = pSystem_data->command_decimal + (float)pSystem_data->command_fraction/100;
-
-    snprintf(buffer_temp,7,"%0.1fC",pSystem_data->temperature);
-    snprintf(buffer_command,7,"%0.1fC",command_temp);
-    SSD1306_Init(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS);
-    SSD1306_ClearDisplay();
-    SSD1306_GotoXY(1,2);
-    oled_puts("T :", 2);
-    SSD1306_GotoXY(8,2);
-    oled_puts(buffer_temp, 2);
-    SSD1306_GotoXY(1,5);
-    oled_puts("C :", 2);
-    SSD1306_GotoXY(8,5);
-    oled_puts(buffer_command, 2);
-    return pSystem_data->temperature;
-}

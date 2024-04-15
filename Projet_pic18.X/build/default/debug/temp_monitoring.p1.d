@@ -11,4 +11,6 @@ PWM.h  \
 led.h  \
 heater.h  \
 buzzer.h  \
-lcd.h 
+lcd.h  \
+ssd1306_unbuffered.h  \
+i2c_soft.h 
